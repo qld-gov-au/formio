@@ -1,2 +1,4 @@
-const suggestedAddressKey = instance.parent?.components?.find(comp => comp.component.properties.fieldName === "suggestedAddress")?.component.key;
-if (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;
+if (instance.parent) {
+  const suggestedAddressKey = getComponentKey({parentComponent: instance.parent, fieldName: "suggestedAddress"});
+  if (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;
+}

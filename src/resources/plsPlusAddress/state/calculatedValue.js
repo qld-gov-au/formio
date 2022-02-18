@@ -2,6 +2,6 @@ const cantfindAddressData = getComponentData({data: data, parentComponent: insta
 const addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: "addressDetails"});
 const address = getPlsPlusAddress(addressDetailsData);
 
-if (!cantfindAddressData && address && address.Locality) {
-  value = address.Locality;
+if (!cantfindAddressData && address && address.State) {
+  value = address.State;
 }

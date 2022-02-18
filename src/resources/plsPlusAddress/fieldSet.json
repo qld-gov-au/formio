@@ -1,17 +1,17 @@
 {
   "legend": "PLSPlus address - please enter the franchise apiKey in API/custom properties/franchise or leave it as auto",
   "tableView": false,
-  "key": "plsPlusSet",
+  "key": "ratPlsPlusAddress",
   "properties": {
-    "franchise": "auto"
+    "franchise": "qldonline"
   },
   "type": "fieldset",
-  "label": "Rat PLSPlus address",
+  "label": "PLSPlus address - please enter the franchise apiKey in API/custom properties/franchise or leave it as auto",
   "input": false,
   "components": [
     {
       "label": "PlsPlus Address script",
-      "customDefaultValue": "const bodyElem = document.querySelector('body');\nconst plsPlusInit = bodyElem.getAttribute('data-plsPlusInit');\n\nfunction getFranchise(myFranchise) {\n  if (myFranchise === \"auto\") {\n    const host = location.host;\n    if (host.indexOf(\"forgov\") !== -1) {\n      return \"forgov\";\n    } else if (host.indexOf(\"tmr\") !== -1) {\n      return \"tmr\";\n    } else if (host.indexOf(\"covid19\") !== -1) {\n      return \"covid19\";\n    } else if (host.indexOf(\"health\") !== -1) {\n      return \"health\";\n    // https://www.resource.qld.gov.au/ is not found\n    // } else if (host.indexOf(\"resource\") !== -1) {\n    //   return \"resource\";\n    } else {\n      return \"qldonline\";\n    }\n  }\n  return myFranchise;\n}\n\nif (!plsPlusInit) {\n  const nativeOpen = XMLHttpRequest.prototype.open;\n  const nativeSend = XMLHttpRequest.prototype.send;\n  \n  function proxiedOpen() {\n    arguments[1] = arguments[1].replace(/%7b%7bform.properties.franchise%7d%7d/gi, form?.properties?.franchise);\n    if (arguments[1].includes('pls-plus-qg/')) this._url = arguments[1];\n    nativeOpen.apply(this, arguments);\n  }\n  \n  async function proxiedSend() {\n    if (this._url) {\n      if (this._url.includes('/AutoCompleteAddress')) {\n        const queryString = this._url.split('?')[1];\n        const urlParams = new URLSearchParams('?' + queryString);\n        const query = urlParams.get('query') || \"\";\n        if (query.length <= 3) return;\n        const data = await fetch(this._url).then(res => res.json());\n        const newData = {suggest: data?.AutoCompleteAddressResponse?.AutoCompleteAddressResult?.string?.map(address => ({address})) || []};\n        Object.defineProperty(this, 'responseText', { value: JSON.stringify(newData), writable: false });\n        Object.defineProperty(this, 'response', { value: JSON.stringify(newData), writable: false });\n      }\n      if (this._url.includes('/ParseAddress')) {\n        const queryString = this._url.split('?')[1];\n        const urlParams = new URLSearchParams('?' + queryString);\n        const query = urlParams.get('query') || \"\";\n        if (!query) return;\n      }\n    }\n    nativeSend.apply(this, arguments);\n  }\n\n  XMLHttpRequest.prototype.open = proxiedOpen;\n  XMLHttpRequest.prototype.send = proxiedSend;\n  form.properties.franchise = getFranchise(instance?.parent?.component?.properties?.franchise);\n  bodyElem.setAttribute('data-plsPlusInit', true);\n}",
+      "customDefaultValue": "const bodyElem = document.querySelector('body');\nconst plsPlusInit = bodyElem.getAttribute('data-plsPlusInit');\n\nif (!plsPlusInit) {\n  ie11Polyfill();\n\n  const nativeOpen = XMLHttpRequest.prototype.open;\n  const nativeSend = XMLHttpRequest.prototype.send;\n  let lastQuery = \"\";\n  \n  function proxiedOpen() {\n    if (form && form.properties) {\n      arguments[1] = arguments[1].replace(/%7b%7bform.properties.plsPlusApiKey%7d%7d/gi, form.properties.plsPlusApiKey);\n    }\n    if (arguments[1].includes('pls-plus-qg/')) this._url = arguments[1];\n\n    if (this._url && this._url.indexOf('/AutoCompleteAddress') !== -1) {\n      const thisObj = this;\n\n      this.addEventListener('readystatechange', function(e) { \n        if (this.readyState == 4) {\n          const data = JSON.parse(this.response);\n          if (data.AutoCompleteAddressResponse && data.AutoCompleteAddressResponse.AutoCompleteAddressResult && data.AutoCompleteAddressResponse.AutoCompleteAddressResult.string ) {\n            const newData = {suggest: data.AutoCompleteAddressResponse.AutoCompleteAddressResult.string.map(function (address) {return ({address: address})}) || []};\n            Object.defineProperty(this, 'responseText', { get: function() { return JSON.stringify(newData) } });\n            Object.defineProperty(this, 'response', { get: function() { return JSON.stringify(newData) } });\n          }\n        }\n      })\n    }\n\n    nativeOpen.apply(this, arguments);\n  }\n  \n  function proxiedSend() {\n    if (this._url) {\n      if (this._url.indexOf('/AutoCompleteAddress') !== -1) {\n        const queryString = this._url.split('?')[1];\n        const urlParams = new URLSearchParams('?' + queryString);\n        const query = urlParams.get('query') || \"\";\n        if (query.length <= 3) return;\n        if (lastQuery === query) return;\n        lastQuery = query;\n        this.responseType = \"text\";\n      }\n      if (this._url.indexOf('/ParseAddress') !== -1) {\n        const queryString = this._url.split('?')[1];\n        const urlParams = new URLSearchParams('?' + queryString);\n        const query = urlParams.get('query') || \"\";\n        if (!query) return;\n      }\n    }\n    \n    nativeSend.apply(this, arguments);\n  }\n\n  XMLHttpRequest.prototype.open = proxiedOpen;\n  XMLHttpRequest.prototype.send = proxiedSend;\n  \n  /*\n  * logic of assigning plsPlusApiKey\n  * - if form.properties.plsPlusApiKey is provided, the key will be validated, if it's invalid the key will be changed to `invalid` and warning/instruction will be displayed.\n  * - if form.properties.plsPlusApiKey is not provided, key will be assigned based on URL, if no key is assigned because of non-qualified URL, key will be assigned to `auto` and warning/instruction will be displayed.\n  */\n  if (defaultPlsPlusApiKey && !form.properties.plsPlusApiKey) {\n    form.properties.plsPlusApiKey = defaultPlsPlusApiKey;\n  }\n  if (getPlsPlusApiKey && form.properties.plsPlusApiKey) {\n    form.properties.plsPlusApiKey = getPlsPlusApiKey(form.properties.plsPlusApiKey);\n  } \n\n  bodyElem.setAttribute('data-plsPlusInit', true);\n}",
       "key": "script",
       "properties": {
         "fieldName": "script"
@@ -75,7 +75,7 @@
       "showWordCount": false,
       "allowMultipleMasks": false,
       "inputType": "hidden",
-      "id": "ech5oy5"
+      "id": "eonj03i"
     },
     {
       "tableView": false,
@@ -106,7 +106,7 @@
               "name": "Disable",
               "trigger": {
                 "type": "javascript",
-                "javascript": "result=!!data.cantfindAddress"
+                "javascript": "const cantfindAddressKey = instance.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!!cantfindAddressData;"
               },
               "actions": [
                 {
@@ -148,7 +148,7 @@
             "responseProperty": "suggest",
             "displayValueProperty": "address",
             "params": {
-              "apiKey": "{{form.properties.franchise}}"
+              "apiKey": "{{form.properties.plsPlusApiKey}}"
             }
           },
           "input": true,
@@ -246,7 +246,7 @@
           "manualModeViewString": "",
           "disableClearIcon": false,
           "enableManualMode": false,
-          "id": "ee2pqpm"
+          "id": "e5mess"
         },
         {
           "label": "I can't find my address",
@@ -317,7 +317,7 @@
           "dataGridLabel": true,
           "value": "",
           "name": "",
-          "id": "ergelc9"
+          "id": "eaomgmk"
         },
         {
           "label": "Address details",
@@ -327,9 +327,10 @@
             "init": false,
             "server": false
           },
+          "refreshOn": "suggestedAddress",
           "dataSrc": "url",
           "fetch": {
-            "url": "https://www.address.test-services.qld.gov.au/pls-plus-qg/ParseAddress?query={{data[instance.parent.components.find(comp => comp.component.properties.fieldName === \"suggestedAddress\")?.component.key].address}}&apiKey={{form.properties?.franchise}}",
+            "url": "https://www.address.test-services.qld.gov.au/pls-plus-qg/ParseAddress?query={{data[instance.parent.components.find(function(comp) { return comp.component.properties.fieldName === \"suggestedAddress\" }).component.key].address}}&apiKey={{form.properties ? form.properties.plsPlusApiKey : \"\" }}",
             "method": "get",
             "headers": [
               {
@@ -344,7 +345,7 @@
           "properties": {
             "fieldName": "addressDetails"
           },
-          "customConditional": "const suggestedAddressKey = instance.parent?.components?.find(comp => comp.component.properties.fieldName === \"suggestedAddress\")?.component.key;\nif (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;",
+          "customConditional": "if (instance.parent && instance.parent.components) {\n  const suggestedAddressKey = instance.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"suggestedAddress\" }).component.key;\n  if (suggestedAddressKey !== instance.component.refreshOn) {\n    instance.component.refreshOn = suggestedAddressKey;\n  }\n}",
           "type": "datasource",
           "input": true,
           "tableView": false,
@@ -357,7 +358,6 @@
           "protected": false,
           "unique": false,
           "hidden": false,
-          "refreshOn": "suggestedAddress",
           "redrawOn": "",
           "modalEdit": false,
           "labelPosition": "top",
@@ -400,11 +400,11 @@
           "showCharCount": false,
           "showWordCount": false,
           "allowMultipleMasks": false,
-          "id": "eu2yhau"
+          "id": "ec0p2wc"
         },
         {
           "label": "Selected address",
-          "calculateValue": "const suggestedAddressKey = instance.parent.components.find(comp => comp.component.properties.fieldName === \"suggestedAddress\")?.component.key;\nconst suggestedAddressData = data[suggestedAddressKey];\nconst cantfindAddressKey = instance.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst addressPartsComp = instance.parent.components.find(comp => comp.component.properties.fieldName === \"addressParts\")?.component;\n\nif (cantfindAddressData !== true && suggestedAddressData) {\n  value = suggestedAddressData.address;\n} else if (cantfindAddressData === true && addressPartsComp) {\n  const addressLine1Key = addressPartsComp.components.find(comp => comp.properties.fieldName === \"addressLine1\")?.key;\n  const addressLine1Data = data[addressLine1Key];\n  const addressLine2Key = addressPartsComp.components.find(comp => comp.properties.fieldName === \"addressLine2\")?.key;\n  const addressLine2Data = data[addressLine2Key];\n  const addressLine3Key = addressPartsComp.components.find(comp => comp.properties.fieldName === \"addressLine3\")?.key;\n  const addressLine3Data = data[addressLine3Key];\n  const cityKey = addressPartsComp.components.find(comp => comp.properties.fieldName === \"city\")?.key;\n  const cityData = data[cityKey];\n  const stateKey = addressPartsComp.components.find(comp => comp.properties.fieldName === \"state\")?.key;\n  const stateData = data[stateKey];\n  const postcodeKey = addressPartsComp.components.find(comp => comp.properties.fieldName === \"postcode\")?.key;\n  const postcodeData = data[postcodeKey];\n\n  var addrLine = (addressLine1Data\n    +\" \"+ addressLine2Data\n    +\" \"+ addressLine3Data)\n    .replace(/  /g,' ');\n  var locality = (cityData\n    +\" \"+ stateData\n    +\" \"+ postcodeData)\n    .replace(/  /g,' ');\n  value = (addrLine +\" \"+ locality).replace(/  /g,' ').trim();\n}",
+          "calculateValue": "const suggestedAddressKey = instance.parent.components.find( function (comp) { return comp.component.properties.fieldName === \"suggestedAddress\" }).component.key;\nconst suggestedAddressData = data[suggestedAddressKey];\nconst cantfindAddressKey = instance.parent.components.find( function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\" }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst addressPartsComp = instance.parent.components.find( function (comp) { return comp.component.properties.fieldName === \"addressParts\" }).component.key;\n\nif (cantfindAddressData !== true && suggestedAddressData) {\n  value = suggestedAddressData.address;\n} else if (cantfindAddressData === true && addressPartsComp && addressPartsComp.components) {\n  const addressLine1Key = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"addressLine1\" }).key;\n  const addressLine1Data = data[addressLine1Key];\n  const addressLine2Key = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"addressLine2\" }).key;\n  const addressLine2Data = data[addressLine2Key];\n  const addressLine3Key = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"addressLine3\" }).key;\n  const addressLine3Data = data[addressLine3Key];\n  const cityKey = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"city\" }).key;\n  const cityData = data[cityKey];\n  const stateKey = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"state\" }).key;\n  const stateData = data[stateKey];\n  const postcodeKey = addressPartsComp.components.find( function (comp) { return comp.properties.fieldName === \"postcode\" }).key;\n  const postcodeData = data[postcodeKey];\n\n  var addrLine = (addressLine1Data\n    +\" \"+ addressLine2Data\n    +\" \"+ addressLine3Data)\n    .replace(/  /g,' ');\n  var locality = (cityData\n    +\" \"+ stateData\n    +\" \"+ postcodeData)\n    .replace(/  /g,' ');\n  value = (addrLine +\" \"+ locality).replace(/  /g,' ').trim();\n}",
           "key": "selectedAddress",
           "properties": {
             "fieldName": "selectedAddress"
@@ -468,7 +468,7 @@
           "showWordCount": false,
           "allowMultipleMasks": false,
           "inputType": "hidden",
-          "id": "eu2n2v"
+          "id": "eor3yag"
         },
         {
           "tableView": false,
@@ -486,7 +486,7 @@
               "tableView": true,
               "case": "uppercase",
               "clearOnHide": false,
-              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"addressDetails\")?.component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = address.Parcel?.Lot ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit?.TypeCode, address.Unit?.Number, address.Level?.TypeCode, address.Level?.Number].filter(o => o !== undefined).join(' ');\n    const roadNumberPart = [address.RoadNumber?.First, address.RoadNumber?.Last ? '-' : undefined, address.RoadNumber?.Last].filter(o => o !== undefined).join(''); \n    const streetAddress = [roadNumberPart, address.Road?.Name, address.Road?.TypeCode].filter(o => o !== undefined).join(' ');\n    if (siteName && complexDesc && streetAddress) {\n        value = siteName;\n    } else if (!siteName && complexDesc && streetAddress) {\n        value = complexDesc;\n    } else if (siteName && !complexDesc && streetAddress) {\n        value = siteName;\n    } else if (!siteName && !complexDesc && streetAddress) {\n        value = streetAddress;\n    }\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = (address.Parcel && address.Parcel.Lot) ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit ? address.Unit.TypeCode : undefined, address.Unit ? address.Unit.Number : undefined, address.Level ? address.Level.TypeCode : undefined, address.Level ? address.Level.Number : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n    const roadNumberPart = [address.RoadNumber ? address.RoadNumber.First : undefined, (address.RoadNumber && address.RoadNumber.Last) ? '-' : undefined, address.RoadNumber ? address.RoadNumber.Last : undefined].filter( function (o) { return o !== undefined } ).join(''); \n    const streetAddress = [roadNumberPart, address.Road ? address.Road.Name : undefined, address.Road ? address.Road.TypeCode : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n    if (siteName && complexDesc && streetAddress) {\n        value = siteName;\n    } else if (!siteName && complexDesc && streetAddress) {\n        value = complexDesc;\n    } else if (siteName && !complexDesc && streetAddress) {\n        value = siteName;\n    } else if (!siteName && !complexDesc && streetAddress) {\n        value = streetAddress;\n    }\n}",
               "allowCalculateOverride": true,
               "validate": {
                 "required": true,
@@ -508,7 +508,7 @@
                   "name": "Disable",
                   "trigger": {
                     "type": "javascript",
-                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
+                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
                   },
                   "actions": [
                     {
@@ -591,14 +591,14 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "e8l4593"
+              "id": "esbg7p"
             },
             {
               "label": "Address line 2",
               "tableView": true,
               "case": "uppercase",
               "clearOnHide": false,
-              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"addressDetails\")?.component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = address.Parcel?.Lot ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit?.TypeCode, address.Unit?.Number, address.Level?.TypeCode, address.Level?.Number].filter(o => o !== undefined).join(' ');\n    const roadNumberPart = [address.RoadNumber?.First, address.RoadNumber?.Last ? '-' : undefined, address.RoadNumber?.Last].filter(o => o !== undefined).join(''); \n    const streetAddress = [roadNumberPart, address.Road?.Name, address.Road?.TypeCode].filter(o => o !== undefined).join(' ');\n\n    if (siteName && complexDesc && streetAddress) {\n        value = complexDesc;\n    } else if (!siteName && complexDesc && streetAddress) {\n        value = streetAddress;\n    } else if (siteName && !complexDesc && streetAddress) {\n        value = streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = (address.Parcel && address.Parcel.Lot) ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit ? address.Unit.TypeCode : undefined, address.Unit ? address.Unit.Number : undefined, address.Level ? address.Level.TypeCode : undefined, address.Level ? address.Level.Number : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n    const roadNumberPart = [address.RoadNumber ? address.RoadNumber.First : undefined, (address.RoadNumber && address.RoadNumber.Last) ? '-' : undefined, address.RoadNumber ? address.RoadNumber.Last : undefined].filter( function (o) { return o !== undefined } ).join(''); \n    const streetAddress = [roadNumberPart, address.Road ? address.Road.Name : undefined, address.Road ? address.Road.TypeCode : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n\n    if (siteName && complexDesc && streetAddress) {\n        value = complexDesc;\n    } else if (!siteName && complexDesc && streetAddress) {\n        value = streetAddress;\n    } else if (siteName && !complexDesc && streetAddress) {\n        value = streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
               "allowCalculateOverride": true,
               "validate": {
                 "pattern": "^((?![<>\\{\\}]).)*$",
@@ -621,7 +621,7 @@
                   "name": "Disable",
                   "trigger": {
                     "type": "javascript",
-                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
+                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
                   },
                   "actions": [
                     {
@@ -704,14 +704,14 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "e2t9nlp"
+              "id": "e7waafo"
             },
             {
               "label": "Address line 3",
               "tableView": true,
               "case": "uppercase",
               "clearOnHide": false,
-              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"addressDetails\")?.component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = address.Parcel?.Lot ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit?.TypeCode, address.Unit?.Number, address.Level?.TypeCode, address.Level?.Number].filter(o => o !== undefined).join(' ');\n    const roadNumberPart = [address.RoadNumber?.First, address.RoadNumber?.Last ? '-' : undefined, address.RoadNumber?.Last].filter(o => o !== undefined).join(''); \n    const streetAddress = [roadNumberPart, address.Road?.Name, address.Road?.TypeCode].filter(o => o !== undefined).join(' ');\n\n    if (siteName && complexDesc && streetAddress) {\n        value = streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = (address.Parcel && address.Parcel.Lot) ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit ? address.Unit.TypeCode : undefined, address.Unit ? address.Unit.Number : undefined, address.Level ? address.Level.TypeCode : undefined, address.Level ? address.Level.Number : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n    const roadNumberPart = [address.RoadNumber ? address.RoadNumber.First : undefined, (address.RoadNumber && address.RoadNumber.Last) ? '-' : undefined, address.RoadNumber ? address.RoadNumber.Last : undefined].filter( function (o) { return o !== undefined } ).join(''); \n    const streetAddress = [roadNumberPart, address.Road ? address.Road.Name : undefined, address.Road ? address.Road.TypeCode : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n\n    if (siteName && complexDesc && streetAddress) {\n        value = streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
               "allowCalculateOverride": true,
               "validate": {
                 "pattern": "^((?![<>\\{\\}]).)*$",
@@ -734,7 +734,7 @@
                   "name": "Disable",
                   "trigger": {
                     "type": "javascript",
-                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
+                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
                   },
                   "actions": [
                     {
@@ -817,14 +817,14 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "eml8ib7"
+              "id": "eq3b34r"
             },
             {
               "label": "Town, city or suburb",
               "tableView": true,
               "case": "uppercase",
               "clearOnHide": false,
-              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"addressDetails\")?.component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\n\nif (!cantfindAddressData && address?.Locality) {\n  value = address.Locality;\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address && address.Locality) {\n  value = address.Locality;\n}",
               "allowCalculateOverride": true,
               "validate": {
                 "required": true,
@@ -846,7 +846,7 @@
                   "name": "Disable",
                   "trigger": {
                     "type": "javascript",
-                    "javascript": "result=!data.cantfindAddress"
+                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
                   },
                   "actions": [
                     {
@@ -929,7 +929,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "exgpdn"
+              "id": "ey9667s"
             },
             {
               "label": "State",
@@ -952,7 +952,7 @@
               },
               "selectThreshold": 0.3,
               "clearOnHide": false,
-              "calculateValue": "const address = data.addressDetails?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\nif (!data.cantfindAddress && address?.State) {\n  value = address.State;\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address && address.State) {\n  value = address.State;\n}",
               "validate": {
                 "required": true,
                 "custom": "var re = /^((?![|&;$%\"'<>()\\{\\}+\\\\\\/]).)*$/;\r\nif (input && !re.test(input)) {\r\n  valid = 'Please do not include html or special characters e.g. not any of these |&;$%\\\"\\'<>(){}+\\/ and not exceeding 40 characters';\r\n}",
@@ -1034,14 +1034,14 @@
                 "threshold": 0.3
               },
               "customOptions": {},
-              "id": "e5qac1e"
+              "id": "etwnh74"
             },
             {
               "label": "Postcode",
               "inputMask": "9999",
               "tableView": true,
               "clearOnHide": false,
-              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"addressDetails\")?.component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nconst address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;\n\nif (!cantfindAddressData && address?.Postcode) {\n  value = address.Postcode;\n}",
+              "calculateValue": "const addressDetailsKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"addressDetails\"; }).component.key;\nconst addressDetailsData = data[addressDetailsKey];\nconst cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nlet address;\nif (addressDetailsData && \n  addressDetailsData.ParseAddressResponse && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult && \n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results &&\n  addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result\n  ) {\n  address = addressDetailsData.ParseAddressResponse.ParseAddressResult.Results.Result.Address;\n}\n\nif (!cantfindAddressData && address && address.Postcode) {\n  value = address.Postcode;\n}",
               "allowCalculateOverride": true,
               "validate": {
                 "required": true,
@@ -1064,7 +1064,7 @@
                   "name": "Disable",
                   "trigger": {
                     "type": "javascript",
-                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === \"cantfindAddress\")?.component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
+                    "javascript": "const cantfindAddressKey = instance.parent.parent.components.find(function (comp) { return comp.component.properties.fieldName === \"cantfindAddress\"; }).component.key;\nconst cantfindAddressData = data[cantfindAddressKey];\nresult=!cantfindAddressData;"
                   },
                   "actions": [
                     {
@@ -1146,7 +1146,7 @@
               "inputType": "text",
               "inputFormat": "plain",
               "spellcheck": true,
-              "id": "epqilnp"
+              "id": "ed3j8t5"
             }
           ],
           "placeholder": "",
@@ -1205,7 +1205,7 @@
           "allowMultipleMasks": false,
           "tree": false,
           "legend": "",
-          "id": "e4ok8eu"
+          "id": "euenip"
         }
       ],
       "placeholder": "",
@@ -1265,10 +1265,13 @@
       "allowMultipleMasks": false,
       "tree": false,
       "legend": "",
-      "id": "exj6h88"
+      "id": "eoyhhys"
     }
   ],
   "keyModified": true,
+  "lockKey": true,
+  "source": "61f8ba0a708edcacbc8cbdcf",
+  "isNew": true,
   "placeholder": "",
   "prefix": "",
   "customClass": "",
@@ -1324,5 +1327,5 @@
   "showWordCount": false,
   "allowMultipleMasks": false,
   "tree": false,
-  "id": "e09gtlp"
+  "id": "evvaap"
 }
