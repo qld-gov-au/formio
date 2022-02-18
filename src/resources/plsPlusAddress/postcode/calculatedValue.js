@@ -1,9 +1,7 @@
-const addressDetailsKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === "addressDetails")?.component.key;
-const addressDetailsData = data[addressDetailsKey];
-const cantfindAddressKey = instance.parent.parent.components.find(comp => comp.component.properties.fieldName === "cantfindAddress")?.component.key;
-const cantfindAddressData = data[cantfindAddressKey];
-const address = addressDetailsData?.ParseAddressResponse?.ParseAddressResult?.Results?.Result?.Address;
+const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: "cantfindAddress"});
+const addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: "addressDetails"});
+const address = getPlsPlusAddress(addressDetailsData);
 
-if (!cantfindAddressData && address?.Postcode) {
+if (!cantfindAddressData && address && address.Postcode) {
   value = address.Postcode;
 }
