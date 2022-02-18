@@ -3,7 +3,7 @@
     form: {
       evalContext: {
         defaultPlsPlusApiKey: "auto",
-        plsPlusApiHost: "https://www.address.test-services.qld.gov.au",
+        plsPlusApiHost: "https://www.address.services.qld.gov.au",
         getPlsPlusApiKey: function (key) {
           if (key === "auto") {
             const host = location.host;
@@ -52,14 +52,18 @@
             }
           })(window);
         },
-        proxyXMLHttpRequest: function(form, defaultPlsPlusApiKey, getPlsPlusApiKey) {
+        proxyXMLHttpRequest: function({form: form, defaultPlsPlusApiKey: defaultPlsPlusApiKey, getPlsPlusApiKey: getPlsPlusApiKey, plsPlusApiHost: plsPlusApiHost}) {
           const nativeOpen = XMLHttpRequest.prototype.open;
           const nativeSend = XMLHttpRequest.prototype.send;
           let lastQuery = "";
           
           function proxiedOpen() {
             if (form && form.properties) {
-              arguments[1] = arguments[1].replace(/%7b%7bform.properties.plsPlusApiKey%7d%7d/gi, form.properties.plsPlusApiKey);
+              arguments[1] = arguments[1]
+              .replace(/%7b%7bform.properties.plsPlusApiKey%7d%7d/gi, form.properties.plsPlusApiKey)
+              .replace(/{{form.properties.plsPlusApiKey}}/gi, form.properties.plsPlusApiKey)
+              .replace(/%7b%7bplsPlusApiHost%7d%7d/gi, plsPlusApiHost)
+              .replace(/{{plsPlusApiHost}}/gi, plsPlusApiHost);
             }
             if (arguments[1].includes('pls-plus-qg/')) this._url = arguments[1];
         
@@ -148,15 +152,18 @@
         },
         getComponentKey: function({parentComponent: parentComponent, fieldName: fieldName}) {
           const comp = parentComponent.components.find(function (comp) { return comp.component ? comp.component.properties.fieldName === fieldName : comp.properties.fieldName === fieldName; });
+          if (!comp) return;
           return comp.component ? comp.component.key : comp.key;
         },
         getComponentData: function({data: data, parentComponent: parentComponent, fieldName: fieldName}) {
           const comp = parentComponent.components.find(function (comp) { return comp.component ? comp.component.properties.fieldName === fieldName : comp.properties.fieldName === fieldName; });
+          if (!comp) return;
           const key = comp.component ? comp.component.key : comp.key;
           return data[key];
         },
         getComponent: function({data: data, parentComponent: parentComponent, fieldName: fieldName}) {
           const comp = parentComponent.components.find(function (comp) { return comp.component ? comp.component.properties.fieldName === fieldName : comp.properties.fieldName === fieldName; });
+          if (!comp) return;
           return comp.component ? comp.component : comp;
         }
       }
