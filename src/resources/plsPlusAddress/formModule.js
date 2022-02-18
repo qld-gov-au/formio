@@ -31,7 +31,7 @@
             return "invalid";
           }
           if (key === "auto") {
-            console.warn("We can't find a valid PlsPlus API key based on the URL, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions.")
+            console.warn("We can't find a valid PlsPlus API key based on the URL, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions")
           }
           return key;
         },
