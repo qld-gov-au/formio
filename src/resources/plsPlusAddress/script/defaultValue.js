@@ -1,4 +1,4 @@
 if (!window.plsPlusInit) {
   ie11Polyfill();
-  proxyXMLHttpRequest(form, defaultPlsPlusApiKey, getPlsPlusApiKey);
+  proxyXMLHttpRequest({form: form, defaultPlsPlusApiKey: defaultPlsPlusApiKey, getPlsPlusApiKey: getPlsPlusApiKey, plsPlusApiHost: plsPlusApiHost});
 }

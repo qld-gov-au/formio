@@ -1,7 +1,7 @@
 {
-  "legend": "PLSPlus address - please enter the franchise apiKey in API/custom properties/franchise or leave it as auto",
+  "legend": "PLSPlus address - please enter the franchise apiKey in Form settings/Form properties/plsPlusApiKey",
   "tableView": false,
-  "key": "ratPlsPlusAddress",
+  "key": "plsPlusAddress",
   "properties": {
     "franchise": "qldonline"
   },
@@ -11,7 +11,7 @@
   "components": [
     {
       "label": "PlsPlus Address script",
-      "customDefaultValue": "if (!window.plsPlusInit) {\n  ie11Polyfill();\n  proxyXMLHttpRequest(form, defaultPlsPlusApiKey, getPlsPlusApiKey);\n}",
+      "customDefaultValue": "if (!window.plsPlusInit) {\n  ie11Polyfill();\n  proxyXMLHttpRequest({form: form, defaultPlsPlusApiKey: defaultPlsPlusApiKey, getPlsPlusApiKey: getPlsPlusApiKey, plsPlusApiHost: plsPlusApiHost});\n}",
       "key": "script",
       "properties": {
         "fieldName": "script"
@@ -75,7 +75,7 @@
       "showWordCount": false,
       "allowMultipleMasks": false,
       "inputType": "hidden",
-      "id": "exzwy9"
+      "id": "ef802l"
     },
     {
       "tableView": false,
@@ -246,7 +246,7 @@
           "manualModeViewString": "",
           "disableClearIcon": false,
           "enableManualMode": false,
-          "id": "euby02sk"
+          "id": "eo6nuz"
         },
         {
           "label": "I can't find my address",
@@ -317,7 +317,7 @@
           "dataGridLabel": true,
           "value": "",
           "name": "",
-          "id": "ec0z5ab"
+          "id": "edm7xg5"
         },
         {
           "label": "Address details",
@@ -400,7 +400,7 @@
           "showCharCount": false,
           "showWordCount": false,
           "allowMultipleMasks": false,
-          "id": "ejda0fm"
+          "id": "ebt8byj"
         },
         {
           "label": "Selected address",
@@ -468,7 +468,7 @@
           "showWordCount": false,
           "allowMultipleMasks": false,
           "inputType": "hidden",
-          "id": "eji2y596"
+          "id": "e9lpjqk"
         },
         {
           "tableView": false,
@@ -591,7 +591,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "e1b2kaf"
+              "id": "eqm21je"
             },
             {
               "label": "Address line 2",
@@ -704,7 +704,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "etnqalq"
+              "id": "eiffy6f"
             },
             {
               "label": "Address line 3",
@@ -817,7 +817,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "e5vc2ri"
+              "id": "eicqtzl"
             },
             {
               "label": "Town, city or suburb",
@@ -929,7 +929,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "eah0ngq"
+              "id": "esr2xns"
             },
             {
               "label": "State",
@@ -1034,7 +1034,7 @@
                 "threshold": 0.3
               },
               "customOptions": {},
-              "id": "emxawmb"
+              "id": "e191vdi"
             },
             {
               "label": "Postcode",
@@ -1146,7 +1146,7 @@
               "inputType": "text",
               "inputFormat": "plain",
               "spellcheck": true,
-              "id": "efazzwm"
+              "id": "eswigs"
             }
           ],
           "placeholder": "",
@@ -1205,7 +1205,7 @@
           "allowMultipleMasks": false,
           "tree": false,
           "legend": "",
-          "id": "ei4gikd"
+          "id": "e9wasb"
         }
       ],
       "placeholder": "",
@@ -1265,7 +1265,7 @@
       "allowMultipleMasks": false,
       "tree": false,
       "legend": "",
-      "id": "eorrn8j"
+      "id": "evl5kkv"
     }
   ],
   "keyModified": true,
@@ -1327,5 +1327,5 @@
   "showWordCount": false,
   "allowMultipleMasks": false,
   "tree": false,
-  "id": "etyiyhp"
+  "id": "elnxjn6"
 }
