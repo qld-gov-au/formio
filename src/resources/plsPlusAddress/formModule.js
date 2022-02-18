@@ -27,11 +27,11 @@
           }
           const validKeys = ["forgov", "tmr", "covid19", "health", "resource", "qldonline", "formiotest", "auto"];
           if (validKeys.indexOf(key) === -1) {
+            console.warn("Your PlsPlus API key is not valid, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions");
             return "invalid";
-            console.warn("Your PlsPlus API key is not valid, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`")
           }
           if (key === "auto") {
-            console.warn("We can't find a valid PlsPlus API key based on the URL, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`")
+            console.warn("We can't find a valid PlsPlus API key based on the URL, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions.")
           }
           return key;
         },
