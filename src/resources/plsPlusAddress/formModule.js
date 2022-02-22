@@ -25,11 +25,6 @@
               return "formiotest";
             }
           }
-          const validKeys = ["forgov", "tmr", "covid19", "health", "resource", "qldonline", "formiotest", "auto"];
-          if (validKeys.indexOf(key) === -1) {
-            console.warn("Your PlsPlus API key is not valid, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions");
-            return "invalid";
-          }
           if (key === "auto") {
             console.warn("We can't find a valid PlsPlus API key based on the URL, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions")
           }
@@ -65,7 +60,12 @@
               .replace(/%7b%7bplsPlusApiHost%7d%7d/gi, plsPlusApiHost)
               .replace(/{{plsPlusApiHost}}/gi, plsPlusApiHost);
             }
-            if (arguments[1].includes('pls-plus-qg/')) this._url = arguments[1];
+            if (arguments[1].includes('pls-plus-qg/')) { 
+              this._url = arguments[1];
+              this.addEventListener('error', function(e) { 
+                console.warn("Your PlsPlus API key may not be valid, please enter a valid API key in formIO > form settings > custom properties > add value with `{ plsPlusApiKey: YOUR_FRANCHISE_API_KEY}`. For more instructions please visit https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/Form.io+PlsPlus+address+component+setup+instructions");
+              })
+            };
         
             if (this._url && this._url.indexOf('/AutoCompleteAddress') !== -1) {
               const thisObj = this;
