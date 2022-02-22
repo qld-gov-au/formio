@@ -6,7 +6,7 @@
     "franchise": "qldonline"
   },
   "type": "fieldset",
-  "label": "PLSPlus address - please enter the franchise apiKey in API/custom properties/franchise or leave it as auto",
+  "label": "PLSPlus address - please enter the franchise apiKey in Form settings/Form properties/plsPlusApiKey",
   "input": false,
   "components": [
     {
@@ -75,7 +75,7 @@
       "showWordCount": false,
       "allowMultipleMasks": false,
       "inputType": "hidden",
-      "id": "ef802l"
+      "id": "e8ueb1j"
     },
     {
       "tableView": false,
@@ -85,7 +85,7 @@
       "input": false,
       "components": [
         {
-          "label": "Queensland address you or your dependant are currently isolating at",
+          "label": "Address",
           "tableView": true,
           "clearOnHide": false,
           "provider": "custom",
@@ -246,7 +246,7 @@
           "manualModeViewString": "",
           "disableClearIcon": false,
           "enableManualMode": false,
-          "id": "eo6nuz"
+          "id": "eolulnq"
         },
         {
           "label": "I can't find my address",
@@ -317,7 +317,7 @@
           "dataGridLabel": true,
           "value": "",
           "name": "",
-          "id": "edm7xg5"
+          "id": "en7o1wp"
         },
         {
           "label": "Address details",
@@ -345,7 +345,7 @@
           "properties": {
             "fieldName": "addressDetails"
           },
-          "customConditional": "if (instance.parent) {\n  const suggestedAddressKey = getComponentKey({parentComponent: instance.parent, fieldName: \"suggestedAddress\"});\n  if (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;\n}",
+          "customConditional": "if (instance.parent && getComponentKey) {\n  const suggestedAddressKey = getComponentKey({parentComponent: instance.parent, fieldName: \"suggestedAddress\"});\n  if (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;\n}",
           "type": "datasource",
           "input": true,
           "tableView": false,
@@ -400,7 +400,7 @@
           "showCharCount": false,
           "showWordCount": false,
           "allowMultipleMasks": false,
-          "id": "ebt8byj"
+          "id": "e2mndsb"
         },
         {
           "label": "Selected address",
@@ -468,7 +468,7 @@
           "showWordCount": false,
           "allowMultipleMasks": false,
           "inputType": "hidden",
-          "id": "e9lpjqk"
+          "id": "ekm4sjb"
         },
         {
           "tableView": false,
@@ -591,7 +591,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "eqm21je"
+              "id": "evl7fgi"
             },
             {
               "label": "Address line 2",
@@ -704,7 +704,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "eiffy6f"
+              "id": "et00a1"
             },
             {
               "label": "Address line 3",
@@ -817,7 +817,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "eicqtzl"
+              "id": "exj7obd"
             },
             {
               "label": "Town, city or suburb",
@@ -929,7 +929,7 @@
               "inputFormat": "plain",
               "inputMask": "",
               "spellcheck": true,
-              "id": "esr2xns"
+              "id": "efmtynr"
             },
             {
               "label": "State",
@@ -1034,7 +1034,7 @@
                 "threshold": 0.3
               },
               "customOptions": {},
-              "id": "e191vdi"
+              "id": "eselwfm"
             },
             {
               "label": "Postcode",
@@ -1146,7 +1146,7 @@
               "inputType": "text",
               "inputFormat": "plain",
               "spellcheck": true,
-              "id": "eswigs"
+              "id": "eileco"
             }
           ],
           "placeholder": "",
@@ -1205,7 +1205,7 @@
           "allowMultipleMasks": false,
           "tree": false,
           "legend": "",
-          "id": "e9wasb"
+          "id": "eov098"
         }
       ],
       "placeholder": "",
@@ -1265,7 +1265,7 @@
       "allowMultipleMasks": false,
       "tree": false,
       "legend": "",
-      "id": "evl5kkv"
+      "id": "e35lp2k"
     }
   ],
   "keyModified": true,
@@ -1327,5 +1327,5 @@
   "showWordCount": false,
   "allowMultipleMasks": false,
   "tree": false,
-  "id": "elnxjn6"
+  "id": "ev5apdr"
 }
