@@ -148,4 +148,4 @@ class CheckMatrix extends FieldComponent {
   }
 }
 
-Formio.Components.addComponent('checkMatrix', CheckMatrix)
+Formio.Components.addComponent('checkmatrix', CheckMatrix)
