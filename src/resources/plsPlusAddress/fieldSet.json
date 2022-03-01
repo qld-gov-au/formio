@@ -1,0 +1,1331 @@
+{
+  "legend": "PLSPlus address - please enter the franchise apiKey in Form settings/Form properties/plsPlusApiKey",
+  "tableView": false,
+  "key": "plsPlusAddress",
+  "properties": {
+    "franchise": "qldonline"
+  },
+  "type": "fieldset",
+  "label": "PLSPlus address - please enter the franchise apiKey in Form settings/Form properties/plsPlusApiKey",
+  "input": false,
+  "components": [
+    {
+      "label": "PlsPlus Address script",
+      "customDefaultValue": "if (!window.plsPlusInit) {\n  ie11Polyfill();\n  proxyXMLHttpRequest({form: form, defaultPlsPlusApiKey: defaultPlsPlusApiKey, getPlsPlusApiKey: getPlsPlusApiKey, plsPlusApiHost: plsPlusApiHost});\n}",
+      "key": "script",
+      "properties": {
+        "fieldName": "script"
+      },
+      "type": "hidden",
+      "input": true,
+      "tableView": false,
+      "placeholder": "",
+      "prefix": "",
+      "customClass": "",
+      "suffix": "",
+      "multiple": false,
+      "defaultValue": null,
+      "protected": false,
+      "unique": false,
+      "persistent": true,
+      "hidden": false,
+      "clearOnHide": true,
+      "refreshOn": "",
+      "redrawOn": "",
+      "modalEdit": false,
+      "labelPosition": "top",
+      "description": "",
+      "errorLabel": "",
+      "tooltip": "",
+      "hideLabel": false,
+      "tabindex": "",
+      "disabled": false,
+      "autofocus": false,
+      "dbIndex": false,
+      "calculateValue": "",
+      "calculateServer": false,
+      "widget": {
+        "type": "input"
+      },
+      "attributes": {},
+      "validateOn": "change",
+      "validate": {
+        "required": false,
+        "custom": "",
+        "customPrivate": false,
+        "strictDateValidation": false,
+        "multiple": false,
+        "unique": false
+      },
+      "conditional": {
+        "show": null,
+        "when": null,
+        "eq": ""
+      },
+      "overlay": {
+        "style": "",
+        "left": "",
+        "top": "",
+        "width": "",
+        "height": ""
+      },
+      "allowCalculateOverride": false,
+      "encrypted": false,
+      "showCharCount": false,
+      "showWordCount": false,
+      "allowMultipleMasks": false,
+      "inputType": "hidden",
+      "id": "e8ueb1j"
+    },
+    {
+      "tableView": false,
+      "key": "fromAddress",
+      "type": "fieldset",
+      "label": "",
+      "input": false,
+      "components": [
+        {
+          "label": "Address",
+          "tableView": true,
+          "clearOnHide": false,
+          "provider": "custom",
+          "validate": {
+            "required": true,
+            "custom": "",
+            "customPrivate": false,
+            "strictDateValidation": false,
+            "multiple": false,
+            "unique": false
+          },
+          "key": "suggestedAddress",
+          "properties": {
+            "fieldName": "suggestedAddress"
+          },
+          "logic": [
+            {
+              "name": "Disable",
+              "trigger": {
+                "type": "javascript",
+                "javascript": "result=!!getComponentData({data: data, parentComponent: instance.parent, fieldName: \"cantfindAddress\"});"
+              },
+              "actions": [
+                {
+                  "name": "Disable",
+                  "type": "property",
+                  "property": {
+                    "label": "Disabled",
+                    "value": "disabled",
+                    "type": "boolean"
+                  },
+                  "state": true
+                },
+                {
+                  "name": "Not required",
+                  "type": "property",
+                  "property": {
+                    "label": "Required",
+                    "value": "validate.required",
+                    "type": "boolean"
+                  },
+                  "state": ""
+                },
+                {
+                  "name": "Clear",
+                  "type": "value",
+                  "value": "//value=''"
+                }
+              ]
+            }
+          ],
+          "attributes": {
+            "label": "address search",
+            "title": "address search"
+          },
+          "type": "address",
+          "providerOptions": {
+            "url": "{{plsPlusApiHost}}/pls-plus-qg/AutoCompleteAddress",
+            "queryProperty": "query",
+            "responseProperty": "suggest",
+            "displayValueProperty": "address",
+            "params": {
+              "apiKey": "{{form.properties.plsPlusApiKey}}"
+            }
+          },
+          "input": true,
+          "components": [
+            {
+              "label": "Address 1",
+              "tableView": false,
+              "key": "address1",
+              "type": "textfield",
+              "input": true,
+              "customConditional": "show = _.get(instance, 'parent.manualMode', false);"
+            },
+            {
+              "label": "Address 2",
+              "tableView": false,
+              "key": "address2",
+              "type": "textfield",
+              "input": true,
+              "customConditional": "show = _.get(instance, 'parent.manualMode', false);"
+            },
+            {
+              "label": "City",
+              "tableView": false,
+              "key": "city",
+              "type": "textfield",
+              "input": true,
+              "customConditional": "show = _.get(instance, 'parent.manualMode', false);"
+            },
+            {
+              "label": "State",
+              "tableView": false,
+              "key": "state",
+              "type": "textfield",
+              "input": true,
+              "customConditional": "show = _.get(instance, 'parent.manualMode', false);"
+            },
+            {
+              "label": "Zip Code",
+              "tableView": false,
+              "key": "zip",
+              "type": "textfield",
+              "input": true,
+              "customConditional": "show = _.get(instance, 'parent.manualMode', false);"
+            }
+          ],
+          "lockKey": true,
+          "source": "600634ede4ff0cbe0841e427",
+          "isNew": true,
+          "placeholder": "",
+          "prefix": "",
+          "customClass": "",
+          "suffix": "",
+          "multiple": false,
+          "defaultValue": null,
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "refreshOn": "",
+          "redrawOn": "",
+          "modalEdit": false,
+          "labelPosition": "top",
+          "description": "",
+          "errorLabel": "",
+          "tooltip": "",
+          "hideLabel": false,
+          "tabindex": "",
+          "disabled": false,
+          "autofocus": false,
+          "dbIndex": false,
+          "customDefaultValue": "",
+          "calculateValue": "",
+          "calculateServer": false,
+          "widget": null,
+          "validateOn": "change",
+          "conditional": {
+            "show": null,
+            "when": null,
+            "eq": ""
+          },
+          "overlay": {
+            "style": "",
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": ""
+          },
+          "allowCalculateOverride": false,
+          "encrypted": false,
+          "showCharCount": false,
+          "showWordCount": false,
+          "allowMultipleMasks": false,
+          "tree": true,
+          "switchToManualModeLabel": "Can't find address? Switch to manual mode.",
+          "manualModeViewString": "",
+          "disableClearIcon": false,
+          "enableManualMode": false,
+          "id": "eolulnq"
+        },
+        {
+          "label": "I can't find my address",
+          "tableView": false,
+          "defaultValue": false,
+          "key": "cantfindAddress",
+          "properties": {
+            "fieldName": "cantfindAddress"
+          },
+          "attributes": {
+            "id": "form-check-input"
+          },
+          "type": "checkbox",
+          "input": true,
+          "placeholder": "",
+          "prefix": "",
+          "customClass": "",
+          "suffix": "",
+          "multiple": false,
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "refreshOn": "",
+          "redrawOn": "",
+          "modalEdit": false,
+          "labelPosition": "right",
+          "description": "",
+          "errorLabel": "",
+          "tooltip": "",
+          "hideLabel": false,
+          "tabindex": "",
+          "disabled": false,
+          "autofocus": false,
+          "dbIndex": false,
+          "customDefaultValue": "",
+          "calculateValue": "",
+          "calculateServer": false,
+          "widget": null,
+          "validateOn": "change",
+          "validate": {
+            "required": false,
+            "custom": "",
+            "customPrivate": false,
+            "strictDateValidation": false,
+            "multiple": false,
+            "unique": false
+          },
+          "conditional": {
+            "show": null,
+            "when": null,
+            "eq": ""
+          },
+          "overlay": {
+            "style": "",
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": ""
+          },
+          "allowCalculateOverride": false,
+          "encrypted": false,
+          "showCharCount": false,
+          "showWordCount": false,
+          "allowMultipleMasks": false,
+          "inputType": "checkbox",
+          "dataGridLabel": true,
+          "value": "",
+          "name": "",
+          "id": "en7o1wp"
+        },
+        {
+          "label": "Address details",
+          "persistent": "client-only",
+          "clearOnHide": false,
+          "trigger": {
+            "init": false,
+            "server": false
+          },
+          "refreshOn": "suggestedAddress",
+          "dataSrc": "url",
+          "fetch": {
+            "url": "{{plsPlusApiHost}}/pls-plus-qg/ParseAddress?query={{getComponentData({data: data, parentComponent: instance.parent, fieldName: \"suggestedAddress\"}).address}}&apiKey={{form.properties ? form.properties.plsPlusApiKey : \"\" }}",
+            "method": "get",
+            "headers": [
+              {
+                "key": "",
+                "value": ""
+              }
+            ],
+            "forwardHeaders": false,
+            "authenticate": false
+          },
+          "key": "addressDetails",
+          "properties": {
+            "fieldName": "addressDetails"
+          },
+          "customConditional": "if (instance.parent && getComponentKey) {\n  const suggestedAddressKey = getComponentKey({parentComponent: instance.parent, fieldName: \"suggestedAddress\"});\n  if (suggestedAddressKey !== instance.component.refreshOn) instance.component.refreshOn = suggestedAddressKey;\n}",
+          "type": "datasource",
+          "input": true,
+          "tableView": false,
+          "placeholder": "",
+          "prefix": "",
+          "customClass": "",
+          "suffix": "",
+          "multiple": false,
+          "defaultValue": null,
+          "protected": false,
+          "unique": false,
+          "hidden": false,
+          "redrawOn": "",
+          "modalEdit": false,
+          "labelPosition": "top",
+          "description": "",
+          "errorLabel": "",
+          "tooltip": "",
+          "hideLabel": false,
+          "tabindex": "",
+          "disabled": false,
+          "autofocus": false,
+          "dbIndex": false,
+          "customDefaultValue": "",
+          "calculateValue": "",
+          "calculateServer": false,
+          "widget": null,
+          "attributes": {},
+          "validateOn": "change",
+          "validate": {
+            "required": false,
+            "custom": "",
+            "customPrivate": false,
+            "strictDateValidation": false,
+            "multiple": false,
+            "unique": false
+          },
+          "conditional": {
+            "show": null,
+            "when": null,
+            "eq": ""
+          },
+          "overlay": {
+            "style": "",
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": ""
+          },
+          "allowCalculateOverride": false,
+          "encrypted": false,
+          "showCharCount": false,
+          "showWordCount": false,
+          "allowMultipleMasks": false,
+          "id": "e2mndsb"
+        },
+        {
+          "label": "Selected address",
+          "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent, fieldName: \"cantfindAddress\"});\nconst suggestedAddressData = getComponentData({data: data, parentComponent: instance.parent, fieldName: \"suggestedAddress\"});\nconst addressPartsComp = getComponent({data: data, parentComponent: instance.parent, fieldName: \"addressParts\"});\n\nif (cantfindAddressData !== true && suggestedAddressData) {\n  value = suggestedAddressData.address;\n} else if (cantfindAddressData === true && addressPartsComp) {\n  const addressLine1Data = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"addressLine1\"});\n  const addressLine2Data = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"addressLine2\"});\n  const addressLine3Data = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"addressLine3\"});\n  const cityData = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"city\"});\n  const stateData = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"state\"});\n  const postcodeData = getComponentData({data: data, parentComponent: addressPartsComp, fieldName: \"postcode\"});\n\n  var addrLine = (addressLine1Data\n    +\" \"+ addressLine2Data\n    +\" \"+ addressLine3Data)\n    .replace(/  /g,' ');\n  var locality = (cityData\n    +\" \"+ stateData\n    +\" \"+ postcodeData)\n    .replace(/  /g,' ');\n  value = (addrLine +\" \"+ locality).replace(/  /g,' ').trim();\n}",
+          "key": "selectedAddress",
+          "properties": {
+            "fieldName": "selectedAddress"
+          },
+          "type": "hidden",
+          "input": true,
+          "tableView": false,
+          "placeholder": "",
+          "prefix": "",
+          "customClass": "",
+          "suffix": "",
+          "multiple": false,
+          "defaultValue": null,
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "refreshOn": "",
+          "redrawOn": "",
+          "modalEdit": false,
+          "labelPosition": "top",
+          "description": "",
+          "errorLabel": "",
+          "tooltip": "",
+          "hideLabel": false,
+          "tabindex": "",
+          "disabled": false,
+          "autofocus": false,
+          "dbIndex": false,
+          "customDefaultValue": "",
+          "calculateServer": false,
+          "widget": {
+            "type": "input"
+          },
+          "attributes": {},
+          "validateOn": "change",
+          "validate": {
+            "required": false,
+            "custom": "",
+            "customPrivate": false,
+            "strictDateValidation": false,
+            "multiple": false,
+            "unique": false
+          },
+          "conditional": {
+            "show": null,
+            "when": null,
+            "eq": ""
+          },
+          "overlay": {
+            "style": "",
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": ""
+          },
+          "allowCalculateOverride": false,
+          "encrypted": false,
+          "showCharCount": false,
+          "showWordCount": false,
+          "allowMultipleMasks": false,
+          "inputType": "hidden",
+          "id": "ekm4sjb"
+        },
+        {
+          "tableView": false,
+          "key": "addressParts",
+          "properties": {
+            "fieldName": "addressParts"
+          },
+          "customConditional": "//show = (data['cantfindAddress'] === true)\nshow = true",
+          "type": "fieldset",
+          "label": "",
+          "input": false,
+          "components": [
+            {
+              "label": "Address line 1 <i>(include unit number if needed)</i>",
+              "tableView": true,
+              "case": "uppercase",
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address) {\n    const addressLine = getPlsPlusAddressLines(address);\n    if (addressLine.siteName && addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.siteName;\n    } else if (!addressLine.siteName && addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.complexDesc;\n    } else if (addressLine.siteName && !addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.siteName;\n    } else if (!addressLine.siteName && !addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.streetAddress;\n    }\n}",
+              "allowCalculateOverride": true,
+              "validate": {
+                "required": true,
+                "pattern": "^((?![<>\\{\\}]).)*$",
+                "maxLength": 40,
+                "custom": "",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false,
+                "minLength": ""
+              },
+              "key": "addressLine1",
+              "properties": {
+                "fieldName": "addressLine1"
+              },
+              "logic": [
+                {
+                  "name": "Disable",
+                  "trigger": {
+                    "type": "javascript",
+                    "javascript": "result=!getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});"
+                  },
+                  "actions": [
+                    {
+                      "name": "Disable",
+                      "type": "property",
+                      "property": {
+                        "label": "Disabled",
+                        "value": "disabled",
+                        "type": "boolean"
+                      },
+                      "state": true
+                    },
+                    {
+                      "name": "Not required",
+                      "type": "property",
+                      "property": {
+                        "label": "Required",
+                        "value": "validate.required",
+                        "type": "boolean"
+                      },
+                      "state": ""
+                    },
+                    {
+                      "name": "Clear",
+                      "type": "value",
+                      "value": "//value=''"
+                    }
+                  ]
+                }
+              ],
+              "type": "textfield",
+              "input": true,
+              "placeholder": "",
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "defaultValue": null,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "disabled": false,
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "widget": {
+                "type": "input"
+              },
+              "attributes": {},
+              "validateOn": "change",
+              "conditional": {
+                "show": null,
+                "when": null,
+                "eq": ""
+              },
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "mask": false,
+              "inputType": "text",
+              "inputFormat": "plain",
+              "inputMask": "",
+              "spellcheck": true,
+              "id": "evl7fgi"
+            },
+            {
+              "label": "Address line 2",
+              "tableView": true,
+              "case": "uppercase",
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address) {\n    const addressLine = getPlsPlusAddressLines(address);\n\n    if (addressLine.siteName && addressLine.complexDesc && addressLine.streetAddress) {\n        value = complexDesc;\n    } else if (!addressLine.siteName && addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.streetAddress;\n    } else if (addressLine.siteName && !addressLine.complexDesc && addressLine.streetAddress) {\n        value = addressLine.streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
+              "allowCalculateOverride": true,
+              "validate": {
+                "pattern": "^((?![<>\\{\\}]).)*$",
+                "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                "maxLength": 40,
+                "required": false,
+                "custom": "",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false,
+                "minLength": ""
+              },
+              "key": "addressLine2",
+              "properties": {
+                "fieldName": "addressLine2"
+              },
+              "logic": [
+                {
+                  "name": "Disable",
+                  "trigger": {
+                    "type": "javascript",
+                    "javascript": "result=!getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});"
+                  },
+                  "actions": [
+                    {
+                      "name": "Disable",
+                      "type": "property",
+                      "property": {
+                        "label": "Disabled",
+                        "value": "disabled",
+                        "type": "boolean"
+                      },
+                      "state": true
+                    },
+                    {
+                      "name": "Not required",
+                      "type": "property",
+                      "property": {
+                        "label": "Required",
+                        "value": "validate.required",
+                        "type": "boolean"
+                      },
+                      "state": ""
+                    },
+                    {
+                      "name": "Clear",
+                      "type": "value",
+                      "value": "//value=''"
+                    }
+                  ]
+                }
+              ],
+              "type": "textfield",
+              "input": true,
+              "placeholder": "",
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "defaultValue": null,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "disabled": false,
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "widget": {
+                "type": "input"
+              },
+              "attributes": {},
+              "validateOn": "change",
+              "conditional": {
+                "show": null,
+                "when": null,
+                "eq": ""
+              },
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "mask": false,
+              "inputType": "text",
+              "inputFormat": "plain",
+              "inputMask": "",
+              "spellcheck": true,
+              "id": "et00a1"
+            },
+            {
+              "label": "Address line 3",
+              "tableView": true,
+              "case": "uppercase",
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address) {\n    const siteName = address.SiteName || '';\n    const lot = (address.Parcel && address.Parcel.Lot) ? 'LOT ' + address.Parcel.Lot : undefined;\n    const complexDesc = [lot, address.Unit ? address.Unit.TypeCode : undefined, address.Unit ? address.Unit.Number : undefined, address.Level ? address.Level.TypeCode : undefined, address.Level ? address.Level.Number : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n    const roadNumberPart = [address.RoadNumber ? address.RoadNumber.First : undefined, (address.RoadNumber && address.RoadNumber.Last) ? '-' : undefined, address.RoadNumber ? address.RoadNumber.Last : undefined].filter( function (o) { return o !== undefined } ).join(''); \n    const streetAddress = [roadNumberPart, address.Road ? address.Road.Name : undefined, address.Road ? address.Road.TypeCode : undefined].filter( function (o) { return o !== undefined } ).join(' ');\n\n    if (siteName && complexDesc && streetAddress) {\n        value = streetAddress;\n    } else {\n        value = \"\";\n    }\n}",
+              "allowCalculateOverride": true,
+              "validate": {
+                "pattern": "^((?![<>\\{\\}]).)*$",
+                "customMessage": "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+                "maxLength": 40,
+                "required": false,
+                "custom": "",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false,
+                "minLength": ""
+              },
+              "key": "addressLine3",
+              "properties": {
+                "fieldName": "addressLine3"
+              },
+              "logic": [
+                {
+                  "name": "Disable",
+                  "trigger": {
+                    "type": "javascript",
+                    "javascript": "result=!getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});"
+                  },
+                  "actions": [
+                    {
+                      "name": "Disable",
+                      "type": "property",
+                      "property": {
+                        "label": "Disabled",
+                        "value": "disabled",
+                        "type": "boolean"
+                      },
+                      "state": true
+                    },
+                    {
+                      "name": "Not required",
+                      "type": "property",
+                      "property": {
+                        "label": "Required",
+                        "value": "validate.required",
+                        "type": "boolean"
+                      },
+                      "state": ""
+                    },
+                    {
+                      "name": "Clear",
+                      "type": "value",
+                      "value": "//value=''"
+                    }
+                  ]
+                }
+              ],
+              "type": "textfield",
+              "input": true,
+              "placeholder": "",
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "defaultValue": null,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "disabled": false,
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "widget": {
+                "type": "input"
+              },
+              "attributes": {},
+              "validateOn": "change",
+              "conditional": {
+                "show": null,
+                "when": null,
+                "eq": ""
+              },
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "mask": false,
+              "inputType": "text",
+              "inputFormat": "plain",
+              "inputMask": "",
+              "spellcheck": true,
+              "id": "exj7obd"
+            },
+            {
+              "label": "Town, city or suburb",
+              "tableView": true,
+              "case": "uppercase",
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address && address.Locality) {\n  value = address.Locality;\n}",
+              "allowCalculateOverride": true,
+              "validate": {
+                "required": true,
+                "pattern": "^((?![<>\\{\\}]).)*$",
+                "maxLength": 40,
+                "custom": "",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false,
+                "minLength": ""
+              },
+              "key": "city",
+              "properties": {
+                "fieldName": "city"
+              },
+              "logic": [
+                {
+                  "name": "Disable",
+                  "trigger": {
+                    "type": "javascript",
+                    "javascript": "result=!getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});"
+                  },
+                  "actions": [
+                    {
+                      "name": "Disable",
+                      "type": "property",
+                      "property": {
+                        "label": "Disabled",
+                        "value": "disabled",
+                        "type": "boolean"
+                      },
+                      "state": true
+                    },
+                    {
+                      "name": "Not required",
+                      "type": "property",
+                      "property": {
+                        "label": "Required",
+                        "value": "validate.required",
+                        "type": "boolean"
+                      },
+                      "state": ""
+                    },
+                    {
+                      "name": "Clear",
+                      "type": "value",
+                      "value": "//value=''"
+                    }
+                  ]
+                }
+              ],
+              "type": "textfield",
+              "input": true,
+              "placeholder": "",
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "defaultValue": null,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "disabled": false,
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "widget": {
+                "type": "input"
+              },
+              "attributes": {},
+              "validateOn": "change",
+              "conditional": {
+                "show": null,
+                "when": null,
+                "eq": ""
+              },
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "mask": false,
+              "inputType": "text",
+              "inputFormat": "plain",
+              "inputMask": "",
+              "spellcheck": true,
+              "id": "efmtynr"
+            },
+            {
+              "label": "State",
+              "widget": "choicesjs",
+              "placeholder": "Select state or territory",
+              "disabled": true,
+              "tableView": true,
+              "defaultValue": "QLD",
+              "data": {
+                "values": [
+                  {
+                    "label": "Queensland",
+                    "value": "QLD"
+                  }
+                ],
+                "json": "",
+                "url": "",
+                "resource": "",
+                "custom": ""
+              },
+              "selectThreshold": 0.3,
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address && address.State) {\n  value = address.State;\n}",
+              "validate": {
+                "required": true,
+                "custom": "var re = /^((?![|&;$%\"'<>()\\{\\}+\\\\\\/]).)*$/;\r\nif (input && !re.test(input)) {\r\n  valid = 'Please do not include html or special characters e.g. not any of these |&;$%\\\"\\'<>(){}+\\/ and not exceeding 40 characters';\r\n}",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false
+              },
+              "key": "state",
+              "properties": {
+                "fieldName": "state"
+              },
+              "conditional": {
+                "show": false,
+                "when": "quarantineFreeFlight",
+                "eq": "yes"
+              },
+              "attributes": {
+                "autocomplete": "off",
+                "": "readonly",
+                "readonly": "readonly"
+              },
+              "type": "select",
+              "indexeddb": {
+                "filter": {}
+              },
+              "input": true,
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "validateOn": "change",
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "allowCalculateOverride": false,
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "clearOnRefresh": false,
+              "limit": 100,
+              "dataSrc": "values",
+              "valueProperty": "",
+              "lazyLoad": true,
+              "filter": "",
+              "searchEnabled": true,
+              "searchField": "",
+              "minSearch": 0,
+              "readOnlyValue": false,
+              "authenticate": false,
+              "template": "<span>{{ item.label }}</span>",
+              "selectFields": "",
+              "searchThreshold": 0.3,
+              "uniqueOptions": false,
+              "fuseOptions": {
+                "include": "score",
+                "threshold": 0.3
+              },
+              "customOptions": {},
+              "id": "eselwfm"
+            },
+            {
+              "label": "Postcode",
+              "inputMask": "9999",
+              "tableView": true,
+              "clearOnHide": false,
+              "calculateValue": "const cantfindAddressData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});\nconst addressDetailsData = getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"addressDetails\"});\nconst address = getPlsPlusAddress(addressDetailsData);\n\nif (!cantfindAddressData && address && address.Postcode) {\n  value = address.Postcode;\n}",
+              "allowCalculateOverride": true,
+              "validate": {
+                "required": true,
+                "pattern": "^([0-9]{4})$",
+                "customMessage": "Invalid postcode format",
+                "minLength": 4,
+                "maxLength": 4,
+                "custom": "",
+                "customPrivate": false,
+                "strictDateValidation": false,
+                "multiple": false,
+                "unique": false
+              },
+              "key": "postcode",
+              "properties": {
+                "fieldName": "postcode"
+              },
+              "logic": [
+                {
+                  "name": "Disable",
+                  "trigger": {
+                    "type": "javascript",
+                    "javascript": "result=!getComponentData({data: data, parentComponent: instance.parent.parent, fieldName: \"cantfindAddress\"});"
+                  },
+                  "actions": [
+                    {
+                      "name": "Disable",
+                      "type": "property",
+                      "property": {
+                        "label": "Disabled",
+                        "value": "disabled",
+                        "type": "boolean"
+                      },
+                      "state": true
+                    },
+                    {
+                      "name": "Not required",
+                      "type": "property",
+                      "property": {
+                        "label": "Required",
+                        "value": "validate.required",
+                        "type": "boolean"
+                      },
+                      "state": ""
+                    },
+                    {
+                      "name": "Clear",
+                      "type": "value",
+                      "value": "//value=''"
+                    }
+                  ]
+                }
+              ],
+              "type": "textfield",
+              "input": true,
+              "placeholder": "",
+              "prefix": "",
+              "customClass": "",
+              "suffix": "",
+              "multiple": false,
+              "defaultValue": null,
+              "protected": false,
+              "unique": false,
+              "persistent": true,
+              "hidden": false,
+              "refreshOn": "",
+              "redrawOn": "",
+              "modalEdit": false,
+              "labelPosition": "top",
+              "description": "",
+              "errorLabel": "",
+              "tooltip": "",
+              "hideLabel": false,
+              "tabindex": "",
+              "disabled": false,
+              "autofocus": false,
+              "dbIndex": false,
+              "customDefaultValue": "",
+              "calculateServer": false,
+              "widget": {
+                "type": "input"
+              },
+              "attributes": {},
+              "validateOn": "change",
+              "conditional": {
+                "show": null,
+                "when": null,
+                "eq": ""
+              },
+              "overlay": {
+                "style": "",
+                "left": "",
+                "top": "",
+                "width": "",
+                "height": ""
+              },
+              "encrypted": false,
+              "showCharCount": false,
+              "showWordCount": false,
+              "allowMultipleMasks": false,
+              "mask": false,
+              "inputType": "text",
+              "inputFormat": "plain",
+              "spellcheck": true,
+              "id": "eileco"
+            }
+          ],
+          "placeholder": "",
+          "prefix": "",
+          "customClass": "",
+          "suffix": "",
+          "multiple": false,
+          "defaultValue": null,
+          "protected": false,
+          "unique": false,
+          "persistent": false,
+          "hidden": false,
+          "clearOnHide": true,
+          "refreshOn": "",
+          "redrawOn": "",
+          "modalEdit": false,
+          "labelPosition": "top",
+          "description": "",
+          "errorLabel": "",
+          "tooltip": "",
+          "hideLabel": false,
+          "tabindex": "",
+          "disabled": false,
+          "autofocus": false,
+          "dbIndex": false,
+          "customDefaultValue": "",
+          "calculateValue": "",
+          "calculateServer": false,
+          "widget": null,
+          "attributes": {},
+          "validateOn": "change",
+          "validate": {
+            "required": false,
+            "custom": "",
+            "customPrivate": false,
+            "strictDateValidation": false,
+            "multiple": false,
+            "unique": false
+          },
+          "conditional": {
+            "show": null,
+            "when": null,
+            "eq": ""
+          },
+          "overlay": {
+            "style": "",
+            "left": "",
+            "top": "",
+            "width": "",
+            "height": ""
+          },
+          "allowCalculateOverride": false,
+          "encrypted": false,
+          "showCharCount": false,
+          "showWordCount": false,
+          "allowMultipleMasks": false,
+          "tree": false,
+          "legend": "",
+          "id": "eov098"
+        }
+      ],
+      "placeholder": "",
+      "prefix": "",
+      "customClass": "",
+      "suffix": "",
+      "multiple": false,
+      "defaultValue": null,
+      "protected": false,
+      "unique": false,
+      "persistent": false,
+      "hidden": false,
+      "clearOnHide": true,
+      "refreshOn": "",
+      "redrawOn": "",
+      "modalEdit": false,
+      "labelPosition": "top",
+      "description": "",
+      "errorLabel": "",
+      "tooltip": "",
+      "hideLabel": false,
+      "tabindex": "",
+      "disabled": false,
+      "autofocus": false,
+      "dbIndex": false,
+      "customDefaultValue": "",
+      "calculateValue": "",
+      "calculateServer": false,
+      "widget": null,
+      "attributes": {},
+      "validateOn": "change",
+      "validate": {
+        "required": false,
+        "custom": "",
+        "customPrivate": false,
+        "strictDateValidation": false,
+        "multiple": false,
+        "unique": false
+      },
+      "conditional": {
+        "show": null,
+        "when": null,
+        "eq": ""
+      },
+      "overlay": {
+        "style": "",
+        "left": "",
+        "top": "",
+        "width": "",
+        "height": ""
+      },
+      "allowCalculateOverride": false,
+      "encrypted": false,
+      "showCharCount": false,
+      "showWordCount": false,
+      "properties": {},
+      "allowMultipleMasks": false,
+      "tree": false,
+      "legend": "",
+      "id": "e35lp2k"
+    }
+  ],
+  "keyModified": true,
+  "lockKey": true,
+  "source": "61f8ba0a708edcacbc8cbdcf",
+  "isNew": true,
+  "placeholder": "",
+  "prefix": "",
+  "customClass": "",
+  "suffix": "",
+  "multiple": false,
+  "defaultValue": null,
+  "protected": false,
+  "unique": false,
+  "persistent": false,
+  "hidden": false,
+  "clearOnHide": true,
+  "refreshOn": "",
+  "redrawOn": "",
+  "modalEdit": false,
+  "labelPosition": "top",
+  "description": "",
+  "errorLabel": "",
+  "tooltip": "",
+  "hideLabel": false,
+  "tabindex": "",
+  "disabled": false,
+  "autofocus": false,
+  "dbIndex": false,
+  "customDefaultValue": "",
+  "calculateValue": "",
+  "calculateServer": false,
+  "widget": null,
+  "attributes": {},
+  "validateOn": "change",
+  "validate": {
+    "required": false,
+    "custom": "",
+    "customPrivate": false,
+    "strictDateValidation": false,
+    "multiple": false,
+    "unique": false
+  },
+  "conditional": {
+    "show": null,
+    "when": null,
+    "eq": ""
+  },
+  "overlay": {
+    "style": "",
+    "left": "",
+    "top": "",
+    "width": "",
+    "height": ""
+  },
+  "allowCalculateOverride": false,
+  "encrypted": false,
+  "showCharCount": false,
+  "showWordCount": false,
+  "allowMultipleMasks": false,
+  "tree": false,
+  "id": "ev5apdr"
+}
