@@ -1,1 +1,5 @@
-result=!!getComponentData({data: data, parentComponent: instance.parent, fieldName: "cantfindAddress"});
+result = !!getComponentData({
+  data,
+  parentComponent: instance.parent,
+  fieldName: "cantfindAddress",
+});

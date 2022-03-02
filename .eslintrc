@@ -1,0 +1,31 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "plugin:json/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/**"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"] }],
+    "import/prefer-default-export": "off"
+  },
+  "globals": {
+    "Formio": true,
+    "document": true
+  },
+  "overrides": [
+    {
+      "files": ["*.mdx", "*.md"],
+      "extends": ["plugin:mdx/recommended", "plugin:mdx/overrides"],
+      "settings": {
+        "mdx/code-blocks": true,
+        "mdx/language-mapper": {}
+      }
+    }
+  ]
+}

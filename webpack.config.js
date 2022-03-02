@@ -1,10 +1,11 @@
-const path = require("path")
+const path = require("path");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "qg-formio-custom-components.js",
+    filename: "qg-formio.js",
     library: "$",
     libraryTarget: "umd",
   },
@@ -17,5 +18,6 @@ module.exports = {
       },
     ],
   },
+  plugins: [new ESLintPlugin()],
   mode: "production",
-}
+};
