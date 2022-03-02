@@ -1,0 +1,28 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { createForm } from '../../utils';
+import {CustomTextfield} from './CustomTextfield.js';
+
+<Meta title="Components/CustomTextfield" />
+
+# CustomTextfield
+
+This is a demo component.
+
+<Canvas withSource="open">
+  <Story name="CustomTextfield">
+    {()=>createForm({
+      customComponents: {
+        customtextfield: CustomTextfield
+      }, 
+      form: {
+        components: [
+          {
+            type: 'customtextfield',
+            key: 'customtextfield',
+            label: 'First Name'
+          }
+        ]
+      }
+    })}
+  </Story>
+</Canvas>

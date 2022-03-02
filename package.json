@@ -1,0 +1,41 @@
+{
+  "name": "qg-formio",
+  "version": "0.0.1",
+  "description": "",
+  "authors": "Queensland Government",
+  "contributors": [
+    {
+      "name": "Devon Chau",
+      "email": "devonpis@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "http://www.qld.gov.au/",
+  "main": "build/qg-formio.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qld-gov-au/formio.git"
+  },
+  "browserslist": [
+    "IE 11",
+    "last 3 Chrome versions"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/html": "^6.4.19",
+    "babel-loader": "^8.2.3",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1",
+    "regenerator-runtime": "^0.13.9"
+  }
+}

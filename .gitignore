@@ -11,3 +11,6 @@ node_modules
 .AppleDouble
 .LSOverride
 etc/
+
+# Build
+build/
