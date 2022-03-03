@@ -19,10 +19,24 @@ This is a demo component.
           components: [
             {
               type: "customtextfield",
-              key: "customtextfield",
+              key: "firstName",
               label: "First Name",
             },
+            {
+              type: "button",
+              key: "submit",
+              label: "Submit",
+              action: "submit",
+            },
           ],
+        },
+        controller: (formio) => {
+          formio.on("submit", (e) => {
+            console.info("submit", e.data);
+          });
+          formio.on("change", (e) => {
+            console.info("change", e.data);
+          });
         },
       })
     }

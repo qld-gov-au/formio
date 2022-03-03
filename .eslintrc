@@ -1,6 +1,6 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": ["airbnb", "plugin:json/recommended", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "plugin:json/recommended", "plugin:jest/recommended", "plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": [
@@ -12,7 +12,11 @@
       }
     ],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"] }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }]
+  },
+  "env": {
+    "jest/globals": true
   },
   "globals": {
     "Formio": true,
