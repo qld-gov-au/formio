@@ -2,7 +2,10 @@
   "name": "qg-formio",
   "version": "0.0.1",
   "description": "",
-  "authors": "Queensland Government",
+  "authors": {
+    "name": "Smart Service Queensland, Queensland Government",
+    "email": "qol.development@smartservice.qld.gov.au"
+  },
   "contributors": [
     {
       "name": "Devon Chau",
