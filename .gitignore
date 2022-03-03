@@ -14,3 +14,4 @@ etc/
 
 # Build
 build/
+coverage/
