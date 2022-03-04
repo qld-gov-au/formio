@@ -15,3 +15,4 @@ etc/
 # Build
 build/
 coverage/
+storybook-static/

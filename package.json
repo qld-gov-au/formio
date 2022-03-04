@@ -24,8 +24,8 @@
     "last 3 Chrome versions"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006 --docs",
+    "build-storybook": "build-storybook --docs",
     "lint": "eslint --fix --ext .js,.md,.mdx,.json .",
     "build": "webpack",
     "test": "jest",

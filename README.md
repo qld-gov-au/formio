@@ -39,8 +39,14 @@ Following are the goals of this repository.
 - Create / Modify components in `src/components`.
 - Update `src/components/index.js` for new component.
 - Lint and test with `yarn verify`.
-- Push your branch and create pull request to merge to `development` branch.
+- Push your branch and create pull request to merge to `develop` branch.
 
 ## Deployment
+
+- `yarn build`
+
+WIP
+
+## Usage
 
 WIP
