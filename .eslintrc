@@ -6,9 +6,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/**"
-        ]
+        "devDependencies": true
       }
     ],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"] }],
