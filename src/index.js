@@ -1,12 +1,19 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import * as components from "./components";
+import { buildOptions } from "./options/buildOptions";
+import { getComponents } from "./utils/getComponents";
 
-const customComponents = {};
 // loop through the component folder index.js and add components to Formio for renderer and builder
-Object.keys(components).forEach((key) => {
-  const componentName = key.toLowerCase();
-  customComponents[componentName] = components[key];
-  Formio.Components.addComponent(componentName, components[key]);
-});
-Formio.use({ components: customComponents });
+if (Formio) {
+  Formio.use({
+    components: getComponents(components),
+    options: {
+      builder: buildOptions,
+    },
+  });
+} else {
+  console.warn(
+    "qg-formio.js requires Formio object initiated. Please refer to qld-gov-au.github.io/formio/?path=/docs/welcome--page for usage."
+  );
+}

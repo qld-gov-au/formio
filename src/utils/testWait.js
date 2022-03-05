@@ -1,5 +1,4 @@
-export const testWait = (props = { delay: 100 }) => {
-  const { delay = 100 } = props;
+export const testWait = (delay = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);

@@ -1,15 +1,8 @@
-export const createForm = ({
-  customComponents,
-  form,
-  formId = "formio",
-  controller,
-}) => {
+export const createForm = ({ form = {}, options = {}, controller }) => {
   const div = document.createElement("div");
-  div.id = formId;
 
   setTimeout(() => {
-    Formio.use({ components: customComponents });
-    Formio.createForm(div, form).then(controller);
+    Formio.createForm(div, form, options).then(controller);
   }, 100);
 
   return div;

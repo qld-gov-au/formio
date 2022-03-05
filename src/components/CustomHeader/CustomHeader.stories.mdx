@@ -1,6 +1,5 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
-import { createForm } from "../../utils";
-import { CustomHeader } from ".";
+import { createForm, createBuilder } from "../../utils";
 
 <Meta title="Components/CustomHeader" />
 
@@ -8,13 +7,38 @@ import { CustomHeader } from ".";
 
 This is a demo component.
 
+## Renderer
+
+Just a presentation component.
+
 <Canvas withSource="open">
-  <Story name="CustomHeader">
+  <Story name="Renderer">
     {() =>
       createForm({
-        customComponents: {
-          customheader: CustomHeader,
+        form: {
+          components: [
+            {
+              type: "customheader",
+              key: "customheader",
+              tag: "h1",
+              content: "This is a custom header",
+            },
+          ],
         },
+      })
+    }
+  </Story>
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story name="Builder">
+    {() =>
+      createBuilder({
         form: {
           components: [
             {

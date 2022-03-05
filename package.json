@@ -14,7 +14,7 @@
   ],
   "license": "MIT",
   "homepage": "http://www.qld.gov.au/",
-  "main": "build/qg-formio.js",
+  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/qld-gov-au/formio.git"

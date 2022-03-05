@@ -13,4 +13,15 @@ export class CustomTextfield extends TextfieldComponent {
       ...extend
     );
   }
+
+  static get builderInfo() {
+    return {
+      title: "CustomTextfield",
+      group: "custom",
+      icon: "terminal",
+      weight: 2,
+      documentation: "/userguide/#html-element-component",
+      schema: CustomTextfield.schema(),
+    };
+  }
 }

@@ -1,6 +1,5 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
-import { createForm } from "../../utils";
-import { CustomTextfield } from "./CustomTextfield";
+import { createForm, createBuilder } from "../../utils";
 
 <Meta title="Components/CustomTextfield" />
 
@@ -8,19 +7,20 @@ import { CustomTextfield } from "./CustomTextfield";
 
 This is a demo component.
 
+## Renderer
+
+Below is an interactive example, please check the form data output in the console log in browser's inspector.
+
 <Canvas withSource="open">
-  <Story name="CustomTextfield">
+  <Story name="Renderer">
     {() =>
       createForm({
-        customComponents: {
-          customtextfield: CustomTextfield,
-        },
         form: {
           components: [
             {
               type: "customtextfield",
-              key: "firstName",
-              label: "First Name",
+              key: "customtextfield",
+              label: "Custom textfield label",
             },
             {
               type: "button",
@@ -37,6 +37,29 @@ This is a demo component.
           formio.on("change", (e) => {
             console.info("change", e.data);
           });
+        },
+      })
+    }
+  </Story>
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story name="Builder">
+    {() =>
+      createBuilder({
+        form: {
+          components: [
+            {
+              type: "customtextfield",
+              key: "customtextfield",
+              label: "Custom textfield label",
+            },
+          ],
         },
       })
     }
