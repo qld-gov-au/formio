@@ -2,14 +2,10 @@ import "@testing-library/jest-dom";
 import { findByText } from "@testing-library/dom";
 
 import { createForm } from "../../utils";
-import { CustomHeader } from ".";
 
 // Smoke test for presentation component
 test("CustomHeader is rendered", async () => {
   const form = createForm({
-    customComponents: {
-      customheader: CustomHeader,
-    },
     form: {
       components: [
         {

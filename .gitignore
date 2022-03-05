@@ -16,3 +16,4 @@ etc/
 build/
 coverage/
 storybook-static/
+dist/

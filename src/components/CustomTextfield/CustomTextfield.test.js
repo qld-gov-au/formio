@@ -3,14 +3,10 @@ import userEvent from "@testing-library/user-event";
 import { findByText, getByText } from "@testing-library/dom";
 
 import { createForm, testWait } from "../../utils";
-import { CustomTextfield } from ".";
 
 // Smoke test
 test("CustomTextfield is rendered", async () => {
   const form = createForm({
-    customComponents: {
-      customtextfield: CustomTextfield,
-    },
     form: {
       components: [
         {
@@ -32,9 +28,6 @@ test("CustomTextfield is rendered", async () => {
 test("CustomTextfield submitted correct data", async () => {
   let data = {};
   const form = createForm({
-    customComponents: {
-      customtextfield: CustomTextfield,
-    },
     form: {
       components: [
         {
