@@ -63,7 +63,7 @@ https://foundation.dkbbbb129t0kf.amplifyapp.com/qg-formio.js
 (This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
 ```
 
-<img src="https://qld-gov-au.github.io/formio/static/media/formioSettings.png" alt="share diagram" width="640" />
+<img src="https://qld-gov-au.github.io/formio/static/media/formioSettings.fbfb01cf.png" alt="share diagram" width="640" />
 
 ### Form.io JS renderer or builder
 
