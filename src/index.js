@@ -1,7 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import * as components from "./components";
-import { buildOptions } from "./options/buildOptions";
+import buildOptions from "./options/build.options";
 import { getComponents } from "./utils/getComponents";
 
 if (Formio) {

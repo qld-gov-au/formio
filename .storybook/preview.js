@@ -1,5 +1,5 @@
 import "../src/stories/stories.css";
-import { storybookOptions } from "../src/options";
+import storybookOptions from "../src/options/storybook.options";
 import * as components from "../src/components";
 import { getComponents } from "../src/utils/getComponents";
 

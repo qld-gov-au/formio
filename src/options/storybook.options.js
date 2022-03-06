@@ -1,4 +1,4 @@
-export const storybookOptions = {
+module.exports = {
   builder: {
     builder: {
       basic: {

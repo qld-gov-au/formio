@@ -1,4 +1,4 @@
-export const buildOptions = {
+module.exports = {
   builder: {
     builder: {
       custom: {
