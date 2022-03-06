@@ -3,6 +3,7 @@ module.exports = {
     builder: {
       custom: {
         title: "Custom",
+        weight: 50,
       },
     },
   },
