@@ -1,0 +1,19 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "extensions" : [
+      ".js",
+      ".md",
+      ".mdx",
+      ".json",
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    "markdown",
+    "mdx",
+    "json"
+  ],
+}

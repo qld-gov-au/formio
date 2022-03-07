@@ -1,1 +1,0 @@
-result=!!getComponentData({data: data, parentComponent: instance.parent, fieldName: "cantfindAddress"});

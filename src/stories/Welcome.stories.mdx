@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/addon-docs";
+import FormioCustomComponent from "./assets/formio custom component.png";
+import FormioSettings from "./assets/formioSettings.png";
+
+<Meta title="Welcome" />
+
+# Queensland Government Form.io custom component library
+
+This repository provides a bundled JS custom component library to form.io builder / form.io renderer / Squiz Matrix form application.
+
+<img src={FormioCustomComponent} alt="share diagram" width="480" />
+
+## Usage
+
+You can consume this library either in Form.io Builder or Form.io Renderer.
+
+### Form.io platform builder
+
+To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
+
+```
+https://foundation.dkbbbb129t0kf.amplifyapp.com/qg-formio.js
+(This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
+```
+
+<img src={FormioSettings} alt="share diagram" width="640" />
+
+### Form.io JS renderer or builder
+
+To use custom components in the Form.io JS renderer, please include the script **AFTER** the formio script.
+Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/formiojs@latest/dist/formio.full.min.css"
+/>
+<script src="https://foundation.dkbbbb129t0kf.amplifyapp.com/qg-formio.js"></script>
+(This is a temporary URL for POC purpose, actual CDN URL still needs to be
+confirmed in production.)
+```

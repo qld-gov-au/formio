@@ -11,3 +11,9 @@ node_modules
 .AppleDouble
 .LSOverride
 etc/
+
+# Build
+build/
+coverage/
+storybook-static/
+dist/

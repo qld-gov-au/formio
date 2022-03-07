@@ -1,0 +1,68 @@
+{
+  "name": "qg-formio",
+  "version": "0.0.1",
+  "description": "",
+  "authors": {
+    "name": "Smart Service Queensland, Queensland Government",
+    "email": "qol.development@smartservice.qld.gov.au"
+  },
+  "contributors": [
+    {
+      "name": "Devon Chau",
+      "email": "devonpis@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "http://www.qld.gov.au/",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qld-gov-au/formio.git"
+  },
+  "browserslist": [
+    "IE 11",
+    "last 3 Chrome versions"
+  ],
+  "scripts": {
+    "storybook": "start-storybook -p 6006 --docs",
+    "build-storybook": "build-storybook --docs",
+    "lint": "eslint --fix --ext .js,.md,.mdx,.json .",
+    "build": "webpack",
+    "test": "jest",
+    "validate": "npm run lint && npm run test"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.17.0",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-docs": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/html": "^6.4.19",
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/user-event": "^13.5.0",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "6",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-mdx": "^1.16.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-webpack-plugin": "^3.1.1",
+    "formiojs": "^4.14.2",
+    "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
