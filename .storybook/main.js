@@ -5,4 +5,9 @@ module.exports = {
   core: {
     builder: "webpack5",
   },
+  webpackFinal: async (config) => {
+    // place holder for custom webpack settings for storybook
+    // config.externals = { ...config.externals, formiojs: "formiojs" };
+    return config;
+  },
 };

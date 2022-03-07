@@ -7,7 +7,6 @@ Formio.use({
   components: getComponents(components),
   options: storybookOptions,
 });
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
