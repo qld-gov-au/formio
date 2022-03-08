@@ -1,5 +1,5 @@
 /*
- * Extend form.io Address component
+ * use form.io Address component as boilerplate
  * https://github.com/formio/formio.js/blob/master/src/components/address/Address.js
  *
  */
@@ -21,7 +21,75 @@ export const PlsPlusAddressMode = {
 
 const RemoveValueIconHiddenClass =
   "address-autocomplete-remove-value-icon--hidden";
-const ChildConditional = "show = true;";
+// const ChildConditional = "show = _.get(instance, 'parent.manualMode', false);";
+// const ChildConditional = "show = true;";
+// const ChildLogic = [
+//   {
+//     name: "Disable",
+//     trigger: {
+//       type: "javascript",
+//       javascript:
+//         "result = !_.get(instance, 'parent.manualMode');console.log('test333', _.get(instance, 'parent.manualMode'))",
+//       // javascript: "result = true",
+//       // javascript:
+//       //   "result = true; console.log('test333', _.get(instance, 'parent.manualMode', false))",
+//     },
+//     actions: [
+//       {
+//         name: "Disable",
+//         type: "property",
+//         property: {
+//           label: "Disabled",
+//           value: "disabled",
+//           type: "boolean",
+//         },
+//         state: true,
+//       },
+//       // {
+//       //   name: "Not required",
+//       //   type: "property",
+//       //   property: {
+//       //     label: "Required",
+//       //     value: "validate.required",
+//       //     type: "boolean",
+//       //   },
+//       //   state: "",
+//       // },
+//     ],
+//   },
+//   // {
+//   //   name: "Enable",
+//   //   trigger: {
+//   //     type: "javascript",
+//   //     javascript:
+//   //       "result = !_.get(instance, 'parent.manualMode');console.log('test333', !_.get(instance, 'parent.manualMode', false))",
+//   //     // javascript:
+//   //     //   "result = true; console.log('test333', _.get(instance, 'parent.manualMode', false))",
+//   //   },
+//   //   actions: [
+//   //     {
+//   //       name: "Disable",
+//   //       type: "property",
+//   //       property: {
+//   //         label: "Disabled",
+//   //         value: "disabled",
+//   //         type: "boolean",
+//   //       },
+//   //       state: false,
+//   //     },
+//   //     // {
+//   //     //   name: "Not required",
+//   //     //   type: "property",
+//   //     //   property: {
+//   //     //     label: "Required",
+//   //     //     value: "validate.required",
+//   //     //     type: "boolean",
+//   //     //   },
+//   //     //   state: "",
+//   //     // },
+//   //   ],
+//   // },
+// ];
 
 export class PlsPlusAddress extends ContainerComponent {
   static schema(...extend) {
@@ -36,55 +104,86 @@ export class PlsPlusAddress extends ContainerComponent {
         manualModeViewString: "",
         hideLabel: false,
         disableClearIcon: false,
-        enableManualMode: false,
+        enableManualMode: true,
         components: [
           {
-            label: "Address 1",
-            tableView: false,
+            label: "Autocomplete address",
+            tableView: true,
+            key: "autocompleteAddress",
+            type: "hidden",
+          },
+          {
+            label: "Selected address",
+            tableView: true,
+            key: "selectedAddress",
+            type: "hidden",
+          },
+          {
+            label: "Address line 1 <i>(include unit number if needed)</i>",
+            tableView: true,
             key: "address1",
             type: "textfield",
             input: true,
             // customConditional: ChildConditional,
+            // logic: ChildLogic,
+            validate: {
+              required: true,
+              pattern: "^((?![<>\\{\\}]).)*$",
+              maxLength: 40,
+            },
           },
           {
-            label: "Address 2",
-            tableView: false,
+            label: "Address line 2",
+            tableView: true,
             key: "address2",
             type: "textfield",
             input: true,
             // customConditional: ChildConditional,
+            // logic: ChildLogic,
           },
           {
-            label: "City",
-            tableView: false,
+            label: "Address line 3",
+            tableView: true,
+            key: "address3",
+            type: "textfield",
+            input: true,
+            // customConditional: ChildConditional,
+            // logic: ChildLogic,
+          },
+          {
+            label: "Town, City or Suburb",
+            tableView: true,
             key: "city",
             type: "textfield",
             input: true,
             // customConditional: ChildConditional,
+            // logic: ChildLogic,
           },
           {
             label: "State",
-            tableView: false,
+            tableView: true,
             key: "state",
             type: "textfield",
             input: true,
             // customConditional: ChildConditional,
+            // logic: ChildLogic,
           },
           {
-            label: "Country",
-            tableView: false,
-            key: "country",
+            label: "Postcode",
+            tableView: true,
+            key: "postcode",
             type: "textfield",
             input: true,
+            inputMask: "9999",
             // customConditional: ChildConditional,
-          },
-          {
-            label: "Zip Code",
-            tableView: false,
-            key: "zip",
-            type: "textfield",
-            input: true,
-            // customConditional: ChildConditional,
+            // logic: ChildLogic,
+            validate: {
+              required: true,
+              pattern: "^([0-9]{4})$",
+              customMessage: "Invalid postcode format",
+              minLength: 4,
+              maxLength: 4,
+            },
           },
         ],
       },
@@ -186,10 +285,11 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   get manualModeEnabled() {
-    return !this.isMultiple && Boolean(this.component.enableManualMode);
+    return Boolean(this.component.enableManualMode);
   }
 
   restoreComponentsContext() {
+    console.log("test666", this.address);
     this.getComponents().forEach((component) => {
       component.data = this.address;
       component.setValue(component.dataValue, {
@@ -198,36 +298,36 @@ export class PlsPlusAddress extends ContainerComponent {
     });
   }
 
-  get isMultiple() {
-    return Boolean(this.component.multiple);
-  }
-
   get address() {
-    if (this.isMultiple) {
-      return _.isArray(this.dataValue) ? this.dataValue : [this.dataValue];
-    }
-    // Manual mode is not implementing for multiple value
     return this.manualModeEnabled && this.dataValue
       ? this.dataValue.address
       : this.dataValue;
   }
 
   set address(value) {
-    if (this.manualModeEnabled && !this.isMultiple) {
+    if (this.manualModeEnabled) {
       this.dataValue.address = value;
     } else {
       this.dataValue = value;
     }
   }
 
+  // get autocompleteAddress() {
+  //   return this.manualModeEnabled && this.dataValue
+  //     ? this.dataValue.address
+  //     : this.dataValue;
+  // }
+
+  // set autocompleteAddress(value) {
+  //   if (this.manualModeEnabled) {
+  //     this.dataValue.address = value;
+  //   } else {
+  //     this.dataValue = value;
+  //   }
+  // }
+
   get defaultValue() {
-    let defaultValue = super.defaultValue;
-
-    if (this.isMultiple) {
-      defaultValue = _.isArray(defaultValue) ? defaultValue : [defaultValue];
-    }
-
-    return defaultValue;
+    return super.defaultValue;
   }
 
   get defaultSchema() {
@@ -243,6 +343,8 @@ export class PlsPlusAddress extends ContainerComponent {
       ? {
           mode: PlsPlusAddressMode.Autocomplete,
           address: value,
+          // autoCompleteAddress: "test",
+          // selectedAddress: "test",
         }
       : value;
   }
@@ -320,7 +422,7 @@ export class PlsPlusAddress extends ContainerComponent {
       attr.placeholder = this.t(this.component.placeholder);
     }
 
-    if (this.disabled) {
+    if (this.disabled || this.manualMode) {
       attr.disabled = "disabled";
     }
 
@@ -330,7 +432,7 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   get templateName() {
-    return "address";
+    return "plsPlusAddress";
   }
 
   get gridTemplateName() {
@@ -342,7 +444,7 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   get hasChildren() {
-    return !this.isMultiple && (this.builderMode || this.manualModeEnabled);
+    return this.builderMode || this.manualModeEnabled;
   }
 
   get addAnother() {
@@ -350,6 +452,9 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   renderElement(value) {
+    this.getComponents().forEach((component) => {
+      component.disabled = !this.manualMode;
+    });
     return this.renderTemplate(this.templateName, {
       children: this.hasChildren ? this.renderComponents() : "",
       nestedKey: this.nestedKey,
@@ -367,55 +472,44 @@ export class PlsPlusAddress extends ContainerComponent {
     });
   }
 
-  renderRow(value, index) {
-    return this.renderTemplate(this.rowTemplateName, {
-      index,
-      disabled: this.disabled,
-      element: `${this.renderElement(value, index)}`,
-    });
-  }
+  // renderRow(value, index) {
+  //   return this.renderTemplate(this.rowTemplateName, {
+  //     index,
+  //     disabled: this.disabled,
+  //     element: `${this.renderElement(value, index)}`,
+  //   });
+  // }
 
-  renderGrid() {
-    return this.renderTemplate(this.gridTemplateName, {
-      rows: this.address.map(this.renderRow.bind(this)).join(""),
-      disabled: this.disabled,
-      addAnother: this.addAnother,
-    });
-  }
+  // renderGrid() {
+  //   return this.renderTemplate(this.gridTemplateName, {
+  //     rows: this.address.map(this.renderRow.bind(this)).join(""),
+  //     disabled: this.disabled,
+  //     addAnother: this.addAnother,
+  //   });
+  // }
 
   render() {
-    if (this.isMultiple) {
-      return super.render(this.renderGrid());
-    }
-
     return super.render(this.renderElement());
   }
 
   onSelectAddress(address, element, index) {
-    if (this.isMultiple) {
-      this.address[index] = address;
-      this.address = [...this.address];
-    } else {
-      this.address = address;
-    }
+    this.address = address;
 
     this.triggerChange({
       modified: true,
     });
 
     if (element) {
-      element.value = this.getDisplayValue(
-        this.isMultiple ? this.address[index] : this.address
-      );
+      element.value = this.getDisplayValue(this.address);
     }
 
     this.updateRemoveIcon(index);
   }
 
-  addRow() {
-    this.address = this.address.concat(this.emptyValue);
-    super.redraw();
-  }
+  // addRow() {
+  //   this.address = this.address.concat(this.emptyValue);
+  //   super.redraw();
+  // }
 
   attach(element) {
     const result = (
@@ -472,9 +566,7 @@ export class PlsPlusAddress extends ContainerComponent {
           }
 
           if (elem.value) {
-            elem.value = this.getDisplayValue(
-              this.isMultiple ? this.address[index] : this.address
-            );
+            elem.value = this.getDisplayValue(this.address);
           }
         });
 
@@ -489,18 +581,18 @@ export class PlsPlusAddress extends ContainerComponent {
         });
       }
     });
-    if (this.addRowButton) {
-      this.addEventListener(this.addRowButton, "click", (event) => {
-        event.preventDefault();
-        this.addRow();
-      });
-    }
-    this.removeRowButton.forEach((removeRowButton, index) => {
-      this.addEventListener(removeRowButton, "click", (event) => {
-        event.preventDefault();
-        this.removeValue(index);
-      });
-    });
+    // if (this.addRowButton) {
+    //   this.addEventListener(this.addRowButton, "click", (event) => {
+    //     event.preventDefault();
+    //     this.addRow();
+    //   });
+    // }
+    // this.removeRowButton.forEach((removeRowButton, index) => {
+    //   this.addEventListener(removeRowButton, "click", (event) => {
+    //     event.preventDefault();
+    //     this.removeValue(index);
+    //   });
+    // });
 
     if (this.modeSwitcher) {
       this.addEventListener(this.modeSwitcher, "change", () => {
@@ -508,10 +600,12 @@ export class PlsPlusAddress extends ContainerComponent {
           return;
         }
 
-        this.dataValue = this.emptyValue;
+        // this.dataValue = this.emptyValue;
         this.mode = this.modeSwitcher.checked
           ? PlsPlusAddressMode.Manual
           : PlsPlusAddressMode.Autocomplete;
+
+        // this.address = { ...this.address, autocompleteAddress: "test" };
 
         if (!this.builderMode) {
           if (this.manualMode) {
@@ -553,7 +647,8 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   addChildComponent(component) {
-    component.customConditional = ChildConditional;
+    // component.customConditional = ChildConditional;
+    component.logic = ChildLogic;
   }
 
   redraw() {
@@ -591,15 +686,17 @@ export class PlsPlusAddress extends ContainerComponent {
       : "";
   }
 
-  validateMultiple() {
-    return this.isMultiple;
-  }
-
   updateRemoveIcon(index) {
     const removeValueIcon = this.removeValueIcon?.[index];
     if (removeValueIcon) {
-      const value = this.isMultiple ? this.address[index] : this.address;
-      if (this.isEmpty(value) || this.disabled) {
+      const value = this.address;
+      console.log("updateRemoveIcon", value, this.manualMode);
+      if (
+        this.manualMode ||
+        this.isEmpty(value) ||
+        this.disabled ||
+        _.isEmpty(value)
+      ) {
         this.addClass(removeValueIcon, RemoveValueIconHiddenClass);
       } else {
         this.removeClass(removeValueIcon, RemoveValueIconHiddenClass);

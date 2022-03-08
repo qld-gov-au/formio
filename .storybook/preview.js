@@ -2,9 +2,11 @@ import "../src/stories/stories.css";
 import storybookOptions from "../src/options/storybook.options";
 import * as components from "../src/components";
 import { getComponents } from "../src/utils/getComponents";
+import templates from "../src/templates";
 
 Formio.use({
   components: getComponents(components),
+  templates,
   options: storybookOptions,
 });
 export const parameters = {

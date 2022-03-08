@@ -1,19 +1,19 @@
 /*
- * Extend form.io Address component
+ * use form.io Address component as boilerplate
  * https://github.com/formio/formio.js/blob/master/src/components/address/editForm/Address.edit.display.js
  *
  */
 
 export default [
-  {
-    weight: 20,
-    type: "checkbox",
-    input: true,
-    key: "enableManualMode",
-    label: "Enable Manual Mode",
-    tooltip: "Should Manual Mode be enabled for that component or not.",
-    customConditional: ({ data }) => !data.multiple,
-  },
+  // {
+  //   weight: 20,
+  //   type: "checkbox",
+  //   input: true,
+  //   key: "enableManualMode",
+  //   label: "Enable Manual Mode",
+  //   tooltip: "Should Manual Mode be enabled for that component or not.",
+  //   customConditional: ({ data }) => !data.multiple,
+  // },
   {
     weight: 30,
     type: "textfield",
