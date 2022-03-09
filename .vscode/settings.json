@@ -8,12 +8,14 @@
       ".md",
       ".mdx",
       ".json",
+      ".ejs",
     ]
   },
   "eslint.validate": [
     "javascript",
     "markdown",
     "mdx",
-    "json"
+    "json",
+    "ejs"
   ],
 }

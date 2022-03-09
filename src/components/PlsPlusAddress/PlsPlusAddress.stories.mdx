@@ -1,0 +1,53 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { createForm, createBuilder } from "../../utils";
+
+<Meta title="Components/PlsPlusAddress" />
+
+# PlsPlusAddress
+
+WIP
+
+## Renderer
+
+Below is an interactive example, please check the form data output in the console log in browser's inspector.
+
+<Canvas withSource="open">
+  <Story name="Renderer">
+    {() =>
+      createForm({
+        form: {
+          components: [
+            {
+              type: "plsplusaddress",
+              key: "plsplusaddress",
+              label: "PlsPlus Address field",
+            },
+            {
+              type: "button",
+              key: "submit",
+              label: "Submit",
+              action: "submit",
+            },
+          ],
+        },
+        controller: (formio) => {
+          formio.on("submit", (e) => {
+            console.info("submit", e.data);
+          });
+          formio.on("change", (e) => {
+            console.info("change", e.data);
+          });
+        },
+      })
+    }
+  </Story>
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story name="Builder">{() => createBuilder({})}</Story>
+</Canvas>
