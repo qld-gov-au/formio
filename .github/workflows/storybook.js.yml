@@ -5,7 +5,7 @@ name: Storybook
 
 on:
   push:
-    branches: [ foundation, main ] # foundation is for demo purpose, will be removed
+    branches: [ foundation, main, develop ] # foundation is for demo purpose, will be removed
 
 jobs:
   build-and-deploy:
