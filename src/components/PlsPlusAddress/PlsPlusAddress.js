@@ -12,7 +12,6 @@ import PlsPlusAddressEditForm from "./PlsPlusAddress.form";
 const ContainerComponent = Formio.Components.components.container;
 const Field = Formio.Components.components.field;
 const NestedComponent = Formio.Components.components.nested;
-const GoogleAddressProvider = Formio.Providers.providers.address.google;
 
 export const PlsPlusAddressMode = {
   Autocomplete: "autocomplete",
@@ -21,85 +20,21 @@ export const PlsPlusAddressMode = {
 
 const RemoveValueIconHiddenClass =
   "address-autocomplete-remove-value-icon--hidden";
-// const ChildConditional = "show = _.get(instance, 'parent.manualMode', false);";
-// const ChildConditional = "show = true;";
-// const ChildLogic = [
-//   {
-//     name: "Disable",
-//     trigger: {
-//       type: "javascript",
-//       javascript:
-//         "result = !_.get(instance, 'parent.manualMode');console.log('test333', _.get(instance, 'parent.manualMode'))",
-//       // javascript: "result = true",
-//       // javascript:
-//       //   "result = true; console.log('test333', _.get(instance, 'parent.manualMode', false))",
-//     },
-//     actions: [
-//       {
-//         name: "Disable",
-//         type: "property",
-//         property: {
-//           label: "Disabled",
-//           value: "disabled",
-//           type: "boolean",
-//         },
-//         state: true,
-//       },
-//       // {
-//       //   name: "Not required",
-//       //   type: "property",
-//       //   property: {
-//       //     label: "Required",
-//       //     value: "validate.required",
-//       //     type: "boolean",
-//       //   },
-//       //   state: "",
-//       // },
-//     ],
-//   },
-//   // {
-//   //   name: "Enable",
-//   //   trigger: {
-//   //     type: "javascript",
-//   //     javascript:
-//   //       "result = !_.get(instance, 'parent.manualMode');console.log('test333', !_.get(instance, 'parent.manualMode', false))",
-//   //     // javascript:
-//   //     //   "result = true; console.log('test333', _.get(instance, 'parent.manualMode', false))",
-//   //   },
-//   //   actions: [
-//   //     {
-//   //       name: "Disable",
-//   //       type: "property",
-//   //       property: {
-//   //         label: "Disabled",
-//   //         value: "disabled",
-//   //         type: "boolean",
-//   //       },
-//   //       state: false,
-//   //     },
-//   //     // {
-//   //     //   name: "Not required",
-//   //     //   type: "property",
-//   //     //   property: {
-//   //     //     label: "Required",
-//   //     //     value: "validate.required",
-//   //     //     type: "boolean",
-//   //     //   },
-//   //     //   state: "",
-//   //     // },
-//   //   ],
-//   // },
-// ];
 
+const addressValidation = {
+  pattern: "^((?![<>\\{\\}]).)*$",
+  customMessage:
+    "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
+  maxLength: 40,
+};
 export class PlsPlusAddress extends ContainerComponent {
   static schema(...extend) {
     return ContainerComponent.schema(
       {
         type: "plsplusaddress",
-        label: "PlsPlusAddress",
+        label: "Address",
         key: "plsplusaddress",
         switchToManualModeLabel: "Can't find address? Switch to manual mode.",
-        provider: "",
         providerOptions: {},
         manualModeViewString: "",
         hideLabel: false,
@@ -124,12 +59,9 @@ export class PlsPlusAddress extends ContainerComponent {
             key: "address1",
             type: "textfield",
             input: true,
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
             validate: {
               required: true,
-              pattern: "^((?![<>\\{\\}]).)*$",
-              maxLength: 40,
+              ...addressValidation,
             },
           },
           {
@@ -138,8 +70,7 @@ export class PlsPlusAddress extends ContainerComponent {
             key: "address2",
             type: "textfield",
             input: true,
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
+            validate: addressValidation,
           },
           {
             label: "Address line 3",
@@ -147,8 +78,7 @@ export class PlsPlusAddress extends ContainerComponent {
             key: "address3",
             type: "textfield",
             input: true,
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
+            validate: addressValidation,
           },
           {
             label: "Town, City or Suburb",
@@ -156,8 +86,10 @@ export class PlsPlusAddress extends ContainerComponent {
             key: "city",
             type: "textfield",
             input: true,
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
+            validate: {
+              required: true,
+              ...addressValidation,
+            },
           },
           {
             label: "State",
@@ -165,8 +97,8 @@ export class PlsPlusAddress extends ContainerComponent {
             key: "state",
             type: "textfield",
             input: true,
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
+            disabled: true,
+            defaultValue: "QLD",
           },
           {
             label: "Postcode",
@@ -175,8 +107,6 @@ export class PlsPlusAddress extends ContainerComponent {
             type: "textfield",
             input: true,
             inputMask: "9999",
-            // customConditional: ChildConditional,
-            // logic: ChildLogic,
             validate: {
               required: true,
               pattern: "^([0-9]{4})$",
@@ -215,49 +145,29 @@ export class PlsPlusAddress extends ContainerComponent {
   init() {
     this.components = this.components || [];
     if (this.builderMode || this.manualModeEnabled) {
-      NestedComponent.prototype.addComponents.call(
-        this,
-        this.manualMode ? this.address : {}
-      );
+      NestedComponent.prototype.addComponents.call(this, this.address);
     }
     Field.prototype.init.call(this);
 
     if (!this.builderMode) {
-      if (this.component.provider) {
-        const { provider, providerOptions } = this.component;
-        this.provider = this.initializeProvider(provider, providerOptions);
-      } else if (this.component.map) {
-        // Fallback to legacy version where Google Maps was the only provider.
-        this.component.provider = GoogleAddressProvider.name;
-        this.component.providerOptions = this.component.providerOptions || {};
+      const { provider = "plsPlus", providerOptions } = this.component;
 
-        const { map, provider, providerOptions } = this.component;
-
-        const { key, region } = map;
-
-        if (key) {
-          _.set(providerOptions, "params.key", key);
-        }
-        if (region) {
-          _.set(providerOptions, "params.region", region);
-        }
-
+      if (provider) {
         this.provider = this.initializeProvider(provider, providerOptions);
       }
     }
   }
 
   initializeProvider(provider, options = {}) {
-    const url = this.interpolate(options.url);
     const Provider = Formio.Providers.getProvider("address", provider);
-    return new Provider({ ...options, url });
+    return new Provider({ ...options });
   }
 
   get emptyValue() {
     return this.manualModeEnabled
       ? {
           mode: PlsPlusAddressMode.Autocomplete,
-          address: {},
+          address: { state: "QLD" },
         }
       : {};
   }
@@ -289,7 +199,6 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   restoreComponentsContext() {
-    console.log("test666", this.address);
     this.getComponents().forEach((component) => {
       component.data = this.address;
       component.setValue(component.dataValue, {
@@ -312,20 +221,6 @@ export class PlsPlusAddress extends ContainerComponent {
     }
   }
 
-  // get autocompleteAddress() {
-  //   return this.manualModeEnabled && this.dataValue
-  //     ? this.dataValue.address
-  //     : this.dataValue;
-  // }
-
-  // set autocompleteAddress(value) {
-  //   if (this.manualModeEnabled) {
-  //     this.dataValue.address = value;
-  //   } else {
-  //     this.dataValue = value;
-  //   }
-  // }
-
   get defaultValue() {
     return super.defaultValue;
   }
@@ -343,8 +238,6 @@ export class PlsPlusAddress extends ContainerComponent {
       ? {
           mode: PlsPlusAddressMode.Autocomplete,
           address: value,
-          // autoCompleteAddress: "test",
-          // selectedAddress: "test",
         }
       : value;
   }
@@ -352,9 +245,7 @@ export class PlsPlusAddress extends ContainerComponent {
   setValue(value, flags = {}) {
     const changed = Field.prototype.setValue.call(this, value, flags);
 
-    if (this.manualMode) {
-      this.restoreComponentsContext();
-    }
+    this.restoreComponentsContext();
 
     if (changed || (!_.isEmpty(value) && flags.fromSubmission)) {
       this.redraw();
@@ -375,14 +266,6 @@ export class PlsPlusAddress extends ContainerComponent {
     return "searchInput";
   }
 
-  static get addRowButtonRef() {
-    return "addButton";
-  }
-
-  static get removeRowButtonRef() {
-    return "removeRow";
-  }
-
   get modeSwitcher() {
     return this.refs ? this.refs[PlsPlusAddress.modeSwitcherRef] || null : null;
   }
@@ -397,16 +280,6 @@ export class PlsPlusAddress extends ContainerComponent {
     return this.refs ? this.refs[PlsPlusAddress.searchInputRef] || null : null;
   }
 
-  get addRowButton() {
-    return this.refs ? this.refs[PlsPlusAddress.addRowButtonRef] || null : null;
-  }
-
-  get removeRowButton() {
-    return this.refs
-      ? this.refs[PlsPlusAddress.removeRowButtonRef] || null
-      : null;
-  }
-
   get searchInputAttributes() {
     const attr = {
       name: this.options.name,
@@ -417,8 +290,6 @@ export class PlsPlusAddress extends ContainerComponent {
     };
 
     if (this.component.placeholder) {
-      // (attr.placeholder = this.t(this.component.placeholder)),
-      //   { _userInput: true };
       attr.placeholder = this.t(this.component.placeholder);
     }
 
@@ -435,20 +306,8 @@ export class PlsPlusAddress extends ContainerComponent {
     return "plsPlusAddress";
   }
 
-  get gridTemplateName() {
-    return "multiValueTable";
-  }
-
-  get rowTemplateName() {
-    return "multiValueRow";
-  }
-
   get hasChildren() {
     return this.builderMode || this.manualModeEnabled;
-  }
-
-  get addAnother() {
-    return this.t(this.component.addAnother || "Add Another");
   }
 
   renderElement(value) {
@@ -472,28 +331,12 @@ export class PlsPlusAddress extends ContainerComponent {
     });
   }
 
-  // renderRow(value, index) {
-  //   return this.renderTemplate(this.rowTemplateName, {
-  //     index,
-  //     disabled: this.disabled,
-  //     element: `${this.renderElement(value, index)}`,
-  //   });
-  // }
-
-  // renderGrid() {
-  //   return this.renderTemplate(this.gridTemplateName, {
-  //     rows: this.address.map(this.renderRow.bind(this)).join(""),
-  //     disabled: this.disabled,
-  //     addAnother: this.addAnother,
-  //   });
-  // }
-
   render() {
     return super.render(this.renderElement());
   }
 
   onSelectAddress(address, element, index) {
-    this.address = address;
+    this.address.autocompleteAddress = address;
 
     this.triggerChange({
       modified: true,
@@ -506,11 +349,6 @@ export class PlsPlusAddress extends ContainerComponent {
     this.updateRemoveIcon(index);
   }
 
-  // addRow() {
-  //   this.address = this.address.concat(this.emptyValue);
-  //   super.redraw();
-  // }
-
   attach(element) {
     const result = (
       this.builderMode || this.manualMode
@@ -520,45 +358,57 @@ export class PlsPlusAddress extends ContainerComponent {
 
     if (!this.builderMode) {
       if (!this.provider && this.component.provider) {
-        const { provider, providerOptions } = this.component;
+        const { provider = "plsPlus", providerOptions } = this.component;
         this.provider = this.initializeProvider(provider, providerOptions);
       }
     }
 
     this.loadRefs(element, {
-      [PlsPlusAddress.addRowButtonRef]: "single",
       [PlsPlusAddress.modeSwitcherRef]: "single",
-      [PlsPlusAddress.removeRowButtonRef]: "multiple",
       [PlsPlusAddress.removeValueIconRef]: "multiple",
       [PlsPlusAddress.searchInputRef]: "multiple",
     });
 
     this.searchInput.forEach((elem, index) => {
       if (!this.builderMode && elem && this.provider) {
-        if (this.component.provider === "google") {
-          this.provider.attachAutocomplete(
-            elem,
-            index,
-            this.onSelectAddress.bind(this)
-          );
-        } else {
-          autocompleter({
-            input: elem,
-            debounceWaitMs: 300,
-            fetch: (text, update) => {
-              const query = text;
-              this.provider.search(query).then(update);
-            },
-            render: (address) => {
-              const div = this.ce("div");
-              div.textContent = this.getDisplayValue(address);
-              return div;
-            },
-            onSelect: (address) => {
-              this.onSelectAddress(address, elem, index);
-            },
-          });
-        }
+        autocompleter({
+          input: elem,
+          debounceWaitMs: 300,
+          fetch: (text, update) => {
+            const query = text;
+            const promise = this.provider.search(query);
+            promise.then((response) => {
+              update(response);
+            });
+          },
+          render: (address) => {
+            const div = this.ce("div");
+            div.textContent = address;
+            return div;
+          },
+          onSelect: (address) => {
+            this.onSelectAddress(address, elem, index);
+            this.provider.parseAddress(address).then((r) => {
+              this.address = {
+                ...this.address,
+                ...this.provider.breakAddress(r),
+              };
+              this.triggerChange({
+                modified: true,
+              });
+              // setTimeout(() => {
+              //   this.restoreComponentsContext();
+              // }, 1000);
+              this.restoreComponentsContext();
+              this.getComponents().forEach((component) => {
+                const childElement = document.getElementById(
+                  `${component.id}-${component.component.key}`
+                );
+                childElement.value = component.dataValue;
+              });
+            });
+          },
+        });
 
         this.addEventListener(elem, "blur", () => {
           if (!elem) {
@@ -581,18 +431,6 @@ export class PlsPlusAddress extends ContainerComponent {
         });
       }
     });
-    // if (this.addRowButton) {
-    //   this.addEventListener(this.addRowButton, "click", (event) => {
-    //     event.preventDefault();
-    //     this.addRow();
-    //   });
-    // }
-    // this.removeRowButton.forEach((removeRowButton, index) => {
-    //   this.addEventListener(removeRowButton, "click", (event) => {
-    //     event.preventDefault();
-    //     this.removeValue(index);
-    //   });
-    // });
 
     if (this.modeSwitcher) {
       this.addEventListener(this.modeSwitcher, "change", () => {
@@ -600,12 +438,9 @@ export class PlsPlusAddress extends ContainerComponent {
           return;
         }
 
-        // this.dataValue = this.emptyValue;
         this.mode = this.modeSwitcher.checked
           ? PlsPlusAddressMode.Manual
           : PlsPlusAddressMode.Autocomplete;
-
-        // this.address = { ...this.address, autocompleteAddress: "test" };
 
         if (!this.builderMode) {
           if (this.manualMode) {
@@ -646,11 +481,6 @@ export class PlsPlusAddress extends ContainerComponent {
     return result;
   }
 
-  addChildComponent(component) {
-    // component.customConditional = ChildConditional;
-    component.logic = ChildLogic;
-  }
-
   redraw() {
     const modeSwitcherInFocus =
       this.modeSwitcher && document.activeElement === this.modeSwitcher;
@@ -681,21 +511,19 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   getDisplayValue(value = this.address) {
-    return this.provider && !this.manualMode
-      ? this.provider.getDisplayValue(value)
-      : "";
+    return this.provider ? this.provider.getDisplayValue(value) : "";
   }
 
   updateRemoveIcon(index) {
     const removeValueIcon = this.removeValueIcon?.[index];
     if (removeValueIcon) {
       const value = this.address;
-      console.log("updateRemoveIcon", value, this.manualMode);
       if (
         this.manualMode ||
         this.isEmpty(value) ||
+        _.isEmpty(value) ||
         this.disabled ||
-        _.isEmpty(value)
+        value.autocompleteAddress === ""
       ) {
         this.addClass(removeValueIcon, RemoveValueIconHiddenClass);
       } else {
