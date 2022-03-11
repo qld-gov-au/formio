@@ -84,8 +84,10 @@ jobs:
 
       - name: setup Publish
         run: |
-          ls -ltr
-          cp -r ./binary-repo ./dist/.
+          set -x
+          cp -r ./binary-repo/* ./dist
+          mkdir -p ./dist/.github
+          cp -r ./binary-repo/.github/ ./dist/.github
 
       - name: Publish
         uses: qld-gov-au/gha-publish-to-git@master
