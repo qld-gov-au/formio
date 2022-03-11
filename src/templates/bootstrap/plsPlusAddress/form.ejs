@@ -36,3 +36,8 @@
     {{ ctx.children }}
   </div>
 {% } %}
+{% if (ctx.mode.manual) { %}
+<div>
+  <p><a href="#" target="_blank">Please take part to improve our address database if we couldn't find your address.</a></p>
+</div>
+{% } %}
