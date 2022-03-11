@@ -86,6 +86,7 @@ jobs:
         uses: qld-gov-au/gha-publish-to-git@master
         with:
           repository: ${{ secrets.TARGET_REPO }}
+          git_ref: '${{ github.ref }}'
           branch: '${{ steps.extract_branch.outputs.branch }}'
           github_token: '${{ secrets.GH_TOKEN }}'
           github_pat: '${{ secrets.GH_PAT }}'
