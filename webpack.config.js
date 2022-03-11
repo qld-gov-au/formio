@@ -17,6 +17,15 @@ module.exports = {
         exclude: /node_modules/,
         use: "babel-loader",
       },
+      {
+        test: /\.ejs$/i,
+        include: [path.resolve(__dirname, "./src")],
+        use: [
+          {
+            loader: "raw-loader",
+          },
+        ],
+      },
     ],
   },
   plugins: [
