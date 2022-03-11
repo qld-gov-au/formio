@@ -98,4 +98,5 @@ jobs:
           github_token: '${{ secrets.GH_TOKEN }}'
           github_pat: '${{ secrets.GH_PAT }}'
           source_folder: dist
+          tag_branch: main
         if: success()
