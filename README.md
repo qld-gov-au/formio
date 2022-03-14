@@ -36,16 +36,16 @@ Following are the goals of this repository.
 ## Development
 
 - Create a feature branch from `main`.
-- Install packages with `yarn`.
-- Start development environment with `yarn storybook`.
+- Install packages with `npm install`.
+- Start development environment with `npm run storybook`.
 - Create / Modify components in `src/components`.
 - Update `src/components/index.js` for new component.
-- Lint and test with `yarn verify`.
+- Lint and test with `npm run validate`.
 - Push your branch and create pull request to merge to `develop` branch.
 
 ## Deployment
 
-- `yarn build`
+- `npm run build`
 - `npx http-server build`
 
 WIP

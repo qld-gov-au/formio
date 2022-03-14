@@ -16,6 +16,9 @@
     ></i>
   {% } %}
 </div>
+{% if (!ctx.hasApiKey) { %}
+    <div class="form-text">Please provide an API key in Provider to use the search function.</div>
+{% } %}
 {% if (ctx.self.manualModeEnabled) { %}
   <div class="form-check checkbox">
     <label class="form-check-label">

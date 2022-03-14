@@ -142,6 +142,24 @@ export class PlsPlusAddress extends ContainerComponent {
     return _.defaultsDeep(component, defaultSchema);
   }
 
+  get composedAddress() {
+    const { address1, address2, address3, city, state, postcode } =
+      this.address;
+    return [address1, address2, address3, city, state, postcode]
+      .join(" ")
+      .replace(/ +/g, " ")
+      .trim();
+  }
+
+  onChange(flags, fromRoot) {
+    if (this.autocompleteMode) {
+      this.dataValue.address.selectedAddress = this.address.autocompleteAddress;
+    } else {
+      this.dataValue.address.selectedAddress = this.composedAddress;
+    }
+    return super.onChange(flags, fromRoot);
+  }
+
   init() {
     this.components = this.components || [];
     if (this.builderMode || this.manualModeEnabled) {
@@ -167,7 +185,16 @@ export class PlsPlusAddress extends ContainerComponent {
     return this.manualModeEnabled
       ? {
           mode: PlsPlusAddressMode.Autocomplete,
-          address: { state: "QLD" },
+          address: {
+            address1: "",
+            address2: "",
+            address3: "",
+            city: "",
+            postcode: "",
+            autocompleteAddress: "",
+            selectedAddress: "",
+            state: "QLD",
+          },
         }
       : {};
   }
@@ -293,7 +320,11 @@ export class PlsPlusAddress extends ContainerComponent {
       attr.placeholder = this.t(this.component.placeholder);
     }
 
-    if (this.disabled || this.manualMode) {
+    if (
+      this.disabled ||
+      this.manualMode ||
+      !this.component.providerOptions?.params?.apiKey
+    ) {
       attr.disabled = "disabled";
     }
 
@@ -313,7 +344,12 @@ export class PlsPlusAddress extends ContainerComponent {
   renderElement(value) {
     this.getComponents().forEach((component) => {
       component.disabled = !this.manualMode;
+      component.onChange = (flags, fromRoot) => {
+        this.dataValue.address.selectedAddress = this.composedAddress;
+        return super.onChange(flags, fromRoot);
+      };
     });
+    this.component.validate.required = !this.manualMode;
     return this.renderTemplate(this.templateName, {
       children: this.hasChildren ? this.renderComponents() : "",
       nestedKey: this.nestedKey,
@@ -328,6 +364,7 @@ export class PlsPlusAddress extends ContainerComponent {
         autocomplete: this.autocompleteMode,
         manual: this.manualMode,
       },
+      hasApiKey: !!this.component.providerOptions?.params?.apiKey,
     });
   }
 
@@ -500,13 +537,22 @@ export class PlsPlusAddress extends ContainerComponent {
     }
 
     if (this.address?.[index]) {
-      this.address[index] = this.emptyValue;
+      this.address[index] = this.emptyValue.address;
     } else {
-      this.address = this.emptyValue;
+      this.address = this.emptyValue.address;
     }
     if (element) {
       element.value = "";
     }
+
+    this.getComponents().forEach((component) => {
+      const childElement = document.getElementById(
+        `${component.id}-${component.component.key}`
+      );
+      if (childElement)
+        childElement.value = this.address[component.component.key] || "";
+    });
+
     this.updateRemoveIcon(index);
   }
 
