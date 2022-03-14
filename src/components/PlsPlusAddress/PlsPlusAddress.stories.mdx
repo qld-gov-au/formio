@@ -5,7 +5,9 @@ import { createForm, createBuilder } from "../../utils";
 
 # PlsPlusAddress
 
-WIP
+This address component utilise the [Property Location Service Plus PLSPlus QG Version RESTFUL api](https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/DNRE+qld+only+address+lookup+service), provides a free of charge address lookup service.
+
+User needs to obtain a franchise API key for using this component, by entering it in the `Provider` options in the component builder, please contact [qol.development@smartservice.qld.gov.au](mailto:qol.development@smartservice.qld.gov.au)(TBC) to request an API key.
 
 ## Renderer
 
@@ -54,5 +56,30 @@ This component can be drag and drop from the Form.io builder sidebar `custom` gr
 You can preview the component's settings in the example below.
 
 <Canvas>
-  <Story name="Builder">{() => createBuilder({})}</Story>
+  <Story name="Builder">
+    {() =>
+      createBuilder({
+        form: {
+          components: [
+            {
+              type: "plsplusaddress",
+              key: "plsplusaddress",
+              label: "PlsPlus Address field",
+              providerOptions: {
+                params: {
+                  apiKey: "formiotest",
+                },
+              },
+            },
+            {
+              type: "button",
+              key: "submit",
+              label: "Submit",
+              action: "submit",
+            },
+          ],
+        },
+      })
+    }
+  </Story>
 </Canvas>

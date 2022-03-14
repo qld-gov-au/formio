@@ -8,7 +8,7 @@ export default [
     weight: 10,
     tooltip: "You must have an API key in order to use this component.",
     description:
-      "You must have a API key in order to use this component, please contact <a href='mailto:qol.development@smartservice.qld.gov.au' target='_blank'>qol.development@smartservice.qld.gov.au</a> if you want to acquire an API key. (To be confirmed)",
+      "You must have a API key in order to use this component, please contact <a href='mailto:qol.development@smartservice.qld.gov.au' target='_blank'>qol.development@smartservice.qld.gov.au</a>(TBC) if you want to acquire an API key. (To be confirmed)",
     validate: {
       required: true,
     },
