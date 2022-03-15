@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "qg-formio.js",
-    library: "$",
+    library: "qgFormio",
     libraryTarget: "umd",
   },
   module: {
