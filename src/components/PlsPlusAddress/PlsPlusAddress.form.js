@@ -9,8 +9,9 @@ import EditData from "./editForm/PlsPlusAddress.edit.data";
 import EditDisplay from "./editForm/PlsPlusAddress.edit.display";
 import EditProvider from "./editForm/PlsPlusAddress.edit.provider";
 // import AddressEditProvider from './editForm/Address.edit.provider';
+// import { baseEditForm } from "formiojs/components/_classes/component/Component.form"
 
-const { baseEditForm } = Formio.Components;
+const baseEditForm = Formio.Components.components.base.editForm;
 
 export default (...extend) => {
   return baseEditForm(
@@ -29,10 +30,6 @@ export default (...extend) => {
         weight: 15,
         components: EditProvider,
       },
-      // {
-      //   key: 'addons',
-      //   ignore: true
-      // },
     ],
     ...extend
   );
