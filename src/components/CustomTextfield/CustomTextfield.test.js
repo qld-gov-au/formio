@@ -55,7 +55,7 @@ test("CustomTextfield submitted correct data", async () => {
   const input = form.querySelector("input[name='data[firstName]']");
   expect(input).toBeVisible();
   const button = getByText(form, "Submit");
-  expect(input).toBeVisible();
+  expect(button).toBeVisible();
   // user focus on input
   userEvent.click(input);
   await testWait();

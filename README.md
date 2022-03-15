@@ -36,16 +36,18 @@ Following are the goals of this repository.
 ## Development
 
 - Create a feature branch from `main`.
-- Install packages with `yarn`.
-- Start development environment with `yarn storybook`.
+- Install packages with `npm install`.
+- Start development environment with `npm run storybook`.
 - Create / Modify components in `src/components`.
 - Update `src/components/index.js` for new component.
-- Lint and test with `yarn verify`.
+- Lint and test with `npm run validate`.
 - Push your branch and create pull request to merge to `develop` branch.
+
+WIP
 
 ## Deployment
 
-- `yarn build`
+- `npm run build`
 - `npx http-server build`
 
 WIP
@@ -59,7 +61,7 @@ You can consume this library either in Form.io Builder or Form.io Renderer.
 To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
 
 ```
-https://foundation.dkbbbb129t0kf.amplifyapp.com/qg-formio.js
+https://develop.dkbbbb129t0kf.amplifyapp.com/qg-formio.js
 (This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
 ```
 

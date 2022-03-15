@@ -106,32 +106,29 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
   }
 
   breakAddress(address) {
-    console.log("breakAddress", address);
     const siteName = address.SiteName || "";
-    const lot =
-      address.Parcel && address.Parcel.Lot
-        ? `LOT ${address.Parcel.Lot}`
-        : undefined;
+    const lot = address.Parcel?.Lot ? `LOT ${address.Parcel.Lot}` : undefined;
     const complexDesc = [
       lot,
-      address.Unit ? address.Unit.TypeCode : undefined,
-      address.Unit ? address.Unit.Number : undefined,
-      address.Level ? address.Level.TypeCode : undefined,
-      address.Level ? address.Level.Number : undefined,
+      address.Unit?.TypeCode,
+      address.Unit?.Number,
+      address.Level?.TypeCode,
+      address.Level?.Number,
     ]
       .filter((o) => o !== undefined)
       .join(" ");
     const roadNumberPart = [
-      address.RoadNumber ? address.RoadNumber.First : undefined,
-      address.RoadNumber && address.RoadNumber.Last ? "-" : undefined,
-      address.RoadNumber ? address.RoadNumber.Last : undefined,
+      address.RoadNumber?.First,
+      address.RoadNumber?.Last ? "-" : undefined,
+      address.RoadNumber?.Last,
     ]
       .filter((o) => o !== undefined)
       .join("");
     const streetAddress = [
       roadNumberPart,
-      address.Road ? address.Road.Name : undefined,
-      address.Road ? address.Road.TypeCode : undefined,
+      address.Road?.Name,
+      address.Road?.TypeCode,
+      address.Road?.Suffix,
     ]
       .filter((o) => o !== undefined)
       .join(" ");
@@ -173,23 +170,19 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
     const params = requestOptions.params || {};
     params[this.queryProperty] = query.trim();
 
-    return this.makeParseRequest(requestOptions).then(
-      (response) => {
-        const resultCount = parseFloat(
-          response.ParseAddressResponse.ParseAddressResult.ResultCount
-        );
-        if (resultCount === 0) return {};
-        if (resultCount === 1)
-          return response.ParseAddressResponse.ParseAddressResult.Results.Result
-            .Address;
-        return _.maxBy(
-          response.ParseAddressResponse.ParseAddressResult.Results.Result,
-          (r) => r.Confidence
-        ).Address;
-        // console.log("parseAddress", response, result);
-      }
-      // this.responseProperty ? _.get(result, this.responseProperty, []) : result
-    );
+    return this.makeParseRequest(requestOptions).then((response) => {
+      const resultCount = parseFloat(
+        response.ParseAddressResponse.ParseAddressResult.ResultCount
+      );
+      if (resultCount === 0) return {};
+      if (resultCount === 1)
+        return response.ParseAddressResponse.ParseAddressResult.Results.Result
+          .Address;
+      return _.maxBy(
+        response.ParseAddressResponse.ParseAddressResult.Results.Result,
+        (r) => r.Confidence
+      ).Address;
+    });
   }
 
   search(query, options = {}) {
@@ -209,14 +202,16 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
   }
 
   getRequestUrl(options = {}) {
-    const { params, apiBase = defaultApiBase } = options;
-    return `${apiBase}/pls-plus-qg/AutoCompleteAddress?${this.serialize(
-      params
-    )}`;
+    const { params, apiBase } = options;
+    return `${
+      apiBase || defaultApiBase
+    }/pls-plus-qg/AutoCompleteAddress?${this.serialize(params)}`;
   }
 
   getParseRequestUrl(options = {}) {
-    const { params, apiBase = defaultApiBase } = options;
-    return `${apiBase}/pls-plus-qg/ParseAddress?${this.serialize(params)}`;
+    const { params, apiBase } = options;
+    return `${
+      apiBase || defaultApiBase
+    }/pls-plus-qg/ParseAddress?${this.serialize(params)}`;
   }
 }
