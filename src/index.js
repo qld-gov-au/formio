@@ -1,8 +1,6 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import buildOptions from "./options/build.options";
-import templates from "./templates";
-import providers from "./providers";
 import { getComponents } from "./utils/getComponents";
 
 let waitCount = 0;
@@ -31,14 +29,15 @@ wait({
   condition: () => {
     return Formio;
   },
-  callback: () => {
-    import("./components").then((components) => {
-      Formio.use({
-        components: getComponents(components),
-        templates,
-        providers,
-        options: buildOptions,
-      });
+  callback: async () => {
+    const components = await import("./components");
+    const templates = await import("./templates");
+    const providers = await import("./providers");
+    Formio.use({
+      components: getComponents(components),
+      templates,
+      providers,
+      options: buildOptions,
     });
   },
   timeoutCallback: () => {
