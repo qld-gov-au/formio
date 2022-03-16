@@ -6,17 +6,6 @@ export class Test extends ContainerComponent {
       {
         type: "test",
         label: "test",
-        key: "test",
-        components: [
-          {
-            label: "Address line 1 <i>(include unit number if needed)</i>",
-            persistent: false,
-            tableView: false,
-            key: "address1",
-            type: "textfield",
-            input: true,
-          },
-        ],
       },
       ...extend
     );
