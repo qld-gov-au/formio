@@ -17,6 +17,6 @@ if (typeof Formio !== "undefined") {
   });
 } else {
   console.warn(
-    "qg-formio.js requires Formio script included in this page. Please refer to https://qld-gov-au.github.io/formio/?path=/docs/welcome--page for usage."
+    "formio.full.min.js requires Formio script included in this page. Please refer to https://qld-gov-au.github.io/formio/?path=/docs/welcome--page for usage."
   );
 }
