@@ -40,6 +40,10 @@ export class PlsPlusAddress extends ContainerComponent {
         hideLabel: false,
         disableClearIcon: false,
         enableManualMode: true,
+        // this is the tricky bit to get exception on duplicated keys in children components that belong to different nested components
+        // `tree: true` is needed for the exception but will not pass on submission because failing the isDirty test
+        // as a solution `tree: 'whatever'` will pass the isDirty test and used as a `true` flag
+        tree: "yep",
         components: [
           {
             label: "Autocomplete address",
