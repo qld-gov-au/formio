@@ -44,21 +44,21 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "Autocomplete address",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "autocompleteAddress",
             type: "hidden",
           },
           {
             label: "Selected address",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "selectedAddress",
             type: "hidden",
           },
           {
             label: "Address line 1 <i>(include unit number if needed)</i>",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "address1",
             type: "textfield",
             input: true,
@@ -70,7 +70,7 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "Address line 2",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "address2",
             type: "textfield",
             input: true,
@@ -79,7 +79,7 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "Address line 3",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "address3",
             type: "textfield",
             input: true,
@@ -88,7 +88,7 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "Town, City or Suburb",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "city",
             type: "textfield",
             input: true,
@@ -100,7 +100,7 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "State",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "state",
             type: "textfield",
             input: true,
@@ -110,7 +110,7 @@ export class PlsPlusAddress extends ContainerComponent {
           {
             label: "Postcode",
             persistent: false,
-            tableView: true,
+            tableView: false,
             key: "postcode",
             type: "textfield",
             input: true,
@@ -240,6 +240,10 @@ export class PlsPlusAddress extends ContainerComponent {
         noUpdateEvent: true,
       });
     });
+  }
+
+  get isMultiple() {
+    return Boolean(this.component.multiple);
   }
 
   get address() {
