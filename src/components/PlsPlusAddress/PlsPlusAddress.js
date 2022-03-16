@@ -165,10 +165,11 @@ export class PlsPlusAddress extends ContainerComponent {
 
   onChange(flags, fromRoot) {
     if (this.autocompleteMode) {
-      this.dataValue.address.selectedAddress = this.address.autocompleteAddress;
-    } else {
+      if (this.dataValue?.address)
+        this.dataValue.address.selectedAddress =
+          this.address.autocompleteAddress;
+    } else if (this.dataValue?.address)
       this.dataValue.address.selectedAddress = this.composedAddress;
-    }
     return super.onChange(flags, fromRoot);
   }
 

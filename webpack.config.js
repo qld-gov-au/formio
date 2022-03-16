@@ -5,8 +5,8 @@ module.exports = {
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "qg-formio.js",
-    library: "qgFormio",
+    filename: "formio-qld-custom-components.min.js",
+    library: "FormioQld",
     libraryTarget: "umd",
   },
   module: {
