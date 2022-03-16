@@ -43,6 +43,7 @@ export class PlsPlusAddress extends ContainerComponent {
         // this is the tricky bit to get exception on duplicated keys in children components that belong to different nested components
         // `tree: true` is needed for the exception but will not pass on submission because failing the isDirty test
         // as a solution `tree: 'whatever'` will pass the isDirty test and used as a `true` flag
+        // https://github.com/formio/formio.js/blob/master/src/utils/formUtils.js#L89-L90
         tree: "yep",
         components: [
           {
