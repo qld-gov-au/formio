@@ -1,5 +1,5 @@
-This is the file that will be deployed to binary repo
+# Queensland Government Form.io custom component library - Binary Repo
 
-the workflow in this binary-repo is used to make the 'sematic's versions' everything in one repo
+This repository provides a bundled JS custom component library to form.io builder / form.io renderer / Squiz Matrix form application.
 
-- this should only be triggered on tag push.
+See https://qld-gov-au.github.io/formio/ for source repository
