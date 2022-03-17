@@ -13,7 +13,7 @@ const ContainerComponent = Formio.Components.components.container;
 const Field = Formio.Components.components.field;
 const NestedComponent = Formio.Components.components.nested;
 
-export const PlsPlusAddressMode = {
+const PlsPlusAddressMode = {
   Autocomplete: "autocomplete",
   Manual: "manual",
 };
