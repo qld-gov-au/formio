@@ -13,7 +13,7 @@ const ContainerComponent = Formio.Components.components.container;
 const Field = Formio.Components.components.field;
 const NestedComponent = Formio.Components.components.nested;
 
-export const PlsPlusAddressMode = {
+const PlsPlusAddressMode = {
   Autocomplete: "autocomplete",
   Manual: "manual",
 };
@@ -33,7 +33,7 @@ export class PlsPlusAddress extends ContainerComponent {
       {
         type: "plsplusaddress",
         label: "Address",
-        key: "plsplusaddress",
+        key: "address",
         switchToManualModeLabel: "Can't find address? Switch to manual mode.",
         providerOptions: {},
         manualModeViewString: "",
@@ -43,19 +43,22 @@ export class PlsPlusAddress extends ContainerComponent {
         components: [
           {
             label: "Autocomplete address",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "autocompleteAddress",
             type: "hidden",
           },
           {
             label: "Selected address",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "selectedAddress",
             type: "hidden",
           },
           {
             label: "Address line 1 <i>(include unit number if needed)</i>",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "address1",
             type: "textfield",
             input: true,
@@ -66,7 +69,8 @@ export class PlsPlusAddress extends ContainerComponent {
           },
           {
             label: "Address line 2",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "address2",
             type: "textfield",
             input: true,
@@ -74,7 +78,8 @@ export class PlsPlusAddress extends ContainerComponent {
           },
           {
             label: "Address line 3",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "address3",
             type: "textfield",
             input: true,
@@ -82,7 +87,8 @@ export class PlsPlusAddress extends ContainerComponent {
           },
           {
             label: "Town, City or Suburb",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "city",
             type: "textfield",
             input: true,
@@ -93,7 +99,8 @@ export class PlsPlusAddress extends ContainerComponent {
           },
           {
             label: "State",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "state",
             type: "textfield",
             input: true,
@@ -102,7 +109,8 @@ export class PlsPlusAddress extends ContainerComponent {
           },
           {
             label: "Postcode",
-            tableView: true,
+            persistent: false,
+            tableView: false,
             key: "postcode",
             type: "textfield",
             input: true,
@@ -128,7 +136,11 @@ export class PlsPlusAddress extends ContainerComponent {
       icon: "home",
       documentation: "/userguide/#address",
       weight: 2,
-      schema: PlsPlusAddress.schema(),
+      // this is the tricky bit to get exception on duplicated keys in children components that belong to different nested components
+      // `tree: true` is needed for the exception, if it is defined in the schema, it will not pass to the submission data because it will fail the isDirty test (comparing defaultSchema and builder schema)
+      // as a solution `tree: true` need to define here instead
+      // https://github.com/formio/formio.js/blob/master/src/utils/formUtils.js#L89-L90
+      schema: { ...PlsPlusAddress.schema(), tree: true },
     };
   }
 
@@ -153,10 +165,11 @@ export class PlsPlusAddress extends ContainerComponent {
 
   onChange(flags, fromRoot) {
     if (this.autocompleteMode) {
-      this.dataValue.address.selectedAddress = this.address.autocompleteAddress;
-    } else {
+      if (this.dataValue?.address)
+        this.dataValue.address.selectedAddress =
+          this.address.autocompleteAddress;
+    } else if (this.dataValue?.address)
       this.dataValue.address.selectedAddress = this.composedAddress;
-    }
     return super.onChange(flags, fromRoot);
   }
 
@@ -234,6 +247,10 @@ export class PlsPlusAddress extends ContainerComponent {
     });
   }
 
+  get isMultiple() {
+    return Boolean(this.component.multiple);
+  }
+
   get address() {
     return this.manualModeEnabled && this.dataValue
       ? this.dataValue.address
@@ -253,7 +270,7 @@ export class PlsPlusAddress extends ContainerComponent {
   }
 
   get defaultSchema() {
-    return PlsPlusAddress.schema();
+    return { ...PlsPlusAddress.schema(), tree: "true" };
   }
 
   isValueInLegacyFormat(value) {

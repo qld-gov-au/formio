@@ -61,7 +61,7 @@ You can consume this library either in Form.io Builder or Form.io Renderer.
 To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
 
 ```
-https://develop.dkbbbb129t0kf.amplifyapp.com/qg-formio.js
+https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
 (This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
 ```
 
@@ -73,11 +73,9 @@ To use custom components in the Form.io JS renderer, please include the script *
 Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/formiojs@latest/dist/formio.full.min.css"
-/>
-<script src="https://develop.dkbbbb129t0kf.amplifyapp.com/qg-formio.js"></script>
+<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
+...
+<script src="https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
 (This is a temporary URL for POC purpose, actual CDN URL still needs to be
 confirmed in production.)
 ```
