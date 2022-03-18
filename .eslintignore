@@ -4,3 +4,4 @@ builder/
 !.storybook/
 storybook-static/
 binary-repo/
+lib/
