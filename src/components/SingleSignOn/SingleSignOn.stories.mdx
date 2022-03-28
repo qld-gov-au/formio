@@ -1,0 +1,41 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { createForm, createBuilder } from "../../utils";
+import SSOHighLevel from "./../../stories/assets/SSO-HighLevel.png";
+import SSOUserFlow from "./../../stories/assets/SSO-UserFlow.png";
+import { createSSoForm } from "./SingleSignOn"
+
+<Meta title="Components/SingleSignOn" />
+
+# Single SignOn
+
+https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/QOL/Form.io+OICD+IDB+integration+POC+with+Freight+Pass
+
+## High Level Architecture
+Below is a high level diagram of Form.io integrating with the IDB and Freight Pass
+
+
+
+<img src={SSOHighLevel} alt="SSO High Level" width="680" />
+
+## Process Flow
+Below is a high level process flow of Form.io integrating with the IDB and Freight Pass
+
+
+
+### Definitions
+
+Login Form : https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-login-to-freight-and-logistics-f-pass
+
+Main Form : https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-queensland-border-declaration-pass-freight-and-logistics-f-pass
+
+<img src={SSOUserFlow} alt="SSO User Flow" width="1680" />
+
+
+## Demo
+
+
+<Canvas withSource="open">
+  <Story name="Demo">
+        {() => createSSoForm()}
+  </Story>
+</Canvas>
