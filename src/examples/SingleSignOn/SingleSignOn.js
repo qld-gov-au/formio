@@ -33,10 +33,10 @@ export const createSSoForm = () => {
         window.form = form;
         // This section of code is the "Form Controller"
         form.on("submitDone", function submitDoneCleanup(submission) {
+          console.info(submission);
           // remove form.io api tokens after submission for security
           localStorage.removeItem("authToken");
           localStorage.removeItem("authUser");
-          const reloadTimeout = setTimeout(afterTimeout, 500);
 
           function afterTimeout() {
             // logout the user for security
@@ -53,9 +53,9 @@ export const createSSoForm = () => {
             if (user.data.idp_type && user.data.idp_type === "employee") {
               params += "&initiating_idp=o365";
             }
-            //clearTimeout(reloadTimeout);
             window.location.href = logoutUrl + params;
           }
+          setTimeout(afterTimeout, 500); // Logout after 500 seconds
         });
       });
     } else {
@@ -68,6 +68,7 @@ export const createSSoForm = () => {
         console.info(`Loaded form: ${form.formio.formId}`);
         // console.info(JSON.stringify(form.formio));
         form.on("submitDone", (submission) => {
+          console.info(submission);
           Formio.currentUser().then((userDetails) => {
             // clean up URL paramters from submission or logout redirect
             console.info(userDetails);
