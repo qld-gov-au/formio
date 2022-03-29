@@ -29,10 +29,10 @@ export const createSSoForm = () => {
       Formio.createForm(
         document.getElementById("oidc_form"),
         formioServiceFormEndpoint
-      ).then(function (form) {
+      ).then(function postSetup(form) {
         window.form = form;
         // This section of code is the "Form Controller"
-        form.on("submitDone", function (submission) {
+        form.on("submitDone", function submitDoneCleanup(submission) {
           // remove form.io api tokens after submission for security
           localStorage.removeItem("authToken");
           localStorage.removeItem("authUser");
@@ -53,22 +53,25 @@ export const createSSoForm = () => {
             if (user.data.idp_type && user.data.idp_type === "employee") {
               params += "&initiating_idp=o365";
             }
+            //clearTimeout(reloadTimeout);
             window.location.href = logoutUrl + params;
           }
         });
       });
     } else {
       console.info("No current user, rendering oidc sso form...");
-      const oidc_form = Formio.createForm(
+      const oidcForm = Formio.createForm(
         document.getElementById("oidc_form"),
         formioLoginFormEndpoint
       );
-      oidc_form.then((form) => {
+      oidcForm.then((form) => {
         console.info(`Loaded form: ${form.formio.formId}`);
         // console.info(JSON.stringify(form.formio));
         form.on("submitDone", (submission) => {
-          Formio.currentUser().then((user) => {
+          Formio.currentUser().then((userDetails) => {
             // clean up URL paramters from submission or logout redirect
+            console.info(userDetails);
+
             const formioCleanURL = window.location.href.split("?")[0];
 
             // trigger post-login form to load
