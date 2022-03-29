@@ -20,7 +20,9 @@
   },
   "globals": {
     "Formio": true,
-    "document": true
+    "document": true,
+    "localStorage": true,
+    "window": true
   },
   "overrides": [
     {
