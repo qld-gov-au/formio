@@ -35,8 +35,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
-    // library: "FormioQld",
-    // libraryTarget: "umd",
   },
   module: {
     rules: [
@@ -64,16 +62,7 @@ module.exports = {
     new ESLintPlugin(),
     new UnminifiedWebpackPlugin({
       include: [/formio-.*.js$/],
-      exclude: [
-        // path.resolve(__dirname, "./lib/premium.min.js"),
-        // path.resolve(__dirname, "./node_modules"),
-        // path.resolve(__dirname, "./src"),
-        // /formio.full.*$/,
-        // /premium.*$/,
-        // /node_modules/,
-        // /lib/,
-      ],
-      // include: /src/.*/,
+      exclude: [],
     }),
     new CopyPlugin({
       patterns: [
