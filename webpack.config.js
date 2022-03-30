@@ -2,14 +2,27 @@ const path = require("path");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    "formio-qld.min": path.resolve(__dirname, "src/index.js"),
-    "formio-loader.min": path.resolve(
-      __dirname,
-      "src/matrixHelpers/formioLoader/index.js"
-    ),
+    "formio-qld.min": {
+      import: path.resolve(__dirname, "src/index.js"),
+      library: {
+        name: "FormioQld",
+        type: "umd",
+      },
+    },
+    "formio-loader.min": {
+      import: path.resolve(
+        __dirname,
+        "src/matrixHelpers/formioLoader/index.js"
+      ),
+      library: {
+        name: "FormioLoader",
+        type: "umd",
+      },
+    },
     "formio-script.dev.min": path.resolve(
       __dirname,
       "src/matrixHelpers/formioScript/index.dev.js"
@@ -41,12 +54,16 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(s(a|c)ss)$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
     new ESLintPlugin(),
     new UnminifiedWebpackPlugin({
-      include: [/formio-.*$/],
+      include: [/formio-.*.js$/],
       exclude: [
         // path.resolve(__dirname, "./lib/premium.min.js"),
         // path.resolve(__dirname, "./node_modules"),
@@ -63,6 +80,7 @@ module.exports = {
         { from: path.resolve(__dirname, "./lib"), info: { minimized: true } },
       ],
     }),
+    new MiniCssExtractPlugin(),
   ],
   mode: "production",
   devtool: "source-map",

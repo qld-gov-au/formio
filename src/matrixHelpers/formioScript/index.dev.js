@@ -16,19 +16,25 @@ const scripts = [
     src: "https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js",
     async: false,
   },
+  // note: formio-loader should always load last
   {
     type: "script",
     src: "https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.js",
     async: false,
   },
   {
-    type: "style",
+    type: "link",
     href: "https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css",
     rel: "stylesheet",
   },
   {
-    type: "style",
+    type: "link",
     href: "https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css",
+    rel: "stylesheet",
+  },
+  {
+    type: "link",
+    href: "https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css",
     rel: "stylesheet",
   },
 ];

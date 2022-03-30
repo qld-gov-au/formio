@@ -1,5 +1,5 @@
 export const createScripts = (scripts) => {
-  scripts.array.forEach(({ type, async, src, href, rel }) => {
+  scripts.forEach(({ type, async, src, href, rel }) => {
     if (
       !document.querySelector(`${type}[src='${src}']`) &&
       !document.querySelector(`${type}[href='${href}']`)

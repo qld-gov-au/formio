@@ -5,6 +5,7 @@ import { getComponents } from "./utils/getComponents";
 import * as components from "./components";
 import templates from "./templates";
 import providers from "./providers";
+import "./style/formio-qld.scss";
 
 Formio.use({
   components: getComponents(components),
