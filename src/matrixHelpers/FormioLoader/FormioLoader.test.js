@@ -2,6 +2,7 @@ import "@testing-library/jest-dom";
 import { findByText } from "@testing-library/dom";
 import * as FormioLoader from "./index";
 import { testWait } from "../../utils";
+import { formioRes } from "./fixtures";
 
 // Smoke test
 test("FormioLoader is initiated", async () => {
@@ -20,6 +21,7 @@ test("FormioLoader is initiated", async () => {
 `;
   document.body.append(div);
   FormioLoader.initFormio();
+  jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
 
   const label = await findByText(div, "Address");
   expect(label).toBeVisible();
@@ -32,6 +34,8 @@ test("FormioLoader is initiated with invalid div", async () => {
   div.innerHTML = `<div id="formio" data-formio ></div>`;
   document.body.append(div);
   FormioLoader.initFormio();
+  jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
+
   await testWait();
   expect(div.innerHTML).toEqual(`<div id="formio" data-formio=""></div>`);
 });
