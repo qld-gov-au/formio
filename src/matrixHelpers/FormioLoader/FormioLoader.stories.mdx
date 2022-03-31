@@ -28,6 +28,7 @@ To initiate Formio instance on page load, simply include the script in your webp
       });
       return `
         <div id="formio" 
+          class="formio_container"
           data-formio 
           data-project-name="dev-svcwlpuksmwawwk" 
           data-form-name="plsPlusFormDemo" 
@@ -60,7 +61,7 @@ This is useful if you want to dynamically inject a form element. (Although the `
         });
       });
       return `
-        <div id="formio-alt" ></div>
+        <div id="formio-alt" class="formio_container" ></div>
       `;
     }}
   </Story>

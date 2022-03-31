@@ -1,5 +1,13 @@
 const initFormioInstance = (formioElem, opts) => {
+  // if already initiated, reject
   if (formioElem.dataset.formUrl) return;
+  // if doesn't have required options, reject
+  if (
+    !formioElem.dataset.envUrl ||
+    !formioElem.dataset.projectName ||
+    !formioElem.dataset.formName
+  )
+    return;
   const bodyContainer = $("body");
   const defaultRedirect = "contact-us/response/";
   /*

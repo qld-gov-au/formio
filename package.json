@@ -64,6 +64,7 @@
     "formiojs": "^4.14.2",
     "jest": "^27.5.1",
     "jest-raw-loader": "^1.0.1",
+    "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",

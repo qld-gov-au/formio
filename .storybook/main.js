@@ -4,7 +4,7 @@ module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: "@storybook/html",
-  staticDirs: ["../lib"],
+  staticDirs: ["../lib", "../node_modules/jquery/dist"],
   core: {
     builder: "webpack5",
   },
