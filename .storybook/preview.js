@@ -6,9 +6,6 @@ import { getComponents } from "../src/utils/getComponents";
 import templates from "../src/templates";
 import providers from "../src/providers";
 
-// Formio.use({
-//   providers,
-// });
 Formio.use({
   components: getComponents(components),
   templates,

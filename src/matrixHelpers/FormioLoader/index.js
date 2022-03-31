@@ -1,4 +1,5 @@
 const initFormioInstance = (formioElem, opts) => {
+  if (formioElem.dataset.formUrl) return;
   const bodyContainer = $("body");
   const defaultRedirect = "contact-us/response/";
   /*
@@ -9,10 +10,9 @@ const initFormioInstance = (formioElem, opts) => {
   const submitBtn = $(`#${formioContainerId} button[name='data[submit]']`);
   let formName = "";
   // Check if value is true/exists and is numeric
-  if (opts.form_revision && $.isNumeric(opts.form_revision)) {
+  if (opts.form_revision) {
     formName = `${opts.formName}/v/${opts.form_revision}`;
   } else {
-    console.info(`Revision fallback for ${formioContainerId}`);
     formName = opts.formName;
   }
   const { projectName } = opts;
@@ -127,14 +127,7 @@ const NamespacePolyfillPlugin = {
   },
 };
 
-window.onload = () => {
-  window.dataLayer = window.dataLayer || [];
-
-  // Init form
-  Formio.icons = "fontawesome";
-  Formio.use(premium);
-
-  // custom error message
+const customiseErrorMessage = () => {
   const newFunc = Formio.Form.prototype.errorForm.bind({});
   Formio.Form.prototype.errorForm = (err) => {
     if (
@@ -149,6 +142,17 @@ window.onload = () => {
     }
     return newFunc(err);
   };
+};
+
+const initFormio = () => {
+  window.dataLayer = window.dataLayer || [];
+
+  // Init form
+  Formio.icons = "fontawesome";
+  if (premium) Formio.use(premium);
+
+  // custom error message
+  customiseErrorMessage();
 
   // register plugin
   Formio.registerPlugin(NamespacePolyfillPlugin, "namespacePolyfill");
@@ -158,9 +162,15 @@ window.onload = () => {
   });
 };
 
+window.onload = () => {
+  initFormio();
+};
+
 // Persistent fix for iPhone/Safari
 window.onpageshow = (event) => {
   if (event.persisted) {
     window.location.reload();
   }
 };
+
+export { initFormio, initFormioInstance };

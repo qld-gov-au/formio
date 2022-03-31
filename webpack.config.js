@@ -16,7 +16,7 @@ module.exports = {
     "formio-loader.min": {
       import: path.resolve(
         __dirname,
-        "src/matrixHelpers/formioLoader/index.js"
+        "src/matrixHelpers/FormioLoader/index.js"
       ),
       library: {
         name: "FormioLoader",
@@ -25,11 +25,19 @@ module.exports = {
     },
     "formio-script.dev.min": path.resolve(
       __dirname,
-      "src/matrixHelpers/formioScript/index.dev.js"
+      "src/matrixHelpers/FormioScript/scriptDev.js"
     ),
     "formio-script.prod.min": path.resolve(
       __dirname,
-      "src/matrixHelpers/formioScript/index.prod.js"
+      "src/matrixHelpers/FormioScript/scriptProd.js"
+    ),
+    "formio-script.staging.min": path.resolve(
+      __dirname,
+      "src/matrixHelpers/FormioScript/scriptStaging.js"
+    ),
+    "formio-script.test.min": path.resolve(
+      __dirname,
+      "src/matrixHelpers/FormioScript/scriptTest.js"
     ),
   },
   output: {
@@ -69,7 +77,9 @@ module.exports = {
         { from: path.resolve(__dirname, "./lib"), info: { minimized: true } },
       ],
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      // exclude: /lib/,
+    }),
   ],
   mode: "production",
   devtool: "source-map",
