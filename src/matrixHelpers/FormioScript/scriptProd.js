@@ -1,6 +1,6 @@
 import { createScripts } from ".";
 
-const version = "v1/v1.x.x-latest";
+const version = window.formioQldCdnVersion || "v1/v1.x.x-latest";
 
 const scripts = [
   {
