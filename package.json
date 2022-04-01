@@ -20,7 +20,6 @@
     "url": "https://github.com/qld-gov-au/formio.git"
   },
   "browserslist": [
-    "IE 11",
     "last 3 Chrome versions"
   ],
   "scripts": {
