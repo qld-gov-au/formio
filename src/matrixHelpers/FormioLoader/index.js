@@ -118,7 +118,7 @@ const initFormioInstance = (formioElem, opts) => {
 };
 
 // polyfill plugin function to fix the namespace option doesn't pass to Formio.makeRequest
-const NamespacePolyfillPlugin = {
+const NamespacePlugin = {
   priority: 0,
   preRequest(requestArgs) {
     if (requestArgs.formio) {
@@ -164,7 +164,7 @@ const initFormio = () => {
   customiseErrorMessage();
 
   // register plugin
-  Formio.registerPlugin(NamespacePolyfillPlugin, "namespacePolyfill");
+  Formio.registerPlugin(NamespacePlugin, "namespacePolyfill");
 
   document.querySelectorAll("[data-formio]").forEach((formioElem) => {
     const {

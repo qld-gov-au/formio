@@ -39,6 +39,10 @@ module.exports = {
       __dirname,
       "src/matrixHelpers/FormioScript/scriptTest.js"
     ),
+    "formio-script.gitbridge.min": path.resolve(
+      __dirname,
+      "src/matrixHelpers/FormioScript/scriptGitBridge.js"
+    ),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -77,9 +81,7 @@ module.exports = {
         { from: path.resolve(__dirname, "./lib"), info: { minimized: true } },
       ],
     }),
-    new MiniCssExtractPlugin({
-      // exclude: /lib/,
-    }),
+    new MiniCssExtractPlugin({}),
   ],
   mode: "production",
   devtool: "source-map",

@@ -116,18 +116,20 @@ Third party library files that going to be served by the CDN.
 
 Backup/archived code snippet to be used in Formio platform.
 
-
 ## Alternative way to build/run
-To not require install npm/node on your system, you can use the maven boostrap method.
+
+To not require install npm/node on your system, you can use the maven bootstrap method.
 
 Install Java8+, Install Maven.
 
 To run lint, tests, compile and build dist folder.
+
 ```shell
 mvn clean install
 ```
 
 to run storybook dev mode
+
 ```shell
 mvn com.github.eirslett:frontend-maven-plugin:npm@storybook
 ```

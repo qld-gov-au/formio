@@ -16,7 +16,25 @@ To use it, simply include the script in your webpage and it will initiate Formio
 ></script>
 ```
 
-Please note that you'll need to include `formio.full.js`/`formio.full.min.js` before using this script.
+Sample Formio div placeholder:
+
+```jsx
+<div
+  id="formio"
+  class="formio_container"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-form-confirmation=""
+  data-formio-form-revision=""
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-pdf-download="no"
+  data-formio-namespace=""
+></div>
+```
+
+Please note that you'll need to include `formio.full.js`/`formio.full.min.js`, and other necessary formio scripts before using this script.
+You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to auto load all Formio related scripts.
 
 ## Initiate on page load
 
