@@ -89,11 +89,9 @@ To use custom components in the Form.io JS renderer, please include the script *
 Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
 
 ```html
-<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.js"></script>
 ...
-<script src="https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
-(This is a temporary URL for POC purpose, actual CDN URL still needs to be
-confirmed in production.)
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
 ```
 
 ## Folder structure
@@ -117,3 +115,19 @@ Third party library files that going to be served by the CDN.
 ### builder
 
 Backup/archived code snippet to be used in Formio platform.
+
+
+## Alternative way to build/run
+To not require install npm/node on your system, you can use the maven boostrap method.
+
+Install Java8+, Install Maven.
+
+To run lint, tests, compile and build dist folder.
+```shell
+mvn clean install
+```
+
+to run storybook dev mode
+```shell
+mvn com.github.eirslett:frontend-maven-plugin:npm@storybook
+```
