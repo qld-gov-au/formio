@@ -11,7 +11,7 @@
     ],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"] }],
     "import/prefer-default-export": "off",
-    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "no-console": ["warn", { "allow": ["warn", "error", "info", "debug"] }],
     "no-param-reassign": ["error", { "props": false }],
     "class-methods-use-this": 0
   },
@@ -20,7 +20,10 @@
   },
   "globals": {
     "Formio": true,
-    "document": true
+    "document": true,
+    "window": true,
+    "$": true,
+    "premium": true
   },
   "overrides": [
     {

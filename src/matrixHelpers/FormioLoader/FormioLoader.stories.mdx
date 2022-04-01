@@ -1,0 +1,89 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { createForm, createBuilder } from "../../utils";
+import * as FormioLoader from "./index.js";
+
+<Meta title="Helpers/FormioLoader" />
+
+# FormioLoader
+
+FormioLoader provide function for you to initiate Formio instance.
+To use it, simply include the script in your webpage and it will initiate Formio instance with the div that contains `data-formio` attribute.
+
+```html
+<script
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js"
+  async="false"
+></script>
+```
+
+Sample Formio div placeholder:
+
+```jsx
+<div
+  id="formio"
+  class="formio_container"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-form-confirmation=""
+  data-formio-form-revision=""
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-pdf-download="no"
+  data-formio-namespace=""
+></div>
+```
+
+Please note that you'll need to include `formio.full.js`/`formio.full.min.js`, and other necessary formio scripts before using this script.
+You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to auto load all Formio related scripts.
+
+## Initiate on page load
+
+To initiate Formio instance on page load, simply include the script in your webpage.
+
+<Canvas withSource="open">
+  <Story name="initFormioMethod">
+    {() => {
+      setTimeout(() => {
+        // script to be executed after appending the div, if you've include the `form-loader.js` script in your application before page load, you can omit this as it will be automatically run.
+        FormioLoader.initFormio();
+      });
+      return `
+        <div id="formio" 
+          class="formio_container"
+          data-formio 
+          data-formio-project-name="dev-svcwlpuksmwawwk" 
+          data-formio-form-name="plsPlusFormDemo" 
+          data-formio-form-confirmation="" 
+          data-formio-form-revision="" 
+          data-formio-env-url="api.forms.platforms.qld.gov.au" 
+          data-formio-pdf-download="no" 
+          data-formio-namespace="" 
+        ></div>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## Alternate init method
+
+If the script is already loaded, you could init the form with an alternate method `FormioLoader.initFormioInstance`.
+This is useful if you want to dynamically inject a form element. (Although the `FormioLoader.initFormio()` method will work the same)
+
+<Canvas withSource="open">
+  <Story name="initFormioInstanceMethod">
+    {() => {
+      setTimeout(() => {
+        const elem = document.getElementById("formio-alt");
+        FormioLoader.initFormioInstance(elem, {
+          projectName: "dev-svcwlpuksmwawwk",
+          formName: "plsPlusFormDemo",
+          envUrl: "api.forms.platforms.qld.gov.au",
+          pdfDownload: "no",
+        });
+      });
+      return `
+        <div id="formio-alt" class="formio_container" ></div>
+      `;
+    }}
+  </Story>
+</Canvas>

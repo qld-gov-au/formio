@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Helpers/FormioScript" />
+
+# FormioScript
+
+FormioScript will help loading the necessary scripts that need to load a Formio form in your application.
+Simply include it in your application and it will search through the page with Formio div container and initiated the Formio instances.
+
+```html
+<script
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"
+  async="false"
+></script>
+```
+
+You can replace `prod` in the `src` with `test` / `staging` / `dev` / `gitbridge` to load assets from different environments.
+
+This script will load the following scripts into the page:
+
+| Script               | Description                                                          |
+| -------------------- | -------------------------------------------------------------------- |
+| formio.full.min.js   | Main Formio library                                                  |
+| premium.min.js       | Premium component library                                            |
+| formio-qld.min.js    | QG custom component library                                          |
+| formio-loader.min.js | [FormioLoader](?path=/docs/helpers-formioloader--page) helper script |
+| formio.full.min.css  | Style for the main Formio library                                    |
+| premium.css          | Style for the premium components                                     |
+| formio-qld.min.css   | Style for Formio form in Squiz                                       |
+
+## Usage in Squiz Matrix
+
+Please refer to Squiz Matrix asset #249261 for usage example.
