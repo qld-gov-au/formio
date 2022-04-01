@@ -41,12 +41,12 @@ export const getDefaultScripts = ({
       async: false,
     },
     {
-      type: "style",
+      type: "link",
       href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio.full.min.css`,
       rel: "stylesheet",
     },
     {
-      type: "style",
+      type: "link",
       href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/premium.css`,
       rel: "stylesheet",
     },

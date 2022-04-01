@@ -35,6 +35,10 @@ Following are the goals of this repository.
 
 ## Development
 
+Storybook is the main development environment in this repository.
+
+### Local development
+
 - Create a feature branch from `main`.
 - Install packages with `npm install`.
 - Start development environment with `npm run storybook`.
@@ -43,14 +47,26 @@ Following are the goals of this repository.
 - Lint and test with `npm run validate`.
 - Push your branch and create pull request to merge to `develop` branch.
 
-WIP
+### Remote testing in Squiz Matrix
+
+- We have a DEV gitBridge in asset `formio-cdn #248740`
+- Sync the gitBridge with the branch you want to test in https://github.com/qld-gov-au/formio-qld, eg. `develop`.
 
 ## Deployment
 
-- `npm run build`
-- `npx http-server build`
+### Deploy to https://github.com/qld-gov-au/formio-qld
 
-WIP
+Push any branches in https://github.com/qld-gov-au/formio will create a co-responding branch in https://github.com/qld-gov-au/formio-qld.
+Then you can use gitBridge to test the modules in Squiz Matrix.
+
+### Release to CDN
+
+- Update the version number in `package.json`, you can review the latest tag number by `git tag -l`.
+- Create a tag in https://github.com/qld-gov-au/formio, by running `git tag -a vx.x.x -m "your message"`, with the new version number you just updated.
+- Push the tag to remote by `git push origin vx.x.x`, with the new version number you just updated.
+- https://github.com/qld-gov-au/formio-qld-cdn `release` branch will automatically generated a folder for the new version.
+- The new folder in the above branch will automatically deploy to bamboo https://servicesmadesimpler.govnet.qld.gov.au/bamboo/browse/QSA-FOR/deployments DEV environment
+- To deploy to TEST/BETA/PROD, simply manually deploy the release in https://servicesmadesimpler.govnet.qld.gov.au/bamboo/browse/QSA-FOR/deployments
 
 ## Usage
 
@@ -79,3 +95,25 @@ Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#get
 (This is a temporary URL for POC purpose, actual CDN URL still needs to be
 confirmed in production.)
 ```
+
+## Folder structure
+
+### src/components
+
+Custom Formio components.
+
+### src/matrixHelpers
+
+Helper modules for integrate Formio into Squiz Matrix.
+
+### src/examples
+
+Sample usage of Formio implementation in any applications.
+
+### lib
+
+Third party library files that going to be served by the CDN.
+
+### builder
+
+Backup/archived code snippet to be used in Formio platform.

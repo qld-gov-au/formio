@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Helpers/FormioScript" />
+
+# FormioScript
+
+FormioScript will help loading the necessary scripts that need to load a Formio form in your application.
+Simply include it in your application and it will search through the page with Formio div container and initiated the Formio instances.
+
+```html
+<script
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"
+  async="false"
+></script>
+```
+
+Sample Formio div placeholder:
+
+```jsx
+<div
+  id="formio"
+  class="formio_container"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-form-confirmation=""
+  data-formio-form-revision=""
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-pdf-download="no"
+  data-formio-namespace=""
+></div>
+```
+
+## Usage in Squiz Matrix
+
+Please refer to Squiz Matrix asset #249261 for usage example.

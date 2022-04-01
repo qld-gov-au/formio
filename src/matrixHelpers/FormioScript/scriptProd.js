@@ -25,12 +25,12 @@ const scripts = [
     async: false,
   },
   {
-    type: "style",
+    type: "link",
     href: `https://static.qgov.net.au/formio-qld/${version}/formio.full.min.css`,
     rel: "stylesheet",
   },
   {
-    type: "style",
+    type: "link",
     href: `https://static.qgov.net.au/formio-qld/${version}/premium.css`,
     rel: "stylesheet",
   },
