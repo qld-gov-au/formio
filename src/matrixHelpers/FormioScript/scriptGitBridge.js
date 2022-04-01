@@ -21,7 +21,7 @@ const scripts = [
   // note: formio-loader should always load last
   {
     type: "script",
-    src: `https://www.qld.gov.au/__data/assets/git_bridge/0025/${version}/formio-loader.min.js`,
+    src: `https://www.qld.gov.au/__data/assets/git_bridge/0025/${version}/formio-loader.js`,
     async: false,
   },
   {
