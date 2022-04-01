@@ -1,3 +1,5 @@
+export const defaultVersion = window.formioQldCdnVersion || "v1/v1.x.x-latest";
+
 export const createScripts = (scripts) => {
   scripts.forEach(({ type, async, src, href, rel }) => {
     if (
@@ -14,10 +16,7 @@ export const createScripts = (scripts) => {
   });
 };
 
-export const getDefaultScripts = ({
-  subdomain,
-  version = "v1/v1.x.x-latest",
-}) => {
+export const getDefaultScripts = ({ subdomain, version = defaultVersion }) => {
   return [
     {
       type: "script",
