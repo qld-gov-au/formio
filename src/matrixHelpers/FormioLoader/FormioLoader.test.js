@@ -10,13 +10,13 @@ test("FormioLoader is initiated", async () => {
   div.innerHTML = `
   <div id="formio" 
     data-formio 
-    data-project-name="dev-svcwlpuksmwawwk" 
-    data-form-name="plsPlusFormDemo" 
-    data-form-confirmation="" 
-    data-form-revision="" 
-    data-env-url="api.forms.platforms.qld.gov.au" 
-    data-pdf-download="no" 
-    data-namespace="" 
+    data-formio-project-name="dev-svcwlpuksmwawwk" 
+    data-formio-form-name="plsPlusFormDemo" 
+    data-formio-form-confirmation="" 
+    data-formio-form-revision="" 
+    data-formio-env-url="api.forms.platforms.qld.gov.au" 
+    data-formio-pdf-download="no" 
+    data-formio-namespace="" 
   ></div>
 `;
   document.body.append(div);

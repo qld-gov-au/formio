@@ -1,13 +1,14 @@
 const initFormioInstance = (formioElem, opts) => {
   // if already initiated, reject
-  if (formioElem.dataset.formUrl) return;
+  if (formioElem.dataset.formioFormUrl) return;
   // if doesn't have required options, reject
-  if (
-    !formioElem.dataset.envUrl ||
-    !formioElem.dataset.projectName ||
-    !formioElem.dataset.formName
-  )
+  if (!opts.envUrl || !opts.projectName || !opts.formName) {
+    console.warn(
+      "Require envUrl, projectName, formName to initiate the form.",
+      opts
+    );
     return;
+  }
   const bodyContainer = $("body");
   const defaultRedirect = "contact-us/response/";
   /*
@@ -37,7 +38,7 @@ const initFormioInstance = (formioElem, opts) => {
     namespace,
   });
   formioElem.dataset.formio = JSON.stringify(formio);
-  formioElem.dataset.formUrl = formUrl;
+  formioElem.dataset.formioFormUrl = formUrl;
 
   /*
    * load formio form
@@ -166,7 +167,24 @@ const initFormio = () => {
   Formio.registerPlugin(NamespacePolyfillPlugin, "namespacePolyfill");
 
   document.querySelectorAll("[data-formio]").forEach((formioElem) => {
-    initFormioInstance(formioElem, formioElem.dataset);
+    const {
+      formioProjectName,
+      formioFormName,
+      formioEnvUrl,
+      formioPdfDownload,
+      formioFormConfirmation,
+      formioFormRevision,
+      formioNamespace,
+    } = formioElem.dataset;
+    initFormioInstance(formioElem, {
+      projectName: formioProjectName,
+      formName: formioFormName,
+      envUrl: formioEnvUrl,
+      pdfDownload: formioPdfDownload,
+      formConfirmation: formioFormConfirmation,
+      formRevision: formioFormRevision,
+      namespace: formioNamespace,
+    });
   });
 };
 
