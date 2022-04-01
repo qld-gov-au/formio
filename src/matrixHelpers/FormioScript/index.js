@@ -1,17 +1,21 @@
 export const defaultVersion = window.formioQldCdnVersion || "v1/v1.x.x-latest";
 
 export const createScripts = (scripts) => {
-  scripts.forEach(({ type, async, src, href, rel }) => {
+  scripts.forEach(async ({ type, async, src, href, rel }) => {
     if (
       !document.querySelector(`${type}[src='${src}']`) &&
       !document.querySelector(`${type}[href='${href}']`)
     ) {
-      const elem = document.createElement(type);
-      if (async !== undefined) elem.setAttribute("async", async);
-      if (src !== undefined) elem.setAttribute("src", src);
-      if (href !== undefined) elem.setAttribute("href", href);
-      if (rel !== undefined) elem.setAttribute("rel", rel);
-      document.body.appendChild(elem);
+      const promise = new Promise((resolve) => {
+        const elem = document.createElement(type);
+        if (async !== undefined) elem.setAttribute("async", async);
+        if (src !== undefined) elem.setAttribute("src", src);
+        if (href !== undefined) elem.setAttribute("href", href);
+        if (rel !== undefined) elem.setAttribute("rel", rel);
+        document.body.appendChild(elem);
+        elem.onload = resolve;
+      });
+      await promise;
     }
   });
 };
