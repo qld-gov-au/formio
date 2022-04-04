@@ -1,4 +1,4 @@
-import { createScripts, defaultVersion as version } from ".";
+import { initScript, defaultVersion as version } from ".";
 
 const scripts = [
   {
@@ -39,4 +39,4 @@ const scripts = [
   },
 ];
 
-createScripts(scripts);
+initScript(scripts);

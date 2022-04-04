@@ -70,3 +70,12 @@ export const getDefaultScripts = ({ subdomain, version = defaultVersion }) => {
     },
   ];
 };
+
+export const initScript = (scripts) => {
+  if (window.formioScriptLoaded) {
+    if (FormioLoader) FormioLoader.initFormio();
+  } else {
+    window.formioScriptLoaded = true;
+    createScripts(scripts);
+  }
+};
