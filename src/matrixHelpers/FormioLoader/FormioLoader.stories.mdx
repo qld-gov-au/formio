@@ -1,6 +1,5 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
-import { createForm, createBuilder } from "../../utils";
-import * as FormioLoader from "./index.js";
+import * as FormioLoader from "./index";
 
 <Meta title="Helpers/FormioLoader" />
 
@@ -44,7 +43,7 @@ To initiate Formio instance on page load, simply include the script in your webp
   <Story name="initFormioMethod">
     {() => {
       setTimeout(() => {
-        // script to be executed after appending the div, if you've include the `form-loader.js` script in your application before page load, you can omit this as it will be automatically run.
+        // script to be executed after appending the div, if you've include the `form-script.js` script in your application, you can omit this as it will be automatically run.
         FormioLoader.initFormio();
       });
       return `

@@ -188,8 +188,6 @@ const initFormio = () => {
   });
 };
 
-initFormio();
-
 // Persistent fix for iPhone/Safari
 window.onpageshow = (event) => {
   if (event.persisted) {

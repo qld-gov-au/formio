@@ -23,7 +23,8 @@
     "document": true,
     "window": true,
     "$": true,
-    "premium": true
+    "premium": true,
+    "FormioLoader": true
   },
   "overrides": [
     {
