@@ -6,7 +6,7 @@ export const createForm = ({
   controller,
 }) => {
   const div = document.createElement("div");
-  div.className = "formio_container";
+  div.className = "qg-forms-v2";
 
   setTimeout(() => {
     Formio.createForm(div, form, options).then(controller);
