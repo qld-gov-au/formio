@@ -1,4 +1,4 @@
-import { createScripts } from ".";
+import { initScript } from ".";
 
 const version = window.formioQldCdnVersion || "248740";
 
@@ -41,4 +41,4 @@ const scripts = [
   },
 ];
 
-createScripts(scripts);
+initScript(scripts);

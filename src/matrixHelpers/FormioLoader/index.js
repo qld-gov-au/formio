@@ -1,3 +1,5 @@
+import createFormOptions from "../../options/createForm.options";
+
 const initFormioInstance = (formioElem, opts) => {
   // if already initiated, reject
   if (formioElem.dataset.formioFormUrl) return;
@@ -48,16 +50,7 @@ const initFormioInstance = (formioElem, opts) => {
     formUrl,
     // form,
     {
-      // Turn off default buttons
-      buttonSettings: {
-        showCancel: false,
-        showPrevious: false,
-        showNext: false,
-        showSubmit: false,
-      },
-      i18n: {
-        en: { pattern: "Must use the format shown" },
-      },
+      ...createFormOptions,
       formio,
       namespace: formio.options.namespace,
     }
@@ -187,8 +180,6 @@ const initFormio = () => {
     });
   });
 };
-
-initFormio();
 
 // Persistent fix for iPhone/Safari
 window.onpageshow = (event) => {

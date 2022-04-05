@@ -1,7 +1,7 @@
-import { createScripts, getDefaultScripts } from ".";
+import { initScript, getDefaultScripts } from ".";
 
 const scripts = getDefaultScripts({
   subdomain: "dev-static",
 });
 
-createScripts(scripts);
+initScript(scripts);
