@@ -56,7 +56,10 @@ const initFormioInstance = (formioElem, opts) => {
         showSubmit: false,
       },
       i18n: {
-        en: { pattern: "Must use the format shown" },
+        en: { 
+           pattern: "Must use the format shown",
+           error: '<h2><span class="fa fa-exclamation-triangle"></span> Please check your answers</h2>',
+        },
       },
       formio,
       namespace: formio.options.namespace,
