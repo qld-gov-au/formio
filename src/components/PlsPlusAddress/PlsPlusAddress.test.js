@@ -211,10 +211,7 @@ test("PlsPlusAddress remove button is functional", async () => {
   await testWait();
 
   // warning should be visible
-  const warning = await findByText(
-    form,
-    `<span class="fa fa-exclamation-triangle"></span> Please check your answers`
-  );
+  const warning = await findByText(form, `Please check your answers`);
   expect(warning).toBeVisible();
 });
 
