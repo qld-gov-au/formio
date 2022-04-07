@@ -64,6 +64,7 @@ Then you can use gitBridge to test the modules in Squiz Matrix.
 - Update the version number in `package.json`, you can review the latest tag number by `git tag -l`.
 - Create a tag in https://github.com/qld-gov-au/formio, by running `git tag -a vx.x.x -m "your message"`, with the new version number you just updated.
 - Push the tag to remote by `git push origin vx.x.x`, with the new version number you just updated.
+- Create a PR on this commit/branch, then this will trigger the github action.
 - https://github.com/qld-gov-au/formio-qld-cdn `release` branch will automatically generated a folder for the new version.
 - The new folder in the above branch will automatically deploy to bamboo https://servicesmadesimpler.govnet.qld.gov.au/bamboo/browse/QSA-FOR/deployments DEV environment
 - To deploy to TEST/BETA/PROD, simply manually deploy the release in https://servicesmadesimpler.govnet.qld.gov.au/bamboo/browse/QSA-FOR/deployments
