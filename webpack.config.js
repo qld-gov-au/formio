@@ -79,6 +79,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, "./lib"), info: { minimized: true } },
+        { from: path.resolve(__dirname, "./src/assets") },
       ],
     }),
     new MiniCssExtractPlugin({}),
