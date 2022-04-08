@@ -34,13 +34,14 @@
     </label>
   </div>
 {% } %}
-{% if (ctx.self.manualModeEnabled) { %}
+{% if (ctx.self.manualModeEnabled && ( ctx.mode.manual || ctx.displayValue)) { %}
   <div ref="{{ ctx.nestedKey }}">
     {{ ctx.children }}
   </div>
 {% } %}
 {% if (ctx.mode.manual) { %}
 <div>
-  <p><a href="#" target="_blank">Please take part to improve our address database if we couldn't find your address.</a></p>
+  <!-- Todo Link/function to improve the address database -->
+  <!-- <p><a href="#" target="_blank">Please take part to improve our address database if we couldn't find your address.</a></p> -->
 </div>
 {% } %}

@@ -461,6 +461,7 @@ export class PlsPlusAddress extends ContainerComponent {
                 childElement.value = component.dataValue;
               });
             });
+            this.redraw();
           },
         });
 
@@ -571,6 +572,7 @@ export class PlsPlusAddress extends ContainerComponent {
     });
 
     this.updateRemoveIcon(index);
+    this.redraw();
   }
 
   getDisplayValue(value = this.address) {
