@@ -4,14 +4,68 @@ import { Meta } from "@storybook/addon-docs";
 
 # FormioScript
 
-FormioScript will help loading the necessary scripts that need to load a Formio form in your application.
+FormioScript provide shorthand implementation that helps loading the necessary scripts that need to load a Formio form in your application.
 Simply include it in your application and it will search through the page with Formio div container and initiated the Formio instances.
+
+**Before using FormioScript:**
 
 ```html
 <script
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"
   async="false"
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js"
 ></script>
+<script
+  async="false"
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.min.js"
+></script>
+<script
+  async="false"
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js"
+></script>
+<link
+  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
+  rel="stylesheet"
+/>
+<div id="formio1" class="qg-forms-v2"></div>
+<div id="formio2" class="qg-forms-v2"></div>
+<script>
+  Formio.createForm(
+    document.getElementById("formio1"),
+    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo"
+  );
+  Formio.createForm(
+    document.getElementById("formio2"),
+    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing"
+  );
+</script>
+```
+
+**After using FormioScript:**
+
+```html
+<div
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+></div>
+<div
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="testing"
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+></div>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
 ```
 
 You can replace `prod` in the `src` with `test` / `staging` / `dev` / `gitbridge` to load assets from different environments.
@@ -30,4 +84,14 @@ This script will load the following scripts into the page:
 
 ## Usage in Squiz Matrix
 
-Please refer to Squiz Matrix asset #249261 for usage example.
+Please refer to Squiz Matrix asset #249261.
+
+## FAQs
+
+### How to pass custom createForm options?
+
+You can use webhook function `window.formioCreateFormOptions` to customise the form options, please refer to [/docs/helpers-formioloader--custom-create-form-options-webhook](/docs/helpers-formioloader--custom-create-form-options-webhook) for details.
+
+### How to customise createForm form controller?
+
+You can use webhook function `window.formioCreateFormController` to customise the form controller, please refer to [/docs/helpers-formioloader--custom-create-form-controller-webhook](/docs/helpers-formioloader--custom-create-form-controller-webhook) for details.

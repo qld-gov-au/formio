@@ -11,14 +11,12 @@ const initFormioInstance = (formioElem, opts) => {
     );
     return;
   }
-  const bodyContainer = $("body");
   const defaultRedirect = "contact-us/response/";
   /*
    * setup config
    */
   const baseUrl = `https://${opts.envUrl.trim()}`;
-  const formioContainerId = formioElem.getAttribute("id");
-  const submitBtn = $(`#${formioContainerId} button[name='data[submit]']`);
+  const submitBtn = $(formioElem, `button[name='data[submit]']`);
   let formName = "";
   // Check if value is true/exists and is numeric
   if (opts.form_revision) {
@@ -45,16 +43,19 @@ const initFormioInstance = (formioElem, opts) => {
   /*
    * load formio form
    */
-  Formio.createForm(
-    formioElem,
-    formUrl,
-    // form,
-    {
-      ...createFormOptions,
-      formio,
-      namespace: formio.options.namespace,
-    }
-  ).then((wizard) => {
+  const defaultOptions = {
+    ...createFormOptions,
+    formio,
+    namespace: formio.options.namespace,
+  };
+  const combinedOptions = {
+    ...defaultOptions,
+    // combine with webhook options
+    ...(window.formioCreateFormOptions
+      ? window.formioCreateFormOptions({ ...opts, defaultOptions })
+      : {}),
+  };
+  Formio.createForm(formioElem, formUrl, combinedOptions).then((wizard) => {
     wizard.formio = formio;
     wizard.options.formio = formio;
 
@@ -64,7 +65,7 @@ const initFormioInstance = (formioElem, opts) => {
     const formModified = wizard._form.modified;
 
     // Force new tab on formlinks
-    bodyContainer.on("click", `#${formioContainerId} a`, (e) => {
+    $(formioElem).on("click", `a`, (e) => {
       e.target.target = "_blank";
     });
 
@@ -107,6 +108,11 @@ const initFormioInstance = (formioElem, opts) => {
           console.debug("Submission error");
         });
     });
+
+    // call webhook controller
+    if (window.formioCreateFormController) {
+      window.formioCreateFormController({ ...opts, form: wizard });
+    }
   });
 };
 
