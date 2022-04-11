@@ -15,11 +15,11 @@ export const createSSoForm = () => {
   }
 
   setTimeout(() => {
-    const namespace = "formio_ncwawujlwylhrfy";
     const formioApiDomain = "api.forms.platforms.qld.gov.au";
     const formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
     const formioLoginFormId = "oidcsso"; // configure in squiz component
     const formioServiceFormId = "devauthform"; // configure in squiz component
+    const namespace = `formio_${formioProjectId}`;
     // const formioBaseEndpoint = `https://api.forms.platforms.qld.gov.au/${formioProjectId}`;
     // const formioLoginFormEndpoint = `${formioBaseEndpoint}/${formioLoginFormId}?live=1`;
     // const formioServiceFormEndpoint = `${formioBaseEndpoint}/${formioServiceFormId}`;
