@@ -58,6 +58,7 @@ const initFormioInstance = (formioElem, opts) => {
         projectName: opts.projectName,
         formName: opts.formName,
         defaultOptions,
+        elem: formioElem,
       })),
   };
   Formio.createForm(formioElem, formUrl, combinedOptions).then((wizard) => {
@@ -121,6 +122,7 @@ const initFormioInstance = (formioElem, opts) => {
         projectName: opts.projectName,
         formName: opts.formName,
         form: wizard,
+        elem: formioElem,
       });
     }
   });

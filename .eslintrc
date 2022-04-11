@@ -24,7 +24,8 @@
     "window": true,
     "$": true,
     "premium": true,
-    "FormioLoader": true
+    "FormioLoader": true,
+    "localStorage": true
   },
   "overrides": [
     {

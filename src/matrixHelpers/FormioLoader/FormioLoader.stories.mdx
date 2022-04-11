@@ -126,7 +126,7 @@ FormioLoader.initFormioInstance(elem, {
 The example below only add the custom options to certain project or form with a single hook function.
 
 ```jsx
-const customFn = ({ envUrl, projectName, formName }) => {
+const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {
   if ({ envUrl === "api.forms.platforms.qld.gov.au") {
     return {
       readOnly: true,
@@ -214,7 +214,7 @@ FormioLoader.initFormioInstance(elem, {
 The example below only control the form to certain project or form.
 
 ```jsx
-const customFn = ({ envUrl, projectName, formName, form }) => {
+const customFn = ({ envUrl, projectName, formName, form, elem }) => {
   if (projectName === "project2" && formName === "form2") {
     form.on("change", (e) => {
       console.info("onChange", e);
