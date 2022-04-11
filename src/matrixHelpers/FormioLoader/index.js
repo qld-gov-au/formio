@@ -1,4 +1,4 @@
-import createFormOptions from "../../options/createForm.options";
+import defaultCreateFormOptions from "../../options/createForm.options";
 
 const initFormioInstance = (formioElem, opts) => {
   // if already initiated, reject
@@ -44,16 +44,21 @@ const initFormioInstance = (formioElem, opts) => {
    * load formio form
    */
   const defaultOptions = {
-    ...createFormOptions,
+    ...defaultCreateFormOptions,
     formio,
     namespace: formio.options.namespace,
   };
+
   const combinedOptions = {
     ...defaultOptions,
-    // combine with webhook options
-    ...(window.formioCreateFormOptions
-      ? window.formioCreateFormOptions({ ...opts, defaultOptions })
-      : {}),
+    // combine with hook options
+    ...(typeof opts.createFormOptions === "function" &&
+      opts.createFormOptions({
+        envUrl: opts.envUrl,
+        projectName: opts.projectName,
+        formName: opts.formName,
+        defaultOptions,
+      })),
   };
   Formio.createForm(formioElem, formUrl, combinedOptions).then((wizard) => {
     wizard.formio = formio;
@@ -109,9 +114,14 @@ const initFormioInstance = (formioElem, opts) => {
         });
     });
 
-    // call webhook controller
-    if (window.formioCreateFormController) {
-      window.formioCreateFormController({ ...opts, form: wizard });
+    // call hook controller
+    if (typeof opts.createFormController === "function") {
+      opts.createFormController({
+        envUrl: opts.envUrl,
+        projectName: opts.projectName,
+        formName: opts.formName,
+        form: wizard,
+      });
     }
   });
 };
@@ -174,6 +184,8 @@ const initFormio = () => {
       formioFormConfirmation,
       formioFormRevision,
       formioNamespace,
+      formioCreateformOptions,
+      formioCreateformController,
     } = formioElem.dataset;
     initFormioInstance(formioElem, {
       projectName: formioProjectName,
@@ -183,6 +195,8 @@ const initFormio = () => {
       formConfirmation: formioFormConfirmation,
       formRevision: formioFormRevision,
       namespace: formioNamespace,
+      createFormOptions: window[formioCreateformOptions],
+      createFormController: window[formioCreateformController],
     });
   });
 };
