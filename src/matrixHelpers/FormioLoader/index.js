@@ -1,4 +1,4 @@
-import createFormOptions from "../../options/createForm.options";
+import defaultCreateFormOptions from "../../options/createForm.options";
 
 const initFormioInstance = (formioElem, opts) => {
   // if already initiated, reject
@@ -11,14 +11,12 @@ const initFormioInstance = (formioElem, opts) => {
     );
     return;
   }
-  const bodyContainer = $("body");
   const defaultRedirect = "contact-us/response/";
   /*
    * setup config
    */
   const baseUrl = `https://${opts.envUrl.trim()}`;
-  const formioContainerId = formioElem.getAttribute("id");
-  const submitBtn = $(`#${formioContainerId} button[name='data[submit]']`);
+  const submitBtn = $(formioElem, `button[name='data[submit]']`);
   let formName = "";
   // Check if value is true/exists and is numeric
   if (opts.form_revision) {
@@ -45,16 +43,24 @@ const initFormioInstance = (formioElem, opts) => {
   /*
    * load formio form
    */
-  Formio.createForm(
-    formioElem,
-    formUrl,
-    // form,
-    {
-      ...createFormOptions,
-      formio,
-      namespace: formio.options.namespace,
-    }
-  ).then((wizard) => {
+  const defaultOptions = {
+    ...defaultCreateFormOptions,
+    formio,
+    namespace: formio.options.namespace,
+  };
+
+  const combinedOptions = {
+    ...defaultOptions,
+    // combine with hook options
+    ...(typeof opts.createFormOptions === "function" &&
+      opts.createFormOptions({
+        envUrl: opts.envUrl,
+        projectName: opts.projectName,
+        formName: opts.formName,
+        defaultOptions,
+      })),
+  };
+  Formio.createForm(formioElem, formUrl, combinedOptions).then((wizard) => {
     wizard.formio = formio;
     wizard.options.formio = formio;
 
@@ -64,7 +70,7 @@ const initFormioInstance = (formioElem, opts) => {
     const formModified = wizard._form.modified;
 
     // Force new tab on formlinks
-    bodyContainer.on("click", `#${formioContainerId} a`, (e) => {
+    $(formioElem).on("click", `a`, (e) => {
       e.target.target = "_blank";
     });
 
@@ -107,6 +113,16 @@ const initFormioInstance = (formioElem, opts) => {
           console.debug("Submission error");
         });
     });
+
+    // call hook controller
+    if (typeof opts.createFormController === "function") {
+      opts.createFormController({
+        envUrl: opts.envUrl,
+        projectName: opts.projectName,
+        formName: opts.formName,
+        form: wizard,
+      });
+    }
   });
 };
 
@@ -168,6 +184,8 @@ const initFormio = () => {
       formioFormConfirmation,
       formioFormRevision,
       formioNamespace,
+      formioCreateformOptions,
+      formioCreateformController,
     } = formioElem.dataset;
     initFormioInstance(formioElem, {
       projectName: formioProjectName,
@@ -177,6 +195,8 @@ const initFormio = () => {
       formConfirmation: formioFormConfirmation,
       formRevision: formioFormRevision,
       namespace: formioNamespace,
+      createFormOptions: window[formioCreateformOptions],
+      createFormController: window[formioCreateformController],
     });
   });
 };
