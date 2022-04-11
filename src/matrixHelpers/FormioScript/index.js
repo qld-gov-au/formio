@@ -1,8 +1,9 @@
 export const defaultVersion = window.formioQldCdnVersion || "v1/v1.x.x-latest";
 
-export const createScripts = (scripts, i = 0) => {
+export const createScripts = (scripts, i, mainResolve) => {
   if (i > scripts.length - 1) {
     FormioLoader.initFormio();
+    mainResolve();
     return;
   }
   const { type, async, src, href, rel } = scripts[i];
@@ -23,10 +24,10 @@ export const createScripts = (scripts, i = 0) => {
       };
     });
     promise.then(() => {
-      createScripts(scripts, i + 1);
+      createScripts(scripts, i + 1, mainResolve);
     });
   } else {
-    createScripts(scripts, i + 1);
+    createScripts(scripts, i + 1, mainResolve);
   }
 };
 
@@ -71,14 +72,16 @@ export const getDefaultScripts = ({ subdomain, version = defaultVersion }) => {
   ];
 };
 
-export const initScript = (scripts) => {
-  if (window.formioScriptLoaded) {
-    if (typeof FormioLoader !== "undefined")
-      setTimeout(() => {
-        FormioLoader.initFormio();
-      });
-  } else {
-    window.formioScriptLoaded = true;
-    createScripts(scripts);
-  }
-};
+export const initScript = (scripts) =>
+  new Promise((resolve) => {
+    if (window.formioScriptLoaded) {
+      if (typeof FormioLoader !== "undefined")
+        setTimeout(() => {
+          FormioLoader.initFormio();
+          resolve();
+        });
+    } else {
+      window.formioScriptLoaded = true;
+      createScripts(scripts, 0, resolve);
+    }
+  });

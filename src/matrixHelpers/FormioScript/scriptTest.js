@@ -4,4 +4,4 @@ const scripts = getDefaultScripts({
   subdomain: "test-static",
 });
 
-initScript(scripts);
+export const init = () => initScript(scripts);

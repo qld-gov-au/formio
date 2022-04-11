@@ -83,6 +83,9 @@ Simply include it in your application and it will search through the page with F
   };
 </script>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script>
+  FormioScript.init();
+</script>
 ```
 
 You can replace `prod` in the `src` with `test` / `staging` / `dev` / `gitbridge` to load assets from different environments.
@@ -102,6 +105,45 @@ This script will load the following scripts into the page:
 ## Usage in Squiz Matrix
 
 Please refer to Squiz Matrix asset #249261.
+
+## Create form dynamically
+
+You could create form dynamically after all the scripts are loaded.
+
+```html
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script>
+  FormioScript.init().then(() => {
+    const div = document.createElement("div");
+    FormioLoader.initFormioInstance(div, {
+      projectName: "project1",
+      formName: "form1",
+      envUrl: "api.forms.platforms.qld.gov.au",
+    });
+  });
+</script>
+```
+
+or using `FormioLoader.initFormio()` instead:
+
+```html
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script>
+  FormioScript.init().then(() => {
+    const div = document.createElement("div");
+    div.innerHtml = `
+    <div
+      class="qg-forms-v2"
+      data-formio
+      data-formio-project-name="project1"
+      data-formio-form-name="form1"
+      data-formio-env-url="api.forms.platforms.qld.gov.au"
+    ></div>
+    `;
+    FormioLoader.initFormio();
+  });
+</script>
+```
 
 ## FAQs
 
@@ -125,6 +167,7 @@ You can add `data-formio-createForm-options` in the div's data attribute with th
       readOnly: true,
     };
   };
+  FormioScript.init();
 </script>
 ```
 

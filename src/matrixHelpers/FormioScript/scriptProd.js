@@ -39,4 +39,4 @@ const scripts = [
   },
 ];
 
-initScript(scripts);
+export const init = () => initScript(scripts);
