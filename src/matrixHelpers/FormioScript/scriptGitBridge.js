@@ -34,11 +34,11 @@ const scripts = [
     href: `https://www.qld.gov.au/__data/assets/git_bridge/0025/${version}/premium.css`,
     rel: "stylesheet",
   },
-  {
-    type: "link",
-    href: `https://www.qld.gov.au/__data/assets/git_bridge/0025/${version}/formio-qld.min.css`,
-    rel: "stylesheet",
-  },
+  // {
+  //   type: "link",
+  //   href: `https://www.qld.gov.au/__data/assets/git_bridge/0025/${version}/formio-qld.min.css`,
+  //   rel: "stylesheet",
+  // },
 ];
 
 export const init = () => initScript(scripts);

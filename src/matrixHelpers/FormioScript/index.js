@@ -64,11 +64,11 @@ export const getDefaultScripts = ({ subdomain, version = defaultVersion }) => {
       href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/premium.css`,
       rel: "stylesheet",
     },
-    {
-      type: "link",
-      href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
-      rel: "stylesheet",
-    },
+    // {
+    //   type: "link",
+    //   href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
+    //   rel: "stylesheet",
+    // },
   ];
 };
 
