@@ -162,7 +162,13 @@ You can add `data-formio-createForm-options` in the div's data attribute with th
 ></div>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
 <script>
-  window.customFn1 = ({ envUrl, projectName, formName }) => {
+  window.customFn1 = ({
+    envUrl,
+    projectName,
+    formName,
+    defaultOptions,
+    elem,
+  }) => {
     return {
       readOnly: true,
     };
@@ -186,7 +192,7 @@ You can add `data-formio-createForm-controller` in the div's data attribute with
 ></div>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
 <script>
-  window.customFn2 = ({ envUrl, projectName, formName, form }) => {
+  window.customFn2 = ({ envUrl, projectName, formName, form, elem }) => {
     form.on("change", (e) => {
       console.info("onChange", e);
     });
