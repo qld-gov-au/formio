@@ -4,6 +4,16 @@ const CopyPlugin = require("copy-webpack-plugin");
 const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const getScriptConfig = (src) => {
+  return {
+    import: path.resolve(__dirname, src),
+    library: {
+      name: "FormioScript",
+      type: "umd",
+    },
+  };
+};
+
 module.exports = {
   entry: {
     "formio-qld.min": {
@@ -23,24 +33,19 @@ module.exports = {
         type: "umd",
       },
     },
-    "formio-script.dev.min": path.resolve(
-      __dirname,
+    "formio-script.dev.min": getScriptConfig(
       "src/matrixHelpers/FormioScript/scriptDev.js"
     ),
-    "formio-script.prod.min": path.resolve(
-      __dirname,
+    "formio-script.prod.min": getScriptConfig(
       "src/matrixHelpers/FormioScript/scriptProd.js"
     ),
-    "formio-script.staging.min": path.resolve(
-      __dirname,
+    "formio-script.staging.min": getScriptConfig(
       "src/matrixHelpers/FormioScript/scriptStaging.js"
     ),
-    "formio-script.test.min": path.resolve(
-      __dirname,
+    "formio-script.test.min": getScriptConfig(
       "src/matrixHelpers/FormioScript/scriptTest.js"
     ),
-    "formio-script.gitbridge.min": path.resolve(
-      __dirname,
+    "formio-script.gitbridge.min": getScriptConfig(
       "src/matrixHelpers/FormioScript/scriptGitBridge.js"
     ),
   },
