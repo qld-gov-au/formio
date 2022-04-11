@@ -39,8 +39,13 @@ Simply include it in your application and it will search through the page with F
 <script>
   Formio.createForm(
     document.getElementById("formio1"),
-    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo"
-  );
+    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo",
+    {readOnly: true}
+  ).then((form) {
+    form.on("change", (e) => {
+      console.info("onChange", e);
+    });
+  });
   Formio.createForm(
     document.getElementById("formio2"),
     "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing"
@@ -57,6 +62,8 @@ Simply include it in your application and it will search through the page with F
   data-formio-project-name="dev-svcwlpuksmwawwk"
   data-formio-form-name="plsPlusFormDemo"
   data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-createForm-options="customFn1"
+  data-formio-createForm-controller="customFn2"
 ></div>
 <div
   class="qg-forms-v2"
@@ -65,6 +72,16 @@ Simply include it in your application and it will search through the page with F
   data-formio-form-name="testing"
   data-formio-env-url="api.forms.platforms.qld.gov.au"
 ></div>
+<script>
+  window.customFn1 = () => ({
+    readOnly: true,
+  });
+  window.customFn2 = ({ form }) => {
+    form.on("change", (e) => {
+      console.info("onChange", e);
+    });
+  };
+</script>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
 ```
 
@@ -90,8 +107,47 @@ Please refer to Squiz Matrix asset #249261.
 
 ### How to pass custom createForm options?
 
-You can use webhook function `window.formioCreateFormOptions` to customise the form options, please refer to [/docs/helpers-formioloader--custom-create-form-options-webhook](/docs/helpers-formioloader--custom-create-form-options-webhook) for details.
+You can add `data-formio-createForm-options` in the div's data attribute with the function name you want to return the custom options.
+
+```html
+<div
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-createForm-options="customFn1"
+></div>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script>
+  window.customFn1 = ({ envUrl, projectName, formName }) => {
+    return {
+      readOnly: true,
+    };
+  };
+</script>
+```
 
 ### How to customise createForm form controller?
 
-You can use webhook function `window.formioCreateFormController` to customise the form controller, please refer to [/docs/helpers-formioloader--custom-create-form-controller-webhook](/docs/helpers-formioloader--custom-create-form-controller-webhook) for details.
+You can add `data-formio-createForm-controller` in the div's data attribute with the function name you want to customise the form controller.
+
+```html
+<div
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-createForm-controller="customFn2"
+></div>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script>
+  window.customFn2 = ({ envUrl, projectName, formName, form }) => {
+    form.on("change", (e) => {
+      console.info("onChange", e);
+    });
+  };
+  FormioScript.init();
+</script>
+```

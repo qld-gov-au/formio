@@ -70,15 +70,17 @@ This is useful if you want to dynamically inject a form element. (Although the `
 
 ### Options:
 
-| Option           | Description                                                 | Example                        |
-| ---------------- | ----------------------------------------------------------- | ------------------------------ |
-| projectName      | Formio project name                                         | dev-svcwlpuksmwawwk            |
-| formName         | Formio form name                                            | plsPlusFormDemo                |
-| envUrl           | domain name of the Formio endpoint                          | api.forms.platforms.qld.gov.au |
-| formConfirmation | redirect page for wizard after submission                   | /                              |
-| formRevision     | form revision number                                        | 1                              |
-| pdfDownload      | Does the form involve pdf download                          | no                             |
-| namespace        | Namespace of the form for creating key for token, user, etc | any string                     |
+| Option               | Description                                                                                                                                  | Example                                                       |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| projectName          | Formio project name                                                                                                                          | dev-svcwlpuksmwawwk                                           |
+| formName             | Formio form name                                                                                                                             | plsPlusFormDemo                                               |
+| envUrl               | domain name of the Formio endpoint                                                                                                           | api.forms.platforms.qld.gov.au                                |
+| formConfirmation     | redirect page for wizard after submission                                                                                                    | /                                                             |
+| formRevision         | form revision number                                                                                                                         | 1                                                             |
+| pdfDownload          | Does the form involve pdf download                                                                                                           | no                                                            |
+| namespace            | Namespace of the form for creating key for token, user, etc                                                                                  | any string                                                    |
+| createFormOptions    | function that returns [options](https://help.form.io/developers/form-renderer#form-renderer-options) to be passed to the createForm function | ({ envUrl, projectName, formName, defaultOptions }) => object |
+| createFormController | custom form controller function                                                                                                              | ({ envUrl, projectName, formName, form }) => void)            |
 
 <Canvas withSource="open">
   <Story name="initFormioInstanceMethod">
@@ -99,25 +101,32 @@ This is useful if you want to dynamically inject a form element. (Although the `
   </Story>
 </Canvas>
 
-## Custom createForm options with webhook
+## Custom createForm options with `createFormOptions` hook
 
-You can create a webhook function `window.formioCreateFormOptions` to customise the [options](https://help.form.io/developers/form-renderer#form-renderer-options) pass to the each `createForm` function.
-Also you could pass different options base on different project or form.
+You can create a hook function `createFormOptions` to customise the [options](https://help.form.io/developers/form-renderer#form-renderer-options).
+Within the function you could pass different options base on different project or form.
 
-This webhook function can be placed in anywhere of your page. The example below will add the custom options to every forms in the page.
+The example below will add the custom options to every forms in the page.
 
 ```jsx
-window.formioCreateFormOptions = () => {
+const customFn = () => {
   return {
     readOnly: true,
   };
 };
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
 ```
 
-The example below only add the custom options to certain project or form.
+The example below only add the custom options to certain project or form with a single hook function.
 
 ```jsx
-window.formioCreateFormOptions = ({ envUrl, projectName, formName }) => {
+const customFn = ({ envUrl, projectName, formName }) => {
   if ({ envUrl === "api.forms.platforms.qld.gov.au") {
     return {
       readOnly: true,
@@ -135,6 +144,20 @@ window.formioCreateFormOptions = ({ envUrl, projectName, formName }) => {
   }
   return {};
 };
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
 ```
 
 Please refer to https://help.form.io/developers/form-renderer#form-renderer-options for available options.
@@ -142,21 +165,14 @@ Please refer to https://help.form.io/developers/form-renderer#form-renderer-opti
 Below is a full example:
 
 <Canvas withSource="open">
-  <Story name="custom CreateForm Options Webhook">
+  <Story name="custom CreateForm Options hook">
     {() => {
-      window.formioCreateFormOptions = ({
-        projectName,
-        formName,
-        defaultOptions,
-      }) => {
-        if (projectName === "dev-svcwlpuksmwawwk" && formName === "testing1") {
-          // you can see the defaultOptions in the browser's inspector, and possible to manipulate and return it.
-          console.info("defaultOptions:", defaultOptions);
-          return {
-            readOnly: true,
-          };
-        }
-        return {};
+      const customFn = ({ defaultOptions }) => {
+        // you can see the defaultOptions in the browser's inspector, and possible to manipulate and return it.
+        console.info("defaultOptions:", defaultOptions);
+        return {
+          readOnly: true,
+        };
       };
       setTimeout(() => {
         const elem = document.getElementById("formio-options");
@@ -165,6 +181,7 @@ Below is a full example:
           formName: "testing1",
           envUrl: "api.forms.platforms.qld.gov.au",
           pdfDownload: "no",
+          createFormOptions: customFn,
         });
       });
       return `
@@ -174,35 +191,50 @@ Below is a full example:
   </Story>
 </Canvas>
 
-## Controlling the Form with JavaScript
+## Controlling the Form with JavaScript with `createFormController` hook
 
-You can use the webhook function `window.formioCreateFormController` to control the form after initialisation, as described in https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript.
-
-This webhook function can be placed in anywhere of your page. The example below will add the custom options to every forms in the page.
+You can create a hook function `createFormController` to customise the [form controller](https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript).
+Within the function you could customise the controller base on different project or form.
 
 ```jsx
-window.formioCreateFormController = ({ form }) => {
+const customFn = ({ form }) => {
   form.on("change", (e) => {
     console.info("onChange", e);
   });
 };
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormController: customFn,
+});
 ```
 
 The example below only control the form to certain project or form.
 
 ```jsx
-window.formioCreateFormController = ({
-  envUrl,
-  projectName,
-  formName,
-  form,
-}) => {
+const customFn = ({ envUrl, projectName, formName, form }) => {
   if (projectName === "project2" && formName === "form2") {
     form.on("change", (e) => {
       console.info("onChange", e);
     });
   }
 };
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
 ```
 
 Please refer to https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript for more examples.
@@ -210,15 +242,13 @@ Please refer to https://help.form.io/developers/form-renderer#controlling-the-fo
 Below is a full example:
 
 <Canvas withSource="open">
-  <Story name="custom CreateForm controller Webhook">
+  <Story name="custom CreateForm controller hook">
     {() => {
-      window.formioCreateFormController = ({ projectName, formName, form }) => {
-        if (projectName === "dev-svcwlpuksmwawwk" && formName === "testing2") {
-          form.on("change", (e) => {
-            // you can see the data object in the browser's inspector whenever you change the field value.
-            console.info("onChange", e.data);
-          });
-        }
+      const customFn = ({ form }) => {
+        form.on("change", (e) => {
+          // you can see the data object in the browser's inspector whenever you change the field value.
+          console.info("onChange", e.data);
+        });
       };
       setTimeout(() => {
         const elem = document.getElementById("formio-controller");
@@ -227,6 +257,7 @@ Below is a full example:
           formName: "testing2",
           envUrl: "api.forms.platforms.qld.gov.au",
           pdfDownload: "no",
+          createFormController: customFn,
         });
       });
       return `
