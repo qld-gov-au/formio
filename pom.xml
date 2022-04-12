@@ -63,6 +63,16 @@
                             <arguments>run test</arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>storybook</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <phase>storybook</phase>
+                        <configuration>
+                            <arguments>run storybook</arguments>
+                        </configuration>
+                    </execution>
 
 <!--                    <execution>-->
 <!--                        <id>npm integration</id>-->

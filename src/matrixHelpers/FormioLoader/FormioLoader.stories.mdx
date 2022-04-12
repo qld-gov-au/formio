@@ -1,0 +1,268 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import * as FormioLoader from "./index";
+
+<Meta title="Helpers/FormioLoader" />
+
+# FormioLoader
+
+FormioLoader provide function for you to initiate Formio instance.
+To use it, simply include the script in your webpage and it will initiate Formio instance with the div that contains `data-formio` attribute.
+
+```html
+<script
+  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js"
+  async="false"
+></script>
+```
+
+Sample Formio div placeholder:
+
+```jsx
+<div
+  id="formio"
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-form-confirmation=""
+  data-formio-form-revision=""
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-pdf-download="no"
+  data-formio-namespace=""
+></div>
+```
+
+Please note that you'll need to include `formio.full.js`/`formio.full.min.js`, and other necessary formio scripts before using this script.
+You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to auto load all Formio related scripts.
+
+## Initiate on page load
+
+To initiate Formio instance on page load, simply include the script in your webpage.
+
+<Canvas withSource="open">
+  <Story name="initFormioMethod">
+    {() => {
+      setTimeout(() => {
+        // script to be executed after appending the div, if you've include the `form-script.js` script in your application, you can omit this as it will be automatically run.
+        FormioLoader.initFormio();
+      });
+      return `
+        <div id="formio" 
+          class="qg-forms-v2"
+          data-formio 
+          data-formio-project-name="dev-svcwlpuksmwawwk" 
+          data-formio-form-name="plsPlusFormDemo" 
+          data-formio-form-confirmation="" 
+          data-formio-form-revision="" 
+          data-formio-env-url="api.forms.platforms.qld.gov.au" 
+          data-formio-pdf-download="no" 
+          data-formio-namespace="" 
+        ></div>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## Alternate init method
+
+If the script is already loaded, you could init the form with an alternate method `FormioLoader.initFormioInstance`.
+This is useful if you want to dynamically inject a form element. (Although the `FormioLoader.initFormio()` method will work the same)
+
+### Options:
+
+| Option               | Description                                                                                                                                  | Example                                                       |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| projectName          | Formio project name                                                                                                                          | dev-svcwlpuksmwawwk                                           |
+| formName             | Formio form name                                                                                                                             | plsPlusFormDemo                                               |
+| envUrl               | domain name of the Formio endpoint                                                                                                           | api.forms.platforms.qld.gov.au                                |
+| formConfirmation     | redirect page for wizard after submission                                                                                                    | /                                                             |
+| formRevision         | form revision number                                                                                                                         | 1                                                             |
+| pdfDownload          | Does the form involve pdf download                                                                                                           | no                                                            |
+| namespace            | Namespace of the form for creating key for token, user, etc                                                                                  | any string                                                    |
+| createFormOptions    | function that returns [options](https://help.form.io/developers/form-renderer#form-renderer-options) to be passed to the createForm function | ({ envUrl, projectName, formName, defaultOptions }) => object |
+| createFormController | custom form controller function                                                                                                              | ({ envUrl, projectName, formName, form }) => void)            |
+
+<Canvas withSource="open">
+  <Story name="initFormioInstanceMethod">
+    {() => {
+      setTimeout(() => {
+        const elem = document.getElementById("formio-alt");
+        FormioLoader.initFormioInstance(elem, {
+          projectName: "dev-svcwlpuksmwawwk",
+          formName: "plsPlusFormDemo",
+          envUrl: "api.forms.platforms.qld.gov.au",
+          pdfDownload: "no",
+        });
+      });
+      return `
+        <div id="formio-alt" class="qg-forms-v2" ></div>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## Custom createForm options with `createFormOptions` hook
+
+You can create a hook function `createFormOptions` to customise the [options](https://help.form.io/developers/form-renderer#form-renderer-options).
+Within the function you could pass different options base on different project or form.
+
+The example below will add the custom options to every forms in the page.
+
+```jsx
+const customFn = () => {
+  return {
+    readOnly: true,
+  };
+};
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+```
+
+The example below only add the custom options to certain project or form with a single hook function.
+
+```jsx
+const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {
+  if ({ envUrl === "api.forms.platforms.qld.gov.au") {
+    return {
+      readOnly: true,
+    };
+  }
+  if (projectName === "project1") {
+    return {
+      readOnly: true,
+    };
+  }
+  if (projectName === "project2" && formName === "form2") {
+    return {
+      readOnly: true,
+    };
+  }
+  return {};
+};
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
+```
+
+Please refer to https://help.form.io/developers/form-renderer#form-renderer-options for available options.
+
+Below is a full example:
+
+<Canvas withSource="open">
+  <Story name="custom CreateForm Options hook">
+    {() => {
+      const customFn = ({ defaultOptions }) => {
+        // you can see the defaultOptions in the browser's inspector, and possible to manipulate and return it.
+        console.info("defaultOptions:", defaultOptions);
+        return {
+          readOnly: true,
+        };
+      };
+      setTimeout(() => {
+        const elem = document.getElementById("formio-options");
+        FormioLoader.initFormioInstance(elem, {
+          projectName: "dev-svcwlpuksmwawwk",
+          formName: "testing1",
+          envUrl: "api.forms.platforms.qld.gov.au",
+          pdfDownload: "no",
+          createFormOptions: customFn,
+        });
+      });
+      return `
+        <div id="formio-options" class="qg-forms-v2" ></div>
+      `;
+    }}
+  </Story>
+</Canvas>
+
+## Controlling the Form with JavaScript with `createFormController` hook
+
+You can create a hook function `createFormController` to customise the [form controller](https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript).
+Within the function you could customise the controller base on different project or form.
+
+```jsx
+const customFn = ({ form }) => {
+  form.on("change", (e) => {
+    console.info("onChange", e);
+  });
+};
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormController: customFn,
+});
+```
+
+The example below only control the form to certain project or form.
+
+```jsx
+const customFn = ({ envUrl, projectName, formName, form, elem }) => {
+  if (projectName === "project2" && formName === "form2") {
+    form.on("change", (e) => {
+      console.info("onChange", e);
+    });
+  }
+};
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+```
+
+Please refer to https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript for more examples.
+
+Below is a full example:
+
+<Canvas withSource="open">
+  <Story name="custom CreateForm controller hook">
+    {() => {
+      const customFn = ({ form }) => {
+        form.on("change", (e) => {
+          // you can see the data object in the browser's inspector whenever you change the field value.
+          console.info("onChange", e.data);
+        });
+      };
+      setTimeout(() => {
+        const elem = document.getElementById("formio-controller");
+        FormioLoader.initFormioInstance(elem, {
+          projectName: "dev-svcwlpuksmwawwk",
+          formName: "testing2",
+          envUrl: "api.forms.platforms.qld.gov.au",
+          pdfDownload: "no",
+          createFormController: customFn,
+        });
+      });
+      return `
+        <div id="formio-controller" class="qg-forms-v2" ></div>
+      `;
+    }}
+  </Story>
+</Canvas>

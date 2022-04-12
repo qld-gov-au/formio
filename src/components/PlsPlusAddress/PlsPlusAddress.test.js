@@ -99,12 +99,24 @@ test("PlsPlusAddress is rendered", async () => {
     form: formSettings,
   });
   document.body.append(form);
+
   const label = await findByText(form, "PlsPlus Address field");
   expect(label).toBeVisible();
-  const autocomplete = form.querySelector("input[name='data[plsplusaddress]']");
-  expect(autocomplete).toBeVisible();
+  await testWait();
+  expect(
+    form.querySelector("input[name='data[plsplusaddress][address1]']")
+  ).toBeNull();
+
+  // user clicks on the manual mode checkbox
   const checkbox = form.querySelector("input[ref='modeSwitcher']");
-  expect(checkbox).toBeVisible();
+  expect(checkbox).not.toBeChecked();
+  await userEvent.click(checkbox);
+  await testWait();
+
+  // autocomplete should be disabled
+  const autocomplete = form.querySelector("input[ref='searchInput']");
+  expect(autocomplete).toBeDisabled();
+
   const address1 = form.querySelector(
     "input[name='data[plsplusaddress][address1]']"
   );
@@ -184,10 +196,9 @@ test("PlsPlusAddress remove button is functional", async () => {
   await testWait();
 
   // address1 automatically parsed and populated
-  const address1 = form.querySelector(
-    "input[name='data[plsplusaddress][address1]']"
-  );
-  expect(address1).toHaveValue(
+  expect(
+    form.querySelector("input[name='data[plsplusaddress][address1]']")
+  ).toHaveValue(
     fixtures[`formData${caseName}`].plsplusaddress.address.address1
   );
   await testWait();
@@ -198,11 +209,15 @@ test("PlsPlusAddress remove button is functional", async () => {
   );
 
   // user clicks on remove button
-  await userEvent.click(removeButton);
-
-  // fields should be cleared
-  expect(address1).toHaveValue("");
-  expect(autocomplete).toHaveValue("");
+  await userEvent.click(form.querySelector("i[ref='removeValueIcon']"));
+  await testWait();
+  // sub-address fields should be hidden, autocomplete field should be empty
+  expect(
+    form.querySelector("input[name='data[plsplusaddress][address1]']")
+  ).toBeNull();
+  expect(form.querySelector("input[name='data[plsplusaddress]']")).toHaveValue(
+    ""
+  );
 
   // form should be invalid if submitted
   const button = getByText(form, "Submit");
@@ -211,10 +226,7 @@ test("PlsPlusAddress remove button is functional", async () => {
   await testWait();
 
   // warning should be visible
-  const warning = await findByText(
-    form,
-    "Please fix the following errors before submitting."
-  );
+  const warning = await findByText(form, `Please check your answers`);
   expect(warning).toBeVisible();
 });
 
