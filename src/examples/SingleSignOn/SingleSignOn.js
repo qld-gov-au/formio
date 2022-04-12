@@ -40,18 +40,11 @@ export const createSSoForm = () => {
         form.on("submitDone", function submitDoneCleanup(submission) {
           console.info("submission", submission);
 
-          Formio.logout(form.formio, { namespace });
-
-          function afterTimeout() {
-            // logout the user for security
-            Formio.logout(form.formio, {
-              namespace,
-            }).then(() => {
-              window.location.reload();
-            });
-          }
-
-          setTimeout(afterTimeout, 500000); // Logout after 500 seconds
+          Formio.logout(form.formio, {
+            namespace,
+          }).then(() => {
+            window.location.reload();
+          });
         });
       };
 
