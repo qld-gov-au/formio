@@ -76,7 +76,7 @@ export const createSSoForm = () => {
         popup.close();
         resetDiv();
         pickForm();
-      }, 1000);
+      }, 2000);
     });
   };
 
