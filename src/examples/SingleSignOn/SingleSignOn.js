@@ -39,29 +39,16 @@ export const createSSoForm = () => {
         // This section of code is the "Form Controller"
         form.on("submitDone", function submitDoneCleanup(submission) {
           console.info("submission", submission);
-          // remove form.io api tokens after submission for security
-          localStorage.removeItem(`${namespace}Token`);
-          localStorage.removeItem(`${namespace}User`);
 
-          window.location =
-            "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout";
+          Formio.logout(form.formio, { namespace });
 
           function afterTimeout() {
             // logout the user for security
-            const logoutUrl =
-              "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout";
-            // maintain login for office 365 accounts
-
-            // add your own URL encoded confirmation page URL here in place of window.location.href.split('#')[0];
-            const returnUiParams = "?submitted";
-            let params = `?redirect_uri=${encodeURI(
-              window.location.href.split("#")[0] + returnUiParams
-            )}`;
-
-            if (user.data.idp_type && user.data.idp_type === "employee") {
-              params += "&initiating_idp=o365";
-            }
-            window.location.href = logoutUrl + params;
+            Formio.logout(form.formio, {
+              namespace,
+            }).then(() => {
+              window.location.reload();
+            });
           }
 
           setTimeout(afterTimeout, 500000); // Logout after 500 seconds
