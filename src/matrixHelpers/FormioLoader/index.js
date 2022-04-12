@@ -1,8 +1,28 @@
 import defaultCreateFormOptions from "../../options/createForm.options";
 
+// polyfill plugin function to fix the namespace option doesn't pass to Formio.makeRequest
+const NamespacePlugin = {
+  priority: 0,
+  preRequest(requestArgs) {
+    if (requestArgs.formio) {
+      const formioInstance = document.querySelector(
+        `[data-formio-form-url="${requestArgs.formio.formUrl}"]`
+      );
+      if (formioInstance) {
+        requestArgs.formio = JSON.parse(formioInstance.dataset.formio);
+        requestArgs.opts.formio = requestArgs.formio;
+      }
+      if (requestArgs.formio.options)
+        requestArgs.opts.namespace = requestArgs.formio.options.namespace;
+    }
+    return Promise.resolve(null);
+  },
+};
+
 const initFormioInstance = (formioElem, opts) => {
   // if already initiated, reject
   if (formioElem.dataset.formioFormUrl) return;
+
   // if doesn't have required options, reject
   if (!opts.envUrl || !opts.projectName || !opts.formName) {
     console.warn(
@@ -61,6 +81,11 @@ const initFormioInstance = (formioElem, opts) => {
         elem: formioElem,
       })),
   };
+
+  // register plugin
+  if (!Formio.getPlugin("namespacePolyfill"))
+    Formio.registerPlugin(NamespacePlugin, "namespacePolyfill");
+
   Formio.createForm(formioElem, formUrl, combinedOptions).then((wizard) => {
     wizard.formio = formio;
     wizard.options.formio = formio;
@@ -128,25 +153,6 @@ const initFormioInstance = (formioElem, opts) => {
   });
 };
 
-// polyfill plugin function to fix the namespace option doesn't pass to Formio.makeRequest
-const NamespacePlugin = {
-  priority: 0,
-  preRequest(requestArgs) {
-    if (requestArgs.formio) {
-      const formioInstance = document.querySelector(
-        `[data-form-url="${requestArgs.formio.formUrl}"]`
-      );
-      if (formioInstance) {
-        requestArgs.formio = JSON.parse(formioInstance.dataset.formio);
-        requestArgs.opts.formio = requestArgs.formio;
-      }
-      if (requestArgs.formio.options)
-        requestArgs.opts.namespace = requestArgs.formio.options.namespace;
-    }
-    return Promise.resolve(null);
-  },
-};
-
 const customiseErrorMessage = () => {
   const newFunc = Formio.Form.prototype.errorForm.bind({});
   Formio.Form.prototype.errorForm = (err) => {
@@ -173,9 +179,6 @@ const initFormio = () => {
 
   // custom error message
   customiseErrorMessage();
-
-  // register plugin
-  Formio.registerPlugin(NamespacePlugin, "namespacePolyfill");
 
   document.querySelectorAll("[data-formio]").forEach((formioElem) => {
     const {

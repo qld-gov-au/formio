@@ -38,10 +38,13 @@ export const createSSoForm = () => {
         // window.form = form;
         // This section of code is the "Form Controller"
         form.on("submitDone", function submitDoneCleanup(submission) {
-          console.info(submission);
+          console.info("submission", submission);
           // remove form.io api tokens after submission for security
           localStorage.removeItem(`${namespace}Token`);
           localStorage.removeItem(`${namespace}User`);
+
+          window.location =
+            "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout";
 
           function afterTimeout() {
             // logout the user for security
@@ -82,13 +85,14 @@ export const createSSoForm = () => {
       // );
 
       const createFormController = ({ form }) => {
-        console.info(`Loaded form: ${form.formio.formUrl}`);
+        console.info(`Loaded form: ${form.formio.formUrl}`, form);
         // console.info(JSON.stringify(form.formio));
         form.on("submitDone", (submission) => {
-          console.info(submission);
-          Formio.currentUser().then((userDetails) => {
+          console.info("submission", submission);
+
+          form.formio.currentUser({ namespace }).then((userDetails) => {
             // clean up URL paramters from submission or logout redirect
-            console.info(userDetails);
+            console.info("userDetails", userDetails);
             // const parent = document.getElementById("oidc_form").parentElement;
             oidcform.remove();
             // const oidcformNew = document.createElement("div");
@@ -115,7 +119,7 @@ export const createSSoForm = () => {
 
     function pickForm() {
       user = Formio.getUser({ namespace });
-      console.info(user);
+      console.info("user", user);
       if (user) {
         appendSpinner(formioDiv);
         realFormSetup();
