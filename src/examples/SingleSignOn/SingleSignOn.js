@@ -90,18 +90,6 @@ export const createSSoForm = () => {
         form.on("submitDone", (submission) => {
           console.info("submission", submission);
 
-          // hacky workaround to set token based on namespace
-          // localStorage.setItem(
-          //   `${namespace}Token`,
-          //   localStorage.getItem("formioToken")
-          // );
-          // localStorage.setItem(
-          //   `${namespace}User`,
-          //   localStorage.getItem("formioUser")
-          // );
-          // localStorage.removeItem("formioToken");
-          // localStorage.removeItem("formioUser");
-
           form.formio.currentUser({ namespace }).then((userDetails) => {
             // clean up URL paramters from submission or logout redirect
             console.info("userDetails", userDetails);
