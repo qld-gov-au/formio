@@ -4,12 +4,11 @@ export const createSSoForm = () => {
   const formioApiDomain = "api.forms.platforms.qld.gov.au";
   const formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
   const formioLoginFormId = "oidcsso"; // configure in squiz component
-  const formioServiceFormId = "devauthform"; // configure in squiz component
+  const formioServiceFormId = "devauthformstorybook"; // configure in squiz component
   const namespace = `formio_${formioProjectId}`;
   const div = document.createElement("div");
   let oidcform;
   let formioDiv;
-
   const resetDiv = () => {
     div.innerHTML = `
     <div id="oidc_form"></div>
@@ -53,13 +52,18 @@ export const createSSoForm = () => {
     //     pickForm();
     //   });
     // });
+    const user = Formio.getUser({ namespace });
+    let param = "";
+    if (user?.data?.idp_type && user.data.idp_type === "employee") {
+      param = "?initiating_idp=o365";
+    }
 
     Formio.logout(form.formio, {
       namespace,
     }).then(() => {
       // window.location.reload();
       const popup = window.open(
-        "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
+        `https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
