@@ -88,10 +88,14 @@ const initFormioInstance = (elem, opts) => {
     form.formio = formio;
     form.options.formio = formio;
 
-    // Force new tab on formlinks
-    $(elem).on("click", `a`, (e) => {
-      e.target.target = "_blank";
-    });
+    if (typeof opts.createFormCallback === "function") {
+      opts.createFormCallback();
+    } else {
+      // Force new tab on formlinks
+      $(elem).on("click", `a`, (e) => {
+        e.target.target = "_blank";
+      });
+    }
 
     defaultCreateFormController({
       form,
