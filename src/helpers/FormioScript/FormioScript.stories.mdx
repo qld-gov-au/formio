@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs";
 
 # FormioScript
 
-FormioScript provide shorthand implementation that helps loading the necessary scripts that need to load a Formio form in your application.
+FormioScript provide shorthand implementation to lazy load the necessary libraries and scripts that need to initiate a Formio form in your application.
 Simply include it in your application and it will search through the page with Formio div container and initiated the Formio instances.
 
 **Before using FormioScript:**
@@ -28,10 +28,6 @@ Simply include it in your application and it will search through the page with F
 />
 <link
   href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
   rel="stylesheet"
 />
 <div id="formio1" class="qg-forms-v2"></div>
@@ -64,6 +60,7 @@ Simply include it in your application and it will search through the page with F
   data-formio-env-url="api.forms.platforms.qld.gov.au"
   data-formio-createForm-options="customFn1"
   data-formio-createForm-controller="customFn2"
+  data-formio-createForm-callback="customFn3"
 ></div>
 <div
   class="qg-forms-v2"
@@ -81,6 +78,7 @@ Simply include it in your application and it will search through the page with F
       console.info("onChange", e);
     });
   };
+  window.customFn3 = () => {};
 </script>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
 <script>
