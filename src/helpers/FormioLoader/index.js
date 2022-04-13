@@ -87,9 +87,17 @@ const initFormioInstance = (elem, opts) => {
   Formio.createForm(elem, formUrl, combinedOptions).then((form) => {
     form.formio = formio;
     form.options.formio = formio;
+    const callbackProps = {
+      form,
+      elem,
+      envUrl: opts.envUrl,
+      projectName: opts.projectName,
+      formName: opts.formName,
+    };
 
     if (typeof opts.createFormCallback === "function") {
-      opts.createFormCallback();
+      // call custom callback hook
+      opts.createFormCallback(callbackProps);
     } else {
       // Force new tab on formlinks
       $(elem).on("click", `a`, (e) => {
@@ -97,21 +105,12 @@ const initFormioInstance = (elem, opts) => {
       });
     }
 
-    defaultCreateFormController({
-      form,
-      ...opts,
-      elem,
-    });
+    // default controller
+    defaultCreateFormController(callbackProps);
 
-    // call hook controller
+    // call custom hook controller
     if (typeof opts.createFormController === "function") {
-      opts.createFormController({
-        envUrl: opts.envUrl,
-        projectName: opts.projectName,
-        formName: opts.formName,
-        form,
-        elem,
-      });
+      opts.createFormController(callbackProps);
     }
   });
 };
