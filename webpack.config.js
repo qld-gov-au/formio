@@ -33,7 +33,7 @@ module.exports = {
     "formio-script.dev.min": getScriptConfig(
       "src/helpers/FormioScript/index.dev.js"
     ),
-    "formio-script.prod.min": getScriptConfig(
+    "formio-script.min": getScriptConfig(
       "src/helpers/FormioScript/index.prod.js"
     ),
     "formio-script.staging.min": getScriptConfig(

@@ -87,7 +87,7 @@ Simply include it in your application and it will search through the page with F
   };
   window.customFn3 = () => {};
 </script>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
   FormioScript.init();
 </script>
@@ -116,7 +116,7 @@ Please refer to Squiz Matrix asset #249261.
 You could create form dynamically after all the scripts are loaded.
 
 ```html
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
   FormioScript.init().then(() => {
     const div = document.createElement("div");
@@ -132,7 +132,7 @@ You could create form dynamically after all the scripts are loaded.
 or using `FormioLoader.initFormio()` instead:
 
 ```html
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
   FormioScript.init().then(() => {
     const div = document.createElement("div");
@@ -165,7 +165,7 @@ You can add `data-formio-createForm-options` in the div's data attribute with th
   data-formio-env-url="api.forms.platforms.qld.gov.au"
   data-formio-createForm-options="customFn1"
 ></div>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
   window.customFn1 = ({
     envUrl,
@@ -195,7 +195,7 @@ You can add `data-formio-createForm-controller` in the div's data attribute with
   data-formio-env-url="api.forms.platforms.qld.gov.au"
   data-formio-createForm-controller="customFn2"
 ></div>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.prod.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
   window.customFn2 = ({ envUrl, projectName, formName, form, elem }) => {
     form.on("change", (e) => {
