@@ -1,5 +1,18 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
-import * as FormioLoader from ".";
+import {
+  InitFormio,
+  initFormioTemplate,
+  initFormioCode,
+  InitFormioInstance,
+  initFormioInstanceTemplate,
+  initFormioInstanceCode,
+  CustomOptions,
+  customOptionsTemplate,
+  customOptionsCode,
+  CustomController,
+  customControllerTemplate,
+  customControllerCode,
+} from "./stories";
 
 <Meta title="Helpers/FormioLoader" />
 
@@ -36,41 +49,13 @@ You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to la
 
 To initiate Formio instance on page load, simply include the script in your webpage.
 
-export function initFormioMethodFn() {
-  FormioLoader.initFormio();
-}
-
-export const initFormioMethodTemplate = `
-<div id="formio" 
-  class="qg-forms-v2"
-  data-formio 
-  data-formio-project-name="dev-svcwlpuksmwawwk" 
-  data-formio-form-name="plsPlusFormDemo" 
-  data-formio-form-confirmation="" 
-  data-formio-form-revision="" 
-  data-formio-env-url="api.forms.platforms.qld.gov.au" 
-  data-formio-pdf-download="no" 
-  data-formio-namespace="" 
-></div>
-`;
-
-export const initFormioMethodCode = `
-${initFormioMethodTemplate}
-<script>
-${initFormioMethodFn
-  .toString()
-  .replaceAll("___WEBPACK_IMPORTED_MODULE_3__", "FormioLoader")}
-initFormioMethodFn();
-</script>
-`;
-
 <Canvas withSource="open">
   <Story
-    name="initFormioMethod"
+    name="initFormio"
     parameters={{
       docs: {
         source: {
-          code: initFormioMethodCode,
+          code: initFormioCode,
           language: "html",
         },
       },
@@ -78,10 +63,9 @@ initFormioMethodFn();
   >
     {() => {
       setTimeout(() => {
-        // script to be executed after appending the div, if you've include the `form-script.js` script in your application, you can omit this as it will be automatically run.
-        initFormioMethodFn();
+        InitFormio();
       });
-      return initFormioMethodTemplate;
+      return initFormioTemplate;
     }}
   </Story>
 </Canvas>
@@ -106,37 +90,13 @@ This is useful if you want to dynamically inject a form element. (Although the `
 | createFormController | custom form controller function                                                                                                              | ({ envUrl, projectName, formName, form, elem }) => void)            |
 | createFormCallback   | custom callback function after a form is created by `Formio.createForm`                                                                      | ({ envUrl, projectName, formName, form, elem }) => void)            |
 
-export function initFormioInstanceMethodFn() {
-  const elem = document.getElementById("formio-alt");
-  FormioLoader.initFormioInstance(elem, {
-    projectName: "dev-svcwlpuksmwawwk",
-    formName: "plsPlusFormDemo",
-    envUrl: "api.forms.platforms.qld.gov.au",
-    pdfDownload: "no",
-  });
-}
-
-export const initFormioInstanceMethodTemplate = `
-<div id="formio-alt" class="qg-forms-v2" ></div>
-`;
-
-export const initFormioInstanceMethodCode = `
-${initFormioInstanceMethodTemplate}
-<script>
-${initFormioInstanceMethodFn
-  .toString()
-  .replaceAll("___WEBPACK_IMPORTED_MODULE_3__", "FormioLoader")}
-initFormioInstanceMethodFn();
-</script>
-`;
-
 <Canvas withSource="open">
   <Story
-    name="initFormioInstanceMethod"
+    name="initFormioInstance"
     parameters={{
       docs: {
         source: {
-          code: initFormioInstanceMethodCode,
+          code: initFormioInstanceCode,
           language: "html",
         },
       },
@@ -144,9 +104,9 @@ initFormioInstanceMethodFn();
   >
     {() => {
       setTimeout(() => {
-        initFormioInstanceMethodFn();
+        InitFormioInstance();
       });
-      return initFormioInstanceMethodTemplate;
+      return initFormioInstanceTemplate;
     }}
   </Story>
 </Canvas>
@@ -214,38 +174,6 @@ Please refer to https://help.form.io/developers/form-renderer#form-renderer-opti
 
 Below is a full example:
 
-export function customOptionsFn() {
-  function customFn({ defaultOptions }) {
-    // you can see the defaultOptions in the browser's inspector, and possible to manipulate and return it.
-    console.info("defaultOptions:", defaultOptions);
-    return {
-      readOnly: true,
-    };
-  }
-  const elem = document.getElementById("formio-options");
-  FormioLoader.initFormioInstance(elem, {
-    projectName: "dev-svcwlpuksmwawwk",
-    formName: "testing1",
-    envUrl: "api.forms.platforms.qld.gov.au",
-    pdfDownload: "no",
-    createFormOptions: customFn,
-  });
-}
-
-export const customOptionsTemplate = `
-<div id="formio-options" class="qg-forms-v2" ></div>
-`;
-
-export const customOptionsCode = `
-${customOptionsTemplate}
-<script>
-${customOptionsFn
-  .toString()
-  .replaceAll("___WEBPACK_IMPORTED_MODULE_3__", "FormioLoader")}
-customOptionsFn();
-</script>
-`;
-
 <Canvas withSource="open">
   <Story
     name="custom CreateForm Options"
@@ -260,7 +188,7 @@ customOptionsFn();
   >
     {() => {
       setTimeout(() => {
-        customOptionsFn();
+        CustomOptions();
       });
       return customOptionsTemplate;
     }}
@@ -317,37 +245,6 @@ Please refer to https://help.form.io/developers/form-renderer#controlling-the-fo
 
 Below is a full example:
 
-export function customControllerFn() {
-  const customFn = ({ form }) => {
-    form.on("change", (e) => {
-      // you can see the data object in the browser's inspector whenever you change the field value.
-      console.info("onChange", e.data);
-    });
-  };
-  const elem = document.getElementById("formio-controller");
-  FormioLoader.initFormioInstance(elem, {
-    projectName: "dev-svcwlpuksmwawwk",
-    formName: "testing2",
-    envUrl: "api.forms.platforms.qld.gov.au",
-    pdfDownload: "no",
-    createFormController: customFn,
-  });
-}
-
-export const customControllerTemplate = `
-<div id="formio-controller" class="qg-forms-v2" ></div>
-`;
-
-export const customControllerCode = `
-${customControllerTemplate}
-<script>
-${customControllerFn
-  .toString()
-  .replaceAll("___WEBPACK_IMPORTED_MODULE_3__", "FormioLoader")}
-customControllerFn();
-</script>
-`;
-
 <Canvas withSource="open">
   <Story
     name="custom CreateForm controller"
@@ -362,11 +259,9 @@ customControllerFn();
   >
     {() => {
       setTimeout(() => {
-        customControllerFn();
+        CustomController();
       });
-      return `
-        <div id="formio-controller" class="qg-forms-v2" ></div>
-      `;
+      return customControllerTemplate;
     }}
   </Story>
 </Canvas>

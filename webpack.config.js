@@ -31,19 +31,19 @@ module.exports = {
       },
     },
     "formio-script.dev.min": getScriptConfig(
-      "src/helpers/FormioScript/scriptDev.js"
+      "src/helpers/FormioScript/index.dev.js"
     ),
     "formio-script.prod.min": getScriptConfig(
-      "src/helpers/FormioScript/scriptProd.js"
+      "src/helpers/FormioScript/index.prod.js"
     ),
     "formio-script.staging.min": getScriptConfig(
-      "src/helpers/FormioScript/scriptStaging.js"
+      "src/helpers/FormioScript/index.staging.js"
     ),
     "formio-script.test.min": getScriptConfig(
-      "src/helpers/FormioScript/scriptTest.js"
+      "src/helpers/FormioScript/index.testing.js"
     ),
     "formio-script.gitbridge.min": getScriptConfig(
-      "src/helpers/FormioScript/scriptGitBridge.js"
+      "src/helpers/FormioScript/index.gitbridge.js"
     ),
   },
   output: {
