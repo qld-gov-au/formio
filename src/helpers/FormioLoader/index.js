@@ -152,6 +152,7 @@ const initFormio = () => {
       formioNamespace,
       formioCreateformOptions,
       formioCreateformController,
+      formioCreateformCallback,
     } = elem.dataset;
     initFormioInstance(elem, {
       projectName: formioProjectName,
@@ -163,6 +164,7 @@ const initFormio = () => {
       namespace: formioNamespace,
       createFormOptions: window[formioCreateformOptions],
       createFormController: window[formioCreateformController],
+      createFormCallback: window[formioCreateformCallback],
     });
   });
 };
