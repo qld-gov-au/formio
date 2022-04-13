@@ -101,9 +101,9 @@ Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#get
 
 Custom Formio components.
 
-### src/matrixHelpers
+### src/helpers
 
-Helper modules for integrate Formio into Squiz Matrix.
+Helper modules for integrate Formio into Squiz Matrix/consumer application.
 
 ### src/examples
 

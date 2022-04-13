@@ -1,4 +1,4 @@
-import * as FormioLoader from "../../matrixHelpers/FormioLoader";
+import * as FormioLoader from "../../helpers/FormioLoader";
 
 export const createSSoForm = () => {
   const formioApiDomain = "api.forms.platforms.qld.gov.au";

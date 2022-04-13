@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { findByText } from "@testing-library/dom";
 import * as FormioLoader from "./index";
 import { testWait } from "../../utils";
-import { formioRes } from "./fixtures";
+import { formioRes } from "../../test/fixtures/plsPlusAddress";
 
 // Smoke test
 test("FormioLoader is initiated", async () => {

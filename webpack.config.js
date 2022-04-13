@@ -24,29 +24,26 @@ module.exports = {
       },
     },
     "formio-loader.min": {
-      import: path.resolve(
-        __dirname,
-        "src/matrixHelpers/FormioLoader/index.js"
-      ),
+      import: path.resolve(__dirname, "src/helpers/FormioLoader/index.js"),
       library: {
         name: "FormioLoader",
         type: "umd",
       },
     },
     "formio-script.dev.min": getScriptConfig(
-      "src/matrixHelpers/FormioScript/scriptDev.js"
+      "src/helpers/FormioScript/scriptDev.js"
     ),
     "formio-script.prod.min": getScriptConfig(
-      "src/matrixHelpers/FormioScript/scriptProd.js"
+      "src/helpers/FormioScript/scriptProd.js"
     ),
     "formio-script.staging.min": getScriptConfig(
-      "src/matrixHelpers/FormioScript/scriptStaging.js"
+      "src/helpers/FormioScript/scriptStaging.js"
     ),
     "formio-script.test.min": getScriptConfig(
-      "src/matrixHelpers/FormioScript/scriptTest.js"
+      "src/helpers/FormioScript/scriptTest.js"
     ),
     "formio-script.gitbridge.min": getScriptConfig(
-      "src/matrixHelpers/FormioScript/scriptGitBridge.js"
+      "src/helpers/FormioScript/scriptGitBridge.js"
     ),
   },
   output: {
