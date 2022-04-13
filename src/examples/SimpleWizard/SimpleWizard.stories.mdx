@@ -1,0 +1,27 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import * as FormioLoader from "../../helpers/FormioLoader";
+
+<Meta title="Examples/SimpleWizard" />
+
+# Simple wizard example
+
+The demo below show the default presentation of a wizard form.
+
+<Canvas withSource="open">
+  <Story name="initFormioMethod">
+    {() => {
+      setTimeout(() => {
+        FormioLoader.initFormio();
+      });
+      return `
+        <div id="formio" 
+          class="qg-forms-v2"
+          data-formio 
+          data-formio-project-name="dev-svcwlpuksmwawwk" 
+          data-formio-form-name="simpleWizard" 
+          data-formio-env-url="api.forms.platforms.qld.gov.au" 
+        ></div>
+      `;
+    }}
+  </Story>
+</Canvas>
