@@ -88,10 +88,14 @@ const initFormioInstance = (elem, opts) => {
     form.formio = formio;
     form.options.formio = formio;
 
-    // Force new tab on formlinks
-    $(elem).on("click", `a`, (e) => {
-      e.target.target = "_blank";
-    });
+    if (typeof opts.createFormCallback === "function") {
+      opts.createFormCallback();
+    } else {
+      // Force new tab on formlinks
+      $(elem).on("click", `a`, (e) => {
+        e.target.target = "_blank";
+      });
+    }
 
     defaultCreateFormController({
       form,
@@ -148,6 +152,7 @@ const initFormio = () => {
       formioNamespace,
       formioCreateformOptions,
       formioCreateformController,
+      formioCreateformCallback,
     } = elem.dataset;
     initFormioInstance(elem, {
       projectName: formioProjectName,
@@ -159,6 +164,7 @@ const initFormio = () => {
       namespace: formioNamespace,
       createFormOptions: window[formioCreateformOptions],
       createFormController: window[formioCreateformController],
+      createFormCallback: window[formioCreateformCallback],
     });
   });
 };
