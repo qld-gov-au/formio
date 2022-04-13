@@ -2,9 +2,9 @@ module.exports = {
   // Turn off default buttons
   buttonSettings: {
     showCancel: false,
-    showPrevious: false,
-    showNext: false,
-    showSubmit: false,
+    showPrevious: true,
+    showNext: true,
+    showSubmit: true,
   },
   i18n: {
     en: {
