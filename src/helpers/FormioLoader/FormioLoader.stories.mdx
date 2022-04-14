@@ -19,10 +19,13 @@ import {
 # FormioLoader
 
 FormioLoader provide function for you to initiate Formio instance.
-To use it, simply include the script in your webpage and it will initiate Formio instance with the div that contains `data-formio` attribute.
+To use it, simply include the script and run `FormioLoader.initFormio()` in your webpage, it will initiate Formio instance with the div that contains `data-formio` attribute.
 
 ```html
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js"></script>
+<script>
+  FormioLoader.initFormio();
+</script>
 ```
 
 Sample Formio div placeholder:
@@ -45,9 +48,9 @@ Sample Formio div placeholder:
 Please note that you'll need to include `formio.full.js`/`formio.full.min.js`, and other necessary formio scripts/libraries before using this script.
 You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to lazy-load all Formio related scripts/libraries.
 
-## Initiate on page load
+## Initiate Formio instance
 
-To initiate Formio instance on page load, simply include the script in your webpage.
+To initiate Formio instance, simply include and run the script in your webpage.
 
 <Canvas withSource="open">
   <Story
