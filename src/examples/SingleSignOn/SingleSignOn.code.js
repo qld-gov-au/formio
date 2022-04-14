@@ -17,7 +17,7 @@ ${indent(
   2
 )}
     FormioScript.init().then(() => {
-      const div = createSSoForm();
+      const div = SingleSignOn();
       document.body.append(div);
     });
   </script>
