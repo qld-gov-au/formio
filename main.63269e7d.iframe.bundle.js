@@ -1512,7 +1512,7 @@ var simpleWizardCode = `
   <script>
 ${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SimpleWizard__WEBPACK_IMPORTED_MODULE_1__.SimpleWizard.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
     FormioScript.init().then(() => {
-      const div = createSimpleWizard();
+      const div = SimpleWizard();
       document.body.append(div);
     });
   </script>
@@ -1576,7 +1576,7 @@ var singleSignOnCode = `
   <script>
 ${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SingleSignOn__WEBPACK_IMPORTED_MODULE_1__.SingleSignOn.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
     FormioScript.init().then(() => {
-      const div = createSSoForm();
+      const div = SingleSignOn();
       document.body.append(div);
     });
   </script>
@@ -5040,4 +5040,4 @@ module.exports = __webpack_require__.p + "static/media/formioSettings.fbfb01cf.p
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.1b5bc055.iframe.bundle.js.map
+//# sourceMappingURL=main.63269e7d.iframe.bundle.js.map
