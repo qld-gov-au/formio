@@ -12,7 +12,7 @@ export const simpleWizardCode = `
 ${indent(
   SimpleWizard.toString().replaceAll(
     "_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__",
-    "FormLoader"
+    "FormioLoader"
   ),
   2
 )}
