@@ -1,6 +1,6 @@
 import * as FormioLoader from "../../helpers/FormioLoader";
 
-export const createSSoForm = () => {
+export function SingleSignOn() {
   const formioApiDomain = "api.forms.platforms.qld.gov.au";
   const formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
   const formioLoginFormId = "oidcsso"; // configure in squiz component
@@ -138,7 +138,7 @@ export const createSSoForm = () => {
 
   setTimeout(() => {
     pickForm();
-  }, 100);
+  });
 
   return div;
-};
+}

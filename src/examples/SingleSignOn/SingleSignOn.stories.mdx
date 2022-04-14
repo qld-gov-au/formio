@@ -1,7 +1,8 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import SSOHighLevel from "../../stories/assets/SSO-HighLevel.png";
 import SSOUserFlow from "../../stories/assets/SSO-UserFlow.png";
-import { createSSoForm } from "./SingleSignOn";
+import { SingleSignOn } from "./SingleSignOn";
+import { singleSignOnCode } from "./SingleSignOn.code";
 
 <Meta title="Examples/SingleSignOn" />
 
@@ -31,6 +32,22 @@ Main Form : https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-queensland-bor
 
 ## Demo
 
+The following demo shows the SSO form in a single page application.
+
+The demo can be reproduced with [FormioScript](?path=/docs/helpers-formioscript--page) to lazy-load the Formio library and scripts.
+
 <Canvas withSource="open">
-  <Story name="Demo">{() => createSSoForm()}</Story>
+  <Story
+    name="ssoDemo"
+    parameters={{
+      docs: {
+        source: {
+          code: singleSignOnCode,
+          language: "html",
+        },
+      },
+    }}
+  >
+    {() => SingleSignOn()}
+  </Story>
 </Canvas>
