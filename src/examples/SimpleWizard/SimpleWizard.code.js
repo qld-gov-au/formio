@@ -17,7 +17,7 @@ ${indent(
   2
 )}
     FormioScript.init().then(() => {
-      const div = createSimpleWizard();
+      const div = SimpleWizard();
       document.body.append(div);
     });
   </script>
