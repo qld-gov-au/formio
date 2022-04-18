@@ -4986,7 +4986,7 @@ webpackContext.id = "./src sync recursive ^\\.(?:(?:^%7C\\/%7C(?:(?:(?%21(?:^%7C
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "static/media/SSO-HighLevel.42d8c1f3.png";
+module.exports = __webpack_require__.p + "static/media/storybook-SSO-HighLevel.42d8c1f3.png";
 
 /***/ }),
 
@@ -4997,7 +4997,7 @@ module.exports = __webpack_require__.p + "static/media/SSO-HighLevel.42d8c1f3.pn
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "static/media/SSO-UserFlow.9b224f64.png";
+module.exports = __webpack_require__.p + "static/media/storybook-SSO-UserFlow.9b224f64.png";
 
 /***/ }),
 
@@ -5008,7 +5008,7 @@ module.exports = __webpack_require__.p + "static/media/SSO-UserFlow.9b224f64.png
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "static/media/formio custom component.5f82e1bf.png";
+module.exports = __webpack_require__.p + "static/media/storybook-formio custom component.5f82e1bf.png";
 
 /***/ }),
 
@@ -5019,7 +5019,7 @@ module.exports = __webpack_require__.p + "static/media/formio custom component.5
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "static/media/formioSettings.fbfb01cf.png";
+module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.fbfb01cf.png";
 
 /***/ }),
 
@@ -5040,4 +5040,4 @@ module.exports = __webpack_require__.p + "static/media/formioSettings.fbfb01cf.p
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.63269e7d.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.73e0c50b.iframe.bundle.js.map
