@@ -24,7 +24,17 @@ module.exports = {
       test: /\.(s(a|c)ss)$/,
       use: ["style-loader", "css-loader", "sass-loader"],
     });
+    config.module.rules.find(
+      (item) => item.type === "asset/resource"
+    ).generator.filename = "static/media/storybook-[name].[contenthash:8][ext]";
+    config.module.rules.find(
+      (item) => item.type === "asset"
+    ).generator.filename = "static/media/storybook-[name].[contenthash:8][ext]";
     config.mode = "development";
+    config.output = {
+      ...config.output,
+      filename: "storybook-[name].[contenthash:8].iframe.bundle.js",
+    };
     return config;
   },
 };
