@@ -139,6 +139,7 @@ const initFormio = () => {
 
   // custom error message
   customiseErrorMessage();
+  if (window.onFormioLoaded) window.onFormioLoaded();
 
   document.querySelectorAll("[data-formio]").forEach((elem) => {
     const {
