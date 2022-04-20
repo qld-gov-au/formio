@@ -73,6 +73,26 @@ To initiate Formio instance, simply include and run the script in your webpage.
   </Story>
 </Canvas>
 
+### window.initFormioHook
+
+You could define `window.initFormioHook()` as a hook function for `FormioLoader.initFormio()`.
+In other word, you could use it to override the default behavior after the global Formio object loaded and before the form(s) initiated by `Formio.createForm()`.
+
+This would be useful for modifying prototype functions in the global Formio object.
+
+```jsx
+window.initFormioHook = () => {
+  // You could manipulate the global Formio object here, eg:
+  const newFunc = Formio.Form.prototype.errorForm.bind({});
+  Formio.Form.prototype.errorForm = (err) => {
+    // You could customise the err message here
+    console.log("err:", err);
+    return newFunc(err);
+  };
+};
+FormioLoader.initFormio();
+```
+
 ## Alternate init method
 
 If the script is already loaded, you could init the form with an alternate method `FormioLoader.initFormioInstance`.
