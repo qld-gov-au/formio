@@ -140,7 +140,13 @@ export class PlsPlusAddress extends ContainerComponent {
       // `tree: true` is needed for the exception, if it is defined in the schema, it will not pass to the submission data because it will fail the isDirty test (comparing defaultSchema and builder schema)
       // as a solution `tree: true` need to define here instead
       // https://github.com/formio/formio.js/blob/master/src/utils/formUtils.js#L89-L90
-      schema: { ...PlsPlusAddress.schema(), tree: true },
+      schema: {
+        ...PlsPlusAddress.schema(),
+        tree: true,
+        input: true,
+        persistent: true,
+        protected: false,
+      },
     };
   }
 
