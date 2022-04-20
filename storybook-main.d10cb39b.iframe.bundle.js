@@ -1868,7 +1868,8 @@ var initFormioInstance = function (elem, opts) {
   });
 };
 
-var customiseErrorMessage = function () {
+var defaultInitFormioAction = function () {
+  // customise error message
   var newFunc = Formio.Form.prototype.errorForm.bind({});
 
   Formio.Form.prototype.errorForm = function (err) {
@@ -1884,9 +1885,14 @@ var customiseErrorMessage = function () {
 var initFormio = function () {
   // Init form
   Formio.icons = "fontawesome";
-  if (premium) Formio.use(premium); // custom error message
+  if (premium) Formio.use(premium); // default callback after Formio is loaded
 
-  customiseErrorMessage();
+  if (typeof window.initFormioHook === "function") {
+    window.initFormioHook();
+  } else {
+    defaultInitFormioAction();
+  }
+
   document.querySelectorAll("[data-formio]").forEach(function (elem) {
     var _elem$dataset = elem.dataset,
         formioProjectName = _elem$dataset.formioProjectName,
@@ -3701,7 +3707,29 @@ You may want to use `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
       (0,_stories__WEBPACK_IMPORTED_MODULE_3__.InitFormio)();
     });
     return _stories__WEBPACK_IMPORTED_MODULE_3__.initFormioTemplate;
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+    "id": "windowinitformiohook"
+  }, `window.initFormioHook`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You could define `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `window.initFormioHook()`), ` as a hook function for `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `FormioLoader.initFormio()`), `.
+In other word, you could use it to override the default behavior after the global Formio object loaded and before the form(s) initiated by `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `Formio.createForm()`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This would be useful for modifying prototype functions in the global Formio object.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-jsx"
+  }, `window.initFormioHook = () => {
+  // You could manipulate the global Formio object here, eg:
+  const newFunc = Formio.Form.prototype.errorForm.bind({});
+  Formio.Form.prototype.errorForm = (err) => {
+    // You could customise the err message here
+    console.log("err:", err);
+    return newFunc(err);
+  };
+};
+FormioLoader.initFormio();
+`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "alternate-init-method"
   }, `Alternate init method`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `If the script is already loaded, you could init the form with an alternate method `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
@@ -5040,4 +5068,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.73e0c50b.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.d10cb39b.iframe.bundle.js.map
