@@ -1,0 +1,60 @@
+name: Update Libs
+on:
+  schedule:
+    # * is a special character in YAMLso you have to quote this string
+    - cron:  '30 5 * * *'
+jobs:
+  updateChangelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: "main"
+      # run script in prem, extract to lib, update versions.txt on each file
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          always-auth: 'true'
+          cache-dependency-path: perm/package-lock.json
+          registry-url: 'https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/'
+      - name: List versions
+        working-directory: ./perm
+        run: | # List versions
+          npm view formiojs versions
+          npm view @formio/premium versions
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
+      - name: Update package.josn
+        working-directory: ./perm
+        run: | # Update package.josn
+         npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` "
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
+      - name: Install latest
+        working-directory: ./perm
+        run: | # Install packages https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
+          npm install --prefer-offline --no-audit --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
+
+      # `npm rebuild` will run all those post-install scripts for us.
+      - name: rebuild and prepare
+        run: npm rebuild && npm run prepare --if-present
+
+      - name: copy to dist
+        working-directory: ./perm
+        run: | # Copy libraries
+          npm run copy-all
+
+        # todo work out how to extract 'outdated' to be commit message
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: update form.io js libraries
+          title: update form.io js libraries
+          body: update form.io js libraries
+          branch: update-formiojs-libraries
+          base: main

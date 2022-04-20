@@ -1,0 +1,37 @@
+{
+  "name": "formio-qld-prem-downloader",
+  "version": "0.0.1",
+  "description": "",
+  "authors": {
+    "name": "Smart Service Queensland, Queensland Government",
+    "email": "qol.development@smartservice.qld.gov.au"
+  },
+  "contributors": [
+    {
+      "name": "william dutton",
+      "email": "will.dutt@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "http://www.qld.gov.au/",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qld-gov-au/formio.git"
+  },
+  "browserslist": [
+    "last 3 Chrome versions"
+  ],
+  "scripts": {
+    "update": "npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` ",
+    "copy-formiojs": "cp -rf node_modules/formiojs/dist/formio.full* ../lib; cp node_modules/formiojs/Changelog.md ../lib/formio.changlog.md; ",
+    "copy-formios-prem": "cp -rf node_modules/@formio/premium/dist/* ../lib; cp node_modules/@formio/premium/Changelog.md ../lib/premium.changlog.md; rm ../lib/*server*.js",
+    "copy-all": "npm run copy-formiojs && npm run copy-formios-prem"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@formio/instructions": "1.0.2",
+    "@formio/premium": "1.16.1",
+    "formiojs": "4.14.3"
+  }
+}
