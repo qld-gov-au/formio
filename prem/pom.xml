@@ -43,47 +43,7 @@
                             <arguments>install</arguments>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>npm lint</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <arguments>run lint</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm test</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>test</phase>
-                        <configuration>
-                            <arguments>run test</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>storybook</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>storybook</phase>
-                        <configuration>
-                            <arguments>run storybook</arguments>
-                        </configuration>
-                    </execution>
 
-<!--                    <execution>-->
-<!--                        <id>npm integration</id>-->
-<!--                        <goals>-->
-<!--                            <goal>npm</goal>-->
-<!--                        </goals>-->
-<!--                        <phase>integration-test</phase>-->
-<!--                        <configuration>-->
-<!--                            <arguments>run test:e2e</arguments>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
                     <execution>
                         <id>npm package</id>
                         <goals>
@@ -91,7 +51,7 @@
                         </goals>
                         <phase>package</phase>
                         <configuration>
-                            <arguments>run build-all</arguments>
+                            <arguments>run copy-all</arguments>
                         </configuration>
                     </execution>
                 </executions>
