@@ -54,14 +54,20 @@ const functionTest = (caseName) => async () => {
     .mockResolvedValueOnce(fixtures[`autocompleteResult${caseName}`]);
 
   // user types in autocomplete
-  await userEvent.type(autocomplete, fixtures[`autocompleteInput${caseName}`], {
-    delay: 100,
-  });
-  expect(autocomplete).toHaveValue(fixtures[`autocompleteInput${caseName}`]);
+  await userEvent.type(
+    form.querySelector("input[name='data[plsplusaddress]']"),
+    fixtures[`autocompleteInput${caseName}`],
+    {
+      delay: 100,
+    }
+  );
+  expect(form.querySelector("input[name='data[plsplusaddress]']")).toHaveValue(
+    fixtures[`autocompleteInput${caseName}`]
+  );
 
   // autocomplete returns results
   const option = await screen.findByText(
-    fixtures[`formData${caseName}`].plsplusaddress.address.autocompleteAddress
+    fixtures[`formData${caseName}`].address.autocompleteAddress
   );
   expect(option).toBeVisible();
 
@@ -76,10 +82,10 @@ const functionTest = (caseName) => async () => {
 
   // address1 automatically parsed and populated
   const address1 = form.querySelector(
-    "input[name='data[plsplusaddress][address1]']"
+    "input[name='data[plsplusaddress][address][address1]']"
   );
   expect(address1).toHaveValue(
-    fixtures[`formData${caseName}`].plsplusaddress.address.address1
+    fixtures[`formData${caseName}`].address.address1
   );
   await testWait();
 
@@ -118,23 +124,27 @@ test("PlsPlusAddress is rendered", async () => {
   expect(autocomplete).toBeDisabled();
 
   const address1 = form.querySelector(
-    "input[name='data[plsplusaddress][address1]']"
+    "input[name='data[plsplusaddress][address][address1]']"
   );
   expect(address1).toBeVisible();
   const address2 = form.querySelector(
-    "input[name='data[plsplusaddress][address2]']"
+    "input[name='data[plsplusaddress][address][address2]']"
   );
   expect(address2).toBeVisible();
   const address3 = form.querySelector(
-    "input[name='data[plsplusaddress][address3]']"
+    "input[name='data[plsplusaddress][address][address3]']"
   );
   expect(address3).toBeVisible();
-  const city = form.querySelector("input[name='data[plsplusaddress][city]']");
+  const city = form.querySelector(
+    "input[name='data[plsplusaddress][address][city]']"
+  );
   expect(city).toBeVisible();
-  const state = form.querySelector("input[name='data[plsplusaddress][state]']");
+  const state = form.querySelector(
+    "input[name='data[plsplusaddress][address][state]']"
+  );
   expect(state).toBeVisible();
   const postcode = form.querySelector(
-    "input[name='data[plsplusaddress][postcode]']"
+    "input[name='data[plsplusaddress][address][postcode]']"
   );
   expect(postcode).toBeVisible();
 });
@@ -175,20 +185,27 @@ test("PlsPlusAddress remove button is functional", async () => {
     .mockResolvedValueOnce(fixtures[`autocompleteResult${caseName}`]);
 
   // user types in autocomplete
-  await userEvent.type(autocomplete, fixtures[`autocompleteInput${caseName}`], {
-    delay: 100,
-  });
-  expect(autocomplete).toHaveValue(fixtures[`autocompleteInput${caseName}`]);
+  await userEvent.type(
+    form.querySelector("input[name='data[plsplusaddress]']"),
+    fixtures[`autocompleteInput${caseName}`],
+    {
+      delay: 100,
+    }
+  );
+  expect(form.querySelector("input[name='data[plsplusaddress]']")).toHaveValue(
+    fixtures[`autocompleteInput${caseName}`]
+  );
 
   // autocomplete returns results
   const option = await screen.findByText(
-    fixtures[`formData${caseName}`].plsplusaddress.address.autocompleteAddress
+    fixtures[`formData${caseName}`].address.autocompleteAddress
   );
   expect(option).toBeVisible();
 
   // mock parseAddress data
   jest
     .spyOn(Formio, "makeStaticRequest")
+    .mockReset()
     .mockResolvedValueOnce(fixtures[`parseAddressResult${caseName}`]);
 
   // user clicks on an option
@@ -197,14 +214,12 @@ test("PlsPlusAddress remove button is functional", async () => {
 
   // address1 automatically parsed and populated
   expect(
-    form.querySelector("input[name='data[plsplusaddress][address1]']")
-  ).toHaveValue(
-    fixtures[`formData${caseName}`].plsplusaddress.address.address1
-  );
+    form.querySelector("input[name='data[plsplusaddress][address][address1]']")
+  ).toHaveValue(fixtures[`formData${caseName}`].address.address1);
   await testWait();
 
   // remove button should be visible
-  expect(removeButton).not.toHaveClass(
+  expect(form.querySelector("i[ref='removeValueIcon']")).not.toHaveClass(
     "address-autocomplete-remove-value-icon--hidden"
   );
 
@@ -213,7 +228,7 @@ test("PlsPlusAddress remove button is functional", async () => {
   await testWait();
   // sub-address fields should be hidden, autocomplete field should be empty
   expect(
-    form.querySelector("input[name='data[plsplusaddress][address1]']")
+    form.querySelector("input[name='data[plsplusaddress][address][address1]']")
   ).toBeNull();
   expect(form.querySelector("input[name='data[plsplusaddress]']")).toHaveValue(
     ""
@@ -263,7 +278,7 @@ test("PlsPlusAddress manual mode is functional", async () => {
 
   // user enters address manually
   const address1 = form.querySelector(
-    "input[name='data[plsplusaddress][address1]']"
+    "input[name='data[plsplusaddress][address][address1]']"
   );
   expect(address1).not.toBeDisabled();
   await userEvent.click(address1);
@@ -272,7 +287,7 @@ test("PlsPlusAddress manual mode is functional", async () => {
   });
 
   const address2 = form.querySelector(
-    "input[name='data[plsplusaddress][address2]']"
+    "input[name='data[plsplusaddress][address][address2]']"
   );
   await userEvent.click(address2);
   await userEvent.type(address2, "address2", {
@@ -280,21 +295,23 @@ test("PlsPlusAddress manual mode is functional", async () => {
   });
 
   const address3 = form.querySelector(
-    "input[name='data[plsplusaddress][address3]']"
+    "input[name='data[plsplusaddress][address][address3]']"
   );
   await userEvent.click(address3);
   await userEvent.type(address3, "address3", {
     delay: 100,
   });
 
-  const city = form.querySelector("input[name='data[plsplusaddress][city]']");
+  const city = form.querySelector(
+    "input[name='data[plsplusaddress][address][city]']"
+  );
   await userEvent.click(city);
   await userEvent.type(city, "city", {
     delay: 100,
   });
 
   const postcode = form.querySelector(
-    "input[name='data[plsplusaddress][postcode]']"
+    "input[name='data[plsplusaddress][address][postcode]']"
   );
   await userEvent.click(postcode);
   await userEvent.type(postcode, "1234", {
@@ -309,17 +326,15 @@ test("PlsPlusAddress manual mode is functional", async () => {
   await userEvent.click(button);
   await testWait();
   expect(data).toEqual({
-    plsplusaddress: {
-      address: {
-        address1: "address1",
-        address2: "address2",
-        address3: "address3",
-        autocompleteAddress: "",
-        city: "city",
-        postcode: "1234",
-        selectedAddress: "address1 address2 address3 city QLD 1234",
-        state: "QLD",
-      },
+    address: {
+      address1: "address1",
+      address2: "address2",
+      address3: "address3",
+      autocompleteAddress: "",
+      city: "city",
+      postcode: "1234",
+      selectedAddress: "address1 address2 address3 city QLD 1234",
+      state: "QLD",
       mode: "manual",
     },
     submit: true,
