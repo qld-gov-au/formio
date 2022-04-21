@@ -143,9 +143,6 @@ export class PlsPlusAddress extends ContainerComponent {
       schema: {
         ...PlsPlusAddress.schema(),
         tree: true,
-        input: true,
-        persistent: true,
-        protected: false,
       },
     };
   }
@@ -372,7 +369,7 @@ export class PlsPlusAddress extends ContainerComponent {
         return super.onChange(flags, fromRoot);
       };
     });
-    // this.component.validate.required = !this.manualMode;
+    this.component.validate.required = !this.manualMode;
     return this.renderTemplate(this.templateName, {
       children: this.hasChildren ? this.renderComponents() : "",
       nestedKey: this.nestedKey,
