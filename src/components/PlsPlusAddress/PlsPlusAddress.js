@@ -54,21 +54,24 @@ export class PlsPlusAddress extends FieldsetComponent {
             components: [
               {
                 label: "Autocomplete address",
-                persistent: false,
                 tableView: false,
                 key: "autocompleteAddress",
                 type: "hidden",
               },
               {
                 label: "Selected address",
-                persistent: false,
                 tableView: false,
                 key: "selectedAddress",
                 type: "hidden",
               },
               {
+                label: "Mode",
+                tableView: false,
+                key: "mode",
+                type: "hidden",
+              },
+              {
                 label: "Address line 1 <i>(include unit number if needed)</i>",
-                persistent: false,
                 tableView: false,
                 key: "address1",
                 type: "textfield",
@@ -80,7 +83,6 @@ export class PlsPlusAddress extends FieldsetComponent {
               },
               {
                 label: "Address line 2",
-                persistent: false,
                 tableView: false,
                 key: "address2",
                 type: "textfield",
@@ -89,7 +91,6 @@ export class PlsPlusAddress extends FieldsetComponent {
               },
               {
                 label: "Address line 3",
-                persistent: false,
                 tableView: false,
                 key: "address3",
                 type: "textfield",
@@ -98,7 +99,6 @@ export class PlsPlusAddress extends FieldsetComponent {
               },
               {
                 label: "Town, City or Suburb",
-                persistent: false,
                 tableView: false,
                 key: "city",
                 type: "textfield",
@@ -110,7 +110,6 @@ export class PlsPlusAddress extends FieldsetComponent {
               },
               {
                 label: "State",
-                persistent: false,
                 tableView: false,
                 key: "state",
                 type: "textfield",
@@ -120,7 +119,6 @@ export class PlsPlusAddress extends FieldsetComponent {
               },
               {
                 label: "Postcode",
-                persistent: false,
                 tableView: false,
                 key: "postcode",
                 type: "textfield",
@@ -178,6 +176,12 @@ export class PlsPlusAddress extends FieldsetComponent {
     return _.defaultsDeep(component, defaultSchema);
   }
 
+  get defaultSchema() {
+    return {
+      ...PlsPlusAddress.schema(),
+    };
+  }
+
   get composedAddress() {
     const { address1, address2, address3, city, state, postcode } =
       this.address;
@@ -217,6 +221,24 @@ export class PlsPlusAddress extends FieldsetComponent {
     return new Provider({ ...options });
   }
 
+  get manualModeEnabled() {
+    return Boolean(this.component.enableManualMode);
+  }
+
+  get mode() {
+    if (!this.manualModeEnabled) {
+      return PlsPlusAddressMode.Autocomplete;
+    }
+    return this.address?.mode || PlsPlusAddressMode.Autocomplete;
+  }
+
+  set mode(value) {
+    this.address.mode = value;
+    if (this.manualModeEnabled) {
+      this.onChange();
+    }
+  }
+
   get emptyValue() {
     return this.manualModeEnabled
       ? {
@@ -235,21 +257,6 @@ export class PlsPlusAddress extends FieldsetComponent {
       : {};
   }
 
-  get mode() {
-    if (!this.manualModeEnabled) {
-      return PlsPlusAddressMode.Autocomplete;
-    }
-
-    return this.address?.mode || PlsPlusAddressMode.Autocomplete;
-  }
-
-  set mode(value) {
-    this.address.mode = value;
-    if (this.manualModeEnabled) {
-      this.onChange();
-    }
-  }
-
   get autocompleteMode() {
     return this.mode === PlsPlusAddressMode.Autocomplete;
   }
@@ -258,8 +265,22 @@ export class PlsPlusAddress extends FieldsetComponent {
     return this.mode === PlsPlusAddressMode.Manual;
   }
 
-  get manualModeEnabled() {
-    return Boolean(this.component.enableManualMode);
+  get isMultiple() {
+    return Boolean(this.component.multiple);
+  }
+
+  get container() {
+    return this.getComponents()[0];
+  }
+
+  get address() {
+    return this.container?.dataValue;
+  }
+
+  set address(value) {
+    this.container.dataValue = value;
+    this.dataValue = value;
+    this.onChange();
   }
 
   restoreComponentsContext() {
@@ -271,35 +292,17 @@ export class PlsPlusAddress extends FieldsetComponent {
     });
   }
 
-  get isMultiple() {
-    return Boolean(this.component.multiple);
-  }
-
-  get address() {
-    return this.container?.dataValue;
-  }
-
-  set address(value) {
-    this.container.dataValue = value;
-    this.onChange();
-  }
-
-  get defaultSchema() {
-    return {
-      ...PlsPlusAddress.schema(),
-    };
-  }
-
   setValue(value, flags = {}) {
-    const changed = Field.prototype.setValue.call(this, value, flags);
-
+    // const changed = Field.prototype.setValue.call(this, value, flags);
     this.restoreComponentsContext();
 
-    if (changed || (!_.isEmpty(value) && flags.fromSubmission)) {
-      this.redraw();
+    if (!_.isEmpty(value) && flags.fromSubmission) {
+      setTimeout(() => {
+        this.redraw();
+      });
     }
 
-    return changed;
+    return super.setValue(value, flags);
   }
 
   static get modeSwitcherRef() {
@@ -354,10 +357,6 @@ export class PlsPlusAddress extends FieldsetComponent {
     return attr;
   }
 
-  get container() {
-    return this.getComponents()[0];
-  }
-
   get templateName() {
     return "plsPlusAddress";
   }
@@ -367,22 +366,27 @@ export class PlsPlusAddress extends FieldsetComponent {
   }
 
   renderElement(value) {
-    this.container.getComponents().forEach((component) => {
-      component.disabled =
-        component.originalComponent.disabled || !this.manualMode;
-      component.component.validate = !this.manualMode
-        ? {}
-        : component.originalComponent.validate;
+    this.container?.getComponents().forEach((component) => {
+      if (!this.builderMode) {
+        component.disabled =
+          component.originalComponent.disabled || !this.manualMode;
+        component.component.validate = !this.manualMode
+          ? {}
+          : component.originalComponent.validate;
+      }
+
       component.onChange = (flags, fromRoot) => {
         this.address.selectedAddress = this.composedAddress;
         return super.onChange(flags, fromRoot);
       };
     });
-    this.component.validate = {
-      custom: `valid = !!instance.address.selectedAddress;`,
-      customMessage: `${this.component.label} is required.`,
-      required: !this.manualMode,
-    };
+    if (!this.builderMode) {
+      this.component.validate = {
+        custom: `valid = !!instance.address.selectedAddress;`,
+        customMessage: `${this.component.label} is required.`,
+        required: !this.manualMode,
+      };
+    }
 
     return this.renderTemplate(this.templateName, {
       children: this.hasChildren ? this.renderComponents() : "",
