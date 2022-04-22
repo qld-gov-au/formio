@@ -11,7 +11,8 @@ export function PdfDownload() {
           data-formio 
           data-formio-project-name="for2-wuuyvpbiffyomhm" 
           data-formio-form-name="contactus" 
-          data-formio-env-url="qol-formio-t-api.azurefd.net" 
+          data-formio-env-url="qol-formio-t-api.azurefd.net"
+          data-formio-createForm-controller="customFn2"
         ></div>
       `;
   return div;
