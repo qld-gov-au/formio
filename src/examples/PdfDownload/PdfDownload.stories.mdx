@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { PdfDownload } from "./PdfDownload";
+import { pdfDownloadCode } from "./PdfDownload.code";
+
+<Meta title="Examples/PdfDownload" />
+
+# Simple wizard example
+
+This example show the default presentation of a wizard form.
+
+The demo can be reproduced with [FormioScript](?path=/docs/helpers-formioscript--page) to lazy-load the Formio library and scripts.
+
+<Canvas withSource="open">
+  <Story
+    name="pdfDownload"
+    parameters={{
+      docs: {
+        source: {
+          code: pdfDownloadCode,
+        },
+      },
+    }}
+  >
+    {() => PdfDownload()}
+  </Story>
+</Canvas>
