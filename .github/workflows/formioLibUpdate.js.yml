@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: "main"
-      # run script in perm, extract to lib, update versions.txt on each file
+      # run script in prem, extract to lib, update versions.txt on each file
       - name: list folder
         run: |
           pwd
@@ -27,23 +27,23 @@ jobs:
           node-version: 16
           cache: 'npm'
           always-auth: 'true'
-          cache-dependency-path: ./perm/package-lock.json
+          cache-dependency-path: ./prem/package-lock.json
           registry-url: 'https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/'
       - name: List versions
-        working-directory: ./perm
+        working-directory: ./prem
         run: | # List versions
           npm view formiojs versions
           npm view @formio/premium versions
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
       - name: Update package.josn
-        working-directory: ./perm
+        working-directory: ./prem
         run: | # Update package.josn
          npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` "
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
       - name: Install latest
-        working-directory: ./perm
+        working-directory: ./prem
         run: | # Install packages https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
           npm install --prefer-offline --no-audit --ignore-scripts
         env:
@@ -54,7 +54,7 @@ jobs:
         run: npm rebuild && npm run prepare --if-present
 
       - name: copy to dist
-        working-directory: ./perm
+        working-directory: ./prem
         run: | # Copy libraries
           npm run copy-all
 
