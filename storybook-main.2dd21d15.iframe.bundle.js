@@ -501,18 +501,6 @@ var baseEditForm = Formio.Components.components.base.editForm;
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlsPlusAddress.form */ "./src/components/PlsPlusAddress/PlsPlusAddress.form.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -540,14 +528,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 /*
  * use form.io Address component as boilerplate
  * https://github.com/formio/formio.js/blob/master/src/components/address/Address.js
+ * need to extend from `container` to `fieldset` due to Formio app upgrade from 7.1.2 to 7.3.0
+ * otherwise component data will get erase when submitted to the server
  *
  */
 
 
 
-var ContainerComponent = Formio.Components.components.container;
+var FieldsetComponent = Formio.Components.components.fieldset;
 var Field = Formio.Components.components.field;
-var NestedComponent = Formio.Components.components.nested;
 var PlsPlusAddressMode = {
   Autocomplete: "autocomplete",
   Manual: "manual"
@@ -558,18 +547,48 @@ var addressValidation = {
   customMessage: "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
   maxLength: 40
 };
-var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
-  _inherits(PlsPlusAddress, _ContainerComponent);
+var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
+  _inherits(PlsPlusAddress, _FieldsetComponent);
 
   var _super = _createSuper(PlsPlusAddress);
 
   function PlsPlusAddress() {
+    var _this;
+
     _classCallCheck(this, PlsPlusAddress);
 
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+    _this.noField = false;
+    return _this;
   }
 
   _createClass(PlsPlusAddress, [{
+    key: "getComponents",
+    value: function getComponents() {
+      return this.components || [];
+    }
+  }, {
+    key: "addComponents",
+    value: function addComponents() {
+      var _this2 = this;
+
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.options;
+
+      if (options.components) {
+        this.components = options.components;
+      } else {
+        var components = this.hook("addComponents", this.componentComponents, this) || [];
+        components.forEach(function (component) {
+          return _this2.addComponent(component, data);
+        });
+      }
+    }
+  }, {
     key: "mergeSchema",
     value: function mergeSchema() {
       var component = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -580,6 +599,11 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
       }
 
       return lodash__WEBPACK_IMPORTED_MODULE_1___default().defaultsDeep(component, defaultSchema);
+    }
+  }, {
+    key: "defaultSchema",
+    get: function () {
+      return Object.assign({}, PlsPlusAddress.schema());
     }
   }, {
     key: "composedAddress",
@@ -596,13 +620,9 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }, {
     key: "onChange",
     value: function onChange(flags, fromRoot) {
-      var _this$dataValue2;
-
       if (this.autocompleteMode) {
-        var _this$dataValue;
-
-        if ((_this$dataValue = this.dataValue) !== null && _this$dataValue !== void 0 && _this$dataValue.address) this.dataValue.address.selectedAddress = this.address.autocompleteAddress;
-      } else if ((_this$dataValue2 = this.dataValue) !== null && _this$dataValue2 !== void 0 && _this$dataValue2.address) this.dataValue.address.selectedAddress = this.composedAddress;
+        if (this.address) this.address.selectedAddress = this.address.autocompleteAddress;
+      } else if (this.address) this.address.selectedAddress = this.composedAddress;
 
       return _get(_getPrototypeOf(PlsPlusAddress.prototype), "onChange", this).call(this, flags, fromRoot);
     }
@@ -610,11 +630,6 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
     key: "init",
     value: function init() {
       this.components = this.components || [];
-
-      if (this.builderMode || this.manualModeEnabled) {
-        NestedComponent.prototype.addComponents.call(this, this.address);
-      }
-
       Field.prototype.init.call(this);
 
       if (!this.builderMode) {
@@ -627,6 +642,8 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
           this.provider = this.initializeProvider(provider, providerOptions);
         }
       }
+
+      return _get(_getPrototypeOf(PlsPlusAddress.prototype), "init", this).call(this);
     }
   }, {
     key: "initializeProvider",
@@ -636,10 +653,32 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
       return new Provider(Object.assign({}, options));
     }
   }, {
+    key: "manualModeEnabled",
+    get: function () {
+      return Boolean(this.component.enableManualMode);
+    }
+  }, {
+    key: "mode",
+    get: function () {
+      var _this$address2;
+
+      if (!this.manualModeEnabled) {
+        return PlsPlusAddressMode.Autocomplete;
+      }
+
+      return ((_this$address2 = this.address) === null || _this$address2 === void 0 ? void 0 : _this$address2.mode) || PlsPlusAddressMode.Autocomplete;
+    },
+    set: function (value) {
+      this.address.mode = value;
+
+      if (this.manualModeEnabled) {
+        this.onChange();
+      }
+    }
+  }, {
     key: "emptyValue",
     get: function () {
       return this.manualModeEnabled ? {
-        mode: PlsPlusAddressMode.Autocomplete,
         address: {
           address1: "",
           address2: "",
@@ -648,25 +687,10 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
           postcode: "",
           autocompleteAddress: "",
           selectedAddress: "",
-          state: "QLD"
+          state: "QLD",
+          mode: this.mode
         }
       } : {};
-    }
-  }, {
-    key: "mode",
-    get: function () {
-      var _this$dataValue$mode, _this$dataValue3;
-
-      if (!this.manualModeEnabled) {
-        return PlsPlusAddressMode.Autocomplete;
-      }
-
-      return (_this$dataValue$mode = (_this$dataValue3 = this.dataValue) === null || _this$dataValue3 === void 0 ? void 0 : _this$dataValue3.mode) !== null && _this$dataValue$mode !== void 0 ? _this$dataValue$mode : PlsPlusAddressMode.Autocomplete;
-    },
-    set: function (value) {
-      if (this.manualModeEnabled) {
-        this.dataValue.mode = value;
-      }
     }
   }, {
     key: "autocompleteMode",
@@ -679,76 +703,55 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
       return this.mode === PlsPlusAddressMode.Manual;
     }
   }, {
-    key: "manualModeEnabled",
+    key: "isMultiple",
     get: function () {
-      return Boolean(this.component.enableManualMode);
+      return Boolean(this.component.multiple);
+    }
+  }, {
+    key: "container",
+    get: function () {
+      return this.getComponents()[0];
+    }
+  }, {
+    key: "address",
+    get: function () {
+      var _this$container;
+
+      return (_this$container = this.container) === null || _this$container === void 0 ? void 0 : _this$container.dataValue;
+    },
+    set: function (value) {
+      this.container.dataValue = value;
+      this.dataValue = value;
+      this.onChange();
     }
   }, {
     key: "restoreComponentsContext",
     value: function restoreComponentsContext() {
-      var _this = this;
+      var _this3 = this;
 
-      this.getComponents().forEach(function (component) {
-        component.data = _this.address;
+      this.container.getComponents().forEach(function (component) {
+        component.data = _this3.address;
         component.setValue(component.dataValue, {
           noUpdateEvent: true
         });
       });
     }
   }, {
-    key: "isMultiple",
-    get: function () {
-      return Boolean(this.component.multiple);
-    }
-  }, {
-    key: "address",
-    get: function () {
-      return this.manualModeEnabled && this.dataValue ? this.dataValue.address : this.dataValue;
-    },
-    set: function (value) {
-      if (this.manualModeEnabled) {
-        this.dataValue.address = value;
-      } else {
-        this.dataValue = value;
-      }
-    }
-  }, {
-    key: "defaultValue",
-    get: function () {
-      return _get(_getPrototypeOf(PlsPlusAddress.prototype), "defaultValue", this);
-    }
-  }, {
-    key: "defaultSchema",
-    get: function () {
-      return Object.assign({}, PlsPlusAddress.schema(), {
-        tree: "true"
-      });
-    }
-  }, {
-    key: "isValueInLegacyFormat",
-    value: function isValueInLegacyFormat(value) {
-      return value && !value.mode;
-    }
-  }, {
-    key: "normalizeValue",
-    value: function normalizeValue(value) {
-      return this.manualModeEnabled && this.isValueInLegacyFormat(value) ? {
-        mode: PlsPlusAddressMode.Autocomplete,
-        address: value
-      } : value;
-    }
-  }, {
     key: "setValue",
     value: function setValue(value) {
+      var _this4 = this;
+
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var changed = Field.prototype.setValue.call(this, value, flags);
+      // const changed = Field.prototype.setValue.call(this, value, flags);
       this.restoreComponentsContext();
 
-      if (changed || !lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) && flags.fromSubmission) {
-        this.redraw();
+      if (!lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) && flags.fromSubmission) {
+        setTimeout(function () {
+          _this4.redraw();
+        });
       }
 
-      return changed;
+      return _get(_getPrototypeOf(PlsPlusAddress.prototype), "setValue", this).call(this, value, flags);
     }
   }, {
     key: "modeSwitcher",
@@ -803,19 +806,31 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }, {
     key: "renderElement",
     value: function renderElement(value) {
-      var _this2 = this,
+      var _this$container2,
+          _this5 = this,
           _this$component$provi4,
           _this$component$provi5;
 
-      this.getComponents().forEach(function (component) {
-        component.disabled = !_this2.manualMode;
+      (_this$container2 = this.container) === null || _this$container2 === void 0 ? void 0 : _this$container2.getComponents().forEach(function (component) {
+        if (!_this5.builderMode) {
+          component.disabled = component.originalComponent.disabled || !_this5.manualMode;
+          component.component.validate = !_this5.manualMode ? {} : component.originalComponent.validate;
+        }
 
         component.onChange = function (flags, fromRoot) {
-          _this2.dataValue.address.selectedAddress = _this2.composedAddress;
-          return _get(_getPrototypeOf(PlsPlusAddress.prototype), "onChange", _this2).call(_this2, flags, fromRoot);
+          _this5.address.selectedAddress = _this5.composedAddress;
+          return _get(_getPrototypeOf(PlsPlusAddress.prototype), "onChange", _this5).call(_this5, flags, fromRoot);
         };
       });
-      this.component.validate.required = !this.manualMode;
+
+      if (!this.builderMode) {
+        this.component.validate = {
+          custom: `valid = !!instance.address.selectedAddress;`,
+          customMessage: `${this.component.label} is required.`,
+          required: !this.manualMode
+        };
+      }
+
       return this.renderTemplate(this.templateName, {
         children: this.hasChildren ? this.renderComponents() : "",
         nestedKey: this.nestedKey,
@@ -842,9 +857,6 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
     key: "onSelectAddress",
     value: function onSelectAddress(address, element, index) {
       this.address.autocompleteAddress = address;
-      this.triggerChange({
-        modified: true
-      });
 
       if (element) {
         element.value = this.getDisplayValue(this.address);
@@ -855,7 +867,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }, {
     key: "attach",
     value: function attach(element) {
-      var _this3 = this;
+      var _this6 = this;
 
       var result = (this.builderMode || this.manualMode ? _get(_getPrototypeOf(PlsPlusAddress.prototype), "attach", this) : Field.prototype.attach).call(this, element);
 
@@ -875,67 +887,52 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
         [PlsPlusAddress.searchInputRef]: "multiple"
       });
       this.searchInput.forEach(function (elem, index) {
-        if (!_this3.builderMode && elem && _this3.provider) {
+        if (!_this6.builderMode && elem && _this6.provider) {
           autocompleter__WEBPACK_IMPORTED_MODULE_0___default()({
             input: elem,
             debounceWaitMs: 300,
             fetch: function (text, update) {
               var query = text;
 
-              var promise = _this3.provider.search(query);
+              var promise = _this6.provider.search(query);
 
               promise.then(function (response) {
                 update(response);
               });
             },
             render: function (address) {
-              var div = _this3.ce("div");
+              var div = _this6.ce("div");
 
               div.textContent = address;
               return div;
             },
             onSelect: function (address) {
-              _this3.onSelectAddress(address, elem, index);
+              _this6.onSelectAddress(address, elem, index);
 
-              _this3.provider.parseAddress(address).then(function (r) {
-                _this3.address = Object.assign({}, _this3.address, _this3.provider.breakAddress(r));
+              _this6.provider.parseAddress(address).then(function (r) {
+                _this6.address = Object.assign({}, _this6.address, _this6.provider.breakAddress(r), {
+                  mode: _this6.mode
+                });
 
-                _this3.triggerChange({
-                  modified: true
-                }); // setTimeout(() => {
-                //   this.restoreComponentsContext();
-                // }, 1000);
+                _this6.restoreComponentsContext();
 
-
-                _this3.restoreComponentsContext();
-
-                _this3.getComponents().forEach(function (component) {
+                _this6.container.getComponents().forEach(function (component) {
                   var childElement = document.getElementById(`${component.id}-${component.component.key}`);
-                  childElement.value = component.dataValue;
+                  if (childElement) childElement.value = component.dataValue;
                 });
               });
 
-              _this3.redraw();
+              _this6.redraw();
             }
           });
 
-          _this3.addEventListener(elem, "blur", function () {
+          _this6.addEventListener(elem, "blur", function () {
             if (!elem) {
               return;
             }
 
             if (elem.value) {
-              elem.value = _this3.getDisplayValue(_this3.address);
-            }
-          });
-
-          _this3.addEventListener(elem, "keyup", function () {
-            if (!elem) {
-              return;
-            }
-
-            if (!elem.value) {
-              _this3.clearAddress(elem, index);
+              elem.value = _this6.getDisplayValue(_this6.address);
             }
           });
         }
@@ -943,45 +940,43 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
 
       if (this.modeSwitcher) {
         this.addEventListener(this.modeSwitcher, "change", function () {
-          if (!_this3.modeSwitcher) {
+          if (!_this6.modeSwitcher) {
             return;
           }
 
-          _this3.mode = _this3.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
+          _this6.mode = _this6.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
 
-          if (!_this3.builderMode) {
-            if (_this3.manualMode) {
-              _this3.restoreComponentsContext();
+          if (!_this6.builderMode) {
+            if (_this6.manualMode) {
+              _this6.restoreComponentsContext();
+            } else {
+              _this6.clearAddress(_this6.searchInput);
             }
-
-            _this3.triggerChange({
-              modified: true
-            });
           }
 
-          _this3.redraw();
+          _this6.redraw();
         });
       }
 
       if (!this.builderMode) {
         this.removeValueIcon.forEach(function (removeValueIcon, index) {
-          _this3.updateRemoveIcon(index);
+          _this6.updateRemoveIcon(index);
 
           var removeValueHandler = function () {
-            var _this3$searchInput;
+            var _this6$searchInput;
 
-            var searchInput = (_this3$searchInput = _this3.searchInput) === null || _this3$searchInput === void 0 ? void 0 : _this3$searchInput[index];
+            var searchInput = (_this6$searchInput = _this6.searchInput) === null || _this6$searchInput === void 0 ? void 0 : _this6$searchInput[index];
 
-            _this3.clearAddress(searchInput, index);
+            _this6.clearAddress(searchInput, index);
 
             if (searchInput) {
               searchInput.focus();
             }
           };
 
-          _this3.addEventListener(removeValueIcon, "click", removeValueHandler);
+          _this6.addEventListener(removeValueIcon, "click", removeValueHandler);
 
-          _this3.addEventListener(removeValueIcon, "keydown", function (_ref) {
+          _this6.addEventListener(removeValueIcon, "keydown", function (_ref) {
             var key = _ref.key;
 
             if (key === "Enter") {
@@ -996,12 +991,17 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }, {
     key: "redraw",
     value: function redraw() {
-      var _this4 = this;
+      var _this7 = this;
 
       var modeSwitcherInFocus = this.modeSwitcher && document.activeElement === this.modeSwitcher;
+      var searchInputInFocus = this.searchInput && document.activeElement === this.searchInput;
       return _get(_getPrototypeOf(PlsPlusAddress.prototype), "redraw", this).call(this).then(function (result) {
-        if (modeSwitcherInFocus && _this4.modeSwitcher) {
-          _this4.modeSwitcher.focus();
+        if (modeSwitcherInFocus && _this7.modeSwitcher) {
+          _this7.modeSwitcher.focus();
+        }
+
+        if (searchInputInFocus && _this7.searchInput) {
+          _this7.searchInput.focus();
         }
 
         return result;
@@ -1010,26 +1010,15 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }, {
     key: "clearAddress",
     value: function clearAddress(element, index) {
-      var _this$address2,
-          _this5 = this;
-
-      if (!this.isEmpty()) {
-        this.triggerChange();
-      }
-
-      if ((_this$address2 = this.address) !== null && _this$address2 !== void 0 && _this$address2[index]) {
-        this.address[index] = this.emptyValue.address;
-      } else {
-        this.address = this.emptyValue.address;
-      }
+      this.address = this.emptyValue.address;
 
       if (element) {
         element.value = "";
       }
 
-      this.getComponents().forEach(function (component) {
+      this.container.getComponents().forEach(function (component) {
         var childElement = document.getElementById(`${component.id}-${component.component.key}`);
-        if (childElement) childElement.value = _this5.address[component.component.key] || "";
+        if (childElement) childElement.value = component.dataValue;
       });
       this.updateRemoveIcon(index);
       this.redraw();
@@ -1058,58 +1047,6 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
       }
     }
   }, {
-    key: "getValueAsString",
-    value: function getValueAsString(value, options) {
-      if (!value) {
-        return "";
-      }
-
-      var normalizedValue = this.normalizeValue(value);
-
-      var _ref2 = this.manualModeEnabled ? normalizedValue : {
-        address: normalizedValue,
-        mode: PlsPlusAddressMode.Autocomplete
-      },
-          address = _ref2.address,
-          mode = _ref2.mode;
-
-      var valueInManualMode = mode === PlsPlusAddressMode.Manual;
-
-      if (this.provider && !valueInManualMode) {
-        return this.getDisplayValue(address);
-      }
-
-      if (valueInManualMode) {
-        if (this.component.manualModeViewString) {
-          return this.interpolate(this.component.manualModeViewString, {
-            address: address,
-            data: this.data,
-            component: this.component
-          });
-        }
-
-        return this.getComponents().filter(function (component) {
-          return component.hasValue(address);
-        }).map(function (component) {
-          return [component, lodash__WEBPACK_IMPORTED_MODULE_1___default().get(address, component.key)];
-        }).filter(function (_ref3) {
-          var _ref4 = _slicedToArray(_ref3, 2),
-              component = _ref4[0],
-              componentValue = _ref4[1];
-
-          return !component.isEmpty(componentValue);
-        }).map(function (_ref5) {
-          var _ref6 = _slicedToArray(_ref5, 2),
-              component = _ref6[0],
-              componentValue = _ref6[1];
-
-          return component.getValueAsString(componentValue, options);
-        }).join(", ");
-      }
-
-      return _get(_getPrototypeOf(PlsPlusAddress.prototype), "getValueAsString", this).call(this, address, options);
-    }
-  }, {
     key: "focus",
     value: function focus() {
       if (this.searchInput && this.searchInput[0]) {
@@ -1119,92 +1056,94 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }], [{
     key: "schema",
     value: function schema() {
-      for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
-        extend[_key] = arguments[_key];
+      for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        extend[_key2] = arguments[_key2];
       }
 
-      return ContainerComponent.schema.apply(ContainerComponent, [{
+      return FieldsetComponent.schema.apply(FieldsetComponent, [{
         type: "plsplusaddress",
         label: "Address",
-        key: "address",
+        key: "plsplusaddress",
         switchToManualModeLabel: "Can't find address? Switch to manual mode.",
         providerOptions: {},
-        manualModeViewString: "",
         hideLabel: false,
         disableClearIcon: false,
         enableManualMode: true,
+        input: true,
+        persistent: "client-only",
         components: [{
-          label: "Autocomplete address",
-          persistent: false,
-          tableView: false,
-          key: "autocompleteAddress",
-          type: "hidden"
-        }, {
-          label: "Selected address",
-          persistent: false,
-          tableView: false,
-          key: "selectedAddress",
-          type: "hidden"
-        }, {
-          label: "Address line 1 <i>(include unit number if needed)</i>",
-          persistent: false,
-          tableView: false,
-          key: "address1",
-          type: "textfield",
-          input: true,
-          validate: Object.assign({
-            required: true
-          }, addressValidation)
-        }, {
-          label: "Address line 2",
-          persistent: false,
-          tableView: false,
-          key: "address2",
-          type: "textfield",
-          input: true,
-          validate: addressValidation
-        }, {
-          label: "Address line 3",
-          persistent: false,
-          tableView: false,
-          key: "address3",
-          type: "textfield",
-          input: true,
-          validate: addressValidation
-        }, {
-          label: "Town, City or Suburb",
-          persistent: false,
-          tableView: false,
-          key: "city",
-          type: "textfield",
-          input: true,
-          validate: Object.assign({
-            required: true
-          }, addressValidation)
-        }, {
-          label: "State",
-          persistent: false,
-          tableView: false,
-          key: "state",
-          type: "textfield",
-          input: true,
-          disabled: true,
-          defaultValue: "QLD"
-        }, {
-          label: "Postcode",
-          persistent: false,
-          tableView: false,
-          key: "postcode",
-          type: "textfield",
-          input: true,
-          inputMask: "9999",
-          validate: {
-            required: true,
-            pattern: "^([0-9]{4})$",
-            customMessage: "Invalid postcode format",
-            minLength: 4,
-            maxLength: 4
-          }
+          key: "address",
+          type: "container",
+          components: [{
+            label: "Autocomplete address",
+            tableView: false,
+            key: "autocompleteAddress",
+            type: "hidden"
+          }, {
+            label: "Selected address",
+            tableView: false,
+            key: "selectedAddress",
+            type: "hidden"
+          }, {
+            label: "Mode",
+            tableView: false,
+            key: "mode",
+            type: "hidden"
+          }, {
+            label: "Address line 1 <i>(include unit number if needed)</i>",
+            tableView: false,
+            key: "address1",
+            type: "textfield",
+            input: true,
+            validate: Object.assign({
+              required: true
+            }, addressValidation)
+          }, {
+            label: "Address line 2",
+            tableView: false,
+            key: "address2",
+            type: "textfield",
+            input: true,
+            validate: addressValidation
+          }, {
+            label: "Address line 3",
+            tableView: false,
+            key: "address3",
+            type: "textfield",
+            input: true,
+            validate: addressValidation
+          }, {
+            label: "Town, City or Suburb",
+            tableView: false,
+            key: "city",
+            type: "textfield",
+            input: true,
+            validate: Object.assign({
+              required: true
+            }, addressValidation)
+          }, {
+            label: "State",
+            tableView: false,
+            key: "state",
+            type: "textfield",
+            input: true,
+            disabled: true,
+            defaultValue: "QLD"
+          }, {
+            label: "Postcode",
+            tableView: false,
+            key: "postcode",
+            type: "textfield",
+            input: true,
+            inputMask: "9999",
+            validate: {
+              required: true,
+              pattern: "^([0-9]{4})$",
+              customMessage: "Invalid postcode format",
+              minLength: 4,
+              maxLength: 4
+            }
+          }]
         }]
       }].concat(extend));
     }
@@ -1217,13 +1156,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
         icon: "home",
         documentation: "/userguide/#address",
         weight: 2,
-        // this is the tricky bit to get exception on duplicated keys in children components that belong to different nested components
-        // `tree: true` is needed for the exception, if it is defined in the schema, it will not pass to the submission data because it will fail the isDirty test (comparing defaultSchema and builder schema)
-        // as a solution `tree: true` need to define here instead
-        // https://github.com/formio/formio.js/blob/master/src/utils/formUtils.js#L89-L90
-        schema: Object.assign({}, PlsPlusAddress.schema(), {
-          tree: true
-        })
+        schema: Object.assign({}, PlsPlusAddress.schema())
       };
     }
   }, {
@@ -1244,7 +1177,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_ContainerComponent) {
   }]);
 
   return PlsPlusAddress;
-}(ContainerComponent);
+}(FieldsetComponent);
 PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__["default"];
 
 /***/ }),
@@ -1829,25 +1762,19 @@ var initFormioInstance = function (elem, opts) {
     formio: formio,
     namespace: formio.options.namespace
   });
-  var combinedOptions = Object.assign({}, defaultOptions, typeof opts.createFormOptions === "function" && opts.createFormOptions({
-    envUrl: opts.envUrl,
-    projectName: opts.projectName,
-    formName: opts.formName,
+  var combinedOptions = Object.assign({}, defaultOptions, typeof opts.createFormOptions === "function" && opts.createFormOptions(Object.assign({}, opts, {
     defaultOptions: defaultOptions,
     elem: elem
-  })); // register plugin
+  }))); // register plugin
 
   if (!Formio.getPlugin("namespacePolyfill")) Formio.registerPlugin(NamespacePlugin, "namespacePolyfill");
   Formio.createForm(elem, formUrl, combinedOptions).then(function (form) {
     form.formio = formio;
     form.options.formio = formio;
-    var callbackProps = {
+    var callbackProps = Object.assign({
       form: form,
-      elem: elem,
-      envUrl: opts.envUrl,
-      projectName: opts.projectName,
-      formName: opts.formName
-    };
+      elem: elem
+    }, opts);
 
     if (typeof opts.createFormCallback === "function") {
       // call custom callback hook
@@ -3244,7 +3171,6 @@ You can preview the component's settings in the example below.`), (0,_mdx_js_rea
           type: "plsplusaddress",
           key: "plsplusaddress",
           label: "PlsPlus Address field",
-          tree: true,
           providerOptions: {
             params: {
               apiKey: "formiotest"
@@ -3305,7 +3231,6 @@ var builder = function () {
         type: "plsplusaddress",
         key: "plsplusaddress",
         label: "PlsPlus Address field",
-        tree: true,
         providerOptions: {
           params: {
             apiKey: "formiotest"
@@ -3323,7 +3248,7 @@ var builder = function () {
 builder.storyName = 'Builder';
 builder.parameters = {
   storySource: {
-    source: '() => createBuilder({\n  form: {\n    components: [{\n      type: \"plsplusaddress\",\n      key: \"plsplusaddress\",\n      label: \"PlsPlus Address field\",\n      tree: true,\n      providerOptions: {\n        params: {\n          apiKey: \"formiotest\"\n        }\n      }\n    }, {\n      type: \"button\",\n      key: \"submit\",\n      label: \"Submit\",\n      action: \"submit\"\n    }]\n  }\n})'
+    source: '() => createBuilder({\n  form: {\n    components: [{\n      type: \"plsplusaddress\",\n      key: \"plsplusaddress\",\n      label: \"PlsPlus Address field\",\n      providerOptions: {\n        params: {\n          apiKey: \"formiotest\"\n        }\n      }\n    }, {\n      type: \"button\",\n      key: \"submit\",\n      label: \"Submit\",\n      action: \"submit\"\n    }]\n  }\n})'
   }
 };
 var componentMeta = {
@@ -5068,4 +4993,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.d10cb39b.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.2dd21d15.iframe.bundle.js.map
