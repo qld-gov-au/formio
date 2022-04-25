@@ -1,5 +1,5 @@
 export const formDataCase1 = {
-  address: {
+  addressData: {
     address1: "1-5 TESTA ST",
     address2: "",
     address3: "",
@@ -14,7 +14,7 @@ export const formDataCase1 = {
 };
 
 export const formDataCase2 = {
-  address: {
+  addressData: {
     address1: "BIRRALEE CHILD CARE CENTRE",
     address2: "1-7 SAMANTHA CT",
     address3: "",
