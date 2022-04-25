@@ -9,15 +9,15 @@ import { formioRes } from "../../test/fixtures/plsPlusAddress";
 test("FormioLoader is initiated", async () => {
   const div = document.createElement("div");
   div.innerHTML = `
-  <div id="formio" 
-    data-formio 
-    data-formio-project-name="dev-svcwlpuksmwawwk" 
-    data-formio-form-name="plsPlusFormDemo" 
-    data-formio-form-confirmation="" 
-    data-formio-form-revision="" 
-    data-formio-env-url="api.forms.platforms.qld.gov.au" 
-    data-formio-pdf-download="no" 
-    data-formio-namespace="" 
+  <div id="formio"
+    data-formio
+    data-formio-project-name="dev-svcwlpuksmwawwk"
+    data-formio-form-name="plsPlusFormDemo"
+    data-formio-form-confirmation=""
+    data-formio-form-revision=""
+    data-formio-env-url="api.forms.platforms.qld.gov.au"
+    data-formio-pdf-download="no"
+    data-formio-namespace=""
   ></div>
 `;
   document.body.append(div);
@@ -51,15 +51,15 @@ test("FormioLoader with custom option hook", async () => {
 
   const div = document.createElement("div");
   div.innerHTML = `
-  <div id="formio" 
-    data-formio 
-    data-formio-project-name="dev-svcwlpuksmwawwk" 
-    data-formio-form-name="plsPlusFormDemo" 
-    data-formio-form-confirmation="" 
-    data-formio-form-revision="" 
-    data-formio-env-url="api.forms.platforms.qld.gov.au" 
-    data-formio-pdf-download="no" 
-    data-formio-namespace="" 
+  <div id="formio"
+    data-formio
+    data-formio-project-name="dev-svcwlpuksmwawwk"
+    data-formio-form-name="plsPlusFormDemo"
+    data-formio-form-confirmation=""
+    data-formio-form-revision=""
+    data-formio-env-url="api.forms.platforms.qld.gov.au"
+    data-formio-pdf-download="no"
+    data-formio-namespace=""
     data-formio-createForm-options="customOptionsFn"
   ></div>
 `;
@@ -70,7 +70,7 @@ test("FormioLoader with custom option hook", async () => {
   const label = await findByText(div, "Address");
   expect(label).toBeVisible();
 
-  const autocomplete = div.querySelector("input[name='data[address]']");
+  const autocomplete = div.querySelector("input[name='data[plsplusaddress]']");
   expect(autocomplete).toBeVisible();
   expect(autocomplete).toBeDisabled();
 });
@@ -86,15 +86,15 @@ test("FormioLoader with custom controller hook", async () => {
 
   const div = document.createElement("div");
   div.innerHTML = `
-  <div id="formio" 
-    data-formio 
-    data-formio-project-name="dev-svcwlpuksmwawwk" 
-    data-formio-form-name="plsPlusFormDemo" 
-    data-formio-form-confirmation="" 
-    data-formio-form-revision="" 
-    data-formio-env-url="api.forms.platforms.qld.gov.au" 
-    data-formio-pdf-download="no" 
-    data-formio-namespace="" 
+  <div id="formio"
+    data-formio
+    data-formio-project-name="dev-svcwlpuksmwawwk"
+    data-formio-form-name="plsPlusFormDemo"
+    data-formio-form-confirmation=""
+    data-formio-form-revision=""
+    data-formio-env-url="api.forms.platforms.qld.gov.au"
+    data-formio-pdf-download="no"
+    data-formio-namespace=""
     data-formio-createForm-controller="customControllerFn"
   ></div>
 `;
@@ -111,17 +111,28 @@ test("FormioLoader with custom controller hook", async () => {
   await testWait();
   expect(data).toEqual({
     address: {
+      address1: "",
+      address2: "",
+      address3: "",
+      autocompleteAddress: "",
+      city: "",
+      mode: "",
+      postcode: "",
+      selectedAddress: "",
+      state: "QLD",
+    },
+    plsplusaddress: {
       address: {
         address1: "",
         address2: "",
         address3: "",
         autocompleteAddress: "",
         city: "",
+        mode: "autocomplete",
         postcode: "",
         selectedAddress: "",
         state: "QLD",
       },
-      mode: "autocomplete",
     },
     submit: false,
   });
