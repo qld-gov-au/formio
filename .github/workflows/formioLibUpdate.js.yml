@@ -39,7 +39,7 @@ jobs:
       - name: Update package.josn
         working-directory: ./prem
         run: | # Update package.josn
-         npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` "
+         npm update `npm outdated | awk '{print $1}' | tr '\n' ' ' `
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
       - name: Install latest
