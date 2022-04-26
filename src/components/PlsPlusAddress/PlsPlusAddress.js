@@ -177,7 +177,14 @@ export class PlsPlusAddress extends FieldsetComponent {
       this.components = options.components;
     } else {
       const components =
-        this.hook("addComponents", this.componentComponents, this) || [];
+        this.hook(
+          "addComponents",
+          _.defaultsDeep(
+            this.componentComponents,
+            this.defaultSchema.components
+          ),
+          this
+        ) || [];
       components.forEach((component) => this.addComponent(component, data));
     }
   }
