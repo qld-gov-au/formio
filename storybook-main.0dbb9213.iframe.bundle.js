@@ -595,7 +595,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       if (options.components) {
         this.components = options.components;
       } else {
-        var components = this.hook("addComponents", this.componentComponents, this) || [];
+        var components = this.hook("addComponents", lodash__WEBPACK_IMPORTED_MODULE_1___default().defaultsDeep(this.componentComponents, this.defaultSchema.components), this) || [];
         components.forEach(function (component) {
           return _this2.addComponent(component, data);
         });
@@ -5140,4 +5140,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.dcacb57b.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.0dbb9213.iframe.bundle.js.map
