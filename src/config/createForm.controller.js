@@ -25,6 +25,11 @@ export default ({ form, formConfirmation }) => {
     }
   });
 
+  // backward compatibility, for old forms that using this event to do submission
+  form.on("applicationSubmit", () => {
+    form.submit();
+  });
+
   form.on("submitDone", () => {
     if (formConfirmation) window.location.href = formConfirmation;
   });

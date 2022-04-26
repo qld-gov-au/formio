@@ -24,7 +24,7 @@ test("FormioLoader is initiated", async () => {
   FormioLoader.initFormio();
   jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
 
-  const label = await findByText(div, "Address");
+  const label = await findByText(div, "PlsPlus Address");
   expect(label).toBeVisible();
   expect(label.tagName.toLowerCase()).toEqual("label");
 });
@@ -67,7 +67,7 @@ test("FormioLoader with custom option hook", async () => {
   FormioLoader.initFormio();
   jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
 
-  const label = await findByText(div, "Address");
+  const label = await findByText(div, "PlsPlus Address");
   expect(label).toBeVisible();
 
   const autocomplete = div.querySelector("input[name='data[plsplusaddress]']");
@@ -102,7 +102,7 @@ test("FormioLoader with custom controller hook", async () => {
   FormioLoader.initFormio();
   jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
 
-  const label = await findByText(div, "Address");
+  const label = await findByText(div, "PlsPlus Address");
   expect(label).toBeVisible();
 
   const checkbox = div.querySelector("input[ref='modeSwitcher']");
@@ -110,7 +110,7 @@ test("FormioLoader with custom controller hook", async () => {
   await userEvent.click(checkbox);
   await testWait();
   expect(data).toEqual({
-    address: {
+    addressData: {
       address1: "",
       address2: "",
       address3: "",
