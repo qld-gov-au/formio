@@ -501,6 +501,18 @@ var baseEditForm = Formio.Components.components.base.editForm;
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlsPlusAddress.form */ "./src/components/PlsPlusAddress/PlsPlusAddress.form.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -547,6 +559,7 @@ var addressValidation = {
   customMessage: "You have exceeded the character limit or included html or special characters, e.g. <,>,{,},\\",
   maxLength: 40
 };
+var addressKeys = ["autocompleteAddress", "selectedAddress", "mode", "address1", "address2", "address3", "city", "state", "postcode"];
 var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   _inherits(PlsPlusAddress, _FieldsetComponent);
 
@@ -621,8 +634,8 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
     key: "onChange",
     value: function onChange(flags, fromRoot) {
       if (this.autocompleteMode) {
-        if (this.address) this.address.selectedAddress = this.address.autocompleteAddress;
-      } else if (this.address) this.address.selectedAddress = this.composedAddress;
+        if (this.address) this.setAddressProp("selectedAddress", this.address.autocompleteAddress);
+      } else if (this.address) this.setAddressProp("selectedAddress", this.composedAddress);
 
       return _get(_getPrototypeOf(PlsPlusAddress.prototype), "onChange", this).call(this, flags, fromRoot);
     }
@@ -660,20 +673,14 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "mode",
     get: function () {
-      var _this$address2;
-
       if (!this.manualModeEnabled) {
         return PlsPlusAddressMode.Autocomplete;
       }
 
-      return ((_this$address2 = this.address) === null || _this$address2 === void 0 ? void 0 : _this$address2.mode) || PlsPlusAddressMode.Autocomplete;
+      return this.address.mode || PlsPlusAddressMode.Autocomplete;
     },
     set: function (value) {
-      this.address.mode = value;
-
-      if (this.manualModeEnabled) {
-        this.onChange();
-      }
+      this.setAddressProp("mode", value);
     }
   }, {
     key: "emptyValue",
@@ -710,27 +717,80 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "container",
     get: function () {
-      return this.getComponents()[0];
+      return this.getComponents().find(function (comp) {
+        var _comp$originalCompone;
+
+        return (_comp$originalCompone = comp.originalComponent.tags) === null || _comp$originalCompone === void 0 ? void 0 : _comp$originalCompone.includes("container");
+      });
     }
   }, {
     key: "address",
     get: function () {
-      var _this$container;
+      var _this$container,
+          _this3 = this;
 
-      return (_this$container = this.container) === null || _this$container === void 0 ? void 0 : _this$container.dataValue;
+      var dataValue = (_this$container = this.container) === null || _this$container === void 0 ? void 0 : _this$container.dataValue;
+      var addressData = addressKeys.map(function (k) {
+        if (_this3.container) {
+          var _this3$container$getC;
+
+          var componentKey = (_this3$container$getC = _this3.container.getComponents().find(function (comp) {
+            var _comp$originalCompone2;
+
+            return (_comp$originalCompone2 = comp.originalComponent.tags) === null || _comp$originalCompone2 === void 0 ? void 0 : _comp$originalCompone2.includes(k);
+          })) === null || _this3$container$getC === void 0 ? void 0 : _this3$container$getC.component.key;
+          return {
+            [k]: dataValue[componentKey]
+          };
+        }
+
+        return {};
+      });
+      return Object.assign.apply(Object, [{}].concat(_toConsumableArray(addressData)));
     },
     set: function (value) {
-      this.container.dataValue = value;
+      var _this4 = this;
+
       this.dataValue = value;
-      this.onChange();
+      var changed = false;
+
+      if (this.container) {
+        addressKeys.forEach(function (k) {
+          var _this4$container$getC;
+
+          var componentKey = (_this4$container$getC = _this4.container.getComponents().find(function (comp) {
+            var _comp$originalCompone3;
+
+            return (_comp$originalCompone3 = comp.originalComponent.tags) === null || _comp$originalCompone3 === void 0 ? void 0 : _comp$originalCompone3.includes(k);
+          })) === null || _this4$container$getC === void 0 ? void 0 : _this4$container$getC.component.key;
+
+          if (_this4.container.dataValue[componentKey] !== value[k]) {
+            _this4.container.dataValue[componentKey] = value[k];
+            changed = true;
+          }
+        });
+      }
+
+      if (changed) this.onChange({
+        modified: true
+      });
+    }
+  }, {
+    key: "setAddressProp",
+    value: function setAddressProp(prop, value) {
+      if (this.address[prop] === value) return;
+      this.address = Object.assign({}, this.address, {
+        [prop]: value
+      });
     }
   }, {
     key: "restoreComponentsContext",
     value: function restoreComponentsContext() {
-      var _this3 = this;
+      var _this$container2,
+          _this5 = this;
 
-      this.container.getComponents().forEach(function (component) {
-        component.data = _this3.address;
+      (_this$container2 = this.container) === null || _this$container2 === void 0 ? void 0 : _this$container2.getComponents().forEach(function (component) {
+        component.data = _this5.container.dataValue;
         component.setValue(component.dataValue, {
           noUpdateEvent: true
         });
@@ -739,7 +799,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "setValue",
     value: function setValue(value) {
-      var _this4 = this;
+      var _this6 = this;
 
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       // const changed = Field.prototype.setValue.call(this, value, flags);
@@ -747,7 +807,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
       if (!lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) && flags.fromSubmission) {
         setTimeout(function () {
-          _this4.redraw();
+          _this6.redraw();
         });
       }
 
@@ -806,20 +866,23 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "renderElement",
     value: function renderElement(value) {
-      var _this$container2,
-          _this5 = this,
+      var _this$container3,
+          _this7 = this,
           _this$component$provi4,
           _this$component$provi5;
 
-      (_this$container2 = this.container) === null || _this$container2 === void 0 ? void 0 : _this$container2.getComponents().forEach(function (component) {
-        if (!_this5.builderMode) {
-          component.disabled = component.originalComponent.disabled || !_this5.manualMode;
-          component.component.validate = !_this5.manualMode ? {} : component.originalComponent.validate;
+      (_this$container3 = this.container) === null || _this$container3 === void 0 ? void 0 : _this$container3.getComponents().forEach(function (component) {
+        if (!_this7.builderMode) {
+          component.disabled = component.originalComponent.disabled || !_this7.manualMode;
+          component.component.validate = !_this7.manualMode ? {} : component.originalComponent.validate;
         }
 
         component.onChange = function (flags, fromRoot) {
-          _this5.address.selectedAddress = _this5.composedAddress;
-          return _get(_getPrototypeOf(PlsPlusAddress.prototype), "onChange", _this5).call(_this5, flags, fromRoot);
+          if (flags.modified && component.originalComponent.tags.length) {
+            _this7.setAddressProp(component.originalComponent.tags[0], component.dataValue);
+          }
+
+          return _this7.onChange(flags, fromRoot);
         };
       });
 
@@ -856,7 +919,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "onSelectAddress",
     value: function onSelectAddress(address, element, index) {
-      this.address.autocompleteAddress = address;
+      this.setAddressProp("autocompleteAddress", address);
 
       if (element) {
         element.value = this.getDisplayValue(this.address);
@@ -867,7 +930,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "attach",
     value: function attach(element) {
-      var _this6 = this;
+      var _this8 = this;
 
       var result = (this.builderMode || this.manualMode ? _get(_getPrototypeOf(PlsPlusAddress.prototype), "attach", this) : Field.prototype.attach).call(this, element);
 
@@ -887,52 +950,52 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         [PlsPlusAddress.searchInputRef]: "multiple"
       });
       this.searchInput.forEach(function (elem, index) {
-        if (!_this6.builderMode && elem && _this6.provider) {
+        if (!_this8.builderMode && elem && _this8.provider) {
           autocompleter__WEBPACK_IMPORTED_MODULE_0___default()({
             input: elem,
             debounceWaitMs: 300,
             fetch: function (text, update) {
               var query = text;
 
-              var promise = _this6.provider.search(query);
+              var promise = _this8.provider.search(query);
 
               promise.then(function (response) {
                 update(response);
               });
             },
             render: function (address) {
-              var div = _this6.ce("div");
+              var div = _this8.ce("div");
 
               div.textContent = address;
               return div;
             },
             onSelect: function (address) {
-              _this6.onSelectAddress(address, elem, index);
+              _this8.onSelectAddress(address, elem, index);
 
-              _this6.provider.parseAddress(address).then(function (r) {
-                _this6.address = Object.assign({}, _this6.address, _this6.provider.breakAddress(r), {
-                  mode: _this6.mode
+              _this8.provider.parseAddress(address).then(function (r) {
+                _this8.address = Object.assign({}, _this8.address, _this8.provider.breakAddress(r), {
+                  mode: _this8.mode
                 });
 
-                _this6.restoreComponentsContext();
+                _this8.restoreComponentsContext();
 
-                _this6.container.getComponents().forEach(function (component) {
+                _this8.container.getComponents().forEach(function (component) {
                   var childElement = document.getElementById(`${component.id}-${component.component.key}`);
                   if (childElement) childElement.value = component.dataValue;
                 });
               });
 
-              _this6.redraw();
+              _this8.redraw();
             }
           });
 
-          _this6.addEventListener(elem, "blur", function () {
+          _this8.addEventListener(elem, "blur", function () {
             if (!elem) {
               return;
             }
 
             if (elem.value) {
-              elem.value = _this6.getDisplayValue(_this6.address);
+              elem.value = _this8.getDisplayValue(_this8.address);
             }
           });
         }
@@ -940,43 +1003,43 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
       if (this.modeSwitcher) {
         this.addEventListener(this.modeSwitcher, "change", function () {
-          if (!_this6.modeSwitcher) {
+          if (!_this8.modeSwitcher) {
             return;
           }
 
-          _this6.mode = _this6.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
+          _this8.mode = _this8.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
 
-          if (!_this6.builderMode) {
-            if (_this6.manualMode) {
-              _this6.restoreComponentsContext();
+          if (!_this8.builderMode) {
+            if (_this8.manualMode) {
+              _this8.restoreComponentsContext();
             } else {
-              _this6.clearAddress(_this6.searchInput);
+              _this8.clearAddress(_this8.searchInput);
             }
           }
 
-          _this6.redraw();
+          _this8.redraw();
         });
       }
 
       if (!this.builderMode) {
         this.removeValueIcon.forEach(function (removeValueIcon, index) {
-          _this6.updateRemoveIcon(index);
+          _this8.updateRemoveIcon(index);
 
           var removeValueHandler = function () {
-            var _this6$searchInput;
+            var _this8$searchInput;
 
-            var searchInput = (_this6$searchInput = _this6.searchInput) === null || _this6$searchInput === void 0 ? void 0 : _this6$searchInput[index];
+            var searchInput = (_this8$searchInput = _this8.searchInput) === null || _this8$searchInput === void 0 ? void 0 : _this8$searchInput[index];
 
-            _this6.clearAddress(searchInput, index);
+            _this8.clearAddress(searchInput, index);
 
             if (searchInput) {
               searchInput.focus();
             }
           };
 
-          _this6.addEventListener(removeValueIcon, "click", removeValueHandler);
+          _this8.addEventListener(removeValueIcon, "click", removeValueHandler);
 
-          _this6.addEventListener(removeValueIcon, "keydown", function (_ref) {
+          _this8.addEventListener(removeValueIcon, "keydown", function (_ref) {
             var key = _ref.key;
 
             if (key === "Enter") {
@@ -991,17 +1054,17 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "redraw",
     value: function redraw() {
-      var _this7 = this;
+      var _this9 = this;
 
       var modeSwitcherInFocus = this.modeSwitcher && document.activeElement === this.modeSwitcher;
       var searchInputInFocus = this.searchInput && document.activeElement === this.searchInput;
       return _get(_getPrototypeOf(PlsPlusAddress.prototype), "redraw", this).call(this).then(function (result) {
-        if (modeSwitcherInFocus && _this7.modeSwitcher) {
-          _this7.modeSwitcher.focus();
+        if (modeSwitcherInFocus && _this9.modeSwitcher) {
+          _this9.modeSwitcher.focus();
         }
 
-        if (searchInputInFocus && _this7.searchInput) {
-          _this7.searchInput.focus();
+        if (searchInputInFocus && _this9.searchInput) {
+          _this9.searchInput.focus();
         }
 
         return result;
@@ -1010,13 +1073,15 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "clearAddress",
     value: function clearAddress(element, index) {
+      var _this$container4;
+
       this.address = this.emptyValue.address;
 
       if (element) {
         element.value = "";
       }
 
-      this.container.getComponents().forEach(function (component) {
+      (_this$container4 = this.container) === null || _this$container4 === void 0 ? void 0 : _this$container4.getComponents().forEach(function (component) {
         var childElement = document.getElementById(`${component.id}-${component.component.key}`);
         if (childElement) childElement.value = component.dataValue;
       });
@@ -1062,7 +1127,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
       return FieldsetComponent.schema.apply(FieldsetComponent, [{
         type: "plsplusaddress",
-        label: "Address",
+        label: "PlsPlus Address",
         key: "plsplusaddress",
         switchToManualModeLabel: "Can't find address? Switch to manual mode.",
         providerOptions: {},
@@ -1072,27 +1137,30 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         input: true,
         persistent: "client-only",
         components: [{
-          key: "address",
+          key: "addressData",
           type: "container",
+          label: "Address data",
+          tableView: true,
+          tags: ["container"],
           components: [{
             label: "Autocomplete address",
-            tableView: false,
             key: "autocompleteAddress",
+            tags: ["autocompleteAddress"],
             type: "hidden"
           }, {
             label: "Selected address",
-            tableView: false,
             key: "selectedAddress",
+            tags: ["selectedAddress"],
             type: "hidden"
           }, {
             label: "Mode",
-            tableView: false,
             key: "mode",
+            tags: ["mode"],
             type: "hidden"
           }, {
             label: "Address line 1 <i>(include unit number if needed)</i>",
-            tableView: false,
             key: "address1",
+            tags: ["address1"],
             type: "textfield",
             input: true,
             validate: Object.assign({
@@ -1100,22 +1168,22 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
             }, addressValidation)
           }, {
             label: "Address line 2",
-            tableView: false,
             key: "address2",
+            tags: ["address2"],
             type: "textfield",
             input: true,
             validate: addressValidation
           }, {
             label: "Address line 3",
-            tableView: false,
             key: "address3",
+            tags: ["address3"],
             type: "textfield",
             input: true,
             validate: addressValidation
           }, {
             label: "Town, City or Suburb",
-            tableView: false,
             key: "city",
+            tags: ["city"],
             type: "textfield",
             input: true,
             validate: Object.assign({
@@ -1123,16 +1191,16 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
             }, addressValidation)
           }, {
             label: "State",
-            tableView: false,
             key: "state",
+            tags: ["state"],
             type: "textfield",
             input: true,
             disabled: true,
             defaultValue: "QLD"
           }, {
             label: "Postcode",
-            tableView: false,
             key: "postcode",
+            tags: ["postcode"],
             type: "textfield",
             input: true,
             inputMask: "9999",
@@ -1467,10 +1535,44 @@ ${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SimpleWizard__WEBPACK_IMPORTED
 /* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
 
 function SimpleWizard() {
+  window.customFormController = function (_ref) {
+    var form = _ref.form;
+    // example to add custom form controller to the initiated form
+    // refer to https://help.form.io/developers/form-renderer#form-events for form event
+    form.on("change", function (e) {
+      console.info("change", e);
+    });
+    form.on("nextPage", function (e) {
+      console.info("nextPage", e);
+    });
+    form.on("prevPage", function (e) {
+      console.info("prevPage", e);
+    });
+    form.on("submitError", function (e) {
+      console.info("submitError", e);
+    });
+    form.on("submit", function (e) {
+      console.info("submit", e);
+    });
+    form.on("submitDone", function (e) {
+      console.info("submitDone", e);
+    });
+  };
+
+  window.customFormOptions = function () {
+    // example to add custom form options to initiate the form
+    // refer to https://help.form.io/developers/form-renderer#form-renderer-options for form options
+    return {
+      buttonSettings: {
+        showCancel: true,
+        showPrevious: true,
+        showNext: true,
+        showSubmit: true
+      }
+    };
+  };
+
   var div = document.createElement("div");
-  setTimeout(function () {
-    _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
-  });
   div.innerHTML = `
         <div id="formio" 
           class="qg-forms-v2"
@@ -1478,8 +1580,13 @@ function SimpleWizard() {
           data-formio-project-name="dev-svcwlpuksmwawwk" 
           data-formio-form-name="simpleWizard" 
           data-formio-env-url="api.forms.platforms.qld.gov.au" 
+          data-formio-createform-controller="customFormController"
+          data-formio-createform-options="customFormOptions"
         ></div>
       `;
+  setTimeout(function () {
+    _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
+  });
   return div;
 }
 
@@ -4584,10 +4691,43 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
 
 
 function SimpleWizard() {
+  window.customFormController = ({ form }) => {
+    // example to add custom form controller to the initiated form
+    // refer to https://help.form.io/developers/form-renderer#form-events for form event
+    form.on("change", (e) => {
+      console.info("change", e);
+    });
+    form.on("nextPage", (e) => {
+      console.info("nextPage", e);
+    });
+    form.on("prevPage", (e) => {
+      console.info("prevPage", e);
+    });
+    form.on("submitError", (e) => {
+      console.info("submitError", e);
+    });
+    form.on("submit", (e) => {
+      console.info("submit", e);
+    });
+    form.on("submitDone", (e) => {
+      console.info("submitDone", e);
+    });
+  };
+
+  window.customFormOptions = () => {
+    // example to add custom form options to initiate the form
+    // refer to https://help.form.io/developers/form-renderer#form-renderer-options for form options
+    return {
+      buttonSettings: {
+        showCancel: true,
+        showPrevious: true,
+        showNext: true,
+        showSubmit: true,
+      },
+    };
+  };
+
   const div = document.createElement("div");
-  setTimeout(() => {
-    _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
-  });
   div.innerHTML = `
         <div id="formio" 
           class="qg-forms-v2"
@@ -4595,8 +4735,15 @@ function SimpleWizard() {
           data-formio-project-name="dev-svcwlpuksmwawwk" 
           data-formio-form-name="simpleWizard" 
           data-formio-env-url="api.forms.platforms.qld.gov.au" 
+          data-formio-createform-controller="customFormController"
+          data-formio-createform-options="customFormOptions"
         ></div>
       `;
+
+  setTimeout(() => {
+    _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
+  });
+
   return div;
 }
 
@@ -4993,4 +5140,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.2dd21d15.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.dcacb57b.iframe.bundle.js.map
