@@ -1,7 +1,4 @@
-import { PdfDownload } from "../components/PdfDownload";
-
-export default (props) => {
-  const { form, formConfirmation } = props;
+export default ({ form, formConfirmation }) => {
   // Change event/GTM
   form.on("click", (e) => {
     // eslint-disable-next-line no-underscore-dangle
@@ -33,12 +30,7 @@ export default (props) => {
     form.submit();
   });
 
-  form.on("submitDone", (event) => {
-    // pdf download option
-    const pdfDownload = new PdfDownload(event, form);
-    pdfDownload.isPdfDownloadEnabled();
-
-    // redirect after submit
+  form.on("submitDone", () => {
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
