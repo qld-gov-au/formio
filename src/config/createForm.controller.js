@@ -26,12 +26,8 @@ export default ({ form, formConfirmation }) => {
   });
 
   form.on("submitDone", (submissionData) => {
-    console.log(submissionData, 'submissionData');
-    console.log(submissionData.metadata, 'submissionData.metadata');
+    console.log(submissionData, "submissionData");
+    console.log(submissionData.metadata, "submissionData.metadata");
     if (formConfirmation) window.location.href = formConfirmation;
-  });
-  form.on("submit", (submissionData) => {
-    console.log(submissionData, 'submissionData');
-    console.log(submissionData.metadata, 'submissionData.metadata');
   });
 };
