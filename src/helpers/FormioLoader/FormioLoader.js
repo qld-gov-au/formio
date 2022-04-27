@@ -64,8 +64,8 @@ const initFormioInstance = (elem, opts) => {
   const baseUrl = `https://${opts.envUrl.trim()}`;
   let formName = "";
   // Check if value is true/exists and is numeric
-  if (opts.form_revision) {
-    formName = `${opts.formName}/v/${opts.form_revision}`;
+  if (opts.formRevision) {
+    formName = `${opts.formName}/v/${opts.formRevision}`;
   } else {
     formName = opts.formName;
   }
