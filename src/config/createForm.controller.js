@@ -26,8 +26,8 @@ export default ({ form, formConfirmation }) => {
   });
 
   form.on("submitDone", (submissionData) => {
-    console.log(submissionData);
-    console.log(submissionData.metadata.PostToAPIGateway.DownloadUrl);
+    console.log(submissionData, 'submissionData');
+    console.log(submissionData.metadata, 'submissionData.metadata');
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
