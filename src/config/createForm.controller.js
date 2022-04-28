@@ -30,7 +30,8 @@ export default ({ form, formConfirmation }) => {
     form.submit();
   });
 
-  form.on("submitDone", () => {
+  form.on("submitDone", (submissionData) => {
+    console.log('submissionData', submissionData)
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
