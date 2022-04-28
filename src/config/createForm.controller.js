@@ -25,9 +25,12 @@ export default ({ form, formConfirmation }) => {
     }
   });
 
-  form.on("submitDone", (submissionData) => {
-    console.log(submissionData, "submissionData");
-    console.log(submissionData.metadata, "submissionData.metadata");
+  // backward compatibility, for old forms that using this event to do submission
+  form.on("applicationSubmit", () => {
+    form.submit();
+  });
+
+  form.on("submitDone", () => {
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
