@@ -1,4 +1,4 @@
-name: Update Libs
+name: Update formiojs Libs
 on:
   schedule:
     # * is a special character in YAMLso you have to quote this string
@@ -27,17 +27,17 @@ jobs:
           node-version: 16
           cache: 'npm'
           always-auth: 'true'
-          cache-dependency-path: ./.github/workspace/prem/package-lock.json
+          cache-dependency-path: ./.github/workspace/formiojs/package-lock.json
           registry-url: 'https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/'
       - name: List versions
-        working-directory: ./.github/workspace/prem
+        working-directory: ./.github/workspace/formiojs
         run: | # List versions
-          npm view @formio/premium versions
+          npm view formiojs versions
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
       - name: What changed
         working-directory: ./.github/workspace/formiojs
-        run: |
+        run: | 
          export outdated=`npm outdated`
          echo $outdated
          outdated="${outdated//'%'/'%25'}"
@@ -48,13 +48,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
         id: what-changed-data
       - name: Update package.json
-        working-directory: ./.github/workspace/prem
+        working-directory: ./.github/workspace/formiojs
         run: | # Update package.json
          npm update `npm outdated | awk '{print $1}' | tr '\n' ' ' `
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
       - name: Install latest
-        working-directory: ./.github/workspace/prem
+        working-directory: ./.github/workspace/formiojs
         run: | # Install packages https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
           npm install --no-audit --ignore-scripts
         env:
@@ -65,7 +65,7 @@ jobs:
         run: npm rebuild && npm run prepare --if-present
 
       - name: copy to dist
-        working-directory: ./.github/workspace/prem
+        working-directory: ./.github/workspace/formiojs
         run: | # Copy libraries
           npm run copy-all
 
@@ -74,7 +74,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "update form.io js libraries ${{ steps.what-changed-ata.outputs.OUTDATED_LIST }}"
-          title: update form.io premium js libraries
-          body: "update form.io js premium libraries ${{ steps.what-changed-ata.outputs.OUTDATED_LIST }}"
-          branch: update-formio-premium-libraries
+          title: "update form.io formiojs  libraries"
+          body: "update form.io js formiojs libraries ${{ steps.what-changed-ata.outputs.OUTDATED_LIST }}"
+          branch: update-formio-formiojs-libraries
           base: main
