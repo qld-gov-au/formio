@@ -21,3 +21,6 @@ dist/
 .idea
 /node
 /prem/node
+git-chglog*
+.github/workspace/formiojs/node/
+.github/workspace/prem/node/

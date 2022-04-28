@@ -27,12 +27,10 @@
     "copy-formiojs": "cp -rf node_modules/formiojs/dist/formio.full* ../lib; cp -rf node_modules/formiojs/dist/fonts ../lib; cp node_modules/formiojs/Changelog.md ../lib/formio.changlog.md; ",
     "copy-formios-prem": "cp -rf node_modules/@formio/premium/dist/* ../lib; cp node_modules/@formio/premium/Changelog.md ../lib/premium.changlog.md",
     "cleanup": "rm -rf ../lib/*server*",
-    "copy-all": "npm run copy-formiojs && npm run copy-formios-prem && npm run cleanup"
+    "copy-all": "npm run copy-formios-prem && npm run cleanup"
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/instructions": "1.0.2",
-    "@formio/premium": "1.17.1",
-    "formiojs": "4.14.3"
+    "@formio/premium": "1.17.1"
   }
 }
