@@ -31,7 +31,7 @@ export default ({ form, formConfirmation }) => {
   });
 
   form.on("submitDone", (submissionData) => {
-    console.log('submissionData', submissionData)
+    console.log("submissionData", submissionData);
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
