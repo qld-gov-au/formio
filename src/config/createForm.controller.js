@@ -37,9 +37,11 @@
 //   }
 // }
 
-export default ({ form, formConfirmation }) => {
-  console.log("form", form);
-  console.log("form", formConfirmation);
+export default (props) => {
+  // output what inside prop
+  console.info("Default form controller", props);
+  const { form, formConfirmation, pdfDownloadMessage, pdfDownload, elem } =
+    props;
   // Change event/GTM
   form.on("click", (e) => {
     // eslint-disable-next-line no-underscore-dangle
@@ -71,9 +73,20 @@ export default ({ form, formConfirmation }) => {
     form.submit();
   });
 
-  form.on("submitDone", (submissionData) => {
-    console.log(submissionData, "submissionData");
-    console.log(submissionData.metadata, "submissionData.metadata");
+  form.on("submitDone", (event) => {
+    // for debugging pdf function
+    console.info("submitDone", event);
+    // to get pdf info, approach 1
+    console.info("pdfDownload #1", pdfDownload);
+    console.info("pdfDownloadMessage #1", pdfDownloadMessage);
+    // to get pdf info, approach 2
+    console.info("pdfDownload #2", elem.dataset.formioPdfDownload);
+    console.info(
+      "pdfDownloadMessage #2",
+      elem.dataset.formioPdfDownloadMessage
+    );
+
+    // redirect after submit
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
