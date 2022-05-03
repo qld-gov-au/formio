@@ -197,7 +197,7 @@ https://medium.com/@shaistha24/functional-programming-vs-object-oriented-program
 - esbenp.prettier-vscode
 - silvenon.mdx
 
-With Vscode, you'll be able to:
+With the default Vscode settings in the repo, you'll be able to:
 
 - Auto lint on save
 - Real time linting feedback
