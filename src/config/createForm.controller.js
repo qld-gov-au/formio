@@ -1,4 +1,4 @@
-import { PdfDownload } from "../components/PdfDownload";
+import {PdfDownload} from '../components/PdfDownload';
 
 export default (props) => {
   // output what inside prop
@@ -42,12 +42,9 @@ export default (props) => {
         pdfDownloadMessage,
         pdfDownload
       );
-      const pdfDownloadUrl = cPdfDownload && cPdfDownload.getDownloadUrl();
-      const pdfDownloadMessageSquizMetadata =
-        cPdfDownload && cPdfDownload.feedbackMessageTemplate();
-      window.sessionStorage.setItem("pdfUrl", pdfDownloadUrl);
+      window.sessionStorage.setItem("pdfUrl", cPdfDownload.getDownloadUrl());
       document.getElementsByClassName("qg-forms-v2")[0].innerHTML =
-        pdfDownloadMessageSquizMetadata;
+        cPdfDownload.feedbackMessageTemplate();
     }
     // redirect after submit
     if (formConfirmation) window.location.href = formConfirmation;
