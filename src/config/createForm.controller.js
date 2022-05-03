@@ -1,10 +1,7 @@
-import {PdfDownload} from '../components/PdfDownload';
+import { PdfDownload } from "../components/PdfDownload";
 
 export default (props) => {
-  // output what inside prop
-  console.info("Default form controller", props);
-  const { form, formConfirmation, pdfDownloadMessage, pdfDownload, elem } =
-    props;
+  const { form, formConfirmation } = props;
   // Change event/GTM
   form.on("click", (e) => {
     // eslint-disable-next-line no-underscore-dangle
@@ -37,24 +34,9 @@ export default (props) => {
   });
 
   form.on("submitDone", (event) => {
-    let cPdfDownload = new PdfDownload(event, pdfDownloadMessage, pdfDownload);
-    let pdfDownloadUrl = cPdfDownload.getDownloadUrl();
-    let pdfDownloadMessageSquizMetadata = cPdfDownload.getDownloadMessage();
-    if(pdfDownloadUrl && pdfDownloadMessage){
-      sessionStorage.setItem("pdfUrl", pdfDownloadUrl);
-      document.getElementByClassName("qg-forms-v2").innerHTML = pdfDownloadMessageSquizMetadata;
-    }
-    // for debugging pdf function
-    // console.info("submitDone", event);
-    // // to get pdf info, approach 1
-    // console.info("pdfDownload #1", pdfDownload);
-    // console.info("pdfDownloadMessage #1", pdfDownloadMessage);
-    // // to get pdf info, approach 2
-    // console.info("pdfDownload #2", elem.dataset.formioPdfDownload);
-    // console.info(
-    //   "pdfDownloadMessage #2",
-    //   elem.dataset.formioPdfDownloadMessage
-    // );
+    // pdf download option
+    const pdfDownload = new PdfDownload(event, form);
+    pdfDownload.isPdfDownloadEnabled();
 
     // redirect after submit
     if (formConfirmation) window.location.href = formConfirmation;
