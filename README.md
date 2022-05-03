@@ -45,12 +45,31 @@ Storybook is the main development environment in this repository.
 - Create / Modify components in `src/components`.
 - Update `src/components/index.js` for new component.
 - Lint and test with `npm run validate`.
-- Push your branch and create pull request to merge to `develop` branch.
+- Push your branch and create pull request to merge to `main` branch.
 
 ### Remote testing in Squiz Matrix
 
-- We have a DEV gitBridge in asset `formio-cdn #248740`
-- Sync the gitBridge with the branch you want to test in https://github.com/qld-gov-au/formio-qld, eg. `develop`.
+There are 2 approaches to debug your feature branch in Squiz Matrix.
+
+#### Approach 1: Deploy to CDN as a beta release
+
+- Validate your feature branch with `npm run validate`.
+- Review the latest tag number by `git tag -l`, and decide a new version number.
+- Create a tag in https://github.com/qld-gov-au/formio, by running `git tag -a vx.x.x-beta00x -m "your message"` (eg. v1.0.4-beta001), with the new version number you just updated.
+- Push the tag to remote by `git push origin vx.x.x-beta00x`, with the new version number you just updated.
+- If your branch is valid and Github actions is executed, your branch will be deployed to CDN DEV environment after few minutes. You can check the status of deployment in https://servicesmadesimpler.govnet.qld.gov.au/bamboo/browse/QSA-FOR/deployments.
+- In the Squiz Matrix Formio template, you could test your change by select `dev` in `Script environment`, and leave `Script version` to default or enter the version you just created, eg. `v1/v1.0.4-beta001`. Please refer to https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-forms-v2 for instruction of using the Formio template in Squiz Matrix.
+- If you've updated your feature branch and want to deploy to CDN and test again, you could remove the existing tag with `git tag -d vx.x.x-beta00x` (to remove the local tag) and `git push --delete origin vx.x.x-beta00x` (to remove the remote tag), and re-create the tag again. You may run into building error in Github action, you just need to re-run the failed task in this case.
+
+#### Approach 2: Using Gitbridge
+
+- Validate your feature branch with `npm run validate`.
+- Push your branch
+- A new brach will be automatically created in https://github.com/qld-gov-au/formio-qld through Github action.
+- In Squiz Matrix, we have a gitBridge in asset `formio-cdn #248740`
+- Sync the gitBridge with the branch you just created in https://github.com/qld-gov-au/formio-qld.
+- In the Squiz Matrix Formio template, you could test your change by select `gitbridge` in `Script environment`, and leave `Script version` to default. Please refer to https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-forms-v2 for instruction of using the Formio template in Squiz Matrix.
+- If you've updated your feature branch and want to test again, you'll have to repeat the process of pushing and re-sync the gitbridge.
 
 ## Deployment
 
@@ -62,7 +81,7 @@ Then you can use gitBridge to test the modules in Squiz Matrix.
 ### Release to CDN
 
 - Update the version number in `package.json`, you can review the latest tag number by `git tag -l`.
-- Create a tag in https://github.com/qld-gov-au/formio, by running `git tag -a vx.x.x -m "your message"`, with the new version number you just updated.
+- Create a tag in https://github.com/qld-gov-au/formio, by running `git tag -a vx.x.x -m "your message"` (eg. v1.0.4), with the new version number you just updated.
 - Push the tag to remote by `git push origin vx.x.x`, with the new version number you just updated.
 - Create a PR on this commit/branch, then this will trigger the github action.
 - https://github.com/qld-gov-au/formio-qld-cdn `release` branch will automatically generated a folder for the new version.
