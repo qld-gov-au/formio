@@ -181,9 +181,11 @@ mvn com.github.eirslett:frontend-maven-plugin:npm@storybook
 
 ## Coding practice
 
-### Functional programming pattern
+### Functional programming pattern VS OOP pattern
 
-This project is using FP (Functional programming) pattern instead of OOP (Object Oriented Programming) pattern.
+The custom component library under `src/components` is using OOP (Object Oriented Programming) pattern. As we are extending formio.js components which are already written with this pattern.
+
+Other part of the project is using FP (Functional programming) pattern instead of OOP (Object Oriented Programming) pattern.
 
 https://tsh.io/blog/7-reasons-to-use-functional-programming-on-frontend-1-2/
 https://medium.com/@bananicabananica/functional-programming-on-frontend-86d5b5fcf5a8
