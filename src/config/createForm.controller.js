@@ -36,15 +36,15 @@ export default (props) => {
   });
 
   form.on("submitDone", (event) => {
-    const cPdfDownload = new PdfDownload(
-      event,
-      pdfDownloadMessage,
-      pdfDownload
-    );
-    const pdfDownloadUrl = cPdfDownload.getDownloadUrl();
-    const pdfDownloadMessageSquizMetadata =
-      cPdfDownload.feedbackMessageTemplate();
-    if (pdfDownloadUrl && pdfDownloadMessage) {
+    if (pdfDownload && pdfDownloadMessage) {
+      const cPdfDownload = new PdfDownload(
+        event,
+        pdfDownloadMessage,
+        pdfDownload
+      );
+      const pdfDownloadUrl = cPdfDownload && cPdfDownload.getDownloadUrl();
+      const pdfDownloadMessageSquizMetadata =
+        cPdfDownload && cPdfDownload.feedbackMessageTemplate();
       window.sessionStorage.setItem("pdfUrl", pdfDownloadUrl);
       document.getElementsByClassName("qg-forms-v2")[0].innerHTML =
         pdfDownloadMessageSquizMetadata;
