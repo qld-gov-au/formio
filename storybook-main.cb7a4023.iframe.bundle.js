@@ -4113,8 +4113,7 @@ function MDXContent(_ref) {
     parentName: "p"
   }, `Custom javascript`), ` URL with the CDN URL of this library:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, `https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
-(This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
+  }, `https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
 `)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     src: _assets_formioSettings_png__WEBPACK_IMPORTED_MODULE_4__,
     alt: "share diagram",
@@ -4655,4 +4654,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.3cab7447.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.cb7a4023.iframe.bundle.js.map
