@@ -1,4 +1,4 @@
-import {PdfDownload} from '../components/PdfDownload';
+import { PdfDownload } from "../components/PdfDownload";
 
 export default (props) => {
   // output what inside prop

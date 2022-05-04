@@ -32,7 +32,8 @@ export class PdfDownload {
   }
 
   feedbackMessageTemplate() {
-    return `<div class="qg-formsio__thank-you-message alert alert-success mt-4" role="alert">
+    console.info(window.sessionStorage.getItem("pdfUrl"));
+    return `<div class="qg-formsio__thank-you-message alert alert-success mt-4 test" role="alert">
             ${this.getDownloadMessage()} 
             ${
               window.sessionStorage.getItem("pdfUrl")
