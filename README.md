@@ -2,7 +2,7 @@
 
 This repository provides a bundled JS custom component library to form.io builder / form.io renderer / Squiz Matrix form application.
 
-<img src="https://qld-gov-au.github.io/formio/static/media/formio%20custom%20component.5f82e1bf.png" alt="share diagram" width="480" />
+<img src="https://qld-gov-au.github.io/formio/static/media/storybook-formio%20custom%20component.5f82e1bf.png" alt="share diagram" width="480" />
 
 ## Goals
 
@@ -97,11 +97,10 @@ You can consume this library either in Form.io Builder or Form.io Renderer.
 To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
 
 ```
-https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
-(This is a temporary URL for POC purpose, actual CDN URL still needs to be confirmed in production.)
+https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
 ```
 
-<img src="https://qld-gov-au.github.io/formio/static/media/formioSettings.fbfb01cf.png" alt="share diagram" width="640" />
+<img src="https://qld-gov-au.github.io/formio/static/media/storybook-formioSettings.fbfb01cf.png" alt="share diagram" width="640" />
 
 ### Form.io JS renderer or builder
 
