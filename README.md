@@ -113,6 +113,13 @@ Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#get
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
 ```
 
+### Squiz Matrix
+
+To use this custom component library in QG Squiz Matrix, please refer to the following guides:
+
+- https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-plsplusaddress-component
+- https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-forms-v2
+
 ## Formio scripts versioning
 
 The scripts files in the `lib` folder will be copied and hosted in the CDN, which are coming from these libraries:
