@@ -114,6 +114,31 @@ Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#get
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
 ```
 
+## Formio scripts versioning
+
+The scripts files in the `lib` folder will be copied and hosted in the CDN, which are coming from these libraries:
+
+- https://github.com/formio/formio.js
+- @formio/premium (private repo)
+
+We will need to sync the version of these files with the version of the QG form.io platform https://api.forms.platforms.qld.gov.au/#/.
+
+At the bottom of the page in https://api.forms.platforms.qld.gov.au/#/, you can get the server version, eg. `Application: 7.3.0, Renderer: 4.14.0`
+
+Based on the server version `7.3.0`, you could find the required version of all the dependency libraries in https://github.com/formio/enterprise-release/blob/master/API-Server-Change-Log.md#api-server-version-730.
+
+eg.
+formiojs@4.14.0
+premium@1.17.1
+
+Then you could copy the corresponding script files to the `lib` folder.
+
+### Auto updating scripts
+
+Github actions has been setup for this repo to fetch the latest versions of scripts from `formiojs` and `premium`, automatic creates PR to merge the latest script to the `main` branch.
+
+At the mean time we need to sync the version with QG form.io platform, we could merge these PRs if the version is the same as the form.io server otherwise we'll have to ignore them.
+
 ## Folder structure
 
 ### src/components
@@ -153,3 +178,29 @@ to run storybook dev mode
 ```shell
 mvn com.github.eirslett:frontend-maven-plugin:npm@storybook
 ```
+
+## Coding practice
+
+### Functional programming pattern VS OOP pattern
+
+The custom component library under `src/components` is using OOP (Object Oriented Programming) pattern. As we are extending formio.js components which are already written with this pattern.
+
+Other part of the project is using FP (Functional programming) pattern instead of OOP (Object Oriented Programming) pattern.
+
+https://tsh.io/blog/7-reasons-to-use-functional-programming-on-frontend-1-2/
+https://medium.com/@bananicabananica/functional-programming-on-frontend-86d5b5fcf5a8
+https://medium.com/@shaistha24/functional-programming-vs-object-oriented-programming-oop-which-is-better-82172e53a526
+
+### IDE
+
+`Vscode` is recommended for this project, with the following extensions:
+
+- dbaeumer.vscode-eslint
+- esbenp.prettier-vscode
+- silvenon.mdx
+
+With the default Vscode settings in the repo, you'll be able to:
+
+- Auto lint on save
+- Real time linting feedback
+- Hint and quick fix for lint error
