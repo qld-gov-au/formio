@@ -6,9 +6,8 @@ export class PdfDownload {
   }
 
   isPdfDownloadEnabled() {
-    if (this.submitEvt.data.needPdf && this.submitEvt.data.needPdf === "yes") {
+    if (this.submitEvt.data && this.submitEvt.data.needPdf === "yes") {
       const pdfUrl = this.submitEvt.metadata.pdfUrl.DownloadUrl;
-      console.info(pdfUrl);
       window.sessionStorage.setItem("pdfUrl", pdfUrl);
       this.formInstance.root.nextPage();
       this.onDownloadbtnClick();
