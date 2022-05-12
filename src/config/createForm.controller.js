@@ -1,9 +1,7 @@
 import { PdfDownload } from "../components/PdfDownload";
 
 export default (props) => {
-  // output what inside prop
-  console.info("Default form controller", props);
-  const { form, formConfirmation, pdfDownloadMessage, pdfDownload } = props;
+  const { form, formConfirmation } = props;
   // Change event/GTM
   form.on("click", (e) => {
     // eslint-disable-next-line no-underscore-dangle
@@ -36,16 +34,10 @@ export default (props) => {
   });
 
   form.on("submitDone", (event) => {
-    if (pdfDownload && pdfDownloadMessage) {
-      const cPdfDownload = new PdfDownload(
-        event,
-        pdfDownloadMessage,
-        pdfDownload
-      );
-      window.sessionStorage.setItem("pdfUrl", cPdfDownload.getDownloadUrl());
-      document.getElementsByClassName("qg-forms-v2")[0].innerHTML =
-        cPdfDownload.feedbackMessageTemplate();
-    }
+    // pdf download option
+    const pdfDownload = new PdfDownload(event, form);
+    pdfDownload.isPdfDownloadEnabled();
+
     // redirect after submit
     if (formConfirmation) window.location.href = formConfirmation;
   });

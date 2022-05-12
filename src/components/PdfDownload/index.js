@@ -1,45 +1,23 @@
 export class PdfDownload {
-  constructor(event, pdfDownloadMessage, pdfDownload) {
+  constructor(event, form) {
     this.onDownloadbtnClick();
-    this.formData = event;
-    this.pdfDownloadMessage = pdfDownloadMessage;
-    this.pdfDownload = pdfDownload;
+    this.submitEvt = event;
+    this.formInstance = form;
   }
 
   isPdfDownloadEnabled() {
-    return true;
-  }
-
-  getDownloadUrl() {
-    if (this.isPdfDownloadEnabled()) {
-      return this.formData.metadata.PostToAPIGateway.DownloadUrl;
+    if (this.submitEvt.data.needPdf && this.submitEvt.data.needPdf === "yes") {
+      const pdfUrl = this.submitEvt.metadata.pdfUrl.DownloadUrl;
+      console.info(pdfUrl);
+      window.sessionStorage.setItem("pdfUrl", pdfUrl);
+      this.formInstance.root.nextPage();
+      this.onDownloadbtnClick();
     }
-    return false;
-  }
-
-  getDownloadMessage() {
-    if (this.isPdfDownloadEnabled()) {
-      return this.pdfDownloadMessage;
-    }
-    return false;
   }
 
   onDownloadbtnClick() {
-    // eslint-disable-next-line func-names
-    $("body").on("click", "#download-pdf", function () {
-      window.location.href = window.sessionStorage.getItem("pdfUrl");
+    $("body").on("click", "#pdf-download", () => {
+      window.open(window.sessionStorage.getItem("pdfUrl"), "_blank");
     });
-  }
-
-  feedbackMessageTemplate() {
-    console.info(window.sessionStorage.getItem("pdfUrl"));
-    return `<div class="qg-formsio__thank-you-message alert alert-success mt-4 test" role="alert">
-            ${this.getDownloadMessage()} 
-            ${
-              window.sessionStorage.getItem("pdfUrl")
-                ? `<button class="btn btn-primary" id="download-pdf">Download a PDF copy of your enquiry</button>`
-                : ""
-            }
-       </div>`;
   }
 }
