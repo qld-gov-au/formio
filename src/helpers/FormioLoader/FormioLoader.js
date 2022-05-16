@@ -186,7 +186,6 @@ const initFormio = () => {
       formName: formioFormName,
       envUrl: formioEnvUrl,
       pdfDownload: formioPdfDownload,
-      pdfDownloadMessage: formioPdfDownloadMessage,
       formConfirmation: formioFormConfirmation,
       formRevision: formioFormRevision,
       namespace: formioNamespace,

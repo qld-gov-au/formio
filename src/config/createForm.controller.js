@@ -1,3 +1,5 @@
+import { PdfDownload } from "../helpers/PdfDownload";
+
 export default ({ form, formConfirmation }) => {
   // Change event/GTM
   form.on("click", (e) => {
@@ -30,7 +32,11 @@ export default ({ form, formConfirmation }) => {
     form.submit();
   });
 
-  form.on("submitDone", () => {
+  form.on("submitDone", (event) => {
+    // pdf download option
+    const pdfDownload = new PdfDownload(event, form);
+    pdfDownload.isPdfDownloadEnabled();
+
     if (formConfirmation) window.location.href = formConfirmation;
   });
 };
