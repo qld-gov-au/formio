@@ -38,7 +38,6 @@ export class PdfDownload {
   static onDownloadbtnClick() {
     document.addEventListener("click", (e) => {
       if (e.target.closest(".pdf-download")) {
-        console.info("clicked button v2");
         window.open(window.sessionStorage.getItem("pdfUrl"), "_blank");
       }
     });
