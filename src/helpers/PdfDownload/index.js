@@ -8,8 +8,8 @@ export class PdfDownload {
     if (event && event.data && event.data.needPdf === "yes") {
       const pdfUrl = event.metadata.pdfUrl.DownloadUrl;
       window.sessionStorage.setItem("pdfUrl", pdfUrl);
+      form.root.nextPage();
     }
-    form.root.nextPage();
   }
 
   /**
