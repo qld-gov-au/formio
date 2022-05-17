@@ -173,7 +173,6 @@ const initFormio = () => {
       formioFormName,
       formioEnvUrl,
       formioPdfDownload,
-      formioPdfDownloadMessage,
       formioFormConfirmation,
       formioFormRevision,
       formioNamespace,
