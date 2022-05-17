@@ -33,10 +33,11 @@ export default ({ form, formConfirmation }) => {
   });
 
   form.on("submitDone", (event) => {
-    // pdf download option
-    const pdfDownload = new PdfDownload(event, form);
-    pdfDownload.isPdfDownloadEnabled();
-
+    PdfDownload.isNextPage(form, event);
     if (formConfirmation) window.location.href = formConfirmation;
+  });
+
+  form.on("nextPage", (event) => {
+    PdfDownload.isLastPage(form, event);
   });
 };

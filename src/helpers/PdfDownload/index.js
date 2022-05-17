@@ -1,24 +1,32 @@
 export class PdfDownload {
-  constructor(event, form) {
-    this.submitEvt = event;
-    this.formInstance = form;
-  }
-
   /**
-   * isPdfDownloadEnabled function check needPdf field is marked as 'yes' in form.io
+   * isNextPage function check needPdf field is marked as 'yes' in form.io
    * and then set PDF url as a session storage
    * @return {undefined}
    * */
-  isPdfDownloadEnabled() {
-    if (this.submitEvt.data && this.submitEvt.data.needPdf === "yes") {
-      const pdfUrl = this.submitEvt.metadata.pdfUrl.DownloadUrl;
+  static isNextPage(form, event) {
+    if (event && event.data && event.data.needPdf === "yes") {
+      const pdfUrl = event.metadata.pdfUrl.DownloadUrl;
       window.sessionStorage.setItem("pdfUrl", pdfUrl);
-      this.formInstance.root.nextPage().then(() => {
-        document.getElementsByClassName(
-          "formio-wizard-nav-container"
-        )[0].style.visibility = "hidden";
-      });
-      this.onDownloadbtnClick();
+    }
+    form.root.nextPage();
+  }
+
+  /**
+   * isLastPage
+   * and then set PDF url as a session storage
+   * @return {undefined}
+   * */
+  static isLastPage(form) {
+    if (form.currentNextPage === -1) {
+      if (window.sessionStorage.getItem("pdfUrl") !== null) {
+        setTimeout(() => {
+          document.getElementsByClassName(
+            "formio-wizard-nav-container"
+          )[0].style.visibility = "hidden";
+        }, 0);
+        this.onDownloadbtnClick();
+      }
     }
   }
 
@@ -27,9 +35,9 @@ export class PdfDownload {
    * url is set from the session storage
    * @return {undefined}
    * */
-  onDownloadbtnClick() {
+  static onDownloadbtnClick() {
     document.addEventListener("click", (e) => {
-      if (e.target.closest("#pdf-download")) {
+      if (e.target.closest(".pdf-download")) {
         console.info("clicked button v2");
         window.open(window.sessionStorage.getItem("pdfUrl"), "_blank");
       }
