@@ -6,8 +6,7 @@
 
 import _ from "lodash";
 
-const { eachComponent } = Formio.Utils;
-const { uniqueKey } = Formio.Utils;
+const { eachComponent, uniqueKey } = Formio.Utils;
 
 export default {
   /**
