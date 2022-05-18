@@ -4,9 +4,6 @@
  *
  */
 
-import _ from "lodash";
-import BuilderUtils from "../../../utils/BuilderUtils";
-
 export default [
   {
     type: "content",
@@ -144,26 +141,6 @@ export default [
     tooltip:
       "This is the full icon class string to show the icon. Example: 'fa fa-plus'",
     weight: 170,
-  },
-  {
-    type: "select",
-    input: true,
-    weight: 180,
-    label: "Shortcut",
-    key: "shortcut",
-    tooltip: "Shortcut for this component.",
-    dataSrc: "custom",
-    valueProperty: "value",
-    customDefaultValue: () => "",
-    template: "{{ item.label }}",
-    data: {
-      custom(context) {
-        return BuilderUtils.getAvailableShortcuts(
-          _.get(context, "instance.options.editForm", {}),
-          _.get(context, "instance.options.editComponent", {})
-        );
-      },
-    },
   },
   {
     type: "checkbox",
