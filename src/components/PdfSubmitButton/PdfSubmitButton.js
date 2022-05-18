@@ -74,10 +74,10 @@ export class PdfSubmitButton extends Button {
             this.root.element.innerHTML = `
               ${
                 downloadSuccessMessage
-                  ? `<div class="mb-3">${downloadSuccessMessage}</div>`
+                  ? `<div class="mb-3 download-success-message-container">${downloadSuccessMessage}</div>`
                   : ""
               }
-              <div>
+              <div class="download-button-message-container">
                 <a href="${pdfUrl}" class="${className}" target="${target}" />
                   ${label}
                 </a>
@@ -85,7 +85,9 @@ export class PdfSubmitButton extends Button {
             `;
           } else {
             this.root.element.innerHTML = `
-              ${downloadFailedMessage}
+              <div class="download-failed-message-container">
+                ${downloadFailedMessage}
+              </div>
             `;
           }
           this.root.element.scrollIntoView();
