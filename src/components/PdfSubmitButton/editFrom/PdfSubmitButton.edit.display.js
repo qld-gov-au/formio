@@ -32,10 +32,20 @@ export default [
   },
   {
     type: "textarea",
-    key: "downloadMessage",
-    label: "Download message",
+    key: "downloadSuccessMessage",
+    label: "Download message if PDF generated successfully",
     tooltip:
-      "Message show up next to the download button after form submission.",
+      "Message show up after form submission if PDF generated successfully.",
+    rows: 5,
+    editor: "ckeditor",
+    input: true,
+    weight: 120,
+  },
+  {
+    type: "textarea",
+    key: "downloadFailedMessage",
+    label: "Download message if PDF didn't generate",
+    tooltip: "Message show after form submission if PDF didn't generate.",
     rows: 5,
     editor: "ckeditor",
     input: true,

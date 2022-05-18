@@ -14,7 +14,8 @@ export class PdfSubmitButton extends Button {
       type: "pdfsubmitbutton",
       label: "Submit",
       key: "pdfsubmitbutton",
-      downloadMessage: "",
+      downloadSuccessMessage: "",
+      downloadFailedMessage: "",
       downloadButtonLabel: undefined,
       downloadButtonClass: undefined,
       downloadButtonTarget: undefined,
@@ -44,7 +45,8 @@ export class PdfSubmitButton extends Button {
             : e?.metadata?.pdfUrl?.DownloadUrl;
 
           const {
-            downloadMessage,
+            downloadSuccessMessage,
+            downloadFailedMessage,
             downloadButtonClass,
             downloadButtonLabel,
             downloadButtonTarget,
@@ -66,15 +68,22 @@ export class PdfSubmitButton extends Button {
               ? downloadButtonLabel
               : "Download";
 
-          // replace form div container with downloadMessage
-          this.root.element.innerHTML = `
-            ${downloadMessage}
-            <div class="mt-3">
-              <a href="${pdfUrl}" class="${className}" target="${target}" />
-                ${label}
-              </a>
-            </div>
-          `;
+          // replace form div container with downloadSuccessMessage
+
+          if (pdfUrl) {
+            this.root.element.innerHTML = `
+              ${downloadSuccessMessage}
+              <div class="mt-3">
+                <a href="${pdfUrl}" class="${className}" target="${target}" />
+                  ${label}
+                </a>
+              </div>
+            `;
+          } else {
+            this.root.element.innerHTML = `
+              ${downloadFailedMessage}
+            `;
+          }
         },
         true
       );

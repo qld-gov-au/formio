@@ -21,9 +21,40 @@ Below is an interactive example, please check the form data output in the consol
               type: "pdfsubmitbutton",
               key: "pdfsubmitbutton",
               label: "Submit",
-              downloadMessage: "This is a download message.",
+              downloadSuccessMessage: "This is a download message.",
               debugMode: true,
               debugPdfUrl: "https://qld.gov.au",
+            },
+          ],
+        },
+        controller: (formio) => {
+          formio.on("submit", (e) => {
+            console.info("submit", e.data);
+          });
+          formio.on("change", (e) => {
+            console.info("change", e.data);
+          });
+        },
+      })
+    }
+  </Story>
+</Canvas>
+
+This example show the case when PDF is failed to generate, form action is missing or form action is blocked intentionally.
+
+<Canvas>
+  <Story name="Renderer for missing PDF">
+    {() =>
+      createForm({
+        form: {
+          components: [
+            {
+              type: "pdfsubmitbutton",
+              key: "pdfsubmitbutton",
+              label: "Submit",
+              downloadSuccessMessage: "This is a download message.",
+              downloadFailedMessage: "No PDF available.",
+              debugMode: true,
             },
           ],
         },
@@ -85,7 +116,7 @@ Example of putting a PdfSubmitButton in a wizard form.
                   type: "pdfsubmitbutton",
                   key: "pdfsubmitbutton",
                   label: "Submit",
-                  downloadMessage: "This is a download message.",
+                  downloadSuccessMessage: "This is a download message.",
                   debugMode: true,
                   debugPdfUrl: "https://qld.gov.au",
                 },
@@ -124,7 +155,7 @@ You can preview the component's settings in the example below.
               type: "pdfsubmitbutton",
               key: "pdfsubmitbutton",
               label: "Submit",
-              downloadMessage: "This is a download message.",
+              downloadSuccessMessage: "This is a download message.",
               debugMode: true,
               debugPdfUrl: "https://qld.gov.au",
             },
