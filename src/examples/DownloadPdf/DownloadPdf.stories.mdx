@@ -1,6 +1,8 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { DownloadPdf } from "./DownloadPdf";
 import { downloadPdfCode } from "./DownloadPdf.code";
+import { DownloadPdfWizard } from "./DownloadPdfWizard";
+import { downloadPdfWizardCode } from "./DownloadPdfWizard.code";
 
 <Meta title="Examples/DownloadPdf" />
 
@@ -22,5 +24,22 @@ TODO - document the process of setup the form action in form.io, with the action
     }}
   >
     {() => DownloadPdf()}
+  </Story>
+</Canvas>
+
+Example below shows using the PdfSubmitButton in a wizard form, just drag and drop the component to the last wizard page.
+
+<Canvas withSource="open">
+  <Story
+    name="downloadPdfWizard"
+    parameters={{
+      docs: {
+        source: {
+          code: downloadPdfWizardCode,
+        },
+      },
+    }}
+  >
+    {() => DownloadPdfWizard()}
   </Story>
 </Canvas>
