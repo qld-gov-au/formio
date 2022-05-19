@@ -34,9 +34,10 @@ export default [
     tooltip:
       "Message show up after form submission if PDF generated successfully.",
     rows: 5,
-    editor: "ace",
     input: true,
     weight: 120,
+    editor: "ace",
+    as: "html",
   },
   {
     type: "textarea",
@@ -44,9 +45,10 @@ export default [
     label: "Download message if PDF didn't generate",
     tooltip: "Message show after form submission if PDF didn't generate.",
     rows: 5,
-    editor: "ace",
     input: true,
     weight: 120,
+    editor: "ace",
+    as: "html",
   },
   {
     type: "textfield",
