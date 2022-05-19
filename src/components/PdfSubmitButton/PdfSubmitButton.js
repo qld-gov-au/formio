@@ -19,6 +19,8 @@ export class PdfSubmitButton extends Button {
       downloadButtonLabel: undefined,
       downloadButtonClass: undefined,
       downloadButtonTarget: undefined,
+      downloadSuccessMessageClass: undefined,
+      downloadFailedMessageClass: undefined,
       // props below are for debugging in storybook
       debugMode: false,
       debugPdfUrl: "",
@@ -50,6 +52,8 @@ export class PdfSubmitButton extends Button {
             downloadButtonClass,
             downloadButtonLabel,
             downloadButtonTarget,
+            downloadSuccessMessageClass,
+            downloadFailedMessageClass,
           } = this.component;
 
           // setup default settings for download button
@@ -68,25 +72,32 @@ export class PdfSubmitButton extends Button {
               ? downloadButtonLabel
               : "Download";
 
+          const successMessageClass = downloadSuccessMessageClass || "";
+          const failedMessageClass = downloadFailedMessageClass || "";
+
           // replace form div container with downloadSuccessMessage
 
           if (pdfUrl) {
             this.root.element.innerHTML = `
-              ${
-                downloadSuccessMessage
-                  ? `<div class="mb-3 download-success-message-container">${downloadSuccessMessage}</div>`
-                  : ""
-              }
-              <div class="download-button-message-container">
-                <a href="${pdfUrl}" class="${className}" target="${target}" />
-                  ${label}
-                </a>
+              <div class="${successMessageClass}">
+                ${
+                  downloadSuccessMessage
+                    ? `<div class="mb-3 download-success-message-container">${downloadSuccessMessage}</div>`
+                    : ""
+                }
+                <div class="download-button-container">
+                  <a href="${pdfUrl}" class="${className}" target="${target}" />
+                    ${label}
+                  </a>
+                </div>
               </div>
             `;
           } else {
             this.root.element.innerHTML = `
-              <div class="download-failed-message-container">
-                ${downloadFailedMessage}
+              <div class="${failedMessageClass}">
+                <div class="download-failed-message-container">
+                  ${downloadFailedMessage}
+                </div>
               </div>
             `;
           }
