@@ -175,10 +175,20 @@ export class PlsPlusAddress extends FieldsetComponent {
     return this.components || [];
   }
 
+  prepComponents(components) {
+    components.forEach((component) => {
+      if (component.components) this.prepComponents(component.components);
+      if (component.validate && component.validate.required === undefined) {
+        component.validate.required = false;
+      }
+    });
+  }
+
   addComponents(data = this.data, options = this.options) {
     if (options.components) {
       this.components = options.components;
     } else {
+      this.prepComponents(this.componentComponents);
       const components =
         this.hook(
           "addComponents",
