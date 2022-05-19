@@ -188,7 +188,8 @@ export class PlsPlusAddress extends FieldsetComponent {
     if (options.components) {
       this.components = options.components;
     } else {
-      this.prepComponents(this.componentComponents);
+      console.log("test444", this);
+      if (this.attached) this.prepComponents(this.componentComponents);
       const components =
         this.hook(
           "addComponents",
