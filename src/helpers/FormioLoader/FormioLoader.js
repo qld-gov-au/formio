@@ -15,6 +15,8 @@ const requestPluginHandler = (requestArgs, opts) => {
       requestArgs.opts.base = requestArgs.formio.options.base;
       requestArgs.opts.project = requestArgs.formio.options.project;
       requestArgs.opts.namespace = requestArgs.formio.options.namespace;
+      Formio.setProjectUrl(requestArgs.formio.options.project);
+      Formio.setBaseUrl(requestArgs.formio.options.base);
     }
   }
 
