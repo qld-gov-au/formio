@@ -184,25 +184,6 @@ export class PlsPlusAddress extends FieldsetComponent {
     });
   }
 
-  addComponents(data = this.data, options = this.options) {
-    if (options.components) {
-      this.components = options.components;
-    } else {
-      console.log("test444", this);
-      if (this.attached) this.prepComponents(this.componentComponents);
-      const components =
-        this.hook(
-          "addComponents",
-          _.defaultsDeep(
-            this.componentComponents,
-            this.defaultSchema.components
-          ),
-          this
-        ) || [];
-      components.forEach((component) => this.addComponent(component, data));
-    }
-  }
-
   mergeSchema(component = {}) {
     let { defaultSchema } = this;
     if (component.components) {
@@ -436,7 +417,7 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   renderElement(value) {
     this.container?.getComponents().forEach((component) => {
-      if (!this.builderMode) {
+      if (!this.builderMode && this.attached) {
         component.disabled =
           component.originalComponent.disabled || !this.manualMode;
         component.component.validate = !this.manualMode
@@ -454,7 +435,7 @@ export class PlsPlusAddress extends FieldsetComponent {
         return this.onChange(flags, fromRoot);
       };
     });
-    if (!this.builderMode) {
+    if (!this.builderMode && this.attached) {
       this.component.validate = {
         ...(this.originalComponent?.validate?.required && {
           custom: `valid = !!instance.address.selectedAddress;`,
