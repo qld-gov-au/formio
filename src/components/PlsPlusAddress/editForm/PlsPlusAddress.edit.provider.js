@@ -8,7 +8,7 @@ export default [
     weight: 10,
     tooltip: "You must have an API key in order to use this component.",
     description:
-      "You must have a API key in order to use this component, please contact <a href='mailto:qol.development@smartservice.qld.gov.au' target='_blank'>qol.development@smartservice.qld.gov.au</a>(TBC) if you want to acquire an API key. (To be confirmed)",
+      "You must have a API key in order to use this component, please refer to <a href='https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-plsplusaddress-component' target='_blank'>this doc</a> or contact <a href='mailto:online@smartservice.qld.gov.au' target='_blank'>online@smartservice.qld.gov.au</a> if you want to acquire an API key.",
     validate: {
       required: true,
     },
