@@ -400,23 +400,6 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       return this.components || [];
     }
   }, {
-    key: "addComponents",
-    value: function addComponents() {
-      var _this2 = this;
-
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.data;
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.options;
-
-      if (options.components) {
-        this.components = options.components;
-      } else {
-        var components = this.hook("addComponents", lodash__WEBPACK_IMPORTED_MODULE_1___default().defaultsDeep(this.componentComponents, this.defaultSchema.components), this) || [];
-        components.forEach(function (component) {
-          return _this2.addComponent(component, data);
-        });
-      }
-    }
-  }, {
     key: "mergeSchema",
     value: function mergeSchema() {
       var component = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -542,18 +525,18 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
     key: "address",
     get: function () {
       var _this$container,
-          _this3 = this;
+          _this2 = this;
 
       var dataValue = (_this$container = this.container) === null || _this$container === void 0 ? void 0 : _this$container.dataValue;
       var addressData = addressKeys.map(function (k) {
-        if (_this3.container) {
-          var _this3$container$getC;
+        if (_this2.container) {
+          var _this2$container$getC;
 
-          var componentKey = (_this3$container$getC = _this3.container.getComponents().find(function (comp) {
+          var componentKey = (_this2$container$getC = _this2.container.getComponents().find(function (comp) {
             var _comp$originalCompone2;
 
             return (_comp$originalCompone2 = comp.originalComponent.tags) === null || _comp$originalCompone2 === void 0 ? void 0 : _comp$originalCompone2.includes(k);
-          })) === null || _this3$container$getC === void 0 ? void 0 : _this3$container$getC.component.key;
+          })) === null || _this2$container$getC === void 0 ? void 0 : _this2$container$getC.component.key;
           return {
             [k]: dataValue[componentKey]
           };
@@ -564,23 +547,23 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       return Object.assign.apply(Object, [{}].concat(_toConsumableArray(addressData)));
     },
     set: function (value) {
-      var _this4 = this;
+      var _this3 = this;
 
       this.dataValue = value;
       var changed = false;
 
       if (this.container) {
         addressKeys.forEach(function (k) {
-          var _this4$container$getC;
+          var _this3$container$getC;
 
-          var componentKey = (_this4$container$getC = _this4.container.getComponents().find(function (comp) {
+          var componentKey = (_this3$container$getC = _this3.container.getComponents().find(function (comp) {
             var _comp$originalCompone3;
 
             return (_comp$originalCompone3 = comp.originalComponent.tags) === null || _comp$originalCompone3 === void 0 ? void 0 : _comp$originalCompone3.includes(k);
-          })) === null || _this4$container$getC === void 0 ? void 0 : _this4$container$getC.component.key;
+          })) === null || _this3$container$getC === void 0 ? void 0 : _this3$container$getC.component.key;
 
-          if (_this4.container.dataValue[componentKey] !== value[k]) {
-            _this4.container.dataValue[componentKey] = value[k];
+          if (_this3.container.dataValue[componentKey] !== value[k]) {
+            _this3.container.dataValue[componentKey] = value[k];
             changed = true;
           }
         });
@@ -602,10 +585,10 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
     key: "restoreComponentsContext",
     value: function restoreComponentsContext() {
       var _this$container2,
-          _this5 = this;
+          _this4 = this;
 
       (_this$container2 = this.container) === null || _this$container2 === void 0 ? void 0 : _this$container2.getComponents().forEach(function (component) {
-        component.data = _this5.container.dataValue;
+        component.data = _this4.container.dataValue;
         component.setValue(component.dataValue, {
           noUpdateEvent: true
         });
@@ -614,7 +597,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "setValue",
     value: function setValue(value) {
-      var _this6 = this;
+      var _this5 = this;
 
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       // const changed = Field.prototype.setValue.call(this, value, flags);
@@ -622,7 +605,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
       if (!lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) && flags.fromSubmission) {
         setTimeout(function () {
-          _this6.redraw();
+          _this5.redraw();
         });
       }
 
@@ -682,31 +665,33 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
     key: "renderElement",
     value: function renderElement(value) {
       var _this$container3,
-          _this7 = this,
+          _this6 = this,
           _this$component$provi4,
           _this$component$provi5;
 
       (_this$container3 = this.container) === null || _this$container3 === void 0 ? void 0 : _this$container3.getComponents().forEach(function (component) {
-        if (!_this7.builderMode) {
-          component.disabled = component.originalComponent.disabled || !_this7.manualMode;
-          component.component.validate = !_this7.manualMode ? {} : component.originalComponent.validate;
+        if (!_this6.builderMode && _this6.attached) {
+          component.disabled = component.originalComponent.disabled || !_this6.manualMode;
+          component.component.validate = !_this6.manualMode ? {} : component.originalComponent.validate;
         }
 
         component.onChange = function (flags, fromRoot) {
           if (flags.modified && component.originalComponent.tags.length) {
-            _this7.setAddressProp(component.originalComponent.tags[0], component.dataValue);
+            _this6.setAddressProp(component.originalComponent.tags[0], component.dataValue);
           }
 
-          return _this7.onChange(flags, fromRoot);
+          return _this6.onChange(flags, fromRoot);
         };
       });
 
-      if (!this.builderMode) {
-        this.component.validate = {
+      if (!this.builderMode && this.attached) {
+        var _this$originalCompone, _this$originalCompone2;
+
+        this.component.validate = Object.assign({}, ((_this$originalCompone = this.originalComponent) === null || _this$originalCompone === void 0 ? void 0 : (_this$originalCompone2 = _this$originalCompone.validate) === null || _this$originalCompone2 === void 0 ? void 0 : _this$originalCompone2.required) && {
           custom: `valid = !!instance.address.selectedAddress;`,
           customMessage: `${this.component.label} is required.`,
           required: !this.manualMode
-        };
+        });
       }
 
       return this.renderTemplate(this.templateName, {
@@ -745,7 +730,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "attach",
     value: function attach(element) {
-      var _this8 = this;
+      var _this7 = this;
 
       var result = (this.builderMode || this.manualMode ? _get(_getPrototypeOf(PlsPlusAddress.prototype), "attach", this) : Field.prototype.attach).call(this, element);
 
@@ -765,52 +750,52 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         [PlsPlusAddress.searchInputRef]: "multiple"
       });
       this.searchInput.forEach(function (elem, index) {
-        if (!_this8.builderMode && elem && _this8.provider) {
+        if (!_this7.builderMode && elem && _this7.provider) {
           autocompleter__WEBPACK_IMPORTED_MODULE_0___default()({
             input: elem,
             debounceWaitMs: 300,
             fetch: function (text, update) {
               var query = text;
 
-              var promise = _this8.provider.search(query);
+              var promise = _this7.provider.search(query);
 
               promise.then(function (response) {
                 update(response);
               });
             },
             render: function (address) {
-              var div = _this8.ce("div");
+              var div = _this7.ce("div");
 
               div.textContent = address;
               return div;
             },
             onSelect: function (address) {
-              _this8.onSelectAddress(address, elem, index);
+              _this7.onSelectAddress(address, elem, index);
 
-              _this8.provider.parseAddress(address).then(function (r) {
-                _this8.address = Object.assign({}, _this8.address, _this8.provider.breakAddress(r), {
-                  mode: _this8.mode
+              _this7.provider.parseAddress(address).then(function (r) {
+                _this7.address = Object.assign({}, _this7.address, _this7.provider.breakAddress(r), {
+                  mode: _this7.mode
                 });
 
-                _this8.restoreComponentsContext();
+                _this7.restoreComponentsContext();
 
-                _this8.container.getComponents().forEach(function (component) {
+                _this7.container.getComponents().forEach(function (component) {
                   var childElement = document.getElementById(`${component.id}-${component.component.key}`);
                   if (childElement) childElement.value = component.dataValue;
                 });
               });
 
-              _this8.redraw();
+              _this7.redraw();
             }
           });
 
-          _this8.addEventListener(elem, "blur", function () {
+          _this7.addEventListener(elem, "blur", function () {
             if (!elem) {
               return;
             }
 
             if (elem.value) {
-              elem.value = _this8.getDisplayValue(_this8.address);
+              elem.value = _this7.getDisplayValue(_this7.address);
             }
           });
         }
@@ -818,43 +803,43 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
       if (this.modeSwitcher) {
         this.addEventListener(this.modeSwitcher, "change", function () {
-          if (!_this8.modeSwitcher) {
+          if (!_this7.modeSwitcher) {
             return;
           }
 
-          _this8.mode = _this8.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
+          _this7.mode = _this7.modeSwitcher.checked ? PlsPlusAddressMode.Manual : PlsPlusAddressMode.Autocomplete;
 
-          if (!_this8.builderMode) {
-            if (_this8.manualMode) {
-              _this8.restoreComponentsContext();
+          if (!_this7.builderMode) {
+            if (_this7.manualMode) {
+              _this7.restoreComponentsContext();
             } else {
-              _this8.clearAddress(_this8.searchInput);
+              _this7.clearAddress(_this7.searchInput);
             }
           }
 
-          _this8.redraw();
+          _this7.redraw();
         });
       }
 
       if (!this.builderMode) {
         this.removeValueIcon.forEach(function (removeValueIcon, index) {
-          _this8.updateRemoveIcon(index);
+          _this7.updateRemoveIcon(index);
 
           var removeValueHandler = function () {
-            var _this8$searchInput;
+            var _this7$searchInput;
 
-            var searchInput = (_this8$searchInput = _this8.searchInput) === null || _this8$searchInput === void 0 ? void 0 : _this8$searchInput[index];
+            var searchInput = (_this7$searchInput = _this7.searchInput) === null || _this7$searchInput === void 0 ? void 0 : _this7$searchInput[index];
 
-            _this8.clearAddress(searchInput, index);
+            _this7.clearAddress(searchInput, index);
 
             if (searchInput) {
               searchInput.focus();
             }
           };
 
-          _this8.addEventListener(removeValueIcon, "click", removeValueHandler);
+          _this7.addEventListener(removeValueIcon, "click", removeValueHandler);
 
-          _this8.addEventListener(removeValueIcon, "keydown", function (_ref) {
+          _this7.addEventListener(removeValueIcon, "keydown", function (_ref) {
             var key = _ref.key;
 
             if (key === "Enter") {
@@ -869,17 +854,17 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
   }, {
     key: "redraw",
     value: function redraw() {
-      var _this9 = this;
+      var _this8 = this;
 
       var modeSwitcherInFocus = this.modeSwitcher && document.activeElement === this.modeSwitcher;
       var searchInputInFocus = this.searchInput && document.activeElement === this.searchInput;
       return _get(_getPrototypeOf(PlsPlusAddress.prototype), "redraw", this).call(this).then(function (result) {
-        if (modeSwitcherInFocus && _this9.modeSwitcher) {
-          _this9.modeSwitcher.focus();
+        if (modeSwitcherInFocus && _this8.modeSwitcher) {
+          _this8.modeSwitcher.focus();
         }
 
-        if (searchInputInFocus && _this9.searchInput) {
-          _this9.searchInput.focus();
+        if (searchInputInFocus && _this8.searchInput) {
+          _this8.searchInput.focus();
         }
 
         return result;
@@ -951,6 +936,9 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         enableManualMode: true,
         input: true,
         persistent: "client-only",
+        validate: {
+          required: true
+        },
         components: [{
           key: "addressData",
           type: "container",
@@ -4654,4 +4642,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.cb7a4023.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.29ea1066.iframe.bundle.js.map
