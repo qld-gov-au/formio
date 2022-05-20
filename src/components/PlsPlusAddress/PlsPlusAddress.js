@@ -59,6 +59,9 @@ export class PlsPlusAddress extends FieldsetComponent {
         enableManualMode: true,
         input: true,
         persistent: "client-only",
+        validate: {
+          required: true,
+        },
         components: [
           {
             key: "addressData",
@@ -170,23 +173,6 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   getComponents() {
     return this.components || [];
-  }
-
-  addComponents(data = this.data, options = this.options) {
-    if (options.components) {
-      this.components = options.components;
-    } else {
-      const components =
-        this.hook(
-          "addComponents",
-          _.defaultsDeep(
-            this.componentComponents,
-            this.defaultSchema.components
-          ),
-          this
-        ) || [];
-      components.forEach((component) => this.addComponent(component, data));
-    }
   }
 
   mergeSchema(component = {}) {
@@ -422,7 +408,7 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   renderElement(value) {
     this.container?.getComponents().forEach((component) => {
-      if (!this.builderMode) {
+      if (!this.builderMode && this.attached) {
         component.disabled =
           component.originalComponent.disabled || !this.manualMode;
         component.component.validate = !this.manualMode
@@ -440,11 +426,13 @@ export class PlsPlusAddress extends FieldsetComponent {
         return this.onChange(flags, fromRoot);
       };
     });
-    if (!this.builderMode) {
+    if (!this.builderMode && this.attached) {
       this.component.validate = {
-        custom: `valid = !!instance.address.selectedAddress;`,
-        customMessage: `${this.component.label} is required.`,
-        required: !this.manualMode,
+        ...(this.originalComponent?.validate?.required && {
+          custom: `valid = !!instance.address.selectedAddress;`,
+          customMessage: `${this.component.label} is required.`,
+          required: !this.manualMode,
+        }),
       };
     }
 
