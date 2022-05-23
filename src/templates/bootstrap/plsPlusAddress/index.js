@@ -1,5 +1,5 @@
 /*
- * use form.io Address template as boilerplate
+ * use form.io Address template as BoilerplateButton
  * https://github.com/formio/formio.js/blob/master/src/templates/bootstrap/address/index.js
  *
  */

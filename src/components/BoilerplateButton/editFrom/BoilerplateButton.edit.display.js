@@ -1,14 +1,15 @@
 /*
- * fork form.io Button component as boilerplate
+ * fork form.io Button component as BoilerplateButton
  * https://github.com/formio/formio.js/blob/master/src/components/button/editForm/Button.edit.display.js
  *
  */
 
+// customise `display` tab in component editor
 export default [
   // Add a custom description to the editor
   {
     type: "content",
-    html: `<h2>Custom editor</h2>`,
+    html: `<h2>This is a custom label</h2>`,
     input: false,
     weight: -10,
   },
@@ -25,23 +26,37 @@ export default [
     key: "hideLabel",
     ignore: true,
   },
+  // custom textarea for customDescription
   {
-    type: "textfield",
-    label: "Download button class",
-    key: "downloadButtonClass",
-    weight: 122,
-    tooltip: "Class name of the download button.",
+    type: "textarea",
     input: true,
-    placeholder: "btn btn-primary",
+    // below will show a richtext editor, use `ace` to show a regular editor
+    editor: "ckeditor",
+    rows: 5,
+    label: "Custom description",
+    tooltip: "Example component custom property.",
+    key: "customDescription",
+    weight: 80,
   },
   {
-    type: "textfield",
-    label: "Download button target",
-    key: "downloadButtonTarget",
-    weight: 123,
-    tooltip: "Link target of the download button.",
+    type: "select",
+    key: "action",
+    label: "Action",
     input: true,
-    placeholder: "_blank",
+    dataSrc: "values",
+    weight: 110,
+    tooltip: "This is the action to be performed by this button.",
+    data: {
+      values: [
+        { label: "Submit", value: "submit" },
+        { label: "Save in state", value: "saveState" },
+        { label: "Event", value: "event" },
+        { label: "Custom", value: "custom" },
+        { label: "Reset", value: "reset" },
+        { label: "OAuth", value: "oauth" },
+        { label: "POST to URL", value: "url" },
+      ],
+    },
   },
   {
     type: "checkbox",

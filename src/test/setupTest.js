@@ -1,5 +1,5 @@
 import "../../lib/formio.full";
-import * as components from "../components";
+import * as components from "../components/index.dev";
 import providers from "../providers";
 import templates from "../templates";
 import { getComponents } from "../utils/getComponents";

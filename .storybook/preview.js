@@ -1,7 +1,7 @@
 import "../src/stories/stories.css";
 // import "../src/style/formio-qld.scss";
 import storybookOptions from "../src/config/storybook.options";
-import * as components from "../src/components";
+import * as components from "../src/components/index.dev";
 import { getComponents } from "../src/utils/getComponents";
 import templates from "../src/templates";
 import providers from "../src/providers";
