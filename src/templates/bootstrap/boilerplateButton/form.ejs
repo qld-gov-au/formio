@@ -1,0 +1,25 @@
+<!--
+  boilerplate from https://github.com/formio/formio.js/blob/master/src/templates/bootstrap/button/form.ejs
+-->
+<div class="mb-2">
+  {{ctx.component.customDescription}}
+</div>
+<{{ctx.input.type}}
+  ref="button"
+  {% for (var attr in ctx.input.attr) { %}
+  {{attr}}="{{ctx.input.attr[attr]}}"
+  {% } %}
+  {% if (ctx.component.description) { %}
+    aria-describedby="d-{{ctx.instance.id}}-{{ctx.component.key}}"
+  {% } %}
+>
+{% if (ctx.component.leftIcon) { %}<span class="{{ctx.component.leftIcon}}"></span>&nbsp;{% } %}
+{{ctx.input.content}}
+{% if (ctx.component.tooltip) { %}
+  <i ref="tooltip" class="{{ctx.iconClass('question-sign')}} text-muted" data-tooltip="{{ctx.component.tooltip}}"></i>
+{% } %}
+{% if (ctx.component.rightIcon) { %}&nbsp;<span class="{{ctx.component.rightIcon}}"></span>{% } %}
+</div{{ctx.input.type}}>
+<div ref="buttonMessageContainer">
+  <span class="help-block" ref="buttonMessage"></span>
+</div>
