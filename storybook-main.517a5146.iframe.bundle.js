@@ -66,9 +66,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_stories_stories_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/stories/stories.css */ "./src/stories/stories.css");
 /* harmony import */ var _src_config_storybook_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/config/storybook.options */ "./src/config/storybook.options.js");
 /* harmony import */ var _src_config_storybook_options__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_config_storybook_options__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _src_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/components */ "./src/components/index.js");
+/* harmony import */ var _src_components_index_dev__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/components/index.dev */ "./src/components/index.dev.js");
 /* harmony import */ var _src_utils_getComponents__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/utils/getComponents */ "./src/utils/getComponents.js");
-/* harmony import */ var _src_templates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/templates */ "./src/templates/index.js");
+/* harmony import */ var _src_templates_index_dev__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/templates/index.dev */ "./src/templates/index.dev.js");
 /* harmony import */ var _src_providers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/providers */ "./src/providers/index.js");
  // import "../src/style/formio-qld.scss";
 
@@ -78,8 +78,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 Formio.use({
-  components: (0,_src_utils_getComponents__WEBPACK_IMPORTED_MODULE_5__.getComponents)(_src_components__WEBPACK_IMPORTED_MODULE_2__),
-  templates: _src_templates__WEBPACK_IMPORTED_MODULE_3__["default"],
+  components: (0,_src_utils_getComponents__WEBPACK_IMPORTED_MODULE_5__.getComponents)(_src_components_index_dev__WEBPACK_IMPORTED_MODULE_2__),
+  templates: _src_templates_index_dev__WEBPACK_IMPORTED_MODULE_3__["default"],
   providers: _src_providers__WEBPACK_IMPORTED_MODULE_4__["default"],
   options: (_src_config_storybook_options__WEBPACK_IMPORTED_MODULE_1___default())
 });
@@ -255,6 +255,346 @@ var _frameworkImportPath = __webpack_require__(/*! @storybook/html */ "./node_mo
 
 
 (0, _frameworkImportPath.configure)([__webpack_require__("./src sync recursive ^\\.(?:(?:^%7C\\/%7C(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/)(?%21\\.)(?=.)[^/]*?\\.stories\\.mdx)$"), __webpack_require__("./src sync recursive ^\\.(?:(?:^%7C\\/%7C(?:(?:(?%21(?:^%7C\\/)\\.).)*?)\\/)(?%21\\.)(?=.)[^/]*?\\.stories\\.(js%7Cjsx%7Cts%7Ctsx))$")], module, false);
+
+/***/ }),
+
+/***/ "./src/components/BoilerplateButton/BoilerplateButton.form.js":
+/*!********************************************************************!*\
+  !*** ./src/components/BoilerplateButton/BoilerplateButton.form.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _editFrom_BoilerplateButton_edit_display__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editFrom/BoilerplateButton.edit.display */ "./src/components/BoilerplateButton/editFrom/BoilerplateButton.edit.display.js");
+/*
+ * use form.io Button component as BoilerplateButton
+ * https://github.com/formio/formio.js/blob/master/src/components/button/Button.form.js
+ *
+ */
+
+var baseEditForm = Formio.Components.components.base.editForm; // customise component editor
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
+    extend[_key] = arguments[_key];
+  }
+
+  return baseEditForm.apply(void 0, [[{
+    key: "display",
+    components: _editFrom_BoilerplateButton_edit_display__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }, {
+    key: "data",
+    ignore: true
+  }, {
+    key: "validation",
+    ignore: true
+  }, {
+    key: "addons",
+    ignore: true
+  }]].concat(extend));
+});
+
+/***/ }),
+
+/***/ "./src/components/BoilerplateButton/BoilerplateButton.js":
+/*!***************************************************************!*\
+  !*** ./src/components/BoilerplateButton/BoilerplateButton.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BoilerplateButton": () => (/* binding */ BoilerplateButton)
+/* harmony export */ });
+/* harmony import */ var _BoilerplateButton_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoilerplateButton.form */ "./src/components/BoilerplateButton/BoilerplateButton.form.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/*
+ * This component is used as a boilerplate for helping developers to create their own custom component.
+ * Please refer to this guide for creating custom component https://help.form.io/developers/custom-components.
+ * Always refer to the formio.js source code to find more information about the component you'd like to extend.
+ * For example this component is extending from:
+ * https://github.com/formio/formio.js/blob/master/src/components/button/Button.js
+ *
+ */
+
+var Button = Formio.Components.components.button;
+var Field = Formio.Components.components.field;
+var BoilerplateButton = /*#__PURE__*/function (_Button) {
+  _inherits(BoilerplateButton, _Button);
+
+  var _super = _createSuper(BoilerplateButton);
+
+  function BoilerplateButton() {
+    _classCallCheck(this, BoilerplateButton);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(BoilerplateButton, [{
+    key: "init",
+    value: // you could extent any super class functions here, always refer to the source code in formio.js to see what available
+    function init() {
+      // for example. you can add custom logic here when the component initiates
+      _get(_getPrototypeOf(BoilerplateButton.prototype), "init", this).call(this);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // use custom boilerplateButton template
+      return Field.prototype.render.call(this, this.renderTemplate("boilerplateButton", {
+        component: this.component,
+        input: this.inputInfo
+      }));
+    } // customise builder settings
+
+  }], [{
+    key: "schema",
+    value: function schema() {
+      for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
+        extend[_key] = arguments[_key];
+      }
+
+      return Button.schema(Object.assign({
+        // customise the component properties
+        type: "boilerplatebutton",
+        label: "Boilerplate button",
+        key: "boilerplatebutton",
+        // new property i want to add to this custom component
+        customDescription: "This is a custom description"
+      }, extend));
+    }
+  }, {
+    key: "builderInfo",
+    get: function () {
+      return {
+        title: "BoilerplateButton",
+        group: "custom",
+        icon: "stop",
+        documentation: "/userguide/#button",
+        weight: 2,
+        schema: Object.assign({}, BoilerplateButton.schema())
+      };
+    }
+  }]);
+
+  return BoilerplateButton;
+}(Button); // customise builder editor
+
+BoilerplateButton.editForm = _BoilerplateButton_form__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+/***/ }),
+
+/***/ "./src/components/BoilerplateButton/editFrom/BoilerplateButton.edit.display.js":
+/*!*************************************************************************************!*\
+  !*** ./src/components/BoilerplateButton/editFrom/BoilerplateButton.edit.display.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*
+ * fork form.io Button component as BoilerplateButton
+ * https://github.com/formio/formio.js/blob/master/src/components/button/editForm/Button.edit.display.js
+ *
+ */
+// customise `display` tab in component editor
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([// Add a custom description to the editor
+{
+  type: "content",
+  html: `<h2>This is a custom label</h2>`,
+  input: false,
+  weight: -10
+}, // hide some fields inherit from the super class
+{
+  key: "labelPosition",
+  ignore: true
+}, {
+  key: "placeholder",
+  ignore: true
+}, {
+  key: "hideLabel",
+  ignore: true
+}, // custom textarea for customDescription
+{
+  type: "textarea",
+  input: true,
+  // below will show a richtext editor, use `ace` to show a regular editor
+  editor: "ckeditor",
+  rows: 5,
+  label: "Custom description",
+  tooltip: "Example component custom property.",
+  key: "customDescription",
+  weight: 80
+}, {
+  type: "select",
+  key: "action",
+  label: "Action",
+  input: true,
+  dataSrc: "values",
+  weight: 110,
+  tooltip: "This is the action to be performed by this button.",
+  data: {
+    values: [{
+      label: "Submit",
+      value: "submit"
+    }, {
+      label: "Save in state",
+      value: "saveState"
+    }, {
+      label: "Event",
+      value: "event"
+    }, {
+      label: "Custom",
+      value: "custom"
+    }, {
+      label: "Reset",
+      value: "reset"
+    }, {
+      label: "OAuth",
+      value: "oauth"
+    }, {
+      label: "POST to URL",
+      value: "url"
+    }]
+  }
+}, {
+  type: "checkbox",
+  input: true,
+  inputType: "checkbox",
+  key: "saveOnEnter",
+  label: "Save On Enter",
+  weight: 113,
+  tooltip: "Use the Enter key to submit form.",
+  conditional: {
+    json: {
+      "===": [{
+        var: "data.action"
+      }, "submit"]
+    }
+  }
+}, {
+  type: "select",
+  key: "theme",
+  label: "Theme",
+  input: true,
+  tooltip: "The color theme of this button.",
+  dataSrc: "values",
+  weight: 140,
+  data: {
+    values: [{
+      label: "Primary",
+      value: "primary"
+    }, {
+      label: "Secondary",
+      value: "secondary"
+    }, {
+      label: "Info",
+      value: "info"
+    }, {
+      label: "Success",
+      value: "success"
+    }, {
+      label: "Danger",
+      value: "danger"
+    }, {
+      label: "Warning",
+      value: "warning"
+    }]
+  }
+}, {
+  type: "select",
+  key: "size",
+  label: "Size",
+  input: true,
+  tooltip: "The size of this button.",
+  dataSrc: "values",
+  weight: 150,
+  data: {
+    values: [{
+      label: "Small",
+      value: "sm"
+    }, {
+      label: "Medium",
+      value: "md"
+    }, {
+      label: "Large",
+      value: "lg"
+    }]
+  }
+}, {
+  type: "textfield",
+  key: "leftIcon",
+  label: "Left Icon",
+  input: true,
+  placeholder: "Enter icon classes",
+  tooltip: "This is the full icon class string to show the icon. Example: 'fa fa-plus'",
+  weight: 160
+}, {
+  type: "textfield",
+  key: "rightIcon",
+  label: "Right Icon",
+  input: true,
+  placeholder: "Enter icon classes",
+  tooltip: "This is the full icon class string to show the icon. Example: 'fa fa-plus'",
+  weight: 170
+}, {
+  type: "checkbox",
+  key: "block",
+  label: "Block Button",
+  input: true,
+  weight: 155,
+  tooltip: "This control should span the full width of the bounding container."
+}, {
+  type: "checkbox",
+  key: "disableOnInvalid",
+  label: "Disable on Form Invalid",
+  tooltip: "This will disable this field if the form is invalid.",
+  input: true,
+  weight: 620
+}]);
+
+/***/ }),
+
+/***/ "./src/components/BoilerplateButton/index.js":
+/*!***************************************************!*\
+  !*** ./src/components/BoilerplateButton/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BoilerplateButton": () => (/* reexport safe */ _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__.BoilerplateButton)
+/* harmony export */ });
+/* harmony import */ var _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoilerplateButton */ "./src/components/BoilerplateButton/BoilerplateButton.js");
+
 
 /***/ }),
 
@@ -1148,7 +1488,7 @@ PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__["def
   placeholder: "Enter Franchise API Key",
   weight: 10,
   tooltip: "You must have an API key in order to use this component.",
-  description: "You must have a API key in order to use this component, please contact <a href='mailto:qol.development@smartservice.qld.gov.au' target='_blank'>qol.development@smartservice.qld.gov.au</a>(TBC) if you want to acquire an API key. (To be confirmed)",
+  description: "You must have a API key in order to use this component, please refer to <a href='https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-plsplusaddress-component' target='_blank'>this doc</a> or contact <a href='mailto:online@smartservice.qld.gov.au' target='_blank'>online@smartservice.qld.gov.au</a> if you want to acquire an API key.",
   validate: {
     required: true
   }
@@ -1180,18 +1520,25 @@ PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__["def
 
 /***/ }),
 
-/***/ "./src/components/index.js":
-/*!*********************************!*\
-  !*** ./src/components/index.js ***!
-  \*********************************/
+/***/ "./src/components/index.dev.js":
+/*!*************************************!*\
+  !*** ./src/components/index.dev.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PlsPlusAddress": () => (/* reexport safe */ _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_0__.PlsPlusAddress)
+/* harmony export */   "BoilerplateButton": () => (/* reexport safe */ _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__.BoilerplateButton),
+/* harmony export */   "PlsPlusAddress": () => (/* reexport safe */ _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_1__.PlsPlusAddress)
 /* harmony export */ });
-/* harmony import */ var _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlsPlusAddress */ "./src/components/PlsPlusAddress/index.js");
+/* harmony import */ var _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoilerplateButton */ "./src/components/BoilerplateButton/index.js");
+/* harmony import */ var _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlsPlusAddress */ "./src/components/PlsPlusAddress/index.js");
+/*
+ * this file is used for dev environment for storybook and testing
+ *
+ */
+
 
 
 /***/ }),
@@ -2475,18 +2822,47 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
 
 /***/ }),
 
-/***/ "./src/templates/bootstrap/index.js":
-/*!******************************************!*\
-  !*** ./src/templates/bootstrap/index.js ***!
-  \******************************************/
+/***/ "./src/templates/bootstrap/boilerplateButton/index.js":
+/*!************************************************************!*\
+  !*** ./src/templates/bootstrap/boilerplateButton/index.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "boilerplateButton": () => (/* binding */ boilerplateButton)
+/* harmony export */ });
+/* harmony import */ var _form_ejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form.ejs */ "./src/templates/bootstrap/boilerplateButton/form.ejs");
+/* harmony import */ var _html_ejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./html.ejs */ "./src/templates/bootstrap/boilerplateButton/html.ejs");
+/*
+ * use form.io button template as BoilerplateButton
+ * https://github.com/formio/formio.js/blob/master/src/templates/bootstrap/button/index.js
+ *
+ */
+
+
+var boilerplateButton = {
+  form: _form_ejs__WEBPACK_IMPORTED_MODULE_0__["default"],
+  html: _html_ejs__WEBPACK_IMPORTED_MODULE_1__["default"]
+};
+
+/***/ }),
+
+/***/ "./src/templates/bootstrap/index.dev.js":
+/*!**********************************************!*\
+  !*** ./src/templates/bootstrap/index.dev.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "plsPlusAddress": () => (/* reexport safe */ _plsPlusAddress__WEBPACK_IMPORTED_MODULE_0__.plsPlusAddress)
+/* harmony export */   "boilerplateButton": () => (/* reexport safe */ _boilerplateButton__WEBPACK_IMPORTED_MODULE_0__.boilerplateButton),
+/* harmony export */   "plsPlusAddress": () => (/* reexport safe */ _plsPlusAddress__WEBPACK_IMPORTED_MODULE_1__.plsPlusAddress)
 /* harmony export */ });
-/* harmony import */ var _plsPlusAddress__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plsPlusAddress */ "./src/templates/bootstrap/plsPlusAddress/index.js");
+/* harmony import */ var _boilerplateButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./boilerplateButton */ "./src/templates/bootstrap/boilerplateButton/index.js");
+/* harmony import */ var _plsPlusAddress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plsPlusAddress */ "./src/templates/bootstrap/plsPlusAddress/index.js");
+
 
 
 /***/ }),
@@ -2517,20 +2893,20 @@ var plsPlusAddress = {
 
 /***/ }),
 
-/***/ "./src/templates/index.js":
-/*!********************************!*\
-  !*** ./src/templates/index.js ***!
-  \********************************/
+/***/ "./src/templates/index.dev.js":
+/*!************************************!*\
+  !*** ./src/templates/index.dev.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./src/templates/bootstrap/index.js");
+/* harmony import */ var _bootstrap_index_dev__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap/index.dev */ "./src/templates/bootstrap/index.dev.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  bootstrap: _bootstrap__WEBPACK_IMPORTED_MODULE_0__
+  bootstrap: _bootstrap_index_dev__WEBPACK_IMPORTED_MODULE_0__
 });
 
 /***/ }),
@@ -2674,6 +3050,183 @@ function indent(str, numOfIndents) {
 
 /***/ }),
 
+/***/ "./src/components/BoilerplateButton/BoilerplateButton.stories.mdx":
+/*!************************************************************************!*\
+  !*** ./src/components/BoilerplateButton/BoilerplateButton.stories.mdx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "builder": () => (/* binding */ builder),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "renderer": () => (/* binding */ renderer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mdx-js/react */ "./node_modules/@mdx-js/react/dist/esm.js");
+/* harmony import */ var _storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @storybook/addon-docs */ "./node_modules/@storybook/addon-docs/dist/esm/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
+var _excluded = ["components"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+
+
+
+
+var layoutProps = {};
+var MDXLayout = "wrapper";
+
+function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: "MDXLayout"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Meta, {
+    title: "Components/BoilerplateButton",
+    mdxType: "Meta"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+    "id": "boilerplatebutton"
+  }, `BoilerplateButton`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component is used as a boilerplate for helping developers to create their own custom component.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to this guide for creating custom component `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "https://help.form.io/developers/custom-components",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, `https://help.form.io/developers/custom-components`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Always refer to the formio.js source code to find more information about the component you'd like to extend.
+For example this component is extending from `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "https://github.com/formio/formio.js/blob/master/src/components/button/Button.js",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, `https://github.com/formio/formio.js/blob/master/src/components/button/Button.js`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component is just for development purpose and will not be bundled in the custom component library script.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "renderer"
+  }, `Renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is an interactive example, please check the form data output in the console log in browser's inspector.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+    mdxType: "Canvas"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
+    name: "Renderer",
+    mdxType: "Story"
+  }, function () {
+    return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.createForm)({
+      form: {
+        components: [{
+          type: "boilerplatebutton",
+          key: "BoilerplateButton",
+          label: "Boilerplate button",
+          customDescription: "This is a custom description"
+        }]
+      },
+      controller: function (formio) {
+        formio.on("submit", function (e) {
+          console.info("submit", e.data);
+        });
+        formio.on("change", function (e) {
+          console.info("change", e.data);
+        });
+      }
+    });
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "builder"
+  }, `Builder`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component can be drag and drop from the Form.io builder sidebar `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `custom`), ` group.
+You can preview the component's settings in the example below.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+    mdxType: "Canvas"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
+    name: "Builder",
+    mdxType: "Story"
+  }, function () {
+    return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.createBuilder)({
+      form: {
+        components: [{
+          type: "boilerplatebutton",
+          key: "BoilerplateButton",
+          label: "Boilerplate button",
+          customDescription: "This is a custom description"
+        }]
+      }
+    });
+  })));
+}
+
+;
+MDXContent.isMDXComponent = true;
+var renderer = function () {
+  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.createForm)({
+    form: {
+      components: [{
+        type: "boilerplatebutton",
+        key: "BoilerplateButton",
+        label: "Boilerplate button",
+        customDescription: "This is a custom description"
+      }]
+    },
+    controller: function (formio) {
+      formio.on("submit", function (e) {
+        console.info("submit", e.data);
+      });
+      formio.on("change", function (e) {
+        console.info("change", e.data);
+      });
+    }
+  });
+};
+renderer.storyName = 'Renderer';
+renderer.parameters = {
+  storySource: {
+    source: '() => createForm({\n  form: {\n    components: [{\n      type: \"boilerplatebutton\",\n      key: \"BoilerplateButton\",\n      label: \"Boilerplate button\",\n      customDescription: \"This is a custom description\"\n    }]\n  },\n  controller: formio => {\n    formio.on(\"submit\", e => {\n      console.info(\"submit\", e.data);\n    });\n    formio.on(\"change\", e => {\n      console.info(\"change\", e.data);\n    });\n  }\n})'
+  }
+};
+var builder = function () {
+  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.createBuilder)({
+    form: {
+      components: [{
+        type: "boilerplatebutton",
+        key: "BoilerplateButton",
+        label: "Boilerplate button",
+        customDescription: "This is a custom description"
+      }]
+    }
+  });
+};
+builder.storyName = 'Builder';
+builder.parameters = {
+  storySource: {
+    source: '() => createBuilder({\n  form: {\n    components: [{\n      type: \"boilerplatebutton\",\n      key: \"BoilerplateButton\",\n      label: \"Boilerplate button\",\n      customDescription: \"This is a custom description\"\n    }]\n  }\n})'
+  }
+};
+var componentMeta = {
+  title: 'Components/BoilerplateButton',
+  includeStories: ["renderer", "builder"]
+};
+var mdxStoryNameToKey = {
+  "Renderer": "renderer",
+  "Builder": "builder"
+};
+componentMeta.parameters = componentMeta.parameters || {};
+componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs || {}, {
+  page: function () {
+    return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.AddContext, {
+      mdxStoryNameToKey: mdxStoryNameToKey,
+      mdxComponentAnnotations: componentMeta
+    }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXContent, null));
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (componentMeta);
+
+/***/ }),
+
 /***/ "./src/components/PlsPlusAddress/PlsPlusAddress.stories.mdx":
 /*!******************************************************************!*\
   !*** ./src/components/PlsPlusAddress/PlsPlusAddress.stories.mdx ***!
@@ -2730,10 +3283,16 @@ function MDXContent(_ref) {
     "rel": "nofollow noopener noreferrer"
   }, `Property Location Service Plus PLSPlus QG Version RESTFUL api`), `, provides a free of charge address lookup service.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `User needs to obtain a franchise API key for using this component, by entering it in the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Provider`), ` options in the component builder, please contact `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, `Provider`), ` options in the component builder,
+please look up the keys in `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
-    "href": "mailto:qol.development@smartservice.qld.gov.au"
-  }, `qol.development@smartservice.qld.gov.au`), `(TBC) to request an API key.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "href": "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-plsplusaddress-component",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, `this document`), ` or contact `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "mailto:online@smartservice.qld.gov.au"
+  }, `online@smartservice.qld.gov.au`), ` to request an API key.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "renderer"
   }, `Renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is an interactive example, please check the form data output in the console log in browser's inspector.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
@@ -4123,10 +4682,8 @@ Pleaser refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     "className": "language-html"
   }, `<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
 ...
-<script src="https://dev-static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
-(This is a temporary URL for POC purpose, actual CDN URL still needs to be
-confirmed in production.)
-`)));
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
+`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Or you could use our FormioScript help to lazy load all necessary formio scripts in your application.`));
 }
 
 ;
@@ -4152,6 +4709,34 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (componentMeta);
+
+/***/ }),
+
+/***/ "./src/templates/bootstrap/boilerplateButton/form.ejs":
+/*!************************************************************!*\
+  !*** ./src/templates/bootstrap/boilerplateButton/form.ejs ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<!--\n  boilerplate from https://github.com/formio/formio.js/blob/master/src/templates/bootstrap/button/form.ejs\n-->\n<div class=\"mb-2\">\n  {{ctx.component.customDescription}}\n</div>\n<{{ctx.input.type}}\n  ref=\"button\"\n  {% for (var attr in ctx.input.attr) { %}\n  {{attr}}=\"{{ctx.input.attr[attr]}}\"\n  {% } %}\n  {% if (ctx.component.description) { %}\n    aria-describedby=\"d-{{ctx.instance.id}}-{{ctx.component.key}}\"\n  {% } %}\n>\n{% if (ctx.component.leftIcon) { %}<span class=\"{{ctx.component.leftIcon}}\"></span>&nbsp;{% } %}\n{{ctx.input.content}}\n{% if (ctx.component.tooltip) { %}\n  <i ref=\"tooltip\" class=\"{{ctx.iconClass('question-sign')}} text-muted\" data-tooltip=\"{{ctx.component.tooltip}}\"></i>\n{% } %}\n{% if (ctx.component.rightIcon) { %}&nbsp;<span class=\"{{ctx.component.rightIcon}}\"></span>{% } %}\n</div{{ctx.input.type}}>\n<div ref=\"buttonMessageContainer\">\n  <span class=\"help-block\" ref=\"buttonMessage\"></span>\n</div>\n");
+
+/***/ }),
+
+/***/ "./src/templates/bootstrap/boilerplateButton/html.ejs":
+/*!************************************************************!*\
+  !*** ./src/templates/bootstrap/boilerplateButton/html.ejs ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<!--\n  boilerplate from https://github.com/formio/formio.js/blob/master/src/templates/bootstrap/button/html.ejs\n-->");
 
 /***/ }),
 
@@ -4553,6 +5138,7 @@ module.exports = webpackEmptyContext;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./components/BoilerplateButton/BoilerplateButton.stories.mdx": "./src/components/BoilerplateButton/BoilerplateButton.stories.mdx",
 	"./components/PlsPlusAddress/PlsPlusAddress.stories.mdx": "./src/components/PlsPlusAddress/PlsPlusAddress.stories.mdx",
 	"./examples/SimpleWizard/SimpleWizard.stories.mdx": "./src/examples/SimpleWizard/SimpleWizard.stories.mdx",
 	"./examples/SingleSignOn/SingleSignOn.stories.mdx": "./src/examples/SingleSignOn/SingleSignOn.stories.mdx",
@@ -4644,4 +5230,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.6b655170.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.517a5146.iframe.bundle.js.map
