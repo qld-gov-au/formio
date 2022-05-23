@@ -1,5 +1,5 @@
 /*
- * use form.io Address component as BoilerplateButton
+ * use form.io Address component as boilerplate
  * https://github.com/formio/formio.js/blob/master/src/components/address/Address.js
  * need to extend from `container` to `fieldset` due to Formio app upgrade from 7.1.2 to 7.3.0
  * otherwise component data will get erase when submitted to the server

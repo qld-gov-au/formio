@@ -1,5 +1,5 @@
 /*
- * use form.io Address component as BoilerplateButton
+ * use form.io Address component as boilerplate
  * https://github.com/formio/formio.js/blob/master/src/components/address/editForm/Address.edit.display.js
  *
  */

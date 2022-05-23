@@ -150,6 +150,7 @@ At the mean time we need to sync the version with QG form.io platform, we could 
 ### src/components
 
 Custom Formio components.
+Please refer to src/components/BoilerplateButton if you need a boilerplate for developing custom component.
 
 ### src/helpers
 
