@@ -4,6 +4,52 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.18.2
+### Changed
+ - Official Release
+
+## 1.18.2-rc.1
+### Changed
+ - FIO-5036: fixed an issue where sketchpad preview drawing sometimes do…
+
+## 1.18.1
+### Changed
+ - Official Release
+
+## 1.18.1-rc.1
+### Changed
+ - FIO-4357: Combine the background and the drawing in read-only mode (including PDFs)
+
+## 1.18.0
+### Changed
+ - Official Release
+
+## 1.18.0-rc.2
+### Added
+ - FIO-4417: Add Transforms to DataSource Component
+ - FIO-4460: Fixes portal app crushed in ie11
+
+## 1.18.0-rc.1
+### Changed
+ - Changes for ACC 0.6.0
+
+### Added
+ - Adding XML, CSV, and JSON file parsers for the file upload component.
+
+### Fixed
+ - FIO-3983: Scrollbar is causing column value to not show the full value
+ - FIO-4415: Data Table: Controls in a layout control does not show in table view
+ - FIO-4437: disable SignRequest component
+
+## 1.17.2-rc.2
+### Fixed
+ - FIO-4339: Fixes editing submissions with signrequest component on them
+
+## 1.17.2-rc.1
+### Changed
+ - add SignRequestSignature component
+ - refactor signrequest
+
 ## 1.17.1
 ### Changed
  - Official Release
