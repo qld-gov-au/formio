@@ -3,7 +3,7 @@ import "../src/stories/stories.css";
 import storybookOptions from "../src/config/storybook.options";
 import * as components from "../src/components/index.dev";
 import { getComponents } from "../src/utils/getComponents";
-import templates from "../src/templates";
+import templates from "../src/templates/index.dev";
 import providers from "../src/providers";
 
 Formio.use({
