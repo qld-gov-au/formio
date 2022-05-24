@@ -4,6 +4,8 @@ This repository provides a bundled JS custom component library to form.io builde
 
 <img src="https://qld-gov-au.github.io/formio/static/media/storybook-formio%20custom%20component.5f82e1bf.png" alt="share diagram" width="480" />
 
+[WHY and WHEN to develop component in QG Form.io custom component library](https://servicesmadesimpler.govnet.qld.gov.au/wiki/pages/viewpage.action?spaceKey=QOL&title=WHY+and+WHEN+to+develop+component+in+QG+Form.io+custom+component+library)
+
 ## Goals
 
 Following are the goals of this repository.
