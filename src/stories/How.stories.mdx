@@ -1,0 +1,47 @@
+import { Meta } from "@storybook/addon-docs";
+import FormioSettings from "./assets/formioSettings.png";
+
+<Meta title="How to" />
+
+###### Updated in 25 May 2022
+
+# How to
+
+## Consume this library in Form.io builder
+
+To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
+
+```
+https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
+```
+
+<img src={FormioSettings} alt="share diagram" width="640" />
+
+## Consume this library in Form.io renderer
+
+To use custom components in the Form.io JS renderer, please include the script **AFTER** the formio script.
+Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
+
+```html
+<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
+...
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
+```
+
+Or you could use our [FormioScript](?path=/docs/helpers-formioscript--page) help to lazy load all necessary formio scripts in your application.
+
+## Consume this library in Squiz Matrix
+
+Please refer to https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2.
+
+## Use the FormioScript helper
+
+Please refer to [this page](?path=/docs/helpers-formioscript--page).
+
+## Use the FormioLoader helper
+
+Please refer to [this page](?path=/docs/helpers-formioloader--page).
+
+## How to develop in this library
+
+Please follow the instruction in readme in this repo: https://github.com/qld-gov-au/formio
