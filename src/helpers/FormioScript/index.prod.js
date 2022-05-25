@@ -32,11 +32,11 @@ const scripts = [
     href: `https://static.qgov.net.au/formio-qld/${version}/premium.css`,
     rel: "stylesheet",
   },
-  // {
-  //   type: "link",
-  //   href: `https://dev-static.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
-  //   rel: "stylesheet",
-  // },
+  {
+    type: "link",
+    href: `https://dev-static.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
+    rel: "stylesheet",
+  },
 ];
 
 export const init = () => initScript(scripts);
