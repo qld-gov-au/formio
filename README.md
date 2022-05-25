@@ -102,6 +102,12 @@ To use custom components in the Form.io platform builder, please go to the [Proj
 https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
 ```
 
+and update the `Custom CSS` property with
+
+```
+https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css
+```
+
 <img src="https://qld-gov-au.github.io/formio/static/media/storybook-formioSettings.fbfb01cf.png" alt="share diagram" width="640" />
 
 ### Form.io JS renderer or builder
@@ -113,6 +119,10 @@ Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#get
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.js"></script>
 ...
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
+/>
 ```
 
 ### Squiz Matrix
