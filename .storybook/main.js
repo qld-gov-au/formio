@@ -1,4 +1,5 @@
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -35,6 +36,11 @@ module.exports = {
       ...config.output,
       filename: "storybook-[name].[contenthash:8].iframe.bundle.js",
     };
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [{ from: path.resolve(__dirname, "../src/stories/assets") }],
+      })
+    );
     return config;
   },
 };

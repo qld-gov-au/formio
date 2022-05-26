@@ -1,0 +1,115 @@
+{
+  "title": "Form examples",
+  "version": "2.0.0",
+  "description": "Best practice examples of form element for templating",
+  "name": "resource-examples",
+  "roles": {
+    "administrator": {
+      "title": "Administrator",
+      "description": "A role for Administrative Users.",
+      "admin": true,
+      "default": false
+    },
+    "authenticated": {
+      "title": "Authenticated",
+      "description": "A role for Authenticated Users.",
+      "admin": false,
+      "default": false
+    },
+    "anonymous": {
+      "title": "Anonymous",
+      "description": "A role for Anonymous Users.",
+      "admin": false,
+      "default": true
+    }
+  },
+  "forms": {},
+  "actions": {
+    "grabMyIp:save": {
+      "title": "Save Submission",
+      "name": "save",
+      "form": "grabMyIp",
+      "priority": 10,
+      "method": [
+        "create",
+        "update"
+      ],
+      "handler": [
+        "before"
+      ]
+    }
+  },
+  "resources": {
+    "grabMyIp": {
+      "title": "Grab my IP",
+      "type": "resource",
+      "name": "grabMyIp",
+      "path": "grabmyip",
+      "display": "form",
+      "tags": [],
+      "settings": {},
+      "components": [
+        {
+          "tableView": false,
+          "key": "fieldSet",
+          "type": "fieldset",
+          "label": "Field Set",
+          "input": false,
+          "components": [
+            {
+              "label": "Grab my IP",
+              "persistent": "client-only",
+              "clearOnHide": false,
+              "trigger": {
+                "init": true,
+                "server": false
+              },
+              "dataSrc": "url",
+              "fetch": {
+                "url": "https://www.cloudflare.com/cdn-cgi/trace",
+                "method": "get",
+                "headers": [
+                  {
+                    "key": "",
+                    "value": ""
+                  }
+                ],
+                "forwardHeaders": false,
+                "authenticate": false
+              },
+              "key": "grabMyIp",
+              "type": "datasource",
+              "input": true,
+              "tableView": false
+            },
+            {
+              "label": "IP Address",
+              "hidden": true,
+              "disabled": true,
+              "tableView": true,
+              "clearOnHide": false,
+              "calculateValue": "if (data.grabMyIp){\n  var ip = data.grabMyIp;\n  regex = /^ip=([0-9a-f:.]+)$/gm;\n  ip = ip.match(regex);\n  value = ip[0].replace(\"ip=\",\"\");\n} else {\n  value = \"Not provided\";\n}",
+              "validate": {
+                "pattern": "^((?![|&;$%\"<>()\\{\\}+\\\\\\/]).)*$"
+              },
+              "key": "myIPAddress",
+              "type": "textfield",
+              "input": true
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "label": "Submit",
+          "key": "submit",
+          "disableOnInvalid": true,
+          "input": true,
+          "tableView": false
+        }
+      ],
+      "properties": {},
+      "controller": ""
+    }
+  },
+  "excludeAccess": true
+}
