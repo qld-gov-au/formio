@@ -93,7 +93,9 @@ Simply include it in your application and it will search through the page with F
 </script>
 <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 <script>
-  FormioScript.init();
+  FormioScript.init().then(() => {
+    // all formio scripts/css has been loaded.
+  });
 </script>
 ```
 
@@ -150,6 +152,22 @@ or using `FormioLoader.initFormio()` instead:
     ></div>
     `;
     FormioLoader.initFormio();
+  });
+</script>
+```
+
+or using out of the box `Formio.createForm()` function instead:
+
+```html
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
+<script>
+  FormioScript.init().then(() => {
+    const div = document.createElement("div");
+    div.innerHtml = `<div id="formio"></div>`;
+    FormioLoader.createForm(
+      document.getElementById("formio"),
+      "https://api.forms.platforms.qld.gov.au/project1/form1"
+    );
   });
 </script>
 ```

@@ -1,38 +1,27 @@
 import { Meta } from "@storybook/addon-docs";
 import FormioCustomComponent from "./assets/formio custom component.png";
-import FormioSettings from "./assets/formioSettings.png";
 
 <Meta title="Welcome" />
 
+###### Updated in 25 May 2022
+
 # Queensland Government Form.io custom component library
 
-This repository provides a bundled JS custom component library to form.io builder / form.io renderer / Squiz Matrix form application.
+## What is QG Form.io custom component library
+
+This library provides bundled JS files to be included in form.io builder / form.io renderer / Squiz Matrix form application and this is the official definition of custom component:
 
 <img src={FormioCustomComponent} alt="share diagram" width="480" />
 
-## Usage
+> One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is "closest" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.
 
-You can consume this library either in Form.io Builder or Form.io Renderer.
+The QG Form.io custom component library is based on the official developer guide in https://help.form.io/developers/custom-components and repo https://github.com/formio/contrib.
 
-### Form.io platform builder
+## What is covered in this storybook documentation
 
-To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
-
-```
-https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
-```
-
-<img src={FormioSettings} alt="share diagram" width="640" />
-
-### Form.io JS renderer or builder
-
-To use custom components in the Form.io JS renderer, please include the script **AFTER** the formio script.
-Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
-
-```html
-<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
-...
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
-```
-
-Or you could use our FormioScript help to lazy load all necessary formio scripts in your application.
+| <!-- -->                            | <!-- -->                                                   |
+| ----------------------------------- | ---------------------------------------------------------- |
+| QG Form.io custom component library | Usage examples and preview of each custom component.       |
+| Examples                            | Real live examples connected to Form.io back end.          |
+| FormioLoader                        | Helper module to initiate Formio form instance.            |
+| FormioScript                        | Helper module to lazy-load the necessary Formio libraries. |
