@@ -1,4 +1,5 @@
 import "../../lib/formio.full";
+import "../sass/formio.form.scss";
 import * as components from "../components/index.dev";
 import providers from "../providers";
 import templates from "../templates/index.dev";

@@ -34,11 +34,11 @@ const scripts = [
     href: `/__data/assets/git_bridge/0025/${version}/premium.css`,
     rel: "stylesheet",
   },
-  // {
-  //   type: "link",
-  //   href: `/__data/assets/git_bridge/0025/${version}/formio-qld.min.css`,
-  //   rel: "stylesheet",
-  // },
+  {
+    type: "link",
+    href: `/__data/assets/git_bridge/0025/${version}/formio-qld.min.css`,
+    rel: "stylesheet",
+  },
 ];
 
 export const init = () => initScript(scripts);

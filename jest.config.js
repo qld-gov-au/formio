@@ -86,6 +86,9 @@ module.exports = {
   // moduleNameMapper: {
   //   "\\.(ejs|ejx)$": "<rootDir>/src/test/jest-ejs.transformer.js",
   // },
+  moduleNameMapper: {
+    "^.+\\.(css|less|scss)$": "babel-jest",
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
