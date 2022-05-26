@@ -1,0 +1,75 @@
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { createForm, createBuilder } from "../../utils";
+
+<Meta title="Components/Basic/Radio" />
+
+# Radio
+
+Out of the box radio component, find more details here:
+https://help.form.io/userguide/forms/form-components#radio
+
+## Custom class: radio-tab
+
+To use this style, set the `Custom CSS Class` property to `radio-tab` in the component editor.
+
+<Canvas>
+  <Story name="radio-tab in renderer">
+    {() =>
+      createForm({
+        form: {
+          components: [
+            {
+              label: "Radio label",
+              customClass: "radio-tab",
+              values: [
+                {
+                  label: "Item 1",
+                  value: "item1",
+                  shortcut: "",
+                },
+                {
+                  label: "Item 2",
+                  value: "item2",
+                  shortcut: "",
+                },
+              ],
+              key: "radioLabel",
+              type: "radio",
+            },
+          ],
+        },
+      })
+    }
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="radio-tab in builder">
+    {() =>
+      createBuilder({
+        form: {
+          components: [
+            {
+              label: "Radio label",
+              customClass: "radio-tab",
+              values: [
+                {
+                  label: "Item 1",
+                  value: "item1",
+                  shortcut: "",
+                },
+                {
+                  label: "Item 2",
+                  value: "item2",
+                  shortcut: "",
+                },
+              ],
+              key: "radioLabel",
+              type: "radio",
+            },
+          ],
+        },
+      })
+    }
+  </Story>
+</Canvas>
