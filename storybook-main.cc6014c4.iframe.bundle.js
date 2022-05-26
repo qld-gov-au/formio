@@ -599,6 +599,418 @@ BoilerplateButton.editForm = _BoilerplateButton_form__WEBPACK_IMPORTED_MODULE_0_
 
 /***/ }),
 
+/***/ "./src/components/PdfSubmitButton/PdfSubmitButton.form.js":
+/*!****************************************************************!*\
+  !*** ./src/components/PdfSubmitButton/PdfSubmitButton.form.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _editFrom_PdfSubmitButton_edit_display__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editFrom/PdfSubmitButton.edit.display */ "./src/components/PdfSubmitButton/editFrom/PdfSubmitButton.edit.display.js");
+/*
+ * use form.io Button component as boilerplate
+ * https://github.com/formio/formio.js/blob/master/src/components/button/Button.form.js
+ *
+ */
+
+var baseEditForm = Formio.Components.components.base.editForm;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
+    extend[_key] = arguments[_key];
+  }
+
+  return baseEditForm.apply(void 0, [[{
+    key: "display",
+    components: _editFrom_PdfSubmitButton_edit_display__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }, {
+    key: "data",
+    ignore: true
+  }, {
+    key: "validation",
+    ignore: true
+  }, {
+    key: "addons",
+    ignore: true
+  }]].concat(extend));
+});
+
+/***/ }),
+
+/***/ "./src/components/PdfSubmitButton/PdfSubmitButton.js":
+/*!***********************************************************!*\
+  !*** ./src/components/PdfSubmitButton/PdfSubmitButton.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PdfSubmitButton": () => (/* binding */ PdfSubmitButton)
+/* harmony export */ });
+/* harmony import */ var _PdfSubmitButton_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PdfSubmitButton.form */ "./src/components/PdfSubmitButton/PdfSubmitButton.form.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/*
+ * inherit button component
+ * https://github.com/formio/formio.js/blob/master/src/components/button/Button.js
+ *
+ */
+
+var Button = Formio.Components.components.button;
+var PdfSubmitButton = /*#__PURE__*/function (_Button) {
+  _inherits(PdfSubmitButton, _Button);
+
+  var _super = _createSuper(PdfSubmitButton);
+
+  function PdfSubmitButton() {
+    _classCallCheck(this, PdfSubmitButton);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(PdfSubmitButton, [{
+    key: "init",
+    value: function init() {
+      var _this$root, _this$root$options;
+
+      // hide the default submit button if it is a wizard
+      if ((_this$root = this.root) !== null && _this$root !== void 0 && (_this$root$options = _this$root.options) !== null && _this$root$options !== void 0 && _this$root$options.buttonSettings) this.root.options.buttonSettings.showSubmit = false;
+
+      _get(_getPrototypeOf(PdfSubmitButton.prototype), "init", this).call(this);
+    }
+  }, {
+    key: "attachButton",
+    value: function attachButton() {
+      var _this = this;
+
+      _get(_getPrototypeOf(PdfSubmitButton.prototype), "attachButton", this).call(this);
+
+      if (this.component.action === "submit") {
+        this.on(this.component.debugMode ? "submit" : "submitDone", function (e) {
+          var _e$metadata, _e$metadata$pdfUrl;
+
+          // get the pdf DownloadUrl from submission response, the action name setup in the form needed to be `pdfUrl`
+          var pdfUrl = _this.component.debugMode ? _this.component.debugPdfUrl : e === null || e === void 0 ? void 0 : (_e$metadata = e.metadata) === null || _e$metadata === void 0 ? void 0 : (_e$metadata$pdfUrl = _e$metadata.pdfUrl) === null || _e$metadata$pdfUrl === void 0 ? void 0 : _e$metadata$pdfUrl.DownloadUrl;
+          var _this$component = _this.component,
+              downloadSuccessMessage = _this$component.downloadSuccessMessage,
+              downloadFailedMessage = _this$component.downloadFailedMessage,
+              downloadButtonClass = _this$component.downloadButtonClass,
+              downloadButtonLabel = _this$component.downloadButtonLabel,
+              downloadButtonTarget = _this$component.downloadButtonTarget,
+              downloadSuccessMessageClass = _this$component.downloadSuccessMessageClass,
+              downloadFailedMessageClass = _this$component.downloadFailedMessageClass; // setup default settings for download button
+
+          var className = downloadButtonClass !== undefined ? downloadButtonClass : "btn btn-primary";
+          var target = downloadButtonTarget !== undefined ? downloadButtonTarget : "_blank";
+          var label = downloadButtonLabel !== undefined ? downloadButtonLabel : "Download";
+          var successMessageClass = downloadSuccessMessageClass || "";
+          var failedMessageClass = downloadFailedMessageClass || ""; // replace form div container with downloadSuccessMessage
+
+          if (pdfUrl) {
+            _this.root.element.innerHTML = `
+              <div class="${successMessageClass}">
+                ${downloadSuccessMessage ? `<div class="mb-3 download-success-message-container">${downloadSuccessMessage}</div>` : ""}
+                <div class="download-button-container">
+                  <a href="${pdfUrl}" class="${className}" target="${target}" />
+                    ${label}
+                  </a>
+                </div>
+              </div>
+            `;
+          } else {
+            _this.root.element.innerHTML = `
+              <div class="${failedMessageClass}">
+                <div class="download-failed-message-container">
+                  ${downloadFailedMessage}
+                </div>
+              </div>
+            `;
+          }
+
+          _this.root.element.scrollIntoView();
+        }, true);
+      }
+    }
+  }], [{
+    key: "schema",
+    value: function schema() {
+      for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
+        extend[_key] = arguments[_key];
+      }
+
+      return Button.schema(Object.assign({
+        type: "pdfsubmitbutton",
+        label: "Submit",
+        key: "pdfsubmitbutton",
+        downloadSuccessMessage: "",
+        downloadFailedMessage: "",
+        downloadButtonLabel: undefined,
+        downloadButtonClass: undefined,
+        downloadButtonTarget: undefined,
+        downloadSuccessMessageClass: undefined,
+        downloadFailedMessageClass: undefined,
+        // props below are for debugging in storybook
+        debugMode: false,
+        debugPdfUrl: ""
+      }, extend));
+    }
+  }, {
+    key: "builderInfo",
+    get: function () {
+      return {
+        title: "PdfSubmitButton",
+        group: "custom",
+        icon: "fa-solid fa-file",
+        documentation: "/userguide/#button",
+        weight: 2,
+        schema: Object.assign({}, PdfSubmitButton.schema())
+      };
+    }
+  }]);
+
+  return PdfSubmitButton;
+}(Button);
+PdfSubmitButton.editForm = _PdfSubmitButton_form__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+/***/ }),
+
+/***/ "./src/components/PdfSubmitButton/editFrom/PdfSubmitButton.edit.display.js":
+/*!*********************************************************************************!*\
+  !*** ./src/components/PdfSubmitButton/editFrom/PdfSubmitButton.edit.display.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*
+ * use form.io Button component as boilerplate
+ * https://github.com/formio/formio.js/blob/master/src/components/button/editForm/Button.edit.display.js
+ *
+ */
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+  type: "content",
+  html: `<h2>Please follow <a href="#" target="_blank">this guide</a> to setup the form action before using this component.</h2>`,
+  input: false,
+  weight: -10
+}, {
+  key: "labelPosition",
+  ignore: true
+}, {
+  key: "placeholder",
+  ignore: true
+}, {
+  key: "hideLabel",
+  ignore: true
+}, {
+  key: "action",
+  ignore: true
+}, {
+  type: "textarea",
+  key: "downloadSuccessMessage",
+  label: "Download message if PDF generated successfully",
+  tooltip: "Message show up after form submission if PDF generated successfully.",
+  rows: 5,
+  input: true,
+  weight: 120,
+  editor: "ace",
+  as: "html"
+}, {
+  type: "textarea",
+  key: "downloadFailedMessage",
+  label: "Download message if PDF didn't generate",
+  tooltip: "Message show after form submission if PDF didn't generate.",
+  rows: 5,
+  input: true,
+  weight: 120,
+  editor: "ace",
+  as: "html"
+}, {
+  type: "textfield",
+  label: "Download message class if success",
+  key: "downloadSuccessMessageClass",
+  weight: 120,
+  tooltip: "Class name of the download message container.",
+  input: true,
+  placeholder: "eg. alert alert-success"
+}, {
+  type: "textfield",
+  label: "Download message class if success",
+  key: "downloadSuccessMessageClass",
+  weight: 120,
+  tooltip: "Class name of the download message container.",
+  input: true,
+  placeholder: "eg. alert alert-success"
+}, {
+  type: "textfield",
+  label: "Download message class if didn't generate PDF",
+  key: "downloadFailedMessageClass",
+  weight: 120,
+  tooltip: "Class name of the download message container.",
+  input: true,
+  placeholder: "eg. alert alert-success"
+}, {
+  type: "textfield",
+  label: "Download button label",
+  key: "downloadButtonLabel",
+  weight: 121,
+  tooltip: "Label of the download button.",
+  input: true,
+  placeholder: "Download"
+}, {
+  type: "textfield",
+  label: "Download button class",
+  key: "downloadButtonClass",
+  weight: 122,
+  tooltip: "Class name of the download button.",
+  input: true,
+  placeholder: "btn btn-primary"
+}, {
+  type: "textfield",
+  label: "Download button target",
+  key: "downloadButtonTarget",
+  weight: 123,
+  tooltip: "Link target of the download button.",
+  input: true,
+  placeholder: "_blank"
+}, {
+  type: "checkbox",
+  input: true,
+  inputType: "checkbox",
+  key: "saveOnEnter",
+  label: "Save On Enter",
+  weight: 113,
+  tooltip: "Use the Enter key to submit form.",
+  conditional: {
+    json: {
+      "===": [{
+        var: "data.action"
+      }, "submit"]
+    }
+  }
+}, {
+  type: "select",
+  key: "theme",
+  label: "Theme",
+  input: true,
+  tooltip: "The color theme of this button.",
+  dataSrc: "values",
+  weight: 140,
+  data: {
+    values: [{
+      label: "Primary",
+      value: "primary"
+    }, {
+      label: "Secondary",
+      value: "secondary"
+    }, {
+      label: "Info",
+      value: "info"
+    }, {
+      label: "Success",
+      value: "success"
+    }, {
+      label: "Danger",
+      value: "danger"
+    }, {
+      label: "Warning",
+      value: "warning"
+    }]
+  }
+}, {
+  type: "select",
+  key: "size",
+  label: "Size",
+  input: true,
+  tooltip: "The size of this button.",
+  dataSrc: "values",
+  weight: 150,
+  data: {
+    values: [{
+      label: "Small",
+      value: "sm"
+    }, {
+      label: "Medium",
+      value: "md"
+    }, {
+      label: "Large",
+      value: "lg"
+    }]
+  }
+}, {
+  type: "textfield",
+  key: "leftIcon",
+  label: "Left Icon",
+  input: true,
+  placeholder: "Enter icon classes",
+  tooltip: "This is the full icon class string to show the icon. Example: 'fa fa-plus'",
+  weight: 160
+}, {
+  type: "textfield",
+  key: "rightIcon",
+  label: "Right Icon",
+  input: true,
+  placeholder: "Enter icon classes",
+  tooltip: "This is the full icon class string to show the icon. Example: 'fa fa-plus'",
+  weight: 170
+}, {
+  type: "checkbox",
+  key: "block",
+  label: "Block Button",
+  input: true,
+  weight: 155,
+  tooltip: "This control should span the full width of the bounding container."
+}, {
+  type: "checkbox",
+  key: "disableOnInvalid",
+  label: "Disable on Form Invalid",
+  tooltip: "This will disable this field if the form is invalid.",
+  input: true,
+  weight: 620
+}]);
+
+/***/ }),
+
+/***/ "./src/components/PdfSubmitButton/index.js":
+/*!*************************************************!*\
+  !*** ./src/components/PdfSubmitButton/index.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PdfSubmitButton": () => (/* reexport safe */ _PdfSubmitButton__WEBPACK_IMPORTED_MODULE_0__.PdfSubmitButton)
+/* harmony export */ });
+/* harmony import */ var _PdfSubmitButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PdfSubmitButton */ "./src/components/PdfSubmitButton/PdfSubmitButton.js");
+
+
+/***/ }),
+
 /***/ "./src/components/PlsPlusAddress/PlsPlusAddress.form.js":
 /*!**************************************************************!*\
   !*** ./src/components/PlsPlusAddress/PlsPlusAddress.form.js ***!
@@ -1531,14 +1943,17 @@ PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__["def
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BoilerplateButton": () => (/* reexport safe */ _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__.BoilerplateButton),
+/* harmony export */   "PdfSubmitButton": () => (/* reexport safe */ _PdfSubmitButton__WEBPACK_IMPORTED_MODULE_2__.PdfSubmitButton),
 /* harmony export */   "PlsPlusAddress": () => (/* reexport safe */ _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_1__.PlsPlusAddress)
 /* harmony export */ });
 /* harmony import */ var _BoilerplateButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoilerplateButton */ "./src/components/BoilerplateButton/index.js");
 /* harmony import */ var _PlsPlusAddress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlsPlusAddress */ "./src/components/PlsPlusAddress/index.js");
+/* harmony import */ var _PdfSubmitButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PdfSubmitButton */ "./src/components/PdfSubmitButton/index.js");
 /*
  * this file is used for dev environment for storybook and testing
  *
  */
+
 
 
 
@@ -3403,7 +3818,7 @@ function MDXContent(_ref) {
     components: components,
     mdxType: "MDXLayout"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Meta, {
-    title: "Components/PdfSubmitButton",
+    title: "Components/Custom/PdfSubmitButton",
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "pdfsubmitbutton"
@@ -3692,7 +4107,7 @@ builder.parameters = {
   }
 };
 var componentMeta = {
-  title: 'Components/PdfSubmitButton',
+  title: 'Components/Custom/PdfSubmitButton',
   includeStories: ["renderer", "rendererForMissingPdf", "rendererForFormWizard", "builder"]
 };
 var mdxStoryNameToKey = {
@@ -6205,4 +6620,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.4e5f9f34.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.cc6014c4.iframe.bundle.js.map
