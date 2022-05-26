@@ -2070,7 +2070,6 @@ module.exports = {
 
 var downloadPdfCode = `
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 </head>
 <body>
@@ -2134,7 +2133,6 @@ function DownloadPdf() {
 
 var downloadPdfWizardCode = `
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 </head>
 <body>
@@ -2198,7 +2196,6 @@ function DownloadPdfWizard() {
 
 var simpleWizardCode = `
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 </head>
 <body>
@@ -2301,7 +2298,6 @@ function SimpleWizard() {
 
 var singleSignOnCode = `
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
 </head>
 <body>
@@ -2495,7 +2491,9 @@ function SingleSignOn() {
 /* harmony export */ });
 /* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../config/createForm.options */ "./src/config/createForm.options.js");
 /* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_config_createForm_options__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config_createForm_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../config/createForm.controller */ "./src/config/createForm.controller.js");
+/* harmony import */ var _config_createForm_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/createForm.controller */ "./src/config/createForm.controller.js");
+/* harmony import */ var _utils_delegateSelector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/delegateSelector */ "./src/utils/delegateSelector.js");
+
 
  // plugin function to fix the namespace/project option doesn't pass to Formio.makeRequest/Formio.makeStaticRequest
 
@@ -2610,13 +2608,13 @@ var initFormioInstance = function (elem, opts) {
       opts.createFormCallback(callbackProps);
     } else {
       // Force new tab on formlinks
-      $(elem).on("click", `a`, function (e) {
+      (0,_utils_delegateSelector__WEBPACK_IMPORTED_MODULE_1__.delegateSelector)(elem, "click", "a", function (e) {
         e.target.target = "_blank";
       });
     } // default controller
 
 
-    (0,_config_createForm_controller__WEBPACK_IMPORTED_MODULE_1__["default"])(callbackProps); // call custom hook controller
+    (0,_config_createForm_controller__WEBPACK_IMPORTED_MODULE_2__["default"])(callbackProps); // call custom hook controller
 
     if (typeof opts.createFormController === "function") {
       opts.createFormController(callbackProps);
@@ -3514,6 +3512,38 @@ var createForm = function (_ref) {
     });
   }, 100);
   return div;
+};
+
+/***/ }),
+
+/***/ "./src/utils/delegateSelector.js":
+/*!***************************************!*\
+  !*** ./src/utils/delegateSelector.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "delegateSelector": () => (/* binding */ delegateSelector)
+/* harmony export */ });
+var delegateSelector = function (elements, event, childSelector, handler) {
+  var is = function (el, s) {
+    return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, s);
+  };
+
+  var addEvent = function (el) {
+    el.addEventListener(event, function (e) {
+      if (is(e.target, childSelector)) {
+        handler(e);
+      }
+    });
+  };
+
+  if (Array.isArray(elements)) {
+    [].forEach.call(elements, addEvent);
+  } else {
+    addEvent(elements);
+  }
 };
 
 /***/ }),
@@ -4595,7 +4625,7 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "download-pdf-example"
-  }, `Download PDF example`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example using the form.io form action and PdfSubmitButton component to enable PDF generation for the submission.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `TODO - document the process of setup the form action in form.io, with the action title needed to be `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, `Download PDF example`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example is still in BETA.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example using the form.io form action and PdfSubmitButton component to enable PDF generation for the submission.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `TODO - document the process of setup the form action in form.io, with the action title needed to be `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
   }, `pdfUrl`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
@@ -6955,4 +6985,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.79bcb70f.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.c83f8d49.iframe.bundle.js.map
