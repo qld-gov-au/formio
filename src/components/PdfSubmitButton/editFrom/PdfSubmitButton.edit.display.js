@@ -7,7 +7,7 @@
 export default [
   {
     type: "content",
-    html: `<h2>Please follow <a href="#" target="_blank">this guide</a> to setup the form action before using this component.</h2>`,
+    html: `<h2>This component is still in development and not a stable version.</h2><h2>Please follow <a href="#" target="_blank">this guide</a> to setup the form action before using this component.</h2>`,
     input: false,
     weight: -10,
   },
