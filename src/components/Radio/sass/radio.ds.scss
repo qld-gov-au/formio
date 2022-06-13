@@ -1,0 +1,9 @@
+// design system style
+.formio-form {
+  // new custom class `radio-tab`
+  .radio-tab {
+    .radio.form-check {
+      border: 3px solid grey;
+    }
+  }
+}
