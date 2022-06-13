@@ -3,6 +3,8 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const RemovePlugin = require("remove-files-webpack-plugin");
+const globImporter = require("node-sass-glob-importer");
 
 const getScriptConfig = (src) => {
   return {
@@ -45,6 +47,21 @@ module.exports = {
     "formio-script.gitbridge.min": getScriptConfig(
       "src/helpers/FormioScript/index.gitbridge.js"
     ),
+    // Default theme
+    "formio-qld": {
+      import: path.resolve(__dirname, "src/sass/formio.form.swe.scss"),
+      filename: "./temp/[name].js",
+    },
+    // SWE theme
+    "formio-qld-swe": {
+      import: path.resolve(__dirname, "src/sass/formio.form.swe.scss"),
+      filename: "./temp/[name].js",
+    },
+    // design system theme
+    "formio-qld-ds": {
+      import: path.resolve(__dirname, "src/sass/formio.form.ds.scss"),
+      filename: "./temp/[name].js",
+    },
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -68,7 +85,19 @@ module.exports = {
       },
       {
         test: /\.(s(a|c)ss)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                // for scss wildcard import
+                importer: globImporter(),
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -84,7 +113,15 @@ module.exports = {
         { from: path.resolve(__dirname, "./src/assets") },
       ],
     }),
-    new MiniCssExtractPlugin({}),
+    new MiniCssExtractPlugin({
+      filename: "./[name].min.css",
+    }),
+    new RemovePlugin({
+      after: {
+        root: "./dist",
+        include: ["temp"],
+      },
+    }),
   ],
   mode: "production",
   devtool: "source-map",
