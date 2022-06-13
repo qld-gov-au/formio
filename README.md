@@ -157,6 +157,36 @@ Github actions has been setup for this repo to fetch the latest versions of scri
 
 At the mean time we need to sync the version with QG form.io platform, we could merge these PRs if the version is the same as the form.io server otherwise we'll have to ignore them.
 
+## Theming
+
+Although we don't need to support multiple themes at the moment for formio, the multi-theme architecture has been setup in this repository.
+
+Currently there are 2 themes in this repository:
+
+- SWE: default theme, will be bundled into `dist/formio-qld.min.css` and `dist/formio-qld-swe.min.css` (they are identical).
+- Design System: experimental theme, will be bundled into `dist/formio-qld-ds.min.css`.
+
+You could preview each of the theme in storybook with the theming button in storybook toolbar.
+
+To modify a theme for a formio component, simply create a scss file with theme id in the file extension in the component folder. ie. `src/components/Radio/sass/radio.swe.scss`.
+Please refer to `src/components/Radio/sass` for how to customise theming for any formio components.
+
+### Adding a theme
+
+- Duplicate `src/sass/formio.form.swe.scss` with a new theme id.
+- Modify `src/sass/formio.form.stories.scss` add the new theme id, for adding the theme in storybook environment.
+- Modify `.storybook/preview.js` add the new theme in `parameters`, for adding the theme in storybook environment.
+- Modify `webpack.config.js` add a new entry point that points to the new theme file, for adding the theme to the build.
+
+### Changing the default theme
+
+Modify `./webpack.config.js`, change the `formio-qld` entry point to point to the theme you like.
+
+### TODO on theming
+
+- Move formio component style from SWE library to this repository.
+- Add Visual testing (eg. Chromatic) to CI/CD pipeline.
+
 ## Folder structure
 
 ### src/components
@@ -171,6 +201,10 @@ Helper modules for integrate Formio into Squiz Matrix/consumer application.
 ### src/examples
 
 Sample usage of Formio implementation in any applications.
+
+### src/sass
+
+Entry points of css theme
 
 ### lib
 
