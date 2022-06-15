@@ -35,7 +35,7 @@
   </div>
 {% } %}
 {% if (ctx.self.manualModeEnabled && ( ctx.mode.manual || ctx.displayValue)) { %}
-  <div ref="{{ ctx.nestedKey }}">
+  <div ref="{{ ctx.nestedKey }}" class="address-nested">
     {{ ctx.children }}
   </div>
 {% } %}

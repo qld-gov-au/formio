@@ -1,6 +1,6 @@
-.formio-form {
+.formio-component-radio {
   // new custom class `radio-tab`
-  .radio-tab {
+  &.radio-tab {
     .radio.form-check {
       border: 1px solid grey;
       border-radius: 3px;
