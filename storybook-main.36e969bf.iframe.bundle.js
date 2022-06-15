@@ -5897,6 +5897,114 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
 
 /***/ }),
 
+/***/ "./src/stories/BestPratices.stories.mdx":
+/*!**********************************************!*\
+  !*** ./src/stories/BestPratices.stories.mdx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__page": () => (/* binding */ __page),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mdx-js/react */ "./node_modules/@mdx-js/react/dist/esm.js");
+/* harmony import */ var _storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @storybook/addon-docs */ "./node_modules/@storybook/addon-docs/dist/esm/index.js");
+var _excluded = ["components"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+/* @jsxRuntime classic */
+
+/* @jsx mdx */
+
+
+
+var layoutProps = {};
+var MDXLayout = "wrapper";
+
+function MDXContent(_ref) {
+  var components = _ref.components,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXLayout, _extends({}, layoutProps, props, {
+    components: components,
+    mdxType: "MDXLayout"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Meta, {
+    title: "Best practices",
+    mdxType: "Meta"
+  }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h6", {
+    "id": "updated-in-15-jun-2022"
+  }, `Updated in 15 Jun 2022`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+    "id": "best-practices"
+  }, `Best practices`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "use-native-submit-action-instead-of-applicationsubmit-event"
+  }, `Use native submit action instead of `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "h2"
+  }, `applicationSubmit`), ` event`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `With the old Squiz Matrix formio template, `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `applicationSubmit`), ` event is used extensively to replace the out of the box submit action in submit button.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This is `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+    parentName: "p"
+  }, `NOT`), ` recommended anymore with the use of FormioLoader in the Squiz Matrix formio template V2 as the old approach has taken away multiple features from the native submit button,
+such as auto scrolling to error message, loading/disabled states of the submit button, multiple clicks prevention on the button, etc.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Custom submit action should be defined in the form controller hook with the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `submitDone`), ` event\`, ie.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-jsx"
+  }, `({ form }) => {
+form.on("submitDone", (e) => {
+  // you can see the event object in the browser's inspector.
+  console.info("submitDone", e);
+  // you can define custom action here after form submission
+});
+`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "?path=/docs/helpers-formioloader--page"
+  }, `here`), ` for how to use the hook with FormioLoader
+and `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+    parentName: "p",
+    "href": "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2",
+    "target": "_blank",
+    "rel": "nofollow noopener noreferrer"
+  }, `here`), ` for how to use the hook in Squiz Matrix formio template.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You could also modify `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, `/src/config/createForm.controller.js`), ` and create PR to add a default custom submit action which will be available globally.`));
+}
+
+;
+MDXContent.isMDXComponent = true;
+var __page = function () {
+  throw new Error("Docs-only story");
+};
+__page.parameters = {
+  docsOnly: true
+};
+var componentMeta = {
+  title: 'Best practices',
+  includeStories: ["__page"]
+};
+var mdxStoryNameToKey = {};
+componentMeta.parameters = componentMeta.parameters || {};
+componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs || {}, {
+  page: function () {
+    return (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.AddContext, {
+      mdxStoryNameToKey: mdxStoryNameToKey,
+      mdxComponentAnnotations: componentMeta
+    }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(MDXContent, null));
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (componentMeta);
+
+/***/ }),
+
 /***/ "./src/stories/How.stories.mdx":
 /*!*************************************!*\
   !*** ./src/stories/How.stories.mdx ***!
@@ -6909,6 +7017,7 @@ var map = {
 	"./examples/SingleSignOn/SingleSignOn.stories.mdx": "./src/examples/SingleSignOn/SingleSignOn.stories.mdx",
 	"./helpers/FormioLoader/FormioLoader.stories.mdx": "./src/helpers/FormioLoader/FormioLoader.stories.mdx",
 	"./helpers/FormioScript/FormioScript.stories.mdx": "./src/helpers/FormioScript/FormioScript.stories.mdx",
+	"./stories/BestPratices.stories.mdx": "./src/stories/BestPratices.stories.mdx",
 	"./stories/How.stories.mdx": "./src/stories/How.stories.mdx",
 	"./stories/Welcome.stories.mdx": "./src/stories/Welcome.stories.mdx",
 	"./stories/WhyAndWhen.stories.mdx": "./src/stories/WhyAndWhen.stories.mdx"
@@ -6997,4 +7106,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.36665073.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.36e969bf.iframe.bundle.js.map
