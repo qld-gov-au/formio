@@ -64,7 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "parameters": () => (/* binding */ parameters)
 /* harmony export */ });
 /* harmony import */ var _src_stories_stories_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/stories/stories.css */ "./src/stories/stories.css");
-/* harmony import */ var _src_sass_formio_form_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/sass/formio.form.scss */ "./src/sass/formio.form.scss");
+/* harmony import */ var _src_sass_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/sass/formio.form.stories.scss */ "./src/sass/formio.form.stories.scss");
 /* harmony import */ var _src_config_storybook_options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/config/storybook.options */ "./src/config/storybook.options.js");
 /* harmony import */ var _src_config_storybook_options__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_src_config_storybook_options__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _src_components_index_dev__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/components/index.dev */ "./src/components/index.dev.js");
@@ -99,6 +99,18 @@ var parameters = {
       type: "code",
       language: "js"
     }
+  },
+  themes: {
+    default: "SWE",
+    list: [{
+      name: "SWE",
+      class: "theme-swe",
+      color: "#00aced"
+    }, {
+      name: "Design system",
+      class: "theme-ds",
+      color: "#3b5998"
+    }]
   }
 };
 
@@ -6315,10 +6327,10 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/formio.form.scss":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/formio.form.scss ***!
-  \****************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[12].use[2]!./src/sass/formio.form.stories.scss":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[12].use[2]!./src/sass/formio.form.stories.scss ***!
+  \*****************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6334,7 +6346,7 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".formio-form .radio-tab .radio.form-check {\n  border: 1px solid grey;\n  border-radius: 3px;\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n  padding: 1rem; }\n", "",{"version":3,"sources":["webpack://./src/components/Radio/radio.scss"],"names":[],"mappings":"AAAA;EAIM,sBAAsB;EACtB,kBAAkB;EAClB,gBAAgB;EAChB,mBAAmB;EACnB,aACF,EAAA","sourcesContent":[".formio-form {\n  // new custom class `radio-tab`\n  .radio-tab {\n    .radio.form-check {\n      border: 1px solid grey;\n      border-radius: 3px;\n      margin-top: 1rem;\n      margin-bottom: 1rem;\n      padding: 1rem\n    }\n  }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".theme-swe .formio-form .radio-tab .radio.form-check {\n  border: 1px solid grey;\n  border-radius: 3px;\n  margin-top: 1rem;\n  margin-bottom: 1rem;\n  padding: 1rem; }\n\n.theme-ds .formio-form .radio-tab .radio.form-check {\n  border: 3px solid grey; }\n", "",{"version":3,"sources":["webpack://./src/sass/formio.form.stories.scss","webpack://./src/components/Radio/sass/radio.swe.scss","webpack://./src/components/Radio/sass/radio.ds.scss"],"names":[],"mappings":"AACA;ECGM,sBAAsB;EACtB,kBAAkB;EAClB,gBAAgB;EAChB,mBAAmB;EACnB,aACF,EAAA;;ADLJ;EECM,sBAAsB,EAAA","sourcesContent":["// for storybook only to support theme switching in real time\n.theme-swe {\n  @import './formio.form.swe.scss';\n}\n.theme-ds {\n  @import './formio.form.ds.scss';\n}",".formio-form {\n  // new custom class `radio-tab`\n  .radio-tab {\n    .radio.form-check {\n      border: 1px solid grey;\n      border-radius: 3px;\n      margin-top: 1rem;\n      margin-bottom: 1rem;\n      padding: 1rem\n    }\n  }\n}","// design system style\n.formio-form {\n  // new custom class `radio-tab`\n  .radio-tab {\n    .radio.form-check {\n      border: 3px solid grey;\n    }\n  }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6397,10 +6409,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".formio-form .radio-tab .radio.form-ch
 
 /***/ }),
 
-/***/ "./src/sass/formio.form.scss":
-/*!***********************************!*\
-  !*** ./src/sass/formio.form.scss ***!
-  \***********************************/
+/***/ "./src/sass/formio.form.stories.scss":
+/*!*******************************************!*\
+  !*** ./src/sass/formio.form.stories.scss ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6416,7 +6428,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".formio-form .radio-tab .radio.form-ch
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_formio_form_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./formio.form.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/sass/formio.form.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_12_use_2_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[12].use[2]!./formio.form.stories.scss */ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[12].use[2]!./src/sass/formio.form.stories.scss");
 
       
       
@@ -6438,12 +6450,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_formio_form_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_12_use_2_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_formio_form_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_formio_form_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_formio_form_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_12_use_2_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_12_use_2_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_12_use_2_formio_form_stories_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -6985,4 +6997,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.c83f8d49.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.36665073.iframe.bundle.js.map
