@@ -1,9 +1,14 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const globImporter = require("node-sass-glob-importer");
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "storybook-addon-themes",
+  ],
   framework: "@storybook/html",
   staticDirs: ["../lib"],
   core: {
@@ -23,7 +28,19 @@ module.exports = {
     });
     config.module.rules.push({
       test: /\.(s(a|c)ss)$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
+      use: [
+        "style-loader",
+        "css-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            sassOptions: {
+              // for scss wildcard import
+              importer: globImporter(),
+            },
+          },
+        },
+      ],
     });
     config.module.rules.find(
       (item) => item.type === "asset/resource"
