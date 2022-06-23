@@ -30,6 +30,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/premium": "^1.17.1"
+    "@formio/premium": "^1.19.0-rc.3"
   }
 }
