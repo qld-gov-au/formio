@@ -4,6 +4,51 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.19.0-rc.3
+### Fixed
+ - FIO-5036: fixed an issue where sketchpad preview drawing sometimes does not display after switching between view and edit submission pages
+
+## 1.19.0-rc.2
+### Fixed
+ - CDN test url if formio version contains RC.
+
+## 1.19.0-rc.1
+### Added
+ - FIO-4418: Enable API Driven Data Tables
+ - FIO-4357: Combine the background and the drawing in read-only mode (including PDFs)
+
+### Fixed
+ - UIP-313: Fixes logic with action to change 'hidden' component property not working
+
+### Changed
+ - Upgrade dayjs@1.10.7, @types/sinon@10.0.10, chai@4.3.6, ts-sinon@2.0.2, vanilla-picker@2.12.1, @types/chai@4.3.0, @types/mocha@9.1.0, ts-node@10.4.0, webpack@5.68.0, webpack-cli@4.9.2
+
+## 1.18.0-rc.2
+### Added
+ - FIO-4417: Add Transforms to DataSource Component
+ - FIO-4539: Fixes portal app crushed in ie11
+
+## 1.18.0-rc.1
+### Changed
+ - Changes for ACC 0.6.0
+
+### Added
+ - Adding XML, CSV, and JSON file parsers for the file upload component.
+
+### Fixed
+ - FIO-3983: Scrollbar is causing column value to not show the full value
+ - FIO-4415: Data Table: Controls in a layout control does not show in table view
+ - FIO-4437: disable SignRequest component
+
+## 1.17.2-rc.2
+### Fixed
+ - FIO-4339: Fixes editing submissions with signrequest component on them
+
+## 1.17.2-rc.1
+### Changed
+ - add SignRequestSignature component
+ - refactor signrequest
+
 ## 1.17.1
 ### Changed
  - Official Release
