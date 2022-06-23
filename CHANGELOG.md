@@ -2,6 +2,53 @@
 ## [Unreleased]
 
 
+<a name="v1.1.0-beta002"></a>
+## [v1.1.0-beta002] - 2022-06-23
+### Pull Requests
+- Merge pull request [#70](https://github.com/qld-gov-au/formio/issues/70) from qld-gov-au/QOL-8993-formio-upgrade
+
+
+<a name="v1.1.0-beta001"></a>
+## [v1.1.0-beta001] - 2022-06-23
+### Pull Requests
+- Merge pull request [#67](https://github.com/qld-gov-au/formio/issues/67) from qld-gov-au/Add-best-pratice-documentation
+- Merge pull request [#65](https://github.com/qld-gov-au/formio/issues/65) from qld-gov-au/add-theming-support
+- Merge pull request [#64](https://github.com/qld-gov-au/formio/issues/64) from qld-gov-au/63-custom-templates-should-be-under-bootstrap3-for-v7-server
+
+
+<a name="v1.0.9"></a>
+## [v1.0.9] - 2022-06-09
+### Pull Requests
+- Merge pull request [#62](https://github.com/qld-gov-au/formio/issues/62) from qld-gov-au/remove-jquery-reference-from-custom-component-library
+
+
+<a name="v1.0.8"></a>
+## [v1.0.8] - 2022-05-26
+### Pull Requests
+- Merge pull request [#58](https://github.com/qld-gov-au/formio/issues/58) from qld-gov-au/update-readme-and-storybook-doc-content
+
+
+<a name="v1.0.7-beta001"></a>
+## [v1.0.7-beta001] - 2022-05-26
+
+<a name="v1.0.6-beta001"></a>
+## [v1.0.6-beta001] - 2022-05-20
+
+<a name="v1.0.7"></a>
+## [v1.0.7] - 2022-05-20
+### Pull Requests
+- Merge pull request [#56](https://github.com/qld-gov-au/formio/issues/56) from qld-gov-au/select-component-data-resource-hotfix
+- Merge pull request [#51](https://github.com/qld-gov-au/formio/issues/51) from qld-gov-au/release-v1.0.5
+
+
+<a name="v1.0.6"></a>
+## [v1.0.6] - 2022-05-04
+### Pull Requests
+- Merge pull request [#50](https://github.com/qld-gov-au/formio/issues/50) from qld-gov-au/release-v1.0.5
+- Merge pull request [#49](https://github.com/qld-gov-au/formio/issues/49) from qld-gov-au/release-v1.0.5
+- Merge pull request [#48](https://github.com/qld-gov-au/formio/issues/48) from qld-gov-au/release-v1.0.5
+
+
 <a name="v1.0.5"></a>
 ## [v1.0.5] - 2022-04-28
 ### Pull Requests
@@ -80,7 +127,15 @@
 - Merge pull request [#1](https://github.com/qld-gov-au/formio/issues/1) from qld-gov-au/plsplus-address
 
 
-[Unreleased]: https://github.com/qld-gov-au/formio/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/qld-gov-au/formio/compare/v1.1.0-beta002...HEAD
+[v1.1.0-beta002]: https://github.com/qld-gov-au/formio/compare/v1.1.0-beta001...v1.1.0-beta002
+[v1.1.0-beta001]: https://github.com/qld-gov-au/formio/compare/v1.0.9...v1.1.0-beta001
+[v1.0.9]: https://github.com/qld-gov-au/formio/compare/v1.0.8...v1.0.9
+[v1.0.8]: https://github.com/qld-gov-au/formio/compare/v1.0.7-beta001...v1.0.8
+[v1.0.7-beta001]: https://github.com/qld-gov-au/formio/compare/v1.0.6-beta001...v1.0.7-beta001
+[v1.0.6-beta001]: https://github.com/qld-gov-au/formio/compare/v1.0.7...v1.0.6-beta001
+[v1.0.7]: https://github.com/qld-gov-au/formio/compare/v1.0.6...v1.0.7
+[v1.0.6]: https://github.com/qld-gov-au/formio/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/qld-gov-au/formio/compare/v1.0.4-beta003...v1.0.5
 [v1.0.4-beta003]: https://github.com/qld-gov-au/formio/compare/v1.0.4-beta002...v1.0.4-beta003
 [v1.0.4-beta002]: https://github.com/qld-gov-au/formio/compare/v1.0.4...v1.0.4-beta002
