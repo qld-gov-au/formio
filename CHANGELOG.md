@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2022-06-28
+### Pull Requests
+- Merge pull request [#73](https://github.com/qld-gov-au/formio/issues/73) from qld-gov-au/QOL-8993-sync-premium.js
+- Merge pull request [#71](https://github.com/qld-gov-au/formio/issues/71) from qld-gov-au/update-changelog
+
+
 <a name="v1.1.0-beta002"></a>
 ## [v1.1.0-beta002] - 2022-06-23
 ### Pull Requests
@@ -127,7 +134,8 @@
 - Merge pull request [#1](https://github.com/qld-gov-au/formio/issues/1) from qld-gov-au/plsplus-address
 
 
-[Unreleased]: https://github.com/qld-gov-au/formio/compare/v1.1.0-beta002...HEAD
+[Unreleased]: https://github.com/qld-gov-au/formio/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/qld-gov-au/formio/compare/v1.1.0-beta002...v1.1.0
 [v1.1.0-beta002]: https://github.com/qld-gov-au/formio/compare/v1.1.0-beta001...v1.1.0-beta002
 [v1.1.0-beta001]: https://github.com/qld-gov-au/formio/compare/v1.0.9...v1.1.0-beta001
 [v1.0.9]: https://github.com/qld-gov-au/formio/compare/v1.0.8...v1.0.9
