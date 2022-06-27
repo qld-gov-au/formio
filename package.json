@@ -62,7 +62,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-webpack-plugin": "^3.1.1",
     "formiojs": "4.14.8",
-    "@formio/premium": "1.19.0-rc.3",
+    "@formio/premium": "1.18.4",
     "jest": "^27.5.1",
     "jest-raw-loader": "^1.0.1",
     "lodash": "^4.17.21",
