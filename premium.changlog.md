@@ -4,25 +4,6 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.19.0-rc.3
-### Fixed
- - FIO-5036: fixed an issue where sketchpad preview drawing sometimes does not display after switching between view and edit submission pages
-
-## 1.19.0-rc.2
-### Fixed
- - CDN test url if formio version contains RC.
-
-## 1.19.0-rc.1
-### Added
- - FIO-4418: Enable API Driven Data Tables
- - FIO-4357: Combine the background and the drawing in read-only mode (including PDFs)
-
-### Fixed
- - UIP-313: Fixes logic with action to change 'hidden' component property not working
-
-### Changed
- - Upgrade dayjs@1.10.7, @types/sinon@10.0.10, chai@4.3.6, ts-sinon@2.0.2, vanilla-picker@2.12.1, @types/chai@4.3.0, @types/mocha@9.1.0, ts-node@10.4.0, webpack@5.68.0, webpack-cli@4.9.2
-
 ## 1.18.0-rc.2
 ### Added
  - FIO-4417: Add Transforms to DataSource Component
