@@ -1,0 +1,7 @@
+// for storybook only to support theme switching in real time
+.theme-swe {
+  @import './formio.form.swe.scss';
+}
+.theme-ds {
+  @import './formio.form.ds.scss';
+}

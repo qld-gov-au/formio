@@ -1,5 +1,6 @@
 import "../src/stories/stories.css";
-import "../src/sass/formio.form.scss";
+import "../src/sass/formio.form.stories.scss";
+
 import storybookOptions from "../src/config/storybook.options";
 import * as components from "../src/components/index.dev";
 import { getComponents } from "../src/utils/getComponents";
@@ -26,5 +27,12 @@ export const parameters = {
       type: "code",
       language: "js",
     },
+  },
+  themes: {
+    default: "SWE",
+    list: [
+      { name: "SWE", class: "theme-swe", color: "#00aced" },
+      { name: "Design system", class: "theme-ds", color: "#3b5998" },
+    ],
   },
 };
