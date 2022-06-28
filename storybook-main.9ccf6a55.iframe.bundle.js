@@ -1985,7 +1985,7 @@ __webpack_require__.r(__webpack_exports__);
   var form = _ref.form,
       formConfirmation = _ref.formConfirmation;
   // Change event/GTM
-  form.on("click", function (e) {
+  form.on("change", function (e) {
     // eslint-disable-next-line no-underscore-dangle
     var formTitle = form._form.title; // eslint-disable-next-line no-underscore-dangle
 
@@ -1998,12 +1998,12 @@ __webpack_require__.r(__webpack_exports__);
         "formio-name": formTitle,
         "formio-input-id": e.changed.component.id,
         "formio-input-type": e.changed.component.type,
-        "formio-input-value": e.changed.component.value,
+        "formio-input-value": e.changed.value,
         "formio-input-key": e.changed.component.key,
         "formio-input-label-raw": e.changed.component.label,
         "formio-version": formModified,
         "formio-category": `Form: ${formTitle}`,
-        "formio-action": "Value changed"
+        "formio-action": "filled in"
       });
     }
   }); // backward compatibility, for old forms that using this event to do submission
@@ -7106,4 +7106,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.36e969bf.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.9ccf6a55.iframe.bundle.js.map
