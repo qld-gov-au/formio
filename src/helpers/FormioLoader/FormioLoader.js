@@ -1,5 +1,6 @@
 import defaultCreateFormOptions from "../../config/createForm.options";
 import defaultCreateFormController from "../../config/createForm.controller";
+import { delegateSelector } from "../../utils/delegateSelector";
 
 // plugin function to fix the namespace/project option doesn't pass to Formio.makeRequest/Formio.makeStaticRequest
 const requestPluginHandler = (requestArgs, opts) => {
@@ -122,6 +123,11 @@ const initFormioInstance = (elem, opts) => {
     if (typeof opts.createFormCallback === "function") {
       // call custom callback hook
       opts.createFormCallback(callbackProps);
+    } else {
+      // Force new tab on formlinks
+      delegateSelector(elem, "click", "a", (e) => {
+        e.target.target = "_blank";
+      });
     }
 
     // default controller
