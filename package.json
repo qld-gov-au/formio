@@ -20,7 +20,8 @@
     "url": "https://github.com/qld-gov-au/formio.git"
   },
   "browserslist": [
-    "last 3 Chrome versions"
+    "last 3 Chrome versions",
+    "iOS >= 12"
   ],
   "scripts": {
     "storybook": "start-storybook -p 6006",
