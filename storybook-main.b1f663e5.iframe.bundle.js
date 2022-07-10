@@ -1,4 +1,4 @@
-(globalThis["webpackChunkformio_qld"] = globalThis["webpackChunkformio_qld"] || []).push([["main"],{
+(self["webpackChunkformio_qld"] = self["webpackChunkformio_qld"] || []).push([["main"],{
 
 /***/ "./node_modules/@storybook/builder-webpack5/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[8].use[1]!./src/stories/stories.css":
 /*!********************************************************************************************************************************************!*\
@@ -442,7 +442,7 @@ BoilerplateButton.editForm = _BoilerplateButton_form__WEBPACK_IMPORTED_MODULE_0_
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([// Add a custom description to the editor
 {
   type: "content",
-  html: `<h2>This is a custom label</h2>`,
+  html: "<h2>This is a custom label</h2>",
   input: false,
   weight: -10
 }, // hide some fields inherit from the super class
@@ -743,24 +743,9 @@ var PdfSubmitButton = /*#__PURE__*/function (_Button) {
           var failedMessageClass = downloadFailedMessageClass || ""; // replace form div container with downloadSuccessMessage
 
           if (pdfUrl) {
-            _this.root.element.innerHTML = `
-              <div class="${successMessageClass}">
-                ${downloadSuccessMessage ? `<div class="mb-3 download-success-message-container">${downloadSuccessMessage}</div>` : ""}
-                <div class="download-button-container">
-                  <a href="${pdfUrl}" class="${className}" target="${target}" />
-                    ${label}
-                  </a>
-                </div>
-              </div>
-            `;
+            _this.root.element.innerHTML = "\n              <div class=\"" + successMessageClass + "\">\n                " + (downloadSuccessMessage ? "<div class=\"mb-3 download-success-message-container\">" + downloadSuccessMessage + "</div>" : "") + "\n                <div class=\"download-button-container\">\n                  <a href=\"" + pdfUrl + "\" class=\"" + className + "\" target=\"" + target + "\" />\n                    " + label + "\n                  </a>\n                </div>\n              </div>\n            ";
           } else {
-            _this.root.element.innerHTML = `
-              <div class="${failedMessageClass}">
-                <div class="download-failed-message-container">
-                  ${downloadFailedMessage}
-                </div>
-              </div>
-            `;
+            _this.root.element.innerHTML = "\n              <div class=\"" + failedMessageClass + "\">\n                <div class=\"download-failed-message-container\">\n                  " + downloadFailedMessage + "\n                </div>\n              </div>\n            ";
           }
 
           _this.root.element.scrollIntoView();
@@ -827,7 +812,7 @@ PdfSubmitButton.editForm = _PdfSubmitButton_form__WEBPACK_IMPORTED_MODULE_0__["d
  */
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   type: "content",
-  html: `<h2>This component is still in development and not a stable version.</h2><h2>Please follow <a href="#" target="_blank">this guide</a> to setup the form action before using this component.</h2>`,
+  html: "<h2>This component is still in development and not a stable version.</h2><h2>Please follow <a href=\"#\" target=\"_blank\">this guide</a> to setup the form action before using this component.</h2>",
   input: false,
   weight: -10
 }, {
@@ -1076,11 +1061,19 @@ var baseEditForm = Formio.Components.components.base.editForm;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PlsPlusAddress": () => (/* binding */ PlsPlusAddress)
 /* harmony export */ });
-/* harmony import */ var autocompleter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! autocompleter */ "./node_modules/autocompleter/autocomplete.js");
-/* harmony import */ var autocompleter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(autocompleter__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlsPlusAddress.form */ "./src/components/PlsPlusAddress/PlsPlusAddress.form.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var autocompleter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! autocompleter */ "./node_modules/autocompleter/autocomplete.js");
+/* harmony import */ var autocompleter__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(autocompleter__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PlsPlusAddress.form */ "./src/components/PlsPlusAddress/PlsPlusAddress.form.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1092,6 +1085,11 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1171,10 +1169,10 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       var defaultSchema = this.defaultSchema;
 
       if (component.components) {
-        defaultSchema = lodash__WEBPACK_IMPORTED_MODULE_1___default().omit(defaultSchema, "components");
+        defaultSchema = lodash__WEBPACK_IMPORTED_MODULE_5___default().omit(defaultSchema, "components");
       }
 
-      return lodash__WEBPACK_IMPORTED_MODULE_1___default().defaultsDeep(component, defaultSchema);
+      return lodash__WEBPACK_IMPORTED_MODULE_5___default().defaultsDeep(component, defaultSchema);
     }
   }, {
     key: "defaultSchema",
@@ -1368,7 +1366,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       // const changed = Field.prototype.setValue.call(this, value, flags);
       this.restoreComponentsContext();
 
-      if (!lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) && flags.fromSubmission) {
+      if (!lodash__WEBPACK_IMPORTED_MODULE_5___default().isEmpty(value) && flags.fromSubmission) {
         setTimeout(function () {
           _this5.redraw();
         });
@@ -1412,7 +1410,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         attr.disabled = "disabled";
       }
 
-      lodash__WEBPACK_IMPORTED_MODULE_1___default().defaults(attr, this.component.attributes);
+      lodash__WEBPACK_IMPORTED_MODULE_5___default().defaults(attr, this.component.attributes);
 
       return attr;
     }
@@ -1453,8 +1451,8 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
         var _this$originalCompone, _this$originalCompone2;
 
         this.component.validate = Object.assign({}, ((_this$originalCompone = this.originalComponent) === null || _this$originalCompone === void 0 ? void 0 : (_this$originalCompone2 = _this$originalCompone.validate) === null || _this$originalCompone2 === void 0 ? void 0 : _this$originalCompone2.required) && {
-          custom: `valid = !!instance.address.selectedAddress;`,
-          customMessage: `${this.component.label} is required.`,
+          custom: "valid = !!instance.address.selectedAddress;",
+          customMessage: this.component.label + " is required.",
           required: !this.manualMode
         });
       }
@@ -1516,7 +1514,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       });
       this.searchInput.forEach(function (elem, index) {
         if (!_this7.builderMode && elem && _this7.provider) {
-          autocompleter__WEBPACK_IMPORTED_MODULE_0___default()({
+          autocompleter__WEBPACK_IMPORTED_MODULE_4___default()({
             input: elem,
             debounceWaitMs: 300,
             fetch: function (text, update) {
@@ -1545,7 +1543,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
                 _this7.restoreComponentsContext();
 
                 _this7.container.getComponents().forEach(function (component) {
-                  var childElement = document.getElementById(`${component.id}-${component.component.key}`);
+                  var childElement = document.getElementById(component.id + "-" + component.component.key);
                   if (childElement) childElement.value = component.dataValue;
                 });
               });
@@ -1647,7 +1645,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       }
 
       (_this$container4 = this.container) === null || _this$container4 === void 0 ? void 0 : _this$container4.getComponents().forEach(function (component) {
-        var childElement = document.getElementById(`${component.id}-${component.component.key}`);
+        var childElement = document.getElementById(component.id + "-" + component.component.key);
         if (childElement) childElement.value = component.dataValue;
       });
       this.updateRemoveIcon(index);
@@ -1669,7 +1667,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
       if (removeValueIcon) {
         var value = this.address;
 
-        if (this.manualMode || this.isEmpty(value) || lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(value) || this.disabled || value.autocompleteAddress === "") {
+        if (this.manualMode || this.isEmpty(value) || lodash__WEBPACK_IMPORTED_MODULE_5___default().isEmpty(value) || this.disabled || value.autocompleteAddress === "") {
           this.addClass(removeValueIcon, RemoveValueIconHiddenClass);
         } else {
           this.removeClass(removeValueIcon, RemoveValueIconHiddenClass);
@@ -1814,7 +1812,7 @@ var PlsPlusAddress = /*#__PURE__*/function (_FieldsetComponent) {
 
   return PlsPlusAddress;
 }(FieldsetComponent);
-PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_2__["default"];
+PlsPlusAddress.editForm = _PlsPlusAddress_form__WEBPACK_IMPORTED_MODULE_6__["default"];
 
 /***/ }),
 
@@ -2002,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
         "formio-input-key": e.changed.component.key,
         "formio-input-label-raw": e.changed.component.label,
         "formio-version": formModified,
-        "formio-category": `Form: ${formTitle}`,
+        "formio-category": "Form: " + formTitle,
         "formio-action": "filled in"
       });
     }
@@ -2080,20 +2078,7 @@ module.exports = {
  // eslint-disable-next-line import/no-unresolved, import/extensions
 
 
-var downloadPdfCode = `
-<head>
-  <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-</head>
-<body>
-  <script>
-${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdf__WEBPACK_IMPORTED_MODULE_1__.DownloadPdf.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
-    FormioScript.init().then(() => {
-      const div = DownloadPdf();
-      document.body.append(div);
-    });
-  </script>
-</body>
-`;
+var downloadPdfCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n</head>\n<body>\n  <script>\n" + (0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdf__WEBPACK_IMPORTED_MODULE_1__.DownloadPdf.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2) + "\n    FormioScript.init().then(() => {\n      const div = DownloadPdf();\n      document.body.append(div);\n    });\n  </script>\n</body>\n";
 
 /***/ }),
 
@@ -2111,15 +2096,7 @@ ${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdf__WEBPACK_IMPORTED_
 
 function DownloadPdf() {
   var div = document.createElement("div");
-  div.innerHTML = `
-        <div id="formio" 
-          class="qg-forms-v2"
-          data-formio 
-          data-formio-project-name="for2-oldkihhcwbdtwye" 
-          data-formio-form-name="contactUsPdfCustom" 
-          data-formio-env-url="api.forms.platforms.qld.gov.au" 
-        ></div>
-      `;
+  div.innerHTML = "\n        <div id=\"formio\" \n          class=\"qg-forms-v2\"\n          data-formio \n          data-formio-project-name=\"for2-oldkihhcwbdtwye\" \n          data-formio-form-name=\"contactUsPdfCustom\" \n          data-formio-env-url=\"api.forms.platforms.qld.gov.au\" \n        ></div>\n      ";
   setTimeout(function () {
     _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
   });
@@ -2143,20 +2120,7 @@ function DownloadPdf() {
  // eslint-disable-next-line import/no-unresolved, import/extensions
 
 
-var downloadPdfWizardCode = `
-<head>
-  <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-</head>
-<body>
-  <script>
-${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdfWizard__WEBPACK_IMPORTED_MODULE_1__.DownloadPdfWizard.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
-    FormioScript.init().then(() => {
-      const div = DownloadPdfWizard();
-      document.body.append(div);
-    });
-  </script>
-</body>
-`;
+var downloadPdfWizardCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n</head>\n<body>\n  <script>\n" + (0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdfWizard__WEBPACK_IMPORTED_MODULE_1__.DownloadPdfWizard.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2) + "\n    FormioScript.init().then(() => {\n      const div = DownloadPdfWizard();\n      document.body.append(div);\n    });\n  </script>\n</body>\n";
 
 /***/ }),
 
@@ -2174,15 +2138,7 @@ ${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_DownloadPdfWizard__WEBPACK_IMP
 
 function DownloadPdfWizard() {
   var div = document.createElement("div");
-  div.innerHTML = `
-        <div id="formio" 
-          class="qg-forms-v2"
-          data-formio 
-          data-formio-project-name="dev-svcwlpuksmwawwk" 
-          data-formio-form-name="pdfDownloadDemo" 
-          data-formio-env-url="api.forms.platforms.qld.gov.au" 
-        ></div>
-      `;
+  div.innerHTML = "\n        <div id=\"formio\" \n          class=\"qg-forms-v2\"\n          data-formio \n          data-formio-project-name=\"dev-svcwlpuksmwawwk\" \n          data-formio-form-name=\"pdfDownloadDemo\" \n          data-formio-env-url=\"api.forms.platforms.qld.gov.au\" \n        ></div>\n      ";
   setTimeout(function () {
     _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
   });
@@ -2206,20 +2162,7 @@ function DownloadPdfWizard() {
  // eslint-disable-next-line import/no-unresolved, import/extensions
 
 
-var simpleWizardCode = `
-<head>
-  <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-</head>
-<body>
-  <script>
-${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SimpleWizard__WEBPACK_IMPORTED_MODULE_1__.SimpleWizard.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
-    FormioScript.init().then(() => {
-      const div = SimpleWizard();
-      document.body.append(div);
-    });
-  </script>
-</body>
-`;
+var simpleWizardCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n</head>\n<body>\n  <script>\n" + (0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SimpleWizard__WEBPACK_IMPORTED_MODULE_1__.SimpleWizard.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2) + "\n    FormioScript.init().then(() => {\n      const div = SimpleWizard();\n      document.body.append(div);\n    });\n  </script>\n</body>\n";
 
 /***/ }),
 
@@ -2274,17 +2217,7 @@ function SimpleWizard() {
   };
 
   var div = document.createElement("div");
-  div.innerHTML = `
-        <div id="formio" 
-          class="qg-forms-v2"
-          data-formio 
-          data-formio-project-name="dev-svcwlpuksmwawwk" 
-          data-formio-form-name="simpleWizard" 
-          data-formio-env-url="api.forms.platforms.qld.gov.au" 
-          data-formio-createform-controller="customFormController"
-          data-formio-createform-options="customFormOptions"
-        ></div>
-      `;
+  div.innerHTML = "\n        <div id=\"formio\" \n          class=\"qg-forms-v2\"\n          data-formio \n          data-formio-project-name=\"dev-svcwlpuksmwawwk\" \n          data-formio-form-name=\"simpleWizard\" \n          data-formio-env-url=\"api.forms.platforms.qld.gov.au\" \n          data-formio-createform-controller=\"customFormController\"\n          data-formio-createform-options=\"customFormOptions\"\n        ></div>\n      ";
   setTimeout(function () {
     _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormio();
   });
@@ -2308,20 +2241,7 @@ function SimpleWizard() {
  // eslint-disable-next-line import/no-unresolved, import/extensions
 
 
-var singleSignOnCode = `
-<head>
-  <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-</head>
-<body>
-  <script>
-${(0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SingleSignOn__WEBPACK_IMPORTED_MODULE_1__.SingleSignOn.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2)}
-    FormioScript.init().then(() => {
-      const div = SingleSignOn();
-      document.body.append(div);
-    });
-  </script>
-</body>
-`;
+var singleSignOnCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n</head>\n<body>\n  <script>\n" + (0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SingleSignOn__WEBPACK_IMPORTED_MODULE_1__.SingleSignOn.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2) + "\n    FormioScript.init().then(() => {\n      const div = SingleSignOn();\n      document.body.append(div);\n    });\n  </script>\n</body>\n";
 
 /***/ }),
 
@@ -2345,22 +2265,19 @@ function SingleSignOn() {
 
   var formioServiceFormId = "devauthformstorybook"; // configure in squiz component
 
-  var namespace = `formio_${formioProjectId}`;
+  var namespace = "formio_" + formioProjectId;
   var div = document.createElement("div");
   var oidcform;
   var formioDiv;
 
   var resetDiv = function () {
-    div.innerHTML = `
-    <div id="oidc_form"></div>
-    <div id="formio"></div>
-    `;
+    div.innerHTML = "\n    <div id=\"oidc_form\"></div>\n    <div id=\"formio\"></div>\n    ";
     oidcform = div.querySelector("#oidc_form");
     formioDiv = div.querySelector("#formio");
   };
 
   var appendSpinner = function (parentElement) {
-    parentElement.innerHTML = `<img src="https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png"/>`;
+    parentElement.innerHTML = "<img src=\"https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png\"/>";
   };
 
   var pickForm = function () {
@@ -2410,7 +2327,7 @@ function SingleSignOn() {
       namespace: namespace
     }).then(function () {
       // window.location.reload();
-      var popup = window.open(`https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no"); // can't use addEventListener to check pop is loaded if they are different domains due to CORS
+      var popup = window.open("https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout" + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no"); // can't use addEventListener to check pop is loaded if they are different domains due to CORS
       // popup.addEventListener(
       //   "load",
       //   () => {
@@ -2457,7 +2374,7 @@ function SingleSignOn() {
 
     var createFormController = function (_ref2) {
       var form = _ref2.form;
-      console.info(`Loaded form: ${form.formio.formUrl}`, form); // console.info(JSON.stringify(form.formio));
+      console.info("Loaded form: " + form.formio.formUrl, form); // console.info(JSON.stringify(form.formio));
 
       form.on("submitDone", function (submission) {
         console.info("submission", submission);
@@ -2501,10 +2418,16 @@ function SingleSignOn() {
 /* harmony export */   "initFormio": () => (/* binding */ initFormio),
 /* harmony export */   "initFormioInstance": () => (/* binding */ initFormioInstance)
 /* harmony export */ });
-/* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../config/createForm.options */ "./src/config/createForm.options.js");
-/* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_config_createForm_options__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config_createForm_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/createForm.controller */ "./src/config/createForm.controller.js");
-/* harmony import */ var _utils_delegateSelector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/delegateSelector */ "./src/utils/delegateSelector.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/createForm.options */ "./src/config/createForm.options.js");
+/* harmony import */ var _config_createForm_options__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_createForm_options__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _config_createForm_controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/createForm.controller */ "./src/config/createForm.controller.js");
+/* harmony import */ var _utils_delegateSelector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/delegateSelector */ "./src/utils/delegateSelector.js");
+
+
 
 
  // plugin function to fix the namespace/project option doesn't pass to Formio.makeRequest/Formio.makeStaticRequest
@@ -2513,7 +2436,7 @@ var requestPluginHandler = function (requestArgs, opts) {
   var _requestArgs$url;
 
   if (requestArgs !== null && requestArgs !== void 0 && requestArgs.formio) {
-    var formioInstance = document.querySelector(`[data-formio-form-url="${requestArgs.formio.formUrl}"]`);
+    var formioInstance = document.querySelector("[data-formio-form-url=\"" + requestArgs.formio.formUrl + "\"]");
 
     if (formioInstance) {
       requestArgs.formio = JSON.parse(formioInstance.dataset.formio);
@@ -2532,8 +2455,8 @@ var requestPluginHandler = function (requestArgs, opts) {
   // hence the workaround is to inject the project id to the url
 
 
-  if (requestArgs !== null && requestArgs !== void 0 && (_requestArgs$url = requestArgs.url) !== null && _requestArgs$url !== void 0 && _requestArgs$url.includes(`${opts.formio.base}/recaptcha`)) {
-    requestArgs.url = requestArgs.url.replace(`${opts.formio.base}/recaptcha`, `${opts.formio.projectUrl}/recaptcha`);
+  if (requestArgs !== null && requestArgs !== void 0 && (_requestArgs$url = requestArgs.url) !== null && _requestArgs$url !== void 0 && _requestArgs$url.includes(opts.formio.base + "/recaptcha")) {
+    requestArgs.url = requestArgs.url.replace(opts.formio.base + "/recaptcha", opts.formio.projectUrl + "/recaptcha");
   }
 
   return Promise.resolve(null);
@@ -2570,25 +2493,25 @@ var initFormioInstance = function (elem, opts) {
    */
 
 
-  var baseUrl = `https://${opts.envUrl.trim()}`;
+  var baseUrl = "https://" + opts.envUrl.trim();
   var formName = ""; // Check if value is true/exists and is numeric
 
   if (opts.formRevision) {
-    formName = `${opts.formName}/v/${opts.formRevision}`;
+    formName = opts.formName + "/v/" + opts.formRevision;
   } else {
     formName = opts.formName;
   }
 
   var projectName = opts.projectName;
-  var namespace = opts.namespace || `formio-${projectName}`;
-  var formUrl = `${baseUrl}/${projectName}/${formName}`;
+  var namespace = opts.namespace || "formio-" + projectName;
+  var formUrl = baseUrl + "/" + projectName + "/" + formName;
   /*
    * init formio instance
    */
 
   var formio = new Formio(formUrl, {
     base: baseUrl,
-    project: `${baseUrl}/${projectName}`,
+    project: baseUrl + "/" + projectName,
     namespace: namespace
   });
   elem.dataset.formio = JSON.stringify(formio);
@@ -2597,7 +2520,7 @@ var initFormioInstance = function (elem, opts) {
    * load formio form
    */
 
-  var defaultOptions = Object.assign({}, (_config_createForm_options__WEBPACK_IMPORTED_MODULE_0___default()), {
+  var defaultOptions = Object.assign({}, (_config_createForm_options__WEBPACK_IMPORTED_MODULE_2___default()), {
     formio: formio,
     namespace: formio.options.namespace
   });
@@ -2620,13 +2543,13 @@ var initFormioInstance = function (elem, opts) {
       opts.createFormCallback(callbackProps);
     } else {
       // Force new tab on formlinks
-      (0,_utils_delegateSelector__WEBPACK_IMPORTED_MODULE_1__.delegateSelector)(elem, "click", "a", function (e) {
+      (0,_utils_delegateSelector__WEBPACK_IMPORTED_MODULE_3__.delegateSelector)(elem, "click", "a", function (e) {
         e.target.target = "_blank";
       });
     } // default controller
 
 
-    (0,_config_createForm_controller__WEBPACK_IMPORTED_MODULE_2__["default"])(callbackProps); // call custom hook controller
+    (0,_config_createForm_controller__WEBPACK_IMPORTED_MODULE_4__["default"])(callbackProps); // call custom hook controller
 
     if (typeof opts.createFormController === "function") {
       opts.createFormController(callbackProps);
@@ -2716,19 +2639,13 @@ var initFormio = function () {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "customControllerCode": () => (/* binding */ customControllerCode)
 /* harmony export */ });
-/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
-/* harmony import */ var _CustomController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!./CustomController */ "./src/helpers/FormioLoader/stories/CustomController/CustomController.js?385b");
-/* harmony import */ var _CustomController_template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomController.template */ "./src/helpers/FormioLoader/stories/CustomController/CustomController.template.js");
+/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
+/* harmony import */ var _CustomController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./CustomController */ "./src/helpers/FormioLoader/stories/CustomController/CustomController.js?385b");
+/* harmony import */ var _CustomController_template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CustomController.template */ "./src/helpers/FormioLoader/stories/CustomController/CustomController.template.js");
 
 
 
-var customControllerCode = `
-${_CustomController_template__WEBPACK_IMPORTED_MODULE_1__.customControllerTemplate}
-<script>
-${(0,_utils_indent__WEBPACK_IMPORTED_MODULE_2__.indent)(_CustomController__WEBPACK_IMPORTED_MODULE_0__.CustomController.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1)}
-  CustomController();
-</script>
-`;
+var customControllerCode = "\n" + _CustomController_template__WEBPACK_IMPORTED_MODULE_2__.customControllerTemplate + "\n<script>\n" + (0,_utils_indent__WEBPACK_IMPORTED_MODULE_0__.indent)(_CustomController__WEBPACK_IMPORTED_MODULE_1__.CustomController.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1) + "\n  CustomController();\n</script>\n";
 
 /***/ }),
 
@@ -2775,9 +2692,7 @@ function CustomController() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "customControllerTemplate": () => (/* binding */ customControllerTemplate)
 /* harmony export */ });
-var customControllerTemplate = `
-<div id="formio-controller" class="qg-forms-v2" ></div>
-`;
+var customControllerTemplate = "\n<div id=\"formio-controller\" class=\"qg-forms-v2\" ></div>\n";
 
 /***/ }),
 
@@ -2812,19 +2727,13 @@ var customControllerTemplate = `
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "customOptionsCode": () => (/* binding */ customOptionsCode)
 /* harmony export */ });
-/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
-/* harmony import */ var _CustomOptions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!./CustomOptions */ "./src/helpers/FormioLoader/stories/CustomOptions/CustomOptions.js?1334");
-/* harmony import */ var _CustomOptions_template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomOptions.template */ "./src/helpers/FormioLoader/stories/CustomOptions/CustomOptions.template.js");
+/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
+/* harmony import */ var _CustomOptions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./CustomOptions */ "./src/helpers/FormioLoader/stories/CustomOptions/CustomOptions.js?1334");
+/* harmony import */ var _CustomOptions_template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CustomOptions.template */ "./src/helpers/FormioLoader/stories/CustomOptions/CustomOptions.template.js");
 
 
 
-var customOptionsCode = `
-${_CustomOptions_template__WEBPACK_IMPORTED_MODULE_1__.customOptionsTemplate}
-<script>
-${(0,_utils_indent__WEBPACK_IMPORTED_MODULE_2__.indent)(_CustomOptions__WEBPACK_IMPORTED_MODULE_0__.CustomOptions.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1)}
-  CustomOptions();
-</script>
-`;
+var customOptionsCode = "\n" + _CustomOptions_template__WEBPACK_IMPORTED_MODULE_2__.customOptionsTemplate + "\n<script>\n" + (0,_utils_indent__WEBPACK_IMPORTED_MODULE_0__.indent)(_CustomOptions__WEBPACK_IMPORTED_MODULE_1__.CustomOptions.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1) + "\n  CustomOptions();\n</script>\n";
 
 /***/ }),
 
@@ -2872,9 +2781,7 @@ function CustomOptions() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "customOptionsTemplate": () => (/* binding */ customOptionsTemplate)
 /* harmony export */ });
-var customOptionsTemplate = `
-<div id="formio-options" class="qg-forms-v2" ></div>
-`;
+var customOptionsTemplate = "\n<div id=\"formio-options\" class=\"qg-forms-v2\" ></div>\n";
 
 /***/ }),
 
@@ -2909,19 +2816,13 @@ var customOptionsTemplate = `
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initFormioCode": () => (/* binding */ initFormioCode)
 /* harmony export */ });
-/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
-/* harmony import */ var _InitFormio__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!./InitFormio */ "./src/helpers/FormioLoader/stories/InitFormio/InitFormio.js?14df");
-/* harmony import */ var _InitFormio_template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InitFormio.template */ "./src/helpers/FormioLoader/stories/InitFormio/InitFormio.template.js");
+/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
+/* harmony import */ var _InitFormio__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./InitFormio */ "./src/helpers/FormioLoader/stories/InitFormio/InitFormio.js?14df");
+/* harmony import */ var _InitFormio_template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InitFormio.template */ "./src/helpers/FormioLoader/stories/InitFormio/InitFormio.template.js");
 
 
 
-var initFormioCode = `
-${_InitFormio_template__WEBPACK_IMPORTED_MODULE_1__.initFormioTemplate}
-<script>
-${(0,_utils_indent__WEBPACK_IMPORTED_MODULE_2__.indent)(_InitFormio__WEBPACK_IMPORTED_MODULE_0__.InitFormio.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1)}
-  InitFormio();
-</script>
-`;
+var initFormioCode = "\n" + _InitFormio_template__WEBPACK_IMPORTED_MODULE_2__.initFormioTemplate + "\n<script>\n" + (0,_utils_indent__WEBPACK_IMPORTED_MODULE_0__.indent)(_InitFormio__WEBPACK_IMPORTED_MODULE_1__.InitFormio.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1) + "\n  InitFormio();\n</script>\n";
 
 /***/ }),
 
@@ -2953,19 +2854,7 @@ function InitFormio() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initFormioTemplate": () => (/* binding */ initFormioTemplate)
 /* harmony export */ });
-var initFormioTemplate = `
-<div id="formio" 
-  class="qg-forms-v2"
-  data-formio 
-  data-formio-project-name="dev-svcwlpuksmwawwk" 
-  data-formio-form-name="plsPlusFormDemo" 
-  data-formio-form-confirmation="" 
-  data-formio-form-revision="" 
-  data-formio-env-url="api.forms.platforms.qld.gov.au" 
-  data-formio-pdf-download="no" 
-  data-formio-namespace="" 
-></div>
-`;
+var initFormioTemplate = "\n<div id=\"formio\" \n  class=\"qg-forms-v2\"\n  data-formio \n  data-formio-project-name=\"dev-svcwlpuksmwawwk\" \n  data-formio-form-name=\"plsPlusFormDemo\" \n  data-formio-form-confirmation=\"\" \n  data-formio-form-revision=\"\" \n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\" \n  data-formio-pdf-download=\"no\" \n  data-formio-namespace=\"\" \n></div>\n";
 
 /***/ }),
 
@@ -3000,19 +2889,13 @@ var initFormioTemplate = `
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initFormioInstanceCode": () => (/* binding */ initFormioInstanceCode)
 /* harmony export */ });
-/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
-/* harmony import */ var _InitFormioInstance__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!./InitFormioInstance */ "./src/helpers/FormioLoader/stories/InitFormioInstance/InitFormioInstance.js?8180");
-/* harmony import */ var _InitFormioInstance_template__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InitFormioInstance.template */ "./src/helpers/FormioLoader/stories/InitFormioInstance/InitFormioInstance.template.js");
+/* harmony import */ var _utils_indent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/indent */ "./src/utils/indent.js");
+/* harmony import */ var _InitFormioInstance__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./InitFormioInstance */ "./src/helpers/FormioLoader/stories/InitFormioInstance/InitFormioInstance.js?8180");
+/* harmony import */ var _InitFormioInstance_template__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InitFormioInstance.template */ "./src/helpers/FormioLoader/stories/InitFormioInstance/InitFormioInstance.template.js");
 
 
 
-var initFormioInstanceCode = `
-${_InitFormioInstance_template__WEBPACK_IMPORTED_MODULE_1__.initFormioInstanceTemplate}
-<script>
-${(0,_utils_indent__WEBPACK_IMPORTED_MODULE_2__.indent)(_InitFormioInstance__WEBPACK_IMPORTED_MODULE_0__.InitFormioInstance.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1)}
-  InitFormioInstance();
-</script>
-`;
+var initFormioInstanceCode = "\n" + _InitFormioInstance_template__WEBPACK_IMPORTED_MODULE_2__.initFormioInstanceTemplate + "\n<script>\n" + (0,_utils_indent__WEBPACK_IMPORTED_MODULE_0__.indent)(_InitFormioInstance__WEBPACK_IMPORTED_MODULE_1__.InitFormioInstance.toString().replaceAll("___WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 1) + "\n  InitFormioInstance();\n</script>\n";
 
 /***/ }),
 
@@ -3050,9 +2933,7 @@ function InitFormioInstance() {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initFormioInstanceTemplate": () => (/* binding */ initFormioInstanceTemplate)
 /* harmony export */ });
-var initFormioInstanceTemplate = `
-<div id="formio-alt" class="qg-forms-v2" ></div>
-`;
+var initFormioInstanceTemplate = "\n<div id=\"formio-alt\" class=\"qg-forms-v2\" ></div>\n";
 
 /***/ }),
 
@@ -3119,8 +3000,12 @@ var initFormioInstanceTemplate = `
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PlsPlusAddressProvider": () => (/* binding */ PlsPlusAddressProvider)
 /* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.trim.js */ "./node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_trim_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -3238,7 +3123,7 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
       var _address$Parcel, _address$Unit, _address$Unit2, _address$Level, _address$Level2, _address$RoadNumber, _address$RoadNumber2, _address$RoadNumber3, _address$Road, _address$Road2, _address$Road3;
 
       var siteName = address.SiteName || "";
-      var lot = (_address$Parcel = address.Parcel) !== null && _address$Parcel !== void 0 && _address$Parcel.Lot ? `LOT ${address.Parcel.Lot}` : undefined;
+      var lot = (_address$Parcel = address.Parcel) !== null && _address$Parcel !== void 0 && _address$Parcel.Lot ? "LOT " + address.Parcel.Lot : undefined;
       var complexDesc = [lot, (_address$Unit = address.Unit) === null || _address$Unit === void 0 ? void 0 : _address$Unit.TypeCode, (_address$Unit2 = address.Unit) === null || _address$Unit2 === void 0 ? void 0 : _address$Unit2.Number, (_address$Level = address.Level) === null || _address$Level === void 0 ? void 0 : _address$Level.TypeCode, (_address$Level2 = address.Level) === null || _address$Level2 === void 0 ? void 0 : _address$Level2.Number].filter(function (o) {
         return o !== undefined;
       }).join(" ");
@@ -3286,7 +3171,7 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
         var resultCount = parseFloat(response.ParseAddressResponse.ParseAddressResult.ResultCount);
         if (resultCount === 0) return {};
         if (resultCount === 1) return response.ParseAddressResponse.ParseAddressResult.Results.Result.Address;
-        return lodash__WEBPACK_IMPORTED_MODULE_0___default().maxBy(response.ParseAddressResponse.ParseAddressResult.Results.Result, function (r) {
+        return lodash__WEBPACK_IMPORTED_MODULE_1___default().maxBy(response.ParseAddressResponse.ParseAddressResult.Results.Result, function (r) {
           return r.Confidence;
         }).Address;
       });
@@ -3301,13 +3186,13 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
       var params = requestOptions.params || {};
       params[this.queryProperty] = query.trim();
       return this.makeRequest(requestOptions).then(function (result) {
-        return _this.responseProperty ? lodash__WEBPACK_IMPORTED_MODULE_0___default().get(result, _this.responseProperty, []) : result;
+        return _this.responseProperty ? lodash__WEBPACK_IMPORTED_MODULE_1___default().get(result, _this.responseProperty, []) : result;
       });
     }
   }, {
     key: "getDisplayValue",
     value: function getDisplayValue(address) {
-      return lodash__WEBPACK_IMPORTED_MODULE_0___default().isEmpty(address) ? "" : lodash__WEBPACK_IMPORTED_MODULE_0___default().get(address, this.displayValueProperty, "");
+      return lodash__WEBPACK_IMPORTED_MODULE_1___default().isEmpty(address) ? "" : lodash__WEBPACK_IMPORTED_MODULE_1___default().get(address, this.displayValueProperty, "");
     }
   }, {
     key: "getRequestUrl",
@@ -3315,7 +3200,7 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var params = options.params,
           apiBase = options.apiBase;
-      return `${apiBase || defaultApiBase}/pls-plus-qg/AutoCompleteAddress?${this.serialize(params)}`;
+      return (apiBase || defaultApiBase) + "/pls-plus-qg/AutoCompleteAddress?" + this.serialize(params);
     }
   }, {
     key: "getParseRequestUrl",
@@ -3323,7 +3208,7 @@ var PlsPlusAddressProvider = /*#__PURE__*/function (_CustomAddressProvide) {
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var params = options.params,
           apiBase = options.apiBase;
-      return `${apiBase || defaultApiBase}/pls-plus-qg/ParseAddress?${this.serialize(params)}`;
+      return (apiBase || defaultApiBase) + "/pls-plus-qg/ParseAddress?" + this.serialize(params);
     }
   }], [{
     key: "name",
@@ -3591,6 +3476,9 @@ var getComponents = function (components) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "indent": () => (/* binding */ indent)
 /* harmony export */ });
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var _home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_home_runner_work_formio_formio_node_modules_core_js_modules_es_string_replace_js__WEBPACK_IMPORTED_MODULE_0__);
+
 function indent(str, numOfIndents) {
   var spacesPerIndent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2;
   var newStr = str.replace(/^(?=.)/gm, new Array(numOfIndents + 1).join("\t"));
@@ -3687,20 +3575,19 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "boilerplatebutton"
-  }, `BoilerplateButton`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component is used as a boilerplate for helping developers to create their own custom component.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to this guide for creating custom component `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "BoilerplateButton"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component is used as a boilerplate for helping developers to create their own custom component."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to this guide for creating custom component ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/custom-components",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/developers/custom-components`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Always refer to the formio.js source code to find more information about the component you'd like to extend.
-For example this component is extending from `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "https://help.form.io/developers/custom-components"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Always refer to the formio.js source code to find more information about the component you'd like to extend.\nFor example this component is extending from ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://github.com/formio/formio.js/blob/master/src/components/button/Button.js",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://github.com/formio/formio.js/blob/master/src/components/button/Button.js`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component is just for development purpose and will not be bundled in the custom component library script.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://github.com/formio/formio.js/blob/master/src/components/button/Button.js")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component is just for development purpose and will not be bundled in the custom component library script."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "renderer"
-  }, `Renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is an interactive example, please check the form data output in the console log in browser's inspector.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "Renderer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is an interactive example, please check the form data output in the console log in browser's inspector."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Renderer",
@@ -3726,10 +3613,9 @@ For example this component is extending from `, (0,_mdx_js_react__WEBPACK_IMPORT
     });
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "builder"
-  }, `Builder`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component can be drag and drop from the Form.io builder sidebar `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Builder"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component can be drag and drop from the Form.io builder sidebar ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `custom`), ` group.
-You can preview the component's settings in the example below.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "custom"), " group.\nYou can preview the component's settings in the example below."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Builder",
@@ -3866,9 +3752,9 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "pdfsubmitbutton---beta"
-  }, `PdfSubmitButton - BETA`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component is still in development and not a stable version.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `TODO - description of this component.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "PdfSubmitButton - BETA"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component is still in development and not a stable version."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "TODO - description of this component."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "renderer"
-  }, `Renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is an interactive example, please check the form data output in the console log in browser's inspector.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "Renderer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is an interactive example, please check the form data output in the console log in browser's inspector."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Renderer",
@@ -3896,7 +3782,7 @@ function MDXContent(_ref) {
         });
       }
     });
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example show the case when PDF is failed to generate, form action is missing or form action is blocked intentionally.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This example show the case when PDF is failed to generate, form action is missing or form action is blocked intentionally."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Renderer for missing PDF",
@@ -3924,7 +3810,7 @@ function MDXContent(_ref) {
         });
       }
     });
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Example of putting a PdfSubmitButton in a wizard form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Example of putting a PdfSubmitButton in a wizard form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Renderer for form wizard",
@@ -3984,10 +3870,9 @@ function MDXContent(_ref) {
     });
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "builder"
-  }, `Builder`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component can be drag and drop from the Form.io builder sidebar `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Builder"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component can be drag and drop from the Form.io builder sidebar ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `custom`), ` group.
-You can preview the component's settings in the example below.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "custom"), " group.\nYou can preview the component's settings in the example below."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Builder",
@@ -4222,25 +4107,24 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "plsplusaddress"
-  }, `PlsPlusAddress`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This address component utilise the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "PlsPlusAddress"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This address component utilise the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/PUB/DNRE+qld+only+address+lookup+service",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `Property Location Service Plus PLSPlus QG Version RESTFUL api`), `, provides a free of charge address lookup service.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `User needs to obtain a franchise API key for using this component, by entering it in the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Property Location Service Plus PLSPlus QG Version RESTFUL api"), ", provides a free of charge address lookup service."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "User needs to obtain a franchise API key for using this component, by entering it in the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Provider`), ` options in the component builder,
-please look up the keys in `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Provider"), " options in the component builder,\nplease look up the keys in ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-plsplusaddress-component",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `this document`), ` or contact `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "this document"), " or contact ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "mailto:online@smartservice.qld.gov.au"
-  }, `online@smartservice.qld.gov.au`), ` to request an API key.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "online@smartservice.qld.gov.au"), " to request an API key."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "renderer"
-  }, `Renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is an interactive example, please check the form data output in the console log in browser's inspector.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "Renderer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is an interactive example, please check the form data output in the console log in browser's inspector."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Renderer",
@@ -4275,10 +4159,9 @@ please look up the keys in `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)
     });
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "builder"
-  }, `Builder`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This component can be drag and drop from the Form.io builder sidebar `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Builder"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This component can be drag and drop from the Form.io builder sidebar ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `custom`), ` group.
-You can preview the component's settings in the example below.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "custom"), " group.\nYou can preview the component's settings in the example below."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "Builder",
@@ -4440,19 +4323,18 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "radio"
-  }, `Radio`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Out of the box radio component, find more details here:
-`, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Radio"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Out of the box radio component, find more details here:\n", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/userguide/forms/form-components#radio",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/userguide/forms/form-components#radio`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://help.form.io/userguide/forms/form-components#radio")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "custom-class-radio-tab"
-  }, `Custom class: radio-tab`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To use this style, set the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Custom class: radio-tab"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To use this style, set the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Custom CSS Class`), ` property to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Custom CSS Class"), " property to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `radio-tab`), ` in the component editor.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "radio-tab"), " in the component editor."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
     name: "radio-tab in renderer",
@@ -4637,9 +4519,9 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "download-pdf-example"
-  }, `Download PDF example`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example is still in BETA.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example using the form.io form action and PdfSubmitButton component to enable PDF generation for the submission.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `TODO - document the process of setup the form action in form.io, with the action title needed to be `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Download PDF example"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This example is still in BETA."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This example using the form.io form action and PdfSubmitButton component to enable PDF generation for the submission."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "TODO - document the process of setup the form action in form.io, with the action title needed to be ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `pdfUrl`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "pdfUrl")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -4654,7 +4536,7 @@ function MDXContent(_ref) {
     mdxType: "Story"
   }, function () {
     return (0,_DownloadPdf__WEBPACK_IMPORTED_MODULE_3__.DownloadPdf)();
-  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Example below shows using the PdfSubmitButton in a wizard form, just drag and drop the component to the last wizard page.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Example below shows using the PdfSubmitButton in a wizard form, just drag and drop the component to the last wizard page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -4775,10 +4657,10 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "simple-wizard-example"
-  }, `Simple wizard example`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This example show the default presentation of a wizard form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The demo can be reproduced with `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Simple wizard example"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This example show the default presentation of a wizard form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The demo can be reproduced with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
-  }, `FormioScript`), ` to lazy-load the Formio library and scripts.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "FormioScript"), " to lazy-load the Formio library and scripts."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -4887,41 +4769,41 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "single-signon"
-  }, `Single SignOn`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To allow sso on FormIO, there are some extra hoops you need to jump through, there may also be a way to have it half way through your form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Single SignOn"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To allow sso on FormIO, there are some extra hoops you need to jump through, there may also be a way to have it half way through your form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/QOL/Form.io+OICD+IDB+integration+POC+with+Freight+Pass",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/QOL/Form.io+OICD+IDB+integration+POC+with+Freight+Pass`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://servicesmadesimpler.govnet.qld.gov.au/wiki/display/QOL/Form.io+OICD+IDB+integration+POC+with+Freight+Pass")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "high-level-architecture"
-  }, `High Level Architecture`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is a high level diagram of Form.io integrating with the IDB and Freight Pass`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "High Level Architecture"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is a high level diagram of Form.io integrating with the IDB and Freight Pass"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     src: _stories_assets_SSO_HighLevel_png__WEBPACK_IMPORTED_MODULE_3__,
     alt: "SSO High Level",
     width: "680"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "process-flow"
-  }, `Process Flow`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is a high level process flow of Form.io integrating with the IDB and Freight Pass`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "Process Flow"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is a high level process flow of Form.io integrating with the IDB and Freight Pass"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "definitions"
-  }, `Definitions`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Login Form : `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Definitions"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Login Form : ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-login-to-freight-and-logistics-f-pass",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-login-to-freight-and-logistics-f-pass`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Main Form : `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-login-to-freight-and-logistics-f-pass")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Main Form : ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-queensland-border-declaration-pass-freight-and-logistics-f-pass",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-queensland-border-declaration-pass-freight-and-logistics-f-pass`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "https://www.qld.gov.au/dev/steve/idb-poc-dev-use-only-queensland-border-declaration-pass-freight-and-logistics-f-pass")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     src: _stories_assets_SSO_UserFlow_png__WEBPACK_IMPORTED_MODULE_4__,
     alt: "SSO User Flow",
     width: "1680"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "demo"
-  }, `Demo`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The following demo shows the SSO form in a single page application.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The demo can be reproduced with `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Demo"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The following demo shows the SSO form in a single page application."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The demo can be reproduced with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
-  }, `FormioScript`), ` to lazy-load the Formio library and scripts.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "FormioScript"), " to lazy-load the Formio library and scripts."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -5029,44 +4911,26 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "formioloader"
-  }, `FormioLoader`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `FormioLoader provide function for you to initiate Formio instance.
-To use it, simply include the script and run `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "FormioLoader"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "FormioLoader provide function for you to initiate Formio instance.\nTo use it, simply include the script and run ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `FormioLoader.initFormio()`), ` in your webpage, it will initiate Formio instance with the div that contains `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "FormioLoader.initFormio()"), " in your webpage, it will initiate Formio instance with the div that contains ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `data-formio`), ` attribute.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "data-formio"), " attribute."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js"></script>
-<script>
-  FormioLoader.initFormio();
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Sample Formio div placeholder:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js\"></script>\n<script>\n  FormioLoader.initFormio();\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Sample Formio div placeholder:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `<div
-  id="formio"
-  class="qg-forms-v2"
-  data-formio
-  data-formio-project-name="dev-svcwlpuksmwawwk"
-  data-formio-form-name="plsPlusFormDemo"
-  data-formio-form-confirmation=""
-  data-formio-form-revision=""
-  data-formio-env-url="api.forms.platforms.qld.gov.au"
-  data-formio-pdf-download="no"
-  data-formio-namespace=""
-></div>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please note that you'll need to include `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<div\n  id=\"formio\"\n  class=\"qg-forms-v2\"\n  data-formio\n  data-formio-project-name=\"dev-svcwlpuksmwawwk\"\n  data-formio-form-name=\"plsPlusFormDemo\"\n  data-formio-form-confirmation=\"\"\n  data-formio-form-revision=\"\"\n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n  data-formio-pdf-download=\"no\"\n  data-formio-namespace=\"\"\n></div>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please note that you'll need to include ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `formio.full.js`), `/`, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "formio.full.js"), "/", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `formio.full.min.js`), `, and other necessary formio scripts/libraries before using this script.
-You may want to use `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "formio.full.min.js"), ", and other necessary formio scripts/libraries before using this script.\nYou may want to use ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
-  }, `FormioScript`), ` to lazy-load all Formio related scripts/libraries.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "FormioScript"), " to lazy-load all Formio related scripts/libraries."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "initiate-formio-instance"
-  }, `Initiate Formio instance`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To initiate Formio instance, simply include and run the script in your webpage.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "Initiate Formio instance"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To initiate Formio instance, simply include and run the script in your webpage."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -5087,168 +4951,156 @@ You may want to use `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     return _stories__WEBPACK_IMPORTED_MODULE_3__.initFormioTemplate;
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "windowinitformiohook"
-  }, `window.initFormioHook`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You could define `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "window.initFormioHook"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You could define ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `window.initFormioHook()`), ` as a hook function for `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "window.initFormioHook()"), " as a hook function for ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `FormioLoader.initFormio()`), `.
-In other word, you could use it to override the default behavior after the global Formio object loaded and before the form(s) initiated by `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "FormioLoader.initFormio()"), ".\nIn other word, you could use it to override the default behavior after the global Formio object loaded and before the form(s) initiated by ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Formio.createForm()`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This would be useful for modifying prototype functions in the global Formio object.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Formio.createForm()"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This would be useful for modifying prototype functions in the global Formio object."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `window.initFormioHook = () => {
-  // You could manipulate the global Formio object here, eg:
-  const newFunc = Formio.Form.prototype.errorForm.bind({});
-  Formio.Form.prototype.errorForm = (err) => {
-    // You could customise the err message here
-    console.log("err:", err);
-    return newFunc(err);
-  };
-};
-FormioLoader.initFormio();
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "window.initFormioHook = () => {\n  // You could manipulate the global Formio object here, eg:\n  const newFunc = Formio.Form.prototype.errorForm.bind({});\n  Formio.Form.prototype.errorForm = (err) => {\n    // You could customise the err message here\n    console.log(\"err:\", err);\n    return newFunc(err);\n  };\n};\nFormioLoader.initFormio();\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "alternate-init-method"
-  }, `Alternate init method`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `If the script is already loaded, you could init the form with an alternate method `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Alternate init method"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "If the script is already loaded, you could init the form with an alternate method ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `FormioLoader.initFormioInstance`), `.
-This is useful if you want to dynamically inject a form element. (Although the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "FormioLoader.initFormioInstance"), ".\nThis is useful if you want to dynamically inject a form element. (Although the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `FormioLoader.initFormio()`), ` method will work the same)`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "FormioLoader.initFormio()"), " method will work the same)"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "options"
-  }, `Options:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
+  }, "Options:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "thead"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
     parentName: "tr",
     "align": null
-  }, `Option`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
+  }, "Option"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
     parentName: "tr",
     "align": null
-  }, `Description`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
+  }, "Description"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
     parentName: "tr",
     "align": null
-  }, `Example`))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tbody", {
+  }, "Example"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tbody", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `projectName`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "projectName"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Formio project name`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Formio project name"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `dev-svcwlpuksmwawwk`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "dev-svcwlpuksmwawwk")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formName`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formName"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Formio form name`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Formio form name"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `plsPlusFormDemo`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "plsPlusFormDemo")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `envUrl`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "envUrl"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `domain name of the Formio endpoint`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "domain name of the Formio endpoint"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `api.forms.platforms.qld.gov.au`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "api.forms.platforms.qld.gov.au")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formConfirmation`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formConfirmation"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `redirect page for wizard after submission`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "redirect page for wizard after submission"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `/`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "/")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formRevision`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formRevision"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `form revision number`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "form revision number"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `1`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "1")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `pdfDownload`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "pdfDownload"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Does the form involve pdf download`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Does the form involve pdf download"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `no`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "no")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `namespace`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "namespace"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Namespace of the form for creating key for token, user, etc`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Namespace of the form for creating key for token, user, etc"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `any string`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "any string")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `createFormOptions`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "createFormOptions"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `function that returns `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "function that returns ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "td",
     "href": "https://help.form.io/developers/form-renderer#form-renderer-options",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `options`), ` to be passed to the createForm function`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "options"), " to be passed to the createForm function"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `({ envUrl, projectName, formName, defaultOptions, elem }) => object`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "({ envUrl, projectName, formName, defaultOptions, elem }) => object")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `createFormController`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "createFormController"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `custom form controller function`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "custom form controller function"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `({ envUrl, projectName, formName, form, elem }) => void)`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "({ envUrl, projectName, formName, form, elem }) => void)")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `createFormCallback`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "createFormCallback"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `custom callback function after a form is created by `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "custom callback function after a form is created by ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "td"
-  }, `Formio.createForm`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Formio.createForm")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `({ envUrl, projectName, formName, form, elem }) => void)`)))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "({ envUrl, projectName, formName, form, elem }) => void)")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -5269,72 +5121,27 @@ This is useful if you want to dynamically inject a form element. (Although the `
     return _stories__WEBPACK_IMPORTED_MODULE_3__.initFormioInstanceTemplate;
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "custom-createform-options-with-createformoptions"
-  }, `Custom createForm options with `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Custom createForm options with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "h2"
-  }, `createFormOptions`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You can create a hook function `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "createFormOptions")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You can create a hook function ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `createFormOptions`), ` to customise the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "createFormOptions"), " to customise the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/form-renderer#form-renderer-options",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `options`), `.
-Within the function you could pass different options base on different project or form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The example below will add the custom options to every forms in the page.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "options"), ".\nWithin the function you could pass different options base on different project or form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below will add the custom options to every forms in the page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `const customFn = () => {
-  return {
-    readOnly: true,
-  };
-};
-FormioLoader.initFormioInstance(elem, {
-  projectName: "dev-svcwlpuksmwawwk",
-  formName: "plsPlusFormDemo",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormOptions: customFn,
-});
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The example below only add the custom options to certain project or form with a single hook function.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "const customFn = () => {\n  return {\n    readOnly: true,\n  };\n};\nFormioLoader.initFormioInstance(elem, {\n  projectName: \"dev-svcwlpuksmwawwk\",\n  formName: \"plsPlusFormDemo\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn,\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below only add the custom options to certain project or form with a single hook function."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {
-  if ({ envUrl === "api.forms.platforms.qld.gov.au") {
-    return {
-      readOnly: true,
-    };
-  }
-  if (projectName === "project1") {
-    return {
-      readOnly: true,
-    };
-  }
-  if (projectName === "project2" && formName === "form2") {
-    return {
-      readOnly: true,
-    };
-  }
-  return {};
-};
-FormioLoader.initFormioInstance(elem1, {
-  projectName: "project1",
-  formName: "form1",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormOptions: customFn
-});
-FormioLoader.initFormioInstance(elem2, {
-  projectName: "project2",
-  formName: "form2",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormOptions: customFn
-});
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {\n  if ({ envUrl === \"api.forms.platforms.qld.gov.au\") {\n    return {\n      readOnly: true,\n    };\n  }\n  if (projectName === \"project1\") {\n    return {\n      readOnly: true,\n    };\n  }\n  if (projectName === \"project2\" && formName === \"form2\") {\n    return {\n      readOnly: true,\n    };\n  }\n  return {};\n};\nFormioLoader.initFormioInstance(elem1, {\n  projectName: \"project1\",\n  formName: \"form1\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn\n});\nFormioLoader.initFormioInstance(elem2, {\n  projectName: \"project2\",\n  formName: \"form2\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/form-renderer#form-renderer-options",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/developers/form-renderer#form-renderer-options`), ` for available options.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is a full example:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "https://help.form.io/developers/form-renderer#form-renderer-options"), " for available options."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is a full example:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -5355,61 +5162,27 @@ FormioLoader.initFormioInstance(elem2, {
     return _stories__WEBPACK_IMPORTED_MODULE_3__.customOptionsTemplate;
   })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "controlling-the-form-with-javascript-with-createformcontroller"
-  }, `Controlling the Form with JavaScript with `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Controlling the Form with JavaScript with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "h2"
-  }, `createFormController`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You can create a hook function `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "createFormController")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You can create a hook function ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `createFormController`), ` to customise the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "createFormController"), " to customise the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `form controller`), `.
-Within the function you could customise the controller base on different project or form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "form controller"), ".\nWithin the function you could customise the controller base on different project or form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `const customFn = ({ form }) => {
-  form.on("change", (e) => {
-    console.info("onChange", e);
-  });
-};
-FormioLoader.initFormioInstance(elem, {
-  projectName: "dev-svcwlpuksmwawwk",
-  formName: "plsPlusFormDemo",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormController: customFn,
-});
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The example below only control the form to certain project or form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "const customFn = ({ form }) => {\n  form.on(\"change\", (e) => {\n    console.info(\"onChange\", e);\n  });\n};\nFormioLoader.initFormioInstance(elem, {\n  projectName: \"dev-svcwlpuksmwawwk\",\n  formName: \"plsPlusFormDemo\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormController: customFn,\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below only control the form to certain project or form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `const customFn = ({ envUrl, projectName, formName, form, elem }) => {
-  if (projectName === "project2" && formName === "form2") {
-    form.on("change", (e) => {
-      console.info("onChange", e);
-    });
-  }
-};
-FormioLoader.initFormioInstance(elem1, {
-  projectName: "project1",
-  formName: "form1",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormOptions: customFn,
-});
-FormioLoader.initFormioInstance(elem2, {
-  projectName: "project2",
-  formName: "form2",
-  envUrl: "api.forms.platforms.qld.gov.au",
-  pdfDownload: "no",
-  createFormOptions: customFn,
-});
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "const customFn = ({ envUrl, projectName, formName, form, elem }) => {\n  if (projectName === \"project2\" && formName === \"form2\") {\n    form.on(\"change\", (e) => {\n      console.info(\"onChange\", e);\n    });\n  }\n};\nFormioLoader.initFormioInstance(elem1, {\n  projectName: \"project1\",\n  formName: \"form1\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn,\n});\nFormioLoader.initFormioInstance(elem2, {\n  projectName: \"project2\",\n  formName: \"form2\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn,\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript`), ` for more examples.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Below is a full example:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+  }, "https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript"), " for more examples."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Below is a full example:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
     withSource: "open",
     mdxType: "Canvas"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
@@ -5578,297 +5351,143 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "formioscript"
-  }, `FormioScript`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `FormioScript provides a shorthand implementation to lazy-load the necessary libraries and scripts to initiate a Formio form in your application.
-Simply include it in your application and it will search through the page with Formio div container and initiated the Formio instances.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "FormioScript"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "FormioScript provides a shorthand implementation to lazy-load the necessary libraries and scripts to initiate a Formio form in your application.\nSimply include it in your application and it will search through the page with Formio div container and initiated the Formio instances."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `Benefits`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Benefits")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `One script and for all, reduce the chance of missing dependency.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "One script and for all, reduce the chance of missing dependency."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `Enforce the scripts are loading in certain order, wrong order will break the application, which is prone to error if insert manually.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Enforce the scripts are loading in certain order, wrong order will break the application, which is prone to error if insert manually."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `Always point to the correct source of scripts.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Always point to the correct source of scripts."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `Encapsulated, avoid consumer input in case we need to change the composition of scripts.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "Encapsulated, avoid consumer input in case we need to change the composition of scripts.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `Before using FormioScript:`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Before using FormioScript:")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js"
-></script>
-<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.min.js"
-></script>
-<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js"
-></script>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
-  rel="stylesheet"
-/>
-<div id="formio1" class="qg-forms-v2"></div>
-<div id="formio2" class="qg-forms-v2"></div>
-<script>
-  Formio.createForm(
-    document.getElementById("formio1"),
-    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo",
-    {readOnly: true}
-  ).then((form) {
-    form.on("change", (e) => {
-      console.info("onChange", e);
-    });
-  });
-  Formio.createForm(
-    document.getElementById("formio2"),
-    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing"
-  );
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "<script\n  async=\"false\"\n  src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js\"\n></script>\n<script\n  async=\"false\"\n  src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.min.js\"\n></script>\n<script\n  async=\"false\"\n  src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js\"\n></script>\n<link\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css\"\n  rel=\"stylesheet\"\n/>\n<link\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css\"\n  rel=\"stylesheet\"\n/>\n<link\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css\"\n  rel=\"stylesheet\"\n/>\n<div id=\"formio1\" class=\"qg-forms-v2\"></div>\n<div id=\"formio2\" class=\"qg-forms-v2\"></div>\n<script>\n  Formio.createForm(\n    document.getElementById(\"formio1\"),\n    \"https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo\",\n    {readOnly: true}\n  ).then((form) {\n    form.on(\"change\", (e) => {\n      console.info(\"onChange\", e);\n    });\n  });\n  Formio.createForm(\n    document.getElementById(\"formio2\"),\n    \"https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing\"\n  );\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `After using FormioScript:`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "After using FormioScript:")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<div
-  class="qg-forms-v2"
-  data-formio
-  data-formio-project-name="dev-svcwlpuksmwawwk"
-  data-formio-form-name="plsPlusFormDemo"
-  data-formio-env-url="api.forms.platforms.qld.gov.au"
-  data-formio-createForm-options="customFn1"
-  data-formio-createForm-controller="customFn2"
-  data-formio-createForm-callback="customFn3"
-></div>
-<div
-  class="qg-forms-v2"
-  data-formio
-  data-formio-project-name="dev-svcwlpuksmwawwk"
-  data-formio-form-name="testing"
-  data-formio-env-url="api.forms.platforms.qld.gov.au"
-></div>
-<script>
-  window.customFn1 = () => ({
-    readOnly: true,
-  });
-  window.customFn2 = ({ form }) => {
-    form.on("change", (e) => {
-      console.info("onChange", e);
-    });
-  };
-  window.customFn3 = () => {};
-</script>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  FormioScript.init().then(() => {
-    // all formio scripts/css has been loaded.
-  });
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You can replace `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<div\n  class=\"qg-forms-v2\"\n  data-formio\n  data-formio-project-name=\"dev-svcwlpuksmwawwk\"\n  data-formio-form-name=\"plsPlusFormDemo\"\n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n  data-formio-createForm-options=\"customFn1\"\n  data-formio-createForm-controller=\"customFn2\"\n  data-formio-createForm-callback=\"customFn3\"\n></div>\n<div\n  class=\"qg-forms-v2\"\n  data-formio\n  data-formio-project-name=\"dev-svcwlpuksmwawwk\"\n  data-formio-form-name=\"testing\"\n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n></div>\n<script>\n  window.customFn1 = () => ({\n    readOnly: true,\n  });\n  window.customFn2 = ({ form }) => {\n    form.on(\"change\", (e) => {\n      console.info(\"onChange\", e);\n    });\n  };\n  window.customFn3 = () => {};\n</script>\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  FormioScript.init().then(() => {\n    // all formio scripts/css has been loaded.\n  });\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You can replace ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `prod`), ` in the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "prod"), " in the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `src`), ` with `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "src"), " with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `test`), ` / `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "test"), " / ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `staging`), ` / `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "staging"), " / ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `dev`), ` / `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "dev"), " / ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `gitbridge`), ` to load assets from different environments.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This script will load the following scripts into the page:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
+  }, "gitbridge"), " to load assets from different environments."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This script will load the following scripts into the page:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "thead"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
     parentName: "tr",
     "align": null
-  }, `Script`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
+  }, "Script"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", {
     parentName: "tr",
     "align": null
-  }, `Description`))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tbody", {
+  }, "Description"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tbody", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formio.full.min.js`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formio.full.min.js"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Main Formio library`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Main Formio library")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `premium.min.js`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "premium.min.js"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Premium component library`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Premium component library")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formio-qld.min.js`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formio-qld.min.js"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `QG custom component library`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "QG custom component library")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formio-loader.min.js`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formio-loader.min.js"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "td",
     "href": "?path=/docs/helpers-formioloader--page"
-  }, `FormioLoader`), ` helper script`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "FormioLoader"), " helper script")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formio.full.min.css`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formio.full.min.css"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Style for the main Formio library`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Style for the main Formio library")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `premium.css`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "premium.css"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Style for the premium components`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Style for the premium components")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `formio-qld.min.css`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "formio-qld.min.css"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Style for Formio form in Squiz`)))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Style for Formio form in Squiz")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "usage-in-squiz-matrix"
-  }, `Usage in Squiz Matrix`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to Squiz Matrix asset #249261.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Usage in Squiz Matrix"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to Squiz Matrix asset #249261."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "create-form-dynamically"
-  }, `Create form dynamically`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You could create form dynamically after all the scripts are loaded.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Create form dynamically"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You could create form dynamically after all the scripts are loaded."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  FormioScript.init().then(() => {
-    const div = document.createElement("div");
-    FormioLoader.initFormioInstance(div, {
-      projectName: "project1",
-      formName: "form1",
-      envUrl: "api.forms.platforms.qld.gov.au",
-    });
-  });
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `or using `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  FormioScript.init().then(() => {\n    const div = document.createElement(\"div\");\n    FormioLoader.initFormioInstance(div, {\n      projectName: \"project1\",\n      formName: \"form1\",\n      envUrl: \"api.forms.platforms.qld.gov.au\",\n    });\n  });\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "or using ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `FormioLoader.initFormio()`), ` instead:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "FormioLoader.initFormio()"), " instead:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  FormioScript.init().then(() => {
-    const div = document.createElement("div");
-    div.innerHtml = \`
-    <div
-      class="qg-forms-v2"
-      data-formio
-      data-formio-project-name="project1"
-      data-formio-form-name="form1"
-      data-formio-env-url="api.forms.platforms.qld.gov.au"
-    ></div>
-    \`;
-    FormioLoader.initFormio();
-  });
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `or using out of the box `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  FormioScript.init().then(() => {\n    const div = document.createElement(\"div\");\n    div.innerHtml = `\n    <div\n      class=\"qg-forms-v2\"\n      data-formio\n      data-formio-project-name=\"project1\"\n      data-formio-form-name=\"form1\"\n      data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n    ></div>\n    `;\n    FormioLoader.initFormio();\n  });\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "or using out of the box ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Formio.createForm()`), ` function instead:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Formio.createForm()"), " function instead:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  FormioScript.init().then(() => {
-    const div = document.createElement("div");
-    div.innerHtml = \`<div id="formio"></div>\`;
-    FormioLoader.createForm(
-      document.getElementById("formio"),
-      "https://api.forms.platforms.qld.gov.au/project1/form1"
-    );
-  });
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  FormioScript.init().then(() => {\n    const div = document.createElement(\"div\");\n    div.innerHtml = `<div id=\"formio\"></div>`;\n    FormioLoader.createForm(\n      document.getElementById(\"formio\"),\n      \"https://api.forms.platforms.qld.gov.au/project1/form1\"\n    );\n  });\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "faqs"
-  }, `FAQs`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "FAQs"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "how-to-pass-custom-createform-options"
-  }, `How to pass custom createForm options?`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You can add `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "How to pass custom createForm options?"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You can add ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `data-formio-createForm-options`), ` in the div's data attribute with the function name you want to return the custom options.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "data-formio-createForm-options"), " in the div's data attribute with the function name you want to return the custom options."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<div
-  class="qg-forms-v2"
-  data-formio
-  data-formio-project-name="dev-svcwlpuksmwawwk"
-  data-formio-form-name="plsPlusFormDemo"
-  data-formio-env-url="api.forms.platforms.qld.gov.au"
-  data-formio-createForm-options="customFn1"
-></div>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  window.customFn1 = ({
-    envUrl,
-    projectName,
-    formName,
-    defaultOptions,
-    elem,
-  }) => {
-    return {
-      readOnly: true,
-    };
-  };
-  FormioScript.init();
-</script>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "<div\n  class=\"qg-forms-v2\"\n  data-formio\n  data-formio-project-name=\"dev-svcwlpuksmwawwk\"\n  data-formio-form-name=\"plsPlusFormDemo\"\n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n  data-formio-createForm-options=\"customFn1\"\n></div>\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  window.customFn1 = ({\n    envUrl,\n    projectName,\n    formName,\n    defaultOptions,\n    elem,\n  }) => {\n    return {\n      readOnly: true,\n    };\n  };\n  FormioScript.init();\n</script>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "how-to-customise-createform-form-controller"
-  }, `How to customise createForm form controller?`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You can add `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "How to customise createForm form controller?"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You can add ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `data-formio-createForm-controller`), ` in the div's data attribute with the function name you want to customise the form controller.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "data-formio-createForm-controller"), " in the div's data attribute with the function name you want to customise the form controller."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<div
-  class="qg-forms-v2"
-  data-formio
-  data-formio-project-name="dev-svcwlpuksmwawwk"
-  data-formio-form-name="plsPlusFormDemo"
-  data-formio-env-url="api.forms.platforms.qld.gov.au"
-  data-formio-createForm-controller="customFn2"
-></div>
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
-<script>
-  window.customFn2 = ({ envUrl, projectName, formName, form, elem }) => {
-    form.on("change", (e) => {
-      console.info("onChange", e);
-    });
-  };
-  FormioScript.init();
-</script>
-`)));
+  }, "<div\n  class=\"qg-forms-v2\"\n  data-formio\n  data-formio-project-name=\"dev-svcwlpuksmwawwk\"\n  data-formio-form-name=\"plsPlusFormDemo\"\n  data-formio-env-url=\"api.forms.platforms.qld.gov.au\"\n  data-formio-createForm-controller=\"customFn2\"\n></div>\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n<script>\n  window.customFn2 = ({ envUrl, projectName, formName, form, elem }) => {\n    form.on(\"change\", (e) => {\n      console.info(\"onChange\", e);\n    });\n  };\n  FormioScript.init();\n</script>\n")));
 }
 
 ;
@@ -5943,40 +5562,32 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h6", {
     "id": "updated-in-15-jun-2022"
-  }, `Updated in 15 Jun 2022`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+  }, "Updated in 15 Jun 2022"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "best-practices"
-  }, `Best practices`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Best practices"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "use-native-submit-action-instead-of-applicationsubmit-event"
-  }, `Use native submit action instead of `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Use native submit action instead of ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "h2"
-  }, `applicationSubmit`), ` event`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `With the old Squiz Matrix formio template, `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "applicationSubmit"), " event"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "With the old Squiz Matrix formio template, ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `applicationSubmit`), ` event is used extensively to replace the out of the box submit action in submit button.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This is `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "applicationSubmit"), " event is used extensively to replace the out of the box submit action in submit button."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This is ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `NOT`), ` recommended anymore with the use of FormioLoader in the Squiz Matrix formio template V2 as the old approach has taken away multiple features from the native submit button,
-such as auto scrolling to error message, loading/disabled states of the submit button, multiple clicks prevention on the button, etc.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Custom submit action should be defined in the form controller hook with the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "NOT"), " recommended anymore with the use of FormioLoader in the Squiz Matrix formio template V2 as the old approach has taken away multiple features from the native submit button,\nsuch as auto scrolling to error message, loading/disabled states of the submit button, multiple clicks prevention on the button, etc."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Custom submit action should be defined in the form controller hook with the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `submitDone`), ` event\`, ie.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "submitDone"), " event`, ie."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, `({ form }) => {
-form.on("submitDone", (e) => {
-  // you can see the event object in the browser's inspector.
-  console.info("submitDone", e);
-  // you can define custom action here after form submission
-});
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "({ form }) => {\nform.on(\"submitDone\", (e) => {\n  // you can see the event object in the browser's inspector.\n  console.info(\"submitDone\", e);\n  // you can define custom action here after form submission\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioloader--page"
-  }, `here`), ` for how to use the hook with FormioLoader
-and `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "here"), " for how to use the hook with FormioLoader\nand ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `here`), ` for how to use the hook in Squiz Matrix formio template.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `You could also modify `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "here"), " for how to use the hook in Squiz Matrix formio template."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You could also modify ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `/src/config/createForm.controller.js`), ` and create PR to add a default custom submit action which will be available globally.`));
+  }, "/src/config/createForm.controller.js"), " and create PR to add a default custom submit action which will be available globally."));
 }
 
 ;
@@ -6053,77 +5664,67 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h6", {
     "id": "updated-in-25-may-2022"
-  }, `Updated in 25 May 2022`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+  }, "Updated in 25 May 2022"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "how-to"
-  }, `How to`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "How to"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "consume-this-library-in-formio-builder"
-  }, `Consume this library in Form.io builder`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To use custom components in the Form.io platform builder, please go to the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Consume this library in Form.io builder"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To use custom components in the Form.io platform builder, please go to the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/userguide/projects#custom-js-and-css",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `Project stage settings`), ` and update the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "Project stage settings"), " and update the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Custom javascript`), ` URL with the CDN URL of this library:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Custom javascript"), " URL with the CDN URL of this library:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, `https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `and update the `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+  }, "https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "and update the ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
     parentName: "p"
-  }, `Custom CSS`), ` property with`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Custom CSS"), " property with"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre"
-  }, `https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     src: _assets_formioSettings_png__WEBPACK_IMPORTED_MODULE_3__,
     alt: "share diagram",
     width: "640"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "consume-this-library-in-formio-renderer"
-  }, `Consume this library in Form.io renderer`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To use custom components in the Form.io JS renderer, please include the script `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "Consume this library in Form.io renderer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To use custom components in the Form.io JS renderer, please include the script ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `AFTER`), ` the formio script.
-Pleaser refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "AFTER"), " the formio script.\nPleaser refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/form-renderer#getting-started",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `Form.io doc`), ` for how to initiate your form application in a HTML page.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "Form.io doc"), " for how to initiate your form application in a HTML page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, `<script src="https://unpkg.com/formiojs@latest/dist/formio.full.js"></script>
-...
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
-/>
-`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Or you could use our `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "<script src=\"https://unpkg.com/formiojs@latest/dist/formio.full.js\"></script>\n...\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js\"></script>\n<link\n  rel=\"stylesheet\"\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css\"\n/>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Or you could use our ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
-  }, `FormioScript`), ` help to lazy load all necessary formio scripts in your application.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "FormioScript"), " help to lazy load all necessary formio scripts in your application."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "consume-this-library-in-squiz-matrix"
-  }, `Consume this library in Squiz Matrix`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Consume this library in Squiz Matrix"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://www.qld.gov.au/_resources/matrix-documentation/components/form.io-guides/form.io-forms-v2"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "use-the-formioscript-helper"
-  }, `Use the FormioScript helper`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Use the FormioScript helper"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
-  }, `this page`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "this page"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "use-the-formioloader-helper"
-  }, `Use the FormioLoader helper`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please refer to `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Use the FormioLoader helper"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioloader--page"
-  }, `this page`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "this page"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "how-to-develop-in-this-library"
-  }, `How to develop in this library`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Please follow the instruction in readme in this repo: `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "How to develop in this library"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please follow the instruction in readme in this repo: ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://github.com/qld-gov-au/formio",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://github.com/qld-gov-au/formio`)));
+  }, "https://github.com/qld-gov-au/formio")));
 }
 
 ;
@@ -6200,29 +5801,29 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h6", {
     "id": "updated-in-25-may-2022"
-  }, `Updated in 25 May 2022`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+  }, "Updated in 25 May 2022"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "queensland-government-formio-custom-component-library"
-  }, `Queensland Government Form.io custom component library`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Queensland Government Form.io custom component library"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "what-is-qg-formio-custom-component-library"
-  }, `What is QG Form.io custom component library`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This library provides bundled JS files to be included in form.io builder / form.io renderer / Squiz Matrix form application and this is the official definition of custom component:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
+  }, "What is QG Form.io custom component library"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This library provides bundled JS files to be included in form.io builder / form.io renderer / Squiz Matrix form application and this is the official definition of custom component:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("img", {
     src: _assets_formio_custom_component_png__WEBPACK_IMPORTED_MODULE_3__,
     alt: "share diagram",
     width: "480"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("blockquote", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "blockquote"
-  }, `One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is "closest" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `The QG Form.io custom component library is based on the official developer guide in `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is \"closest\" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The QG Form.io custom component library is based on the official developer guide in ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/custom-components",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/developers/custom-components`), ` and repo `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "https://help.form.io/developers/custom-components"), " and repo ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://github.com/formio/contrib",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://github.com/formio/contrib`), `.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "https://github.com/formio/contrib"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "what-is-covered-in-this-storybook-documentation"
-  }, `What is covered in this storybook documentation`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
+  }, "What is covered in this storybook documentation"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("thead", {
     parentName: "table"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "thead"
@@ -6239,34 +5840,34 @@ function MDXContent(_ref) {
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `QG Form.io custom component library`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "QG Form.io custom component library"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Usage examples and preview of each custom component.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Usage examples and preview of each custom component.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Examples`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "Examples"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Real live examples connected to Form.io back end.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Real live examples connected to Form.io back end.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `FormioLoader`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "FormioLoader"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Helper module to initiate Formio form instance.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
+  }, "Helper module to initiate Formio form instance.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", {
     parentName: "tbody"
   }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `FormioScript`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
+  }, "FormioScript"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", {
     parentName: "tr",
     "align": null
-  }, `Helper module to lazy-load the necessary Formio libraries.`)))));
+  }, "Helper module to lazy-load the necessary Formio libraries.")))));
 }
 
 ;
@@ -6341,36 +5942,35 @@ function MDXContent(_ref) {
     mdxType: "Meta"
   }), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h6", {
     "id": "updated-in-25-may-2022"
-  }, `Updated in 25 May 2022`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
+  }, "Updated in 25 May 2022"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h1", {
     "id": "why-and-when"
-  }, `Why and When`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `This page provides information about why and when to develop Form.io solution with this library.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "Why and When"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "This page provides information about why and when to develop Form.io solution with this library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "types-of-formio-solutions"
-  }, `Types of Form.io solutions`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To understand why and when to use QG Form.io custom component library for development, we better to understand what is the pros and cons of all the available approaches for developing custom functionality in Form.io.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "Types of Form.io solutions"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To understand why and when to use QG Form.io custom component library for development, we better to understand what is the pros and cons of all the available approaches for developing custom functionality in Form.io."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "bespoke-solution"
-  }, `Bespoke solution`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To extend custom logic on top of the out of the box component, this approach completely rely on the composition of out of the box component and editable properties such as custom JS in calculated value, default value and logic.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "Bespoke solution"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To extend custom logic on top of the out of the box component, this approach completely rely on the composition of out of the box component and editable properties such as custom JS in calculated value, default value and logic."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "resource-component"
-  }, `Resource component`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Resource component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/userguide/resources",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/userguide/resources`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("blockquote", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
+  }, "https://help.form.io/userguide/resources")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("blockquote", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "blockquote"
-  }, `Resources are used to define an object within form.io. This is done by adding Form components to a Resource. Follow the same instructions for Forms when creating Resources. The Form components that are placed onto a Resource determine what the Resource object looks like.
-The original purpose of the Form.io Resource is not for creating reusable components, however, as the Resource is avalable as template in every forms in the same project stage, component developed as Resource could offer certain degree of reusability.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "Resources are used to define an object within form.io. This is done by adding Form components to a Resource. Follow the same instructions for Forms when creating Resources. The Form components that are placed onto a Resource determine what the Resource object looks like.\nThe original purpose of the Form.io Resource is not for creating reusable components, however, as the Resource is avalable as template in every forms in the same project stage, component developed as Resource could offer certain degree of reusability.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "custom-component"
-  }, `Custom component`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Custom component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "https://help.form.io/developers/custom-components",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, `https://help.form.io/developers/custom-components`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("blockquote", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
+  }, "https://help.form.io/developers/custom-components")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("blockquote", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", {
     parentName: "blockquote"
-  }, `One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is "closest" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `Here is the comparison of these approaches:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, " "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Bespoke solution"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Resource component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Custom component")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Pros"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Fully develop in the Form.io builder, doesn't require external library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Flexible as logic/code introduced could be different from form to form."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Fully develop in the Form.io builder, doesn't require external library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Resource could be re-use in any forms in the same project stage"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Recommended officially for extending functionality of the out of the box components. Modularised, modification takes place in the custom library repository, doesn't require consumers' involvement."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Encapsulated, complex custom logic is not exposed to the consumers."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Good UX, similar to out of the box component experience."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Good testability , unit testing can be carried out in the repository automatically.")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Cons"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Non-modularised, if modification is required, every single application of the solution will need to be modified."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Prone to error if the custom JS logic is complex."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Easy to introduce error by consumer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Develop code in the Form.io editor is difficult."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Automatic testing on code is not available."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Resource could not be shared across different project or stage, they will need to be exported into a template before they can be re-used in a different project/stage."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "The original purpose of Resource is to serve reusable data, using it as a custom component provider is not recommended officially."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Non-modularised and non-encapsualated, update the logic in the original Resource component will not automatic update all usage instances."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Like the bespoke solution, if modification is required, every single application of the Resource component will need to be modified."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Shared the same cons as the bespoke solution."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Consumer will need to request developer to develop such component."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Developer required Git and JS programming skills Developer required understanding how the components work in the formio.js repository."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Required to include the library in the project settings and renderer application."))))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+  }, "One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is \"closest\" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Here is the comparison of these approaches:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, " "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Bespoke solution"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Resource component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Custom component")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Pros"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Fully develop in the Form.io builder, doesn't require external library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Flexible as logic/code introduced could be different from form to form."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Fully develop in the Form.io builder, doesn't require external library."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Resource could be re-use in any forms in the same project stage"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Recommended officially for extending functionality of the out of the box components. Modularised, modification takes place in the custom library repository, doesn't require consumers' involvement."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Encapsulated, complex custom logic is not exposed to the consumers."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Good UX, similar to out of the box component experience."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Good testability , unit testing can be carried out in the repository automatically.")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Cons"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Non-modularised, if modification is required, every single application of the solution will need to be modified."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Prone to error if the custom JS logic is complex."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Easy to introduce error by consumer."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Develop code in the Form.io editor is difficult."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, " Automatic testing on code is not available."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Resource could not be shared across different project or stage, they will need to be exported into a template before they can be re-used in a different project/stage."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "The original purpose of Resource is to serve reusable data, using it as a custom component provider is not recommended officially."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Non-modularised and non-encapsualated, update the logic in the original Resource component will not automatic update all usage instances."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Like the bespoke solution, if modification is required, every single application of the Resource component will need to be modified."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Shared the same cons as the bespoke solution."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Consumer will need to request developer to develop such component."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Developer required Git and JS programming skills Developer required understanding how the components work in the formio.js repository."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Required to include the library in the project settings and renderer application."))))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "example"
-  }, `Example`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `To better explain the difference, here is the workflows of each approach.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, `We will use `, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
+  }, "Example"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "To better explain the difference, here is the workflows of each approach."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "We will use ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("strong", {
     parentName: "p"
-  }, `Grab my IP`), ` solution as an example.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, " "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Bespoke solution"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Resource component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Custom component")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Creation"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "Grab my IP"), " solution as an example."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("table", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, " "), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Bespoke solution"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Resource component"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Custom component")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Creation"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     href: "https://api.forms.platforms.qld.gov.au/#/project/6119e1ed2943fd235a1de48b/form/611b2fc883067a20cde7a671/edit",
     target: "_blank",
     rel: "noreferrer"
@@ -6388,25 +5988,25 @@ The original purpose of the Form.io Resource is not for creating reusable compon
     rel: "noreferrer"
   }, "this file"), " ", "to try it out in Form.io", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "user create the solution in the resource with a combination of out of the box components such as fieldset and textfield."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "custom JS is added as calculated value in the textfield."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Develop the component in the custom component repository."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Extend the fieldset component, which will contains the textfield components as children."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Custom will be added to the extended fieldset class."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Go through the development pipeline and deploy the solution in the bundled JS file.")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Consumption in form builder"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Once created, it already can be used in the form.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use more than one instance in the same form"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "copy and paste the whole solution")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use the solution in another project/stage/form"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "re-create the whole solution in a new form"))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop the resource component to a form in the same project stage.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use more than one instance in the same form"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop another instance")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use the solution in another project/stage"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "export the resources as template and import in the new project/stage"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop the resource component to a form in that project stage."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "setup project settings to include the custom component library JS file."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop the custom component to the form.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use more than one instance in the same form"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop another instance")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h5", null, "To use the solution in another project/stage"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "setup project settings to include the custom component library JS file"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", null, "Drag and drop the custom component to the form.")))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Consumption for form renderer"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Nothing is required."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Nothing is required."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Custom component library JS file is required to be included in the renderer application.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Modification / bug fixing"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Require modification on every instance of usage manually."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Require modification on every instance of usage manually."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Only required to modify on the component in the repo. No consumer input is required normally.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Testing"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Only manual testing is available."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Only manual testing is available."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Manual testing as well as automatic unit testing in the repo.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("tr", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("th", null, "Form.io upgrade"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Manual testing is required."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Manual testing is required."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("td", null, "Manual testing and automatic unit testing is available to test against the upgrade."))), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
     "id": "when-to-develop-in-qg-formio-custom-component-library"
-  }, `When to develop in QG Form.io custom component library`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "When to develop in QG Form.io custom component library"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "do-develop-solution-in-custom-component-library-when"
-  }, `Do develop solution in custom component library when:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Do develop solution in custom component library when:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `You want to develop a solution that expected to be highly reusable.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "You want to develop a solution that expected to be highly reusable."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `If you want to save the solution as a resource component, you better do it as a custom component instead.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "If you want to save the solution as a resource component, you better do it as a custom component instead."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `The custom JS in your solution is too complex, bulky, prone to error and needed to be tested properly.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "The custom JS in your solution is too complex, bulky, prone to error and needed to be tested properly."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `You need to manipulate an out of the box component in a way that it defeated its own purpose.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "You need to manipulate an out of the box component in a way that it defeated its own purpose."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `A solution is too complex to be reproduced in another form/project by another consumer.A solution can't be achived with out of the box components.`)), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
+  }, "A solution is too complex to be reproduced in another form/project by another consumer.A solution can't be achived with out of the box components.")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h3", {
     "id": "dont-develop-solution-in-custom-component-library-when"
-  }, `Don't develop solution in custom component library when:`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "Don't develop solution in custom component library when:"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("ul", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `A solution only used in a particular form.`), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
+  }, "A solution only used in a particular form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("li", {
     parentName: "ul"
-  }, `A solution can be achieved by modifiying out of the box properties, doesn't invove custom JS or only involve simple custom JS.`)));
+  }, "A solution can be achieved by modifiying out of the box properties, doesn't invove custom JS or only involve simple custom JS.")));
 }
 
 ;
@@ -7106,4 +6706,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.776ea276.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.b1f663e5.iframe.bundle.js.map
