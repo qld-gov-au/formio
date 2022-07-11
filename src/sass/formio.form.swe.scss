@@ -1,4 +1,5 @@
 // this file extends https://github.com/formio/formio.js/blob/master/src/sass/formio.form.scss
 // SWE theme
 
-@import '../components/**/*.swe.scss';
+@import '../components/PlsPlusAddress/sass/plsPlusAddress.swe.scss';
+@import '../components/Radio/sass/radio.swe.scss';

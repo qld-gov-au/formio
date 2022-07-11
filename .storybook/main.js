@@ -1,6 +1,6 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
-const globImporter = require("node-sass-glob-importer");
+// const globImporter = require("node-sass-glob-importer");
 
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -31,15 +31,16 @@ module.exports = {
       use: [
         "style-loader",
         "css-loader",
-        {
-          loader: "sass-loader",
-          options: {
-            sassOptions: {
-              // for scss wildcard import
-              importer: globImporter(),
-            },
-          },
-        },
+        // {
+        //   loader: "sass-loader",
+        //   options: {
+        //     sassOptions: {
+        //       // for scss wildcard import
+        //       importer: globImporter(),
+        //     },
+        //   },
+        // },
+        "sass-loader",
       ],
     });
     config.module.rules.find(
