@@ -6,6 +6,7 @@ module.exports = {
     showNext: true,
     showSubmit: true,
   },
+  // https://help.form.io/developers/translations#introduction
   i18n: {
     en: {
       pattern: "Must use the format shown",
