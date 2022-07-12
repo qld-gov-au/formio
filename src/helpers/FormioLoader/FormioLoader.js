@@ -150,7 +150,7 @@ const overrideErrorForm = (renderMsg) => {
       (typeof err === "object" && err.networkError)
     ) {
       console.warn("formio error: ", err);
-      return newFunc(renderMsg ? renderMsg(err) : err);
+      return newFunc(typeof renderMsg === "function" ? renderMsg(err) : err);
     }
     return newFunc(err);
   };
