@@ -140,7 +140,7 @@ const initFormioInstance = (elem, opts) => {
   });
 };
 
-const defaultInitFormioAction = () => {
+const overrideErrorForm = (renderMsg) => {
   // customise error message
   const newFunc = Formio.Form.prototype.errorForm.bind({});
   Formio.Form.prototype.errorForm = (err) => {
@@ -150,12 +150,17 @@ const defaultInitFormioAction = () => {
       (typeof err === "object" && err.networkError)
     ) {
       console.warn("formio error: ", err);
-      return newFunc(
-        "This form is currently unavailable due to maintenance. Please try again later."
-      );
+      return newFunc(typeof renderMsg === "function" ? renderMsg(err) : err);
     }
     return newFunc(err);
   };
+};
+
+const defaultInitFormioAction = () => {
+  overrideErrorForm(
+    () =>
+      "This form is currently unavailable due to maintenance. Please try again later."
+  );
 };
 
 const initFormio = () => {
@@ -165,7 +170,7 @@ const initFormio = () => {
 
   // default callback after Formio is loaded
   if (typeof window.initFormioHook === "function") {
-    window.initFormioHook();
+    window.initFormioHook({ overrideErrorForm });
   } else {
     defaultInitFormioAction();
   }

@@ -139,12 +139,24 @@ This is useful if you want to dynamically inject a form element. (Although the `
 You can create a hook function `createFormOptions` to customise the [options](https://help.form.io/developers/form-renderer#form-renderer-options).
 Within the function you could pass different options base on different project or form.
 
-The example below will add the custom options to every forms in the page.
+The example below will add the custom options, such as Formio message, to every forms in the page.
 
 ```jsx
 const customFn = () => {
   return {
     readOnly: true,
+    // here you could customise all Formio message, reference: https://help.form.io/developers/translations#introduction
+    // Exposes the i18Next framework instance in browser console to see what can be customised: `Formio.forms.[formId].i18next.store.data`
+    // alternatively in the form builder JS editor: `console.log(Formio.forms.[formId].i18next.store.data)`
+    // ie. Formio.forms.etpa4xr.i18next.store.data
+    i18n: {
+      en: {
+        pattern: "Must use the format shown",
+        error:
+          '<h2><span class="fa fa-exclamation-triangle"></span> Please check your answers</h2>',
+        complete: "Custom complete message",
+      },
+    },
   };
 };
 FormioLoader.initFormioInstance(elem, {
@@ -288,3 +300,24 @@ Below is a full example:
     }}
   </Story>
 </Canvas>
+
+## Customise formio error message with `initFormioHook`
+
+By default, there is a default error message on Formio API error in FormioLoader.
+As a shorthand, you could customise the message by using `window.initFormioHook`.
+
+```jsx
+window.initFormioHook = ({ overrideErrorForm }) => {
+  overrideErrorForm(() => "Custom message to display on Formio API error").
+  // alternatively to display default err details:
+  // overrideErrorForm();
+  // or custom message based on err details:
+  // overrideErrorForm((err) => "Custom message to display on Formio API error: " + err);
+}
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+});
+```
