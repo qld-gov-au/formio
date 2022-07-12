@@ -4,7 +4,6 @@ const CopyPlugin = require("copy-webpack-plugin");
 const UnminifiedWebpackPlugin = require("unminified-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemovePlugin = require("remove-files-webpack-plugin");
-const globImporter = require("node-sass-glob-importer");
 
 const getScriptConfig = (src) => {
   return {
@@ -85,19 +84,7 @@ module.exports = {
       },
       {
         test: /\.(s(a|c)ss)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sassOptions: {
-                // for scss wildcard import
-                importer: globImporter(),
-              },
-            },
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },

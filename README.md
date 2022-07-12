@@ -169,6 +169,8 @@ Currently there are 2 themes in this repository:
 You could preview each of the theme in storybook with the theming button in storybook toolbar.
 
 To modify a theme for a formio component, simply create a scss file with theme id in the file extension in the component folder. ie. `src/components/Radio/sass/radio.swe.scss`.
+Then import the file in `src/sass/formio.form.swe.scss`.
+
 Please refer to `src/components/Radio/sass` for how to customise theming for any formio components.
 
 ### Adding a theme
