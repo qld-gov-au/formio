@@ -2030,6 +2030,7 @@ module.exports = {
     showNext: true,
     showSubmit: true
   },
+  // https://help.form.io/developers/translations#introduction
   i18n: {
     en: {
       pattern: "Must use the format shown",
@@ -2557,18 +2558,24 @@ var initFormioInstance = function (elem, opts) {
   });
 };
 
-var defaultInitFormioAction = function () {
+var overrideErrorForm = function (renderMsg) {
   // customise error message
   var newFunc = Formio.Form.prototype.errorForm.bind({});
 
   Formio.Form.prototype.errorForm = function (err) {
     if (typeof err === "string" && err.indexOf("Could not connect to API server") !== -1 || typeof err === "object" && err.networkError) {
       console.warn("formio error: ", err);
-      return newFunc("This form is currently unavailable due to maintenance. Please try again later.");
+      return newFunc(typeof renderMsg === "function" ? renderMsg(err) : err);
     }
 
     return newFunc(err);
   };
+};
+
+var defaultInitFormioAction = function () {
+  overrideErrorForm(function () {
+    return "This form is currently unavailable due to maintenance. Please try again later.";
+  });
 };
 
 var initFormio = function () {
@@ -2577,7 +2584,9 @@ var initFormio = function () {
   if (premium) Formio.use(premium); // default callback after Formio is loaded
 
   if (typeof window.initFormioHook === "function") {
-    window.initFormioHook();
+    window.initFormioHook({
+      overrideErrorForm: overrideErrorForm
+    });
   } else {
     defaultInitFormioAction();
   }
@@ -5130,10 +5139,10 @@ function MDXContent(_ref) {
     "href": "https://help.form.io/developers/form-renderer#form-renderer-options",
     "target": "_blank",
     "rel": "nofollow noopener noreferrer"
-  }, "options"), ".\nWithin the function you could pass different options base on different project or form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below will add the custom options to every forms in the page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "options"), ".\nWithin the function you could pass different options base on different project or form."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below will add the custom options, such as Formio message, to every forms in the page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
-  }, "const customFn = () => {\n  return {\n    readOnly: true,\n  };\n};\nFormioLoader.initFormioInstance(elem, {\n  projectName: \"dev-svcwlpuksmwawwk\",\n  formName: \"plsPlusFormDemo\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn,\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below only add the custom options to certain project or form with a single hook function."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+  }, "const customFn = () => {\n  return {\n    readOnly: true,\n    // here you could customise all Formio message, reference: https://help.form.io/developers/translations#introduction\n    // Exposes the i18Next framework instance in browser console to see what can be customised: `Formio.forms.[formId].i18next.store.data`\n    // alternatively in the form builder JS editor: `console.log(Formio.forms.[formId].i18next.store.data)`\n    // ie. Formio.forms.etpa4xr.i18next.store.data\n    i18n: {\n      en: {\n        pattern: \"Must use the format shown\",\n        error:\n          '<h2><span class=\"fa fa-exclamation-triangle\"></span> Please check your answers</h2>',\n        complete: \"Custom complete message\",\n      },\n    },\n  };\n};\nFormioLoader.initFormioInstance(elem, {\n  projectName: \"dev-svcwlpuksmwawwk\",\n  formName: \"plsPlusFormDemo\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn,\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "The example below only add the custom options to certain project or form with a single hook function."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-jsx"
   }, "const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {\n  if ({ envUrl === \"api.forms.platforms.qld.gov.au\") {\n    return {\n      readOnly: true,\n    };\n  }\n  if (projectName === \"project1\") {\n    return {\n      readOnly: true,\n    };\n  }\n  if (projectName === \"project2\" && formName === \"form2\") {\n    return {\n      readOnly: true,\n    };\n  }\n  return {};\n};\nFormioLoader.initFormioInstance(elem1, {\n  projectName: \"project1\",\n  formName: \"form1\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn\n});\nFormioLoader.initFormioInstance(elem2, {\n  projectName: \"project2\",\n  formName: \"form2\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n  createFormOptions: customFn\n});\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Please refer to ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
@@ -5201,7 +5210,16 @@ function MDXContent(_ref) {
       (0,_stories__WEBPACK_IMPORTED_MODULE_3__.CustomController)();
     });
     return _stories__WEBPACK_IMPORTED_MODULE_3__.customControllerTemplate;
-  })));
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "customise-formio-error-message-with-initformiohook"
+  }, "Customise formio error message with ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "h2"
+  }, "initFormioHook")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "By default, there is a default error message on Formio API error in FormioLoader.\nAs a shorthand, you could customise the message by using ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("inlineCode", {
+    parentName: "p"
+  }, "window.initFormioHook"), "."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
+    parentName: "pre",
+    "className": "language-jsx"
+  }, "window.initFormioHook = ({ overrideErrorForm }) => {\n  overrideErrorForm(() => \"Custom message to display on Formio API error\").\n  // alternatively to display default err details:\n  // overrideErrorForm();\n  // or custom message based on err details:\n  // overrideErrorForm((err) => \"Custom message to display on Formio API error: \" + err);\n}\nFormioLoader.initFormioInstance(elem1, {\n  projectName: \"project1\",\n  formName: \"form1\",\n  envUrl: \"api.forms.platforms.qld.gov.au\",\n  pdfDownload: \"no\",\n});\n")));
 }
 
 ;
@@ -6706,4 +6724,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.e7180c99.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.ec6c1b7b.iframe.bundle.js.map
