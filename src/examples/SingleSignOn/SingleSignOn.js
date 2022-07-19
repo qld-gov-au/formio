@@ -40,7 +40,7 @@ export function SingleSignOn() {
   const logout = (form) => {
     // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
     // Formio.makeStaticRequest(
-    //   "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
+    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
     //   "GET",
     //   null,
     //   { namespace }
@@ -63,7 +63,7 @@ export function SingleSignOn() {
     }).then(() => {
       // window.location.reload();
       const popup = window.open(
-        `https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
