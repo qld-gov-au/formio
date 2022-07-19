@@ -2303,7 +2303,7 @@ function SingleSignOn() {
 
     // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
     // Formio.makeStaticRequest(
-    //   "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
+    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
     //   "GET",
     //   null,
     //   { namespace }
@@ -2328,7 +2328,7 @@ function SingleSignOn() {
       namespace: namespace
     }).then(function () {
       // window.location.reload();
-      var popup = window.open("https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout" + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no"); // can't use addEventListener to check pop is loaded if they are different domains due to CORS
+      var popup = window.open("https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout" + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no"); // can't use addEventListener to check pop is loaded if they are different domains due to CORS
       // popup.addEventListener(
       //   "load",
       //   () => {
@@ -6382,7 +6382,7 @@ function SingleSignOn() {
   const logout = (form) => {
     // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
     // Formio.makeStaticRequest(
-    //   "https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
+    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
     //   "GET",
     //   null,
     //   { namespace }
@@ -6405,7 +6405,7 @@ function SingleSignOn() {
     }).then(() => {
       // window.location.reload();
       const popup = window.open(
-        `https://uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
@@ -6724,4 +6724,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.ec6c1b7b.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.d4a994c8.iframe.bundle.js.map
