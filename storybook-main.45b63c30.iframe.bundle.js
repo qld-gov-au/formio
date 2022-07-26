@@ -2227,18 +2227,66 @@ function SimpleWizard() {
 
 /***/ }),
 
-/***/ "./src/examples/SingleSignOn/SingleSignOn.code.js":
+/***/ "./src/examples/SingleSignOn/stories/SSOUnauth.code.js":
+/*!*************************************************************!*\
+  !*** ./src/examples/SingleSignOn/stories/SSOUnauth.code.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SSOUnauthCode": () => (/* binding */ SSOUnauthCode)
+/* harmony export */ });
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
+/* harmony import */ var _SSOUnauth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./SSOUnauth */ "./src/examples/SingleSignOn/stories/SSOUnauth.js?1f64");
+ // eslint-disable-next-line import/no-unresolved, import/extensions
+
+
+var SSOUnauthCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js\"></script>\n</head>\n<body>\n  <script>\n" + (0,_utils__WEBPACK_IMPORTED_MODULE_0__.indent)(_SSOUnauth__WEBPACK_IMPORTED_MODULE_1__.SSOUnauth.toString().replaceAll("_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__", "FormioLoader"), 2) + "\n    FormioScript.init().then(() => {\n      const div = SingleSignOn();\n      document.body.append(div);\n    });\n  </script>\n</body>\n";
+
+/***/ }),
+
+/***/ "./src/examples/SingleSignOn/stories/SSOUnauth.js?02ea":
 /*!********************************************************!*\
-  !*** ./src/examples/SingleSignOn/SingleSignOn.code.js ***!
+  !*** ./src/examples/SingleSignOn/stories/SSOUnauth.js ***!
   \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SSOUnauth": () => (/* binding */ SSOUnauth)
+/* harmony export */ });
+/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
+
+function SSOUnauth() {
+  var formioApiDomain = "api.forms.platforms.qld.gov.au";
+  var formioProjectId = "ncwawujlwylhrfy";
+  var formioServiceFormId = "devauthformstorybook";
+  var div = document.createElement("div");
+  div.innerHTML = "\n    <div id=\"formio\">\n      <img src=\"https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png\"/>\n    </div>\n    ";
+  var formioDiv = div.querySelector("#formio");
+  _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormioInstance(formioDiv, {
+    projectName: formioProjectId,
+    formName: formioServiceFormId,
+    envUrl: formioApiDomain
+  });
+  return div;
+}
+
+/***/ }),
+
+/***/ "./src/examples/SingleSignOn/stories/SingleSignOn.code.js":
+/*!****************************************************************!*\
+  !*** ./src/examples/SingleSignOn/stories/SingleSignOn.code.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "singleSignOnCode": () => (/* binding */ singleSignOnCode)
 /* harmony export */ });
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
-/* harmony import */ var _SingleSignOn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./SingleSignOn */ "./src/examples/SingleSignOn/SingleSignOn.js?19b2");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils */ "./src/utils/index.js");
+/* harmony import */ var _SingleSignOn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!./SingleSignOn */ "./src/examples/SingleSignOn/stories/SingleSignOn.js?2cdb");
  // eslint-disable-next-line import/no-unresolved, import/extensions
 
 
@@ -2246,23 +2294,23 @@ var singleSignOnCode = "\n<head>\n  <script src=\"https://static.qgov.net.au/for
 
 /***/ }),
 
-/***/ "./src/examples/SingleSignOn/SingleSignOn.js?b330":
-/*!***************************************************!*\
-  !*** ./src/examples/SingleSignOn/SingleSignOn.js ***!
-  \***************************************************/
+/***/ "./src/examples/SingleSignOn/stories/SingleSignOn.js?83a9":
+/*!***********************************************************!*\
+  !*** ./src/examples/SingleSignOn/stories/SingleSignOn.js ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SingleSignOn": () => (/* binding */ SingleSignOn)
 /* harmony export */ });
-/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
+/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
 
 function SingleSignOn() {
   var formioApiDomain = "api.forms.platforms.qld.gov.au";
   var formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
 
-  var formioLoginFormId = "oidcsso"; // configure in squiz component
+  var formioLoginFormId = "oidcsso"; // configure in squiz component https://api.forms.platforms.qld.gov.au/#/project/612eeb800db6b412a3f37e1f/form/6155606df3e22ac39ba18542/edit
 
   var formioServiceFormId = "devauthformstorybook"; // configure in squiz component
 
@@ -2270,15 +2318,17 @@ function SingleSignOn() {
   var div = document.createElement("div");
   var oidcform;
   var formioDiv;
+  var loadingLayer;
 
   var resetDiv = function () {
-    div.innerHTML = "\n    <div id=\"oidc_form\"></div>\n    <div id=\"formio\"></div>\n    ";
+    div.innerHTML = "\n    <div id=\"oidc_form\"></div>\n    <div id=\"formio\"></div>\n    <div id=\"loading-layer\" style=\"background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;\"></div>\n    ";
     oidcform = div.querySelector("#oidc_form");
     formioDiv = div.querySelector("#formio");
+    loadingLayer = div.querySelector("#loading-layer");
   };
 
-  var appendSpinner = function (parentElement) {
-    parentElement.innerHTML = "<img src=\"https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png\"/>";
+  var setLoading = function (loading) {
+    if (loadingLayer) loadingLayer.style.display = loading ? "block" : "none";
   };
 
   var pickForm = function () {
@@ -2286,14 +2336,13 @@ function SingleSignOn() {
       namespace: namespace
     });
     console.info("user", user);
+    setLoading(true);
 
     if (user) {
-      appendSpinner(formioDiv); // eslint-disable-next-line no-use-before-define
-
+      // eslint-disable-next-line no-use-before-define
       realFormSetup();
     } else {
-      appendSpinner(oidcform); // eslint-disable-next-line no-use-before-define
-
+      // eslint-disable-next-line no-use-before-define
       loginFormSetup();
     }
   };
@@ -2301,48 +2350,42 @@ function SingleSignOn() {
   var logout = function (form) {
     var _user$data;
 
-    // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
-    // Formio.makeStaticRequest(
-    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
-    //   "GET",
-    //   null,
-    //   { namespace }
-    // ).then(() => {
-    //   Formio.logout(form.formio, {
-    //     namespace,
-    //   }).then(() => {
-    //     resetDiv();
-    //     pickForm();
-    //   });
-    // });
     var user = Formio.getUser({
       namespace: namespace
     });
     var param = "";
 
     if (user !== null && user !== void 0 && (_user$data = user.data) !== null && _user$data !== void 0 && _user$data.idp_type && user.data.idp_type === "employee") {
-      param = "?initiating_idp=o365";
+      param = "&initiating_idp=o365";
     }
 
     Formio.logout(form.formio, {
       namespace: namespace
     }).then(function () {
-      // window.location.reload();
-      var popup = window.open("https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout" + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no"); // can't use addEventListener to check pop is loaded if they are different domains due to CORS
-      // popup.addEventListener(
-      //   "load",
-      //   () => {
-      //     popup.close();
-      //   },
-      //   false
-      // );
-      // settle to use timeout for now
+      var origin = window.location.origin; // popup is the only available approach due to the logout endpoint has the following rules:
+      // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
+      // iframe/ajax approaches only available if the rule can be removed.
+      // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
 
-      setTimeout(function () {
-        popup.close();
-        resetDiv();
-        pickForm();
-      }, 2000);
+      var popup = window.open("https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=" + origin + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no");
+      window.popup = popup;
+      var timer = setInterval(function () {
+        var popupOrigin;
+
+        try {
+          popupOrigin = popup.location.origin;
+        } catch (Error) {
+          popupOrigin = "";
+        } // if popup has been success and redirected
+
+
+        if (popupOrigin) {
+          clearInterval(timer);
+          popup.close();
+          resetDiv();
+          pickForm();
+        }
+      }, 500);
     });
   };
 
@@ -2354,10 +2397,15 @@ function SingleSignOn() {
       // This section of code is the "Form Controller"
       form.on("submitDone", function submitDoneCleanup(submission) {
         console.info("submission", submission);
+        setLoading(true);
         logout(form);
       });
       form.on("logout", function () {
         logout(form);
+        setLoading(true);
+      });
+      form.on("initialized", function () {
+        setLoading(false);
       });
     };
 
@@ -2375,10 +2423,10 @@ function SingleSignOn() {
 
     var createFormController = function (_ref2) {
       var form = _ref2.form;
-      console.info("Loaded form: " + form.formio.formUrl, form); // console.info(JSON.stringify(form.formio));
-
+      console.info("Loaded form: " + form.formio.formUrl, form);
       form.on("submitDone", function (submission) {
         console.info("submission", submission);
+        setLoading(true);
         form.formio.currentUser({
           namespace: namespace
         }).then(function (userDetails) {
@@ -2387,6 +2435,15 @@ function SingleSignOn() {
           resetDiv();
           pickForm();
         });
+      });
+      form.on("error", function () {
+        setLoading(false);
+      });
+      form.on("submitError", function () {
+        logout(form);
+      });
+      form.on("initialized", function () {
+        setLoading(false);
       });
     };
 
@@ -4734,15 +4791,18 @@ componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "ssoDemo": () => (/* binding */ ssoDemo)
+/* harmony export */   "ssoDemo": () => (/* binding */ ssoDemo),
+/* harmony export */   "ssoUnauth": () => (/* binding */ ssoUnauth)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _mdx_js_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mdx-js/react */ "./node_modules/@mdx-js/react/dist/esm.js");
 /* harmony import */ var _storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @storybook/addon-docs */ "./node_modules/@storybook/addon-docs/dist/esm/index.js");
 /* harmony import */ var _stories_assets_SSO_HighLevel_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stories/assets/SSO-HighLevel.png */ "./src/stories/assets/SSO-HighLevel.png");
 /* harmony import */ var _stories_assets_SSO_UserFlow_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../stories/assets/SSO-UserFlow.png */ "./src/stories/assets/SSO-UserFlow.png");
-/* harmony import */ var _SingleSignOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SingleSignOn */ "./src/examples/SingleSignOn/SingleSignOn.js?b330");
-/* harmony import */ var _SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleSignOn.code */ "./src/examples/SingleSignOn/SingleSignOn.code.js");
+/* harmony import */ var _stories_SingleSignOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stories/SingleSignOn */ "./src/examples/SingleSignOn/stories/SingleSignOn.js?83a9");
+/* harmony import */ var _stories_SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./stories/SingleSignOn.code */ "./src/examples/SingleSignOn/stories/SingleSignOn.code.js");
+/* harmony import */ var _stories_SSOUnauth_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./stories/SSOUnauth.js */ "./src/examples/SingleSignOn/stories/SSOUnauth.js?02ea");
+/* harmony import */ var _stories_SSOUnauth_code_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./stories/SSOUnauth.code.js */ "./src/examples/SingleSignOn/stories/SSOUnauth.code.js");
 var _excluded = ["components"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -4756,6 +4816,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 /* @jsxRuntime classic */
 
 /* @jsx mdx */
+
+
 
 
 
@@ -4820,21 +4882,39 @@ function MDXContent(_ref) {
     parameters: {
       docs: {
         source: {
-          code: _SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__.singleSignOnCode,
+          code: _stories_SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__.singleSignOnCode,
           language: "html"
         }
       }
     },
     mdxType: "Story"
   }, function () {
-    return (0,_SingleSignOn__WEBPACK_IMPORTED_MODULE_5__.SingleSignOn)();
+    return (0,_stories_SingleSignOn__WEBPACK_IMPORTED_MODULE_5__.SingleSignOn)();
+  })), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
+    "id": "if-access-the-form-without-idb-authentication"
+  }, "If access the form without idb authentication"), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "You could add condition to the form based on the auth token to display warning message or redirect."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Canvas, {
+    withSource: "open",
+    mdxType: "Canvas"
+  }, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)(_storybook_addon_docs__WEBPACK_IMPORTED_MODULE_2__.Story, {
+    name: "ssoUnauth",
+    parameters: {
+      docs: {
+        source: {
+          code: _stories_SSOUnauth_code_js__WEBPACK_IMPORTED_MODULE_8__.SSOUnauthCode,
+          language: "html"
+        }
+      }
+    },
+    mdxType: "Story"
+  }, function () {
+    return (0,_stories_SSOUnauth_js__WEBPACK_IMPORTED_MODULE_7__.SSOUnauth)();
   })));
 }
 
 ;
 MDXContent.isMDXComponent = true;
 var ssoDemo = function () {
-  return (0,_SingleSignOn__WEBPACK_IMPORTED_MODULE_5__.SingleSignOn)();
+  return (0,_stories_SingleSignOn__WEBPACK_IMPORTED_MODULE_5__.SingleSignOn)();
 };
 ssoDemo.storyName = 'ssoDemo';
 ssoDemo.parameters = Object.assign({
@@ -4844,17 +4924,34 @@ ssoDemo.parameters = Object.assign({
 }, {
   docs: {
     source: {
-      code: _SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__.singleSignOnCode,
+      code: _stories_SingleSignOn_code__WEBPACK_IMPORTED_MODULE_6__.singleSignOnCode,
+      language: "html"
+    }
+  }
+});
+var ssoUnauth = function () {
+  return (0,_stories_SSOUnauth_js__WEBPACK_IMPORTED_MODULE_7__.SSOUnauth)();
+};
+ssoUnauth.storyName = 'ssoUnauth';
+ssoUnauth.parameters = Object.assign({
+  storySource: {
+    source: '() => SSOUnauth()'
+  }
+}, {
+  docs: {
+    source: {
+      code: _stories_SSOUnauth_code_js__WEBPACK_IMPORTED_MODULE_8__.SSOUnauthCode,
       language: "html"
     }
   }
 });
 var componentMeta = {
   title: 'Examples/SingleSignOn',
-  includeStories: ["ssoDemo"]
+  includeStories: ["ssoDemo", "ssoUnauth"]
 };
 var mdxStoryNameToKey = {
-  "ssoDemo": "ssoDemo"
+  "ssoDemo": "ssoDemo",
+  "ssoUnauth": "ssoUnauth"
 };
 componentMeta.parameters = componentMeta.parameters || {};
 componentMeta.parameters.docs = Object.assign({}, componentMeta.parameters.docs || {}, {
@@ -5715,7 +5812,7 @@ function MDXContent(_ref) {
   }, "Form.io doc"), " for how to initiate your form application in a HTML page."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("pre", null, (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("code", {
     parentName: "pre",
     "className": "language-html"
-  }, "<script src=\"https://unpkg.com/formiojs@latest/dist/formio.full.js\"></script>\n...\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js\"></script>\n<link\n  rel=\"stylesheet\"\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css\"\n/>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Or you could use our ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
+  }, "<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js\"></script>\n...\n<script src=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js\"></script>\n<link\n  rel=\"stylesheet\"\n  href=\"https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css\"\n/>\n")), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("p", null, "Or you could use our ", (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("a", {
     parentName: "p",
     "href": "?path=/docs/helpers-formioscript--page"
   }, "FormioScript"), " help to lazy load all necessary formio scripts in your application."), (0,_mdx_js_react__WEBPACK_IMPORTED_MODULE_1__.mdx)("h2", {
@@ -6329,100 +6426,131 @@ function SimpleWizard() {
 
 /***/ }),
 
-/***/ "./src/examples/SingleSignOn/SingleSignOn.js?19b2":
-/*!***************************************************!*\
-  !*** ./src/examples/SingleSignOn/SingleSignOn.js ***!
-  \***************************************************/
+/***/ "./src/examples/SingleSignOn/stories/SSOUnauth.js?1f64":
+/*!********************************************************!*\
+  !*** ./src/examples/SingleSignOn/stories/SSOUnauth.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SSOUnauth": () => (/* binding */ SSOUnauth)
+/* harmony export */ });
+/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
+
+
+function SSOUnauth() {
+  const formioApiDomain = "api.forms.platforms.qld.gov.au";
+  const formioProjectId = "ncwawujlwylhrfy";
+  const formioServiceFormId = "devauthformstorybook";
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <div id="formio">
+      <img src="https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png"/>
+    </div>
+    `;
+  const formioDiv = div.querySelector("#formio");
+
+  _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormioInstance(formioDiv, {
+    projectName: formioProjectId,
+    formName: formioServiceFormId,
+    envUrl: formioApiDomain,
+  });
+
+  return div;
+}
+
+
+/***/ }),
+
+/***/ "./src/examples/SingleSignOn/stories/SingleSignOn.js?2cdb":
+/*!***********************************************************!*\
+  !*** ./src/examples/SingleSignOn/stories/SingleSignOn.js ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SingleSignOn": () => (/* binding */ SingleSignOn)
 /* harmony export */ });
-/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
+/* harmony import */ var _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../helpers/FormioLoader */ "./src/helpers/FormioLoader/index.js");
 
 
 function SingleSignOn() {
   const formioApiDomain = "api.forms.platforms.qld.gov.au";
   const formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
-  const formioLoginFormId = "oidcsso"; // configure in squiz component
+  const formioLoginFormId = "oidcsso"; // configure in squiz component https://api.forms.platforms.qld.gov.au/#/project/612eeb800db6b412a3f37e1f/form/6155606df3e22ac39ba18542/edit
   const formioServiceFormId = "devauthformstorybook"; // configure in squiz component
   const namespace = `formio_${formioProjectId}`;
   const div = document.createElement("div");
   let oidcform;
   let formioDiv;
+  let loadingLayer;
   const resetDiv = () => {
     div.innerHTML = `
     <div id="oidc_form"></div>
     <div id="formio"></div>
+    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
     `;
 
     oidcform = div.querySelector("#oidc_form");
     formioDiv = div.querySelector("#formio");
+    loadingLayer = div.querySelector("#loading-layer");
   };
 
-  const appendSpinner = (parentElement) => {
-    parentElement.innerHTML = `<img src="https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png"/>`;
+  const setLoading = (loading) => {
+    if (loadingLayer) loadingLayer.style.display = loading ? "block" : "none";
   };
 
   const pickForm = () => {
     const user = Formio.getUser({ namespace });
     console.info("user", user);
+    setLoading(true);
     if (user) {
-      appendSpinner(formioDiv);
       // eslint-disable-next-line no-use-before-define
       realFormSetup();
     } else {
-      appendSpinner(oidcform);
       // eslint-disable-next-line no-use-before-define
       loginFormSetup();
     }
   };
 
   const logout = (form) => {
-    // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
-    // Formio.makeStaticRequest(
-    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
-    //   "GET",
-    //   null,
-    //   { namespace }
-    // ).then(() => {
-    //   Formio.logout(form.formio, {
-    //     namespace,
-    //   }).then(() => {
-    //     resetDiv();
-    //     pickForm();
-    //   });
-    // });
     const user = Formio.getUser({ namespace });
     let param = "";
     if (user?.data?.idp_type && user.data.idp_type === "employee") {
-      param = "?initiating_idp=o365";
+      param = "&initiating_idp=o365";
     }
 
     Formio.logout(form.formio, {
       namespace,
     }).then(() => {
-      // window.location.reload();
+      const { origin } = window.location;
+      // popup is the only available approach due to the logout endpoint has the following rules:
+      // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
+      // iframe/ajax approaches only available if the rule can be removed.
+      // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
       const popup = window.open(
-        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
-      // can't use addEventListener to check pop is loaded if they are different domains due to CORS
-      // popup.addEventListener(
-      //   "load",
-      //   () => {
-      //     popup.close();
-      //   },
-      //   false
-      // );
-      // settle to use timeout for now
-      setTimeout(() => {
-        popup.close();
-        resetDiv();
-        pickForm();
-      }, 2000);
+      window.popup = popup;
+      const timer = setInterval(() => {
+        let popupOrigin;
+        try {
+          popupOrigin = popup.location.origin;
+        } catch (Error) {
+          popupOrigin = "";
+        }
+        // if popup has been success and redirected
+        if (popupOrigin) {
+          clearInterval(timer);
+          popup.close();
+          resetDiv();
+          pickForm();
+        }
+      }, 500);
     });
   };
 
@@ -6433,11 +6561,17 @@ function SingleSignOn() {
       // This section of code is the "Form Controller"
       form.on("submitDone", function submitDoneCleanup(submission) {
         console.info("submission", submission);
+        setLoading(true);
         logout(form);
       });
 
       form.on("logout", () => {
         logout(form);
+        setLoading(true);
+      });
+
+      form.on("initialized", () => {
+        setLoading(false);
       });
     };
     _helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__.initFormioInstance(formioDiv, {
@@ -6454,9 +6588,10 @@ function SingleSignOn() {
 
     const createFormController = ({ form }) => {
       console.info(`Loaded form: ${form.formio.formUrl}`, form);
-      // console.info(JSON.stringify(form.formio));
+
       form.on("submitDone", (submission) => {
         console.info("submission", submission);
+        setLoading(true);
 
         form.formio.currentUser({ namespace }).then((userDetails) => {
           // clean up URL paramters from submission or logout redirect
@@ -6464,6 +6599,18 @@ function SingleSignOn() {
           resetDiv();
           pickForm();
         });
+      });
+
+      form.on("error", () => {
+        setLoading(false);
+      });
+
+      form.on("submitError", () => {
+        logout(form);
+      });
+
+      form.on("initialized", () => {
+        setLoading(false);
       });
     };
 
@@ -6724,4 +6871,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.d4a994c8.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.45b63c30.iframe.bundle.js.map
