@@ -14,7 +14,7 @@ export function SingleSignOn() {
     div.innerHTML = `
     <div id="oidc_form"></div>
     <div id="formio"></div>
-    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
+    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: fixed; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
     `;
 
     oidcform = div.querySelector("#oidc_form");
@@ -49,13 +49,13 @@ export function SingleSignOn() {
     Formio.logout(form.formio, {
       namespace,
     }).then(() => {
-      const { origin } = window.location;
+      const { origin, pathname } = window.location;
       // popup is the only available approach due to the logout endpoint has the following rules:
       // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
       // iframe/ajax approaches only available if the rule can be removed.
       // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
       const popup = window.open(
-        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${pathname}${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
