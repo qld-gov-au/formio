@@ -2321,7 +2321,7 @@ function SingleSignOn() {
   var loadingLayer;
 
   var resetDiv = function () {
-    div.innerHTML = "\n    <div id=\"oidc_form\"></div>\n    <div id=\"formio\"></div>\n    <div id=\"loading-layer\" style=\"background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;\"></div>\n    ";
+    div.innerHTML = "\n    <div id=\"oidc_form\"></div>\n    <div id=\"formio\"></div>\n    <div id=\"loading-layer\" style=\"background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: fixed; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;\"></div>\n    ";
     oidcform = div.querySelector("#oidc_form");
     formioDiv = div.querySelector("#formio");
     loadingLayer = div.querySelector("#loading-layer");
@@ -2362,12 +2362,14 @@ function SingleSignOn() {
     Formio.logout(form.formio, {
       namespace: namespace
     }).then(function () {
-      var origin = window.location.origin; // popup is the only available approach due to the logout endpoint has the following rules:
+      var _window$location = window.location,
+          origin = _window$location.origin,
+          pathname = _window$location.pathname; // popup is the only available approach due to the logout endpoint has the following rules:
       // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
       // iframe/ajax approaches only available if the rule can be removed.
       // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
 
-      var popup = window.open("https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=" + origin + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no");
+      var popup = window.open("https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=" + origin + pathname + param, "_logout", "location=no,height=100,width=100,scrollbars=no,status=no");
       window.popup = popup;
       var timer = setInterval(function () {
         var popupOrigin;
@@ -6490,7 +6492,7 @@ function SingleSignOn() {
     div.innerHTML = `
     <div id="oidc_form"></div>
     <div id="formio"></div>
-    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
+    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: fixed; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
     `;
 
     oidcform = div.querySelector("#oidc_form");
@@ -6525,13 +6527,13 @@ function SingleSignOn() {
     Formio.logout(form.formio, {
       namespace,
     }).then(() => {
-      const { origin } = window.location;
+      const { origin, pathname } = window.location;
       // popup is the only available approach due to the logout endpoint has the following rules:
       // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
       // iframe/ajax approaches only available if the rule can be removed.
       // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
       const popup = window.open(
-        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${pathname}${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
@@ -6871,4 +6873,4 @@ module.exports = __webpack_require__.p + "static/media/storybook-formioSettings.
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=storybook-main.45b63c30.iframe.bundle.js.map
+//# sourceMappingURL=storybook-main.e9b6dd10.iframe.bundle.js.map
