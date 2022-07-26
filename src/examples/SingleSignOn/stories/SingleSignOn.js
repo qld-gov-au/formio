@@ -1,86 +1,80 @@
-import * as FormioLoader from "../../helpers/FormioLoader";
+import * as FormioLoader from "../../../helpers/FormioLoader";
 
 export function SingleSignOn() {
   const formioApiDomain = "api.forms.platforms.qld.gov.au";
   const formioProjectId = "ncwawujlwylhrfy"; // configure in squiz component
-  const formioLoginFormId = "oidcsso"; // configure in squiz component
+  const formioLoginFormId = "oidcsso"; // configure in squiz component https://api.forms.platforms.qld.gov.au/#/project/612eeb800db6b412a3f37e1f/form/6155606df3e22ac39ba18542/edit
   const formioServiceFormId = "devauthformstorybook"; // configure in squiz component
   const namespace = `formio_${formioProjectId}`;
   const div = document.createElement("div");
   let oidcform;
   let formioDiv;
+  let loadingLayer;
   const resetDiv = () => {
     div.innerHTML = `
     <div id="oidc_form"></div>
     <div id="formio"></div>
+    <div id="loading-layer" style="background-image: url(https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png); width: 100%; height: 100%; min-height:200px; display: block; top: 0; position: absolute; background-repeat: no-repeat; background-position: center; opacity: 0.5; background-color: white;"></div>
     `;
 
     oidcform = div.querySelector("#oidc_form");
     formioDiv = div.querySelector("#formio");
+    loadingLayer = div.querySelector("#loading-layer");
   };
 
-  const appendSpinner = (parentElement) => {
-    parentElement.innerHTML = `<img src="https://www.qld.gov.au/__data/assets/image/0019/126703/Spinner-1s-200px.png"/>`;
+  const setLoading = (loading) => {
+    if (loadingLayer) loadingLayer.style.display = loading ? "block" : "none";
   };
 
   const pickForm = () => {
     const user = Formio.getUser({ namespace });
     console.info("user", user);
+    setLoading(true);
     if (user) {
-      appendSpinner(formioDiv);
       // eslint-disable-next-line no-use-before-define
       realFormSetup();
     } else {
-      appendSpinner(oidcform);
       // eslint-disable-next-line no-use-before-define
       loginFormSetup();
     }
   };
 
   const logout = (form) => {
-    // currently the logout endpoint has cors issue, otherwise could using the approach below without reload the page:
-    // Formio.makeStaticRequest(
-    //   "https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout",
-    //   "GET",
-    //   null,
-    //   { namespace }
-    // ).then(() => {
-    //   Formio.logout(form.formio, {
-    //     namespace,
-    //   }).then(() => {
-    //     resetDiv();
-    //     pickForm();
-    //   });
-    // });
     const user = Formio.getUser({ namespace });
     let param = "";
     if (user?.data?.idp_type && user.data.idp_type === "employee") {
-      param = "?initiating_idp=o365";
+      param = "&initiating_idp=o365";
     }
 
     Formio.logout(form.formio, {
       namespace,
     }).then(() => {
-      // window.location.reload();
+      const { origin } = window.location;
+      // popup is the only available approach due to the logout endpoint has the following rules:
+      // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
+      // iframe/ajax approaches only available if the rule can be removed.
+      // the cons of popup approach is the user may need to disable the pop-up blocker in their browser.
       const popup = window.open(
-        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout${param}`,
+        `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${param}`,
         "_logout",
         "location=no,height=100,width=100,scrollbars=no,status=no"
       );
-      // can't use addEventListener to check pop is loaded if they are different domains due to CORS
-      // popup.addEventListener(
-      //   "load",
-      //   () => {
-      //     popup.close();
-      //   },
-      //   false
-      // );
-      // settle to use timeout for now
-      setTimeout(() => {
-        popup.close();
-        resetDiv();
-        pickForm();
-      }, 2000);
+      window.popup = popup;
+      const timer = setInterval(() => {
+        let popupOrigin;
+        try {
+          popupOrigin = popup.location.origin;
+        } catch (Error) {
+          popupOrigin = "";
+        }
+        // if popup has been success and redirected
+        if (popupOrigin) {
+          clearInterval(timer);
+          popup.close();
+          resetDiv();
+          pickForm();
+        }
+      }, 500);
     });
   };
 
@@ -91,11 +85,17 @@ export function SingleSignOn() {
       // This section of code is the "Form Controller"
       form.on("submitDone", function submitDoneCleanup(submission) {
         console.info("submission", submission);
+        setLoading(true);
         logout(form);
       });
 
       form.on("logout", () => {
         logout(form);
+        setLoading(true);
+      });
+
+      form.on("initialized", () => {
+        setLoading(false);
       });
     };
     FormioLoader.initFormioInstance(formioDiv, {
@@ -112,9 +112,10 @@ export function SingleSignOn() {
 
     const createFormController = ({ form }) => {
       console.info(`Loaded form: ${form.formio.formUrl}`, form);
-      // console.info(JSON.stringify(form.formio));
+
       form.on("submitDone", (submission) => {
         console.info("submission", submission);
+        setLoading(true);
 
         form.formio.currentUser({ namespace }).then((userDetails) => {
           // clean up URL paramters from submission or logout redirect
@@ -122,6 +123,18 @@ export function SingleSignOn() {
           resetDiv();
           pickForm();
         });
+      });
+
+      form.on("error", () => {
+        setLoading(false);
+      });
+
+      form.on("submitError", () => {
+        logout(form);
+      });
+
+      form.on("initialized", () => {
+        setLoading(false);
       });
     };
 

@@ -1,8 +1,10 @@
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import SSOHighLevel from "../../stories/assets/SSO-HighLevel.png";
 import SSOUserFlow from "../../stories/assets/SSO-UserFlow.png";
-import { SingleSignOn } from "./SingleSignOn";
-import { singleSignOnCode } from "./SingleSignOn.code";
+import { SingleSignOn } from "./stories/SingleSignOn";
+import { singleSignOnCode } from "./stories/SingleSignOn.code";
+import { SSOUnauth } from "./stories/SSOUnauth.js";
+import { SSOUnauthCode } from "./stories/SSOUnauth.code.js";
 
 <Meta title="Examples/SingleSignOn" />
 
@@ -49,5 +51,25 @@ The demo can be reproduced with [FormioScript](?path=/docs/helpers-formioscript-
     }}
   >
     {() => SingleSignOn()}
+  </Story>
+</Canvas>
+
+## If access the form without idb authentication
+
+You could add condition to the form based on the auth token to display warning message or redirect.
+
+<Canvas withSource="open">
+  <Story
+    name="ssoUnauth"
+    parameters={{
+      docs: {
+        source: {
+          code: SSOUnauthCode,
+          language: "html",
+        },
+      },
+    }}
+  >
+    {() => SSOUnauth()}
   </Story>
 </Canvas>
