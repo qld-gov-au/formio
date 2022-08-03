@@ -34,7 +34,7 @@ const scripts = [
   },
   {
     type: "link",
-    href: `https://dev-static.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
+    href: `https://static.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
     rel: "stylesheet",
   },
 ];
