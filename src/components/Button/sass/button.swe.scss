@@ -1,0 +1,39 @@
+.btn {
+  // customise the loading spinner
+  .fa.fa-spin {
+    float: left;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    margin-right: 0.5rem;
+    border: 4px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+
+    &::before {
+      content: "";
+    }
+  }
+  &.btn-lg {
+    .fa.fa-spin {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  &.btn-sm {
+    .fa.fa-spin {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+    }
+  }
+  &.btn-xs {
+    .fa.fa-spin {
+      width: 14px;
+      height: 14px;
+      margin-top: 3px;
+    }
+  }
+}
