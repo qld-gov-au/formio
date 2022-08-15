@@ -34,7 +34,11 @@ export class SSOButton extends Button {
       response_type: "code",
       client_id: settings.clientId,
       redirect_uri:
-        settings.redirectURI ||
+        settings.redirectURI.replace(
+          /{window.location.origin}/,
+          window.location.origin ||
+            `${window.location.protocol}//${window.location.host}`
+        ) ||
         window.location.origin ||
         `${window.location.protocol}//${window.location.host}`,
       state: settings.state,
@@ -61,6 +65,7 @@ export class SSOButton extends Button {
     const popup = window.open(url, settings.provider, "width=1020,height=618");
 
     const interval = setInterval(() => {
+      console.log("interval", popup.location.search);
       try {
         // This is the condition need to be customised
         // const popupHost = popup.location.host;
@@ -146,7 +151,7 @@ export class SSOButton extends Button {
       if (!popup || popup.closed || popup.closed === undefined) {
         clearInterval(interval);
       }
-    }, 100);
+    }, 1000);
   }
 
   // customise builder settings

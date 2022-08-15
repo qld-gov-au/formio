@@ -50,6 +50,13 @@ export function SingleSignOn() {
       namespace,
     }).then(() => {
       const { origin, pathname } = window.location;
+      // window.location.href = `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${pathname}${param}`;
+      // return;
+      // Formio.makeStaticRequest(
+      //   `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?${param}`,
+      //   "GET"
+      // );
+      // return;
       // popup is the only available approach due to the logout endpoint has the following rules:
       // x-frame-options: SAMEORIGIN, x-xss-protection: 1; mode=block
       // iframe/ajax approaches only available if the rule can be removed.
