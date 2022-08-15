@@ -47,7 +47,7 @@ export default ({ form, formConfirmation }) => {
       event: "ngErrorEvent",
       ngErrorLocation: form._form.title,
       ngErrorMsg: "submission error",
-      ngErrorStack: error.message || error,
+      ngErrorStack: error?.message || error,
     });
   });
 };
