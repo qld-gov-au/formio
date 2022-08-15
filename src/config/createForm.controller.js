@@ -36,7 +36,10 @@ export default ({ form, formConfirmation }) => {
       "formio-version": form._form.modified,
     });
 
-    if (formConfirmation) window.location.href = formConfirmation;
+    if (formConfirmation)
+      setTimeout(() => {
+        window.location.href = formConfirmation;
+      }, 200);
   });
 
   form.on("submitError", (error) => {
