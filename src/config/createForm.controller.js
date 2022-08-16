@@ -44,10 +44,13 @@ export default ({ form, formConfirmation }) => {
   });
 
   form.on("submitError", (error) => {
+    const msg = Array.isArray(error)
+      ? error.map((o) => o.message).join(", ")
+      : error?.message || error;
     pushDataLayer({
       event: "ngErrorEvent",
       ngErrorLocation: form._form.title,
-      ngErrorMsg: error?.message || error,
+      ngErrorMsg: msg,
       ngErrorStack: "",
     });
   });
