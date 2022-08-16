@@ -1,25 +1,23 @@
+/* eslint-disable no-underscore-dangle */
+import { pushDataLayer } from "../utils/pushDataLayer";
+
 export default ({ form, formConfirmation }) => {
   // Change event/GTM
   form.on("change", (e) => {
-    // eslint-disable-next-line no-underscore-dangle
-    const formTitle = form._form.title;
-    // eslint-disable-next-line no-underscore-dangle
-    const formModified = form._form.modified;
     if (
       typeof e.changed !== "undefined" &&
       typeof e.changed.component !== "undefined"
     ) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
+      pushDataLayer({
         event: "formio-interaction",
-        "formio-name": formTitle,
         "formio-input-id": e.changed.component.id,
         "formio-input-type": e.changed.component.type,
         "formio-input-value": e.changed.value,
         "formio-input-key": e.changed.component.key,
         "formio-input-label-raw": e.changed.component.label,
-        "formio-version": formModified,
-        "formio-category": `Form: ${formTitle}`,
+        "formio-name": form._form.title,
+        "formio-version": form._form.modified,
+        "formio-category": `Form: ${form._form.title}`,
         "formio-action": "filled in",
       });
     }
@@ -30,7 +28,27 @@ export default ({ form, formConfirmation }) => {
     form.submit();
   });
 
+  // in a form submission, it will either fire `submitDone` or `submitError`, after getting the response from the formio api.
   form.on("submitDone", () => {
-    if (formConfirmation) window.location.href = formConfirmation;
+    pushDataLayer({
+      event: "formio-submission",
+      submissionsUrl: `form.io: ${form.formio.submissionsUrl}`,
+      "formio-name": form._form.title,
+      "formio-version": form._form.modified,
+    });
+
+    if (formConfirmation)
+      setTimeout(() => {
+        window.location.href = formConfirmation;
+      }, 500);
+  });
+
+  form.on("submitError", (error) => {
+    pushDataLayer({
+      event: "ngErrorEvent",
+      ngErrorLocation: form._form.title,
+      ngErrorMsg: error?.message || error,
+      ngErrorStack: "",
+    });
   });
 };
