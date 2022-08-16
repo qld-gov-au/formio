@@ -47,8 +47,8 @@ export default ({ form, formConfirmation }) => {
     pushDataLayer({
       event: "ngErrorEvent",
       ngErrorLocation: form._form.title,
-      ngErrorMsg: "submission error",
-      ngErrorStack: error?.message || error,
+      ngErrorMsg: error?.message || error,
+      ngErrorStack: "",
     });
   });
 };
