@@ -32,7 +32,7 @@ export default ({ form, formConfirmation }) => {
   form.on("submitDone", () => {
     pushDataLayer({
       event: "formio-submission",
-      submissionsUrl: `form.io: ${form.formio.submissionsUrl}`,
+      "formio-submissionsUrl": `form.io: ${form.formio.submissionsUrl}`,
       "formio-name": form._form.title,
       "formio-version": form._form.modified,
     });
@@ -49,7 +49,7 @@ export default ({ form, formConfirmation }) => {
       : error?.message || error;
     pushDataLayer({
       event: "ngErrorEvent",
-      ngErrorLocation: form._form.title,
+      ngErrorLocation: `form.io - ${form._form.title}`,
       ngErrorMsg: msg,
       ngErrorStack: "",
     });
