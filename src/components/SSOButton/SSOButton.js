@@ -34,11 +34,7 @@ export class SSOButton extends Button {
       response_type: "code",
       client_id: settings.clientId,
       redirect_uri:
-        settings.redirectURI.replace(
-          /{window.location.origin}/,
-          window.location.origin ||
-            `${window.location.protocol}//${window.location.host}`
-        ) ||
+        (settings.redirectURI && this.interpolate(settings.redirectURI)) ||
         window.location.origin ||
         `${window.location.protocol}//${window.location.host}`,
       state: settings.state,
