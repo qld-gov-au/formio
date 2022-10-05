@@ -42,6 +42,13 @@ Storybook is the main development environment in this repository.
 ### Local development
 
 - Create a feature branch from `main`.
+- Before installing, make sure you are linking to nexus registry in your ~/.npmrc, ie. have these 2 lines in the file, please consult qol.development@smartservice.qld.gov.au for the auth code.
+
+```
+registry=https://nexus.tools.services.qld.gov.au/nexus/repository/npm_all/
+_auth="xxxxxx"
+```
+
 - Install packages with `npm install`.
 - Start development environment with `npm run storybook`.
 - Create / Modify components in `src/components`.
