@@ -158,6 +158,15 @@ premium@1.17.1
 
 Then you could copy the corresponding script files to the `lib` folder.
 
+Another way to copy the correct version script is:
+
+- create a new feature branch from `main`.
+- update the `formiojs` and `@formio/premium` version number in package.json.
+- run `npm i`
+- in `node_modules/@formio/premium/dist` copy and replace the files that already in `lib` folder.
+- in `node_modules/formiojs/dist` copy and replace the files that already in `lib` folder.
+- commit and push and follow the step to create a release.
+
 ### Auto updating scripts
 
 Github actions has been setup for this repo to fetch the latest versions of scripts from `formiojs` and `premium`, automatic creates PR to merge the latest script to the `main` branch.
