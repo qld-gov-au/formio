@@ -126,6 +126,10 @@
   left: 0;
 }
 
+.formio-sketchpad-modal-preview-drawing {
+  page-breake-inside: avoid !important;
+}
+
 .formio-component-modal-wrapper .component-rendering-hidden .formio-sketchpad-body, .formio-component-modal-wrapper .component-rendering-hidden .formio-tagpad-container {
   opacity: 0;
   z-index: -1000;
