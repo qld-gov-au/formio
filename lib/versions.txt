@@ -1,4 +1,4 @@
-formiojs@4.14.8/dist/formio.full.min.js
-formiojs@4.14.8/dist/formio.full.js
-@formio/premium@1.18.4/dist/premium.js
-@formio/premium@1.18.4/dist/premium.min.js
+formiojs@4.14.10/dist/formio.full.min.js
+formiojs@4.14.10/dist/formio.full.js
+@formio/premium@1.19.0-rc.3/dist/premium.js
+@formio/premium@1.19.0-rc.3/dist/premium.min.js
