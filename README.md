@@ -165,13 +165,13 @@ Another way to copy the correct version script is:
 - run `npm i`
 - in `node_modules/@formio/premium/dist` copy and replace the files that already in `lib` folder.
 - in `node_modules/formiojs/dist` copy and replace the files that already in `lib` folder.
-- commit and push and follow the step's to create a release.
+- commit and push and follow the steps to create a release.
 
 Nicer way
 
 - update .github/workspace/formiojs and .github/workspace/prem package.json with correct locked version
-- run mvn clean install (or npm intall && npm run copy-all )
-- commit and push and follow the step's to create a release.
+- run mvn clean install (or npm install && npm run copy-all )
+- commit and push and follow the steps to create a release.
 
 ### Auto updating scripts
 
