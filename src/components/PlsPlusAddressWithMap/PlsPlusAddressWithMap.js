@@ -4,14 +4,13 @@
  * need to extend from `container` to `fieldset` due to Formio app upgrade from 7.1.2 to 7.3.0
  * otherwise component data will get erase when submitted to the server
  *
- *
- * This has templates stored under templates/plsPlusAddress
+ * This has templates stored under templates/plsPlusAddressWithMap
  */
 
 import autocompleter from "autocompleter";
 import _ from "lodash";
 
-import PlsPlusAddressEditForm from "./PlsPlusAddress.form";
+import PlsPlusAddressWithMapEditForm from "./PlsPlusAddressWithMap.form";
 
 const FieldsetComponent = Formio.Components.components.fieldset;
 const Field = Formio.Components.components.field;
@@ -42,7 +41,7 @@ const addressKeys = [
   "state",
   "postcode",
 ];
-export class PlsPlusAddress extends FieldsetComponent {
+export class PlsPlusAddressWithMap extends FieldsetComponent {
   constructor(...args) {
     super(...args);
     this.noField = false;
@@ -51,11 +50,17 @@ export class PlsPlusAddress extends FieldsetComponent {
   static schema(...extend) {
     return FieldsetComponent.schema(
       {
-        type: "plsplusaddress",
+        type: "plsplusaddresswithmap",
         label: "PlsPlus Address",
-        key: "plsplusaddress",
+        key: "PlsPlusAddressWithMap",
         switchToManualModeLabel: "Can't find address? Switch to manual mode.",
         providerOptions: {},
+        map: {
+          key: "AIzaSyD7a5rQ1GSkJszPP76MXnvWFVBlYkzjFdc",
+          region: "au",
+          gmapId: "",
+          autocompleteOptions: {},
+        },
         hideLabel: false,
         disableClearIcon: false,
         enableManualMode: true,
@@ -152,6 +157,12 @@ export class PlsPlusAddress extends FieldsetComponent {
                   maxLength: 4,
                 },
               },
+              {
+                label: "Google Maps data",
+                key: "gmapElement",
+                tags: ["gmapElement"],
+                type: "hidden",
+              },
             ],
           },
         ],
@@ -162,13 +173,13 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   static get builderInfo() {
     return {
-      title: "PlsPlusAddress",
+      title: "PlsPlus Address With Map",
       group: "custom",
       icon: "home",
       documentation: "/userguide/#address",
       weight: 2,
       schema: {
-        ...PlsPlusAddress.schema(),
+        ...PlsPlusAddressWithMap.schema(),
       },
     };
   }
@@ -188,7 +199,7 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   get defaultSchema() {
     return {
-      ...PlsPlusAddress.schema(),
+      ...PlsPlusAddressWithMap.schema(),
     };
   }
 
@@ -225,7 +236,16 @@ export class PlsPlusAddress extends FieldsetComponent {
         this.provider = this.initializeProvider(provider, providerOptions);
       }
     }
-
+    // Get the source for Google Maps API
+    let src =
+      "https://maps.googleapis.com/maps/api/js?v=3&libraries=places&callback=googleMapsCallback";
+    if (this.component.map && this.component.map.key) {
+      src += `&key=${this.component.map.key}`;
+    }
+    if (this.component.map && this.component.map.region) {
+      src += `&region=${this.component.map.region}`;
+    }
+    Formio.requireLibrary("googleMaps", "google.maps.places", src);
     return super.init();
   }
 
@@ -360,18 +380,26 @@ export class PlsPlusAddress extends FieldsetComponent {
     return "searchInput";
   }
 
+  static get gmapElement() {
+    return "gmapElement";
+  }
+
   get modeSwitcher() {
-    return this.refs ? this.refs[PlsPlusAddress.modeSwitcherRef] || null : null;
+    return this.refs
+      ? this.refs[PlsPlusAddressWithMap.modeSwitcherRef] || null
+      : null;
   }
 
   get removeValueIcon() {
     return this.refs
-      ? this.refs[PlsPlusAddress.removeValueIconRef] || null
+      ? this.refs[PlsPlusAddressWithMap.removeValueIconRef] || null
       : null;
   }
 
   get searchInput() {
-    return this.refs ? this.refs[PlsPlusAddress.searchInputRef] || null : null;
+    return this.refs
+      ? this.refs[PlsPlusAddressWithMap.searchInputRef] || null
+      : null;
   }
 
   get searchInputAttributes() {
@@ -401,7 +429,7 @@ export class PlsPlusAddress extends FieldsetComponent {
   }
 
   get templateName() {
-    return "plsPlusAddress";
+    return "plsPlusAddressWithMap";
   }
 
   get hasChildren() {
@@ -443,9 +471,9 @@ export class PlsPlusAddress extends FieldsetComponent {
       nestedKey: this.nestedKey,
       inputAttributes: this.searchInputAttributes,
       ref: {
-        modeSwitcher: PlsPlusAddress.modeSwitcherRef,
-        removeValueIcon: PlsPlusAddress.removeValueIconRef,
-        searchInput: PlsPlusAddress.searchInputRef,
+        modeSwitcher: PlsPlusAddressWithMap.modeSwitcherRef,
+        removeValueIcon: PlsPlusAddressWithMap.removeValueIconRef,
+        searchInput: PlsPlusAddressWithMap.searchInputRef,
       },
       displayValue: this.getDisplayValue(value),
       mode: {
@@ -453,6 +481,7 @@ export class PlsPlusAddress extends FieldsetComponent {
         manual: this.manualMode,
       },
       hasApiKey: !!this.component.providerOptions?.params?.apiKey,
+      mapId: this.component.map.gmapId,
     });
   }
 
@@ -485,9 +514,10 @@ export class PlsPlusAddress extends FieldsetComponent {
     }
 
     this.loadRefs(element, {
-      [PlsPlusAddress.modeSwitcherRef]: "single",
-      [PlsPlusAddress.removeValueIconRef]: "multiple",
-      [PlsPlusAddress.searchInputRef]: "multiple",
+      [PlsPlusAddressWithMap.modeSwitcherRef]: "single",
+      [PlsPlusAddressWithMap.removeValueIconRef]: "multiple",
+      [PlsPlusAddressWithMap.searchInputRef]: "multiple",
+      [PlsPlusAddressWithMap.gmapElement]: "multiple", // inside form.ejs template
     });
 
     this.searchInput.forEach((elem, index) => {
@@ -651,4 +681,7 @@ export class PlsPlusAddress extends FieldsetComponent {
   }
 }
 
-PlsPlusAddress.editForm = PlsPlusAddressEditForm;
+PlsPlusAddressWithMap.editForm = PlsPlusAddressWithMapEditForm;
+
+// Register the component to the Formio.Components registry.
+Formio.Components.addComponent("PlsPlusAddressWithMap", PlsPlusAddressWithMap);

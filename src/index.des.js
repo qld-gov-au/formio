@@ -3,12 +3,12 @@
 // import "regenerator-runtime/runtime";
 import buildOptions from "./config/build.options";
 import { getComponents } from "./utils/getComponents";
-import * as components from "./components";
+import * as components from "./components/index.des";
 import templates from "./templates";
 import providers from "./providers";
 
 Formio.use({
-  components: getComponents(components), // load components by lower casing import name
+  components: getComponents(components),
   templates,
   providers,
   options: buildOptions,
