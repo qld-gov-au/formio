@@ -8,3 +8,4 @@ export * from "./PlsPlusAddress";
 // export * from "./PlsPlusAddressWithMap";
 // export * from "./SSOButton";
 export * from "./googleLocation";
+export * from "./openStreetMapLocation";
