@@ -1,15 +1,15 @@
 /* global google */
 
-import LocationEditForm from "./Location.form";
+import LocationEditForm from "./GoogleLocation.form";
 
 const TextFieldComponent = Formio.Components.components.textfield;
 
-export class Location extends TextFieldComponent {
+export class GoogleLocation extends TextFieldComponent {
   static schema(...extend) {
     return TextFieldComponent.schema(
       {
-        type: "location",
-        label: "Location",
+        type: "googlelocation",
+        label: "Google Location",
         key: "location",
         map: {
           key: "",
@@ -24,11 +24,11 @@ export class Location extends TextFieldComponent {
 
   static get builderInfo() {
     return {
-      title: "Location",
+      title: "Google Location",
       group: "custom",
       icon: "map",
       weight: 36,
-      schema: Location.schema(),
+      schema: GoogleLocation.schema(),
     };
   }
 
@@ -46,7 +46,7 @@ export class Location extends TextFieldComponent {
   }
 
   get defaultSchema() {
-    return Location.schema();
+    return GoogleLocation.schema();
   }
 
   get emptyValue() {
@@ -62,7 +62,7 @@ export class Location extends TextFieldComponent {
   renderElement(value, index) {
     return (
       super.renderElement(value, index) +
-      this.renderTemplate("map", {
+      this.renderTemplate("googleMap", {
         mapId: this.component.map.gmapId,
       })
     );
@@ -177,8 +177,8 @@ export class Location extends TextFieldComponent {
   }
 }
 
-Location.editForm = LocationEditForm;
+GoogleLocation.editForm = LocationEditForm;
 
 // Register the component to the Formio.Components registry.
 // This is not required as we dynamicly load them based on lower
-// Formio.Components.addComponent("location", Location);
+// Formio.Components.addComponent("location", GoogleLocation);

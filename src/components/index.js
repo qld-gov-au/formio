@@ -6,4 +6,4 @@ export * from "./PdfSubmitButton";
 export * from "./PlsPlusAddress";
 // export * from "./PlsPlusAddressWithMap";
 // export * from "./SSOButton";
-export * from "./location";
+export * from "./googleLocation";

@@ -3,11 +3,11 @@
 
 // TODO convert to jest test
 
-// import LocationComponent from "./Location";
+// import LocationComponent from "./GoogleLocation";
 //
 // import { comp1 } from "./fixtures/index";
 //
-// describe("Location Component", function () {
+// describe("GoogleLocation Component", function () {
 //   it("Should build a location component", function () {
 //     return Harness.testCreate(LocationComponent, comp1);
 //   });

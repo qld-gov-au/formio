@@ -1,2 +1,3 @@
 // export * from "./plsPlusAddressWithMap";
-export * from "./map";
+export * from "./googleMap";
+export * from "./leafMap";
