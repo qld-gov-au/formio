@@ -1,0 +1,26 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import { createForm, createBuilder } from "../../utils";
+import * as OpenStreetMapLocationStories from "./OpenStreetMapLocation.stories";
+
+<Meta of={OpenStreetMapLocationStories} />
+
+# OpenStreetMap-Mapping
+
+OpenStreetMaps
+
+## Renderer
+
+<Canvas>
+  <Story of={OpenStreetMapLocationStories.Renderer} />
+
+  <Story of={OpenStreetMapLocationStories.Renderer2} />
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story of={OpenStreetMapLocationStories.Builder} />
+</Canvas>

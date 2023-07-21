@@ -1,6 +1,12 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": ["airbnb", "plugin:json/recommended", "plugin:jest/recommended", "plugin:prettier/recommended"],
+  "extends": [
+    "airbnb",
+    "plugin:json/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
+  ],
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": [

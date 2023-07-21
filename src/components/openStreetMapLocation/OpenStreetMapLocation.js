@@ -56,6 +56,13 @@ export class OpenStreetMapLocation extends TextFieldComponent {
     return "";
   }
 
+  setValue(value) {
+    super.setValue(value);
+    // if (element.map.marker !== null) {
+    //   element.map.marker.setLatLng(value);
+    // }
+  }
+
   get inputInfo() {
     const info = super.inputInfo;
     info.attr.class += " leaflet-search";
@@ -149,6 +156,7 @@ export class OpenStreetMapLocation extends TextFieldComponent {
       draggable: true,
       autoPan: true,
     });
+    element.map.marker = marker;
     marker.addTo(element.map);
     // element.marker = marker;
     // this.addMarker(defaultLatlng, "Default Marker", element);

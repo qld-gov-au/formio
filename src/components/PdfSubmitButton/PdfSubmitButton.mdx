@@ -1,0 +1,40 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import { createForm, createBuilder } from "../../utils";
+import * as PdfSubmitButtonStories from "./PdfSubmitButton.stories";
+
+<Meta of={PdfSubmitButtonStories} />
+
+# PdfSubmitButton - BETA
+
+This component is still in development and not a stable version.
+
+TODO - description of this component.
+
+## Renderer
+
+Below is an interactive example, please check the form data output in the console log in browser's inspector.
+
+<Canvas>
+  <Story of={PdfSubmitButtonStories.Renderer} />
+</Canvas>
+
+This example show the case when PDF is failed to generate, form action is missing or form action is blocked intentionally.
+
+<Canvas>
+  <Story of={PdfSubmitButtonStories.RendererForMissingPdf} />
+</Canvas>
+
+Example of putting a PdfSubmitButton in a wizard form.
+
+<Canvas>
+  <Story of={PdfSubmitButtonStories.RendererForFormWizard} />
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story of={PdfSubmitButtonStories.Builder} />
+</Canvas>
