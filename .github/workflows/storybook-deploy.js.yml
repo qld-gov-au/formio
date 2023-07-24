@@ -7,7 +7,10 @@ on:
 #    types: [completed ]
     push:
       branches: [main, develop]
-
+    workflow_dispatch:
+      inputs:
+        description:
+          description: 'Manual run of publish storybook'
 #concurrency:
 #  group: deploy-${{ github.workflow }}-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
 #  cancel-in-progress: true
