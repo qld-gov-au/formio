@@ -128,7 +128,7 @@ jobs:
           github_pat: '${{ secrets.GH_PAT }}'
           source_folder: dist
           tag_branch: main
-        if: success()
+        if: ${{ success() && ( github.actor != 'dependabot[bot]' ) }}
 
       - name: Publish to formio-qld-cdn
         uses: qld-gov-au/gha-cdn-version-tree-by-tag-builder@main
@@ -139,5 +139,7 @@ jobs:
           github_token: '${{ secrets.GH_TOKEN }}'
           github_pat: '${{ secrets.GH_PAT }}'
           source_folder: dist
-        if: success()
+        if: ${{ success() && ( github.actor != 'dependabot[bot]' ) }}
+
+
 

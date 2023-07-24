@@ -1,22 +1,25 @@
 name: Storybook deploy
 
 on:
-  workflow_run:
-    workflows: [Build and Test] # Reuse the name of your tests workflow
-    branches: [main, develop]
-    types: [completed ]
+#  workflow_run:
+#    workflows: [Build and Test] # Reuse the name of your tests workflow
+#    branches: [main, develop]
+#    types: [completed ]
+    push:
+      branches: [main, develop]
 
 concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
   cancel-in-progress: true
 
 jobs:
+
   deploy:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '18' ]
+        node: [ '16' ]
     name: Deploy with Node ${{ matrix.node }}
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -44,6 +47,7 @@ jobs:
       - name: Build 🔧
         run: | # build the Storybook files
           npm run build-storybook
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
