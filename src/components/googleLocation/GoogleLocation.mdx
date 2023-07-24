@@ -1,0 +1,24 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import { createForm, createBuilder } from "../../utils";
+import * as GoogleLocationStories from "./GoogleLocation.stories";
+
+<Meta of={GoogleLocationStories} />
+
+# GoogleLocation-Mapping
+
+This came out of contrib from formio.js repo
+
+## Renderer
+
+<Canvas>
+  <Story of={GoogleLocationStories.Renderer} />
+</Canvas>
+
+## Builder
+
+This component can be drag and drop from the Form.io builder sidebar `custom` group.
+You can preview the component's settings in the example below.
+
+<Canvas>
+  <Story of={GoogleLocationStories.Builder} />
+</Canvas>

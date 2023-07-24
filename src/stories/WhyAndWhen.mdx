@@ -1,31 +1,30 @@
-import { Meta } from "@storybook/addon-docs";
+import { Meta, Markdown } from "@storybook/addon-docs";
 
 <Meta title="Why and When" />
 
-###### Updated in 25 May 2022
+<h6> Updated in 25 May 2022 </h6>
 
-# Why and When
+<h1> Why and When </h1>
 
 This page provides information about why and when to develop Form.io solution with this library.
 
-## Types of Form.io solutions
+<h2> Types of Form.io solutions </h2>
 
 To understand why and when to use QG Form.io custom component library for development, we better to understand what is the pros and cons of all the available approaches for developing custom functionality in Form.io.
 
-### Bespoke solution
+<h3>Bespoke solution</h3>
 
 To extend custom logic on top of the out of the box component, this approach completely rely on the composition of out of the box component and editable properties such as custom JS in calculated value, default value and logic.
 
-### Resource component
+<h3>Resource component</h3>
 
-https://help.form.io/userguide/resources
+[https://help.form.io/userguide/resources](https://help.form.io/userguide/resources)
 
 > Resources are used to define an object within form.io. This is done by adding Form components to a Resource. Follow the same instructions for Forms when creating Resources. The Form components that are placed onto a Resource determine what the Resource object looks like.
 > The original purpose of the Form.io Resource is not for creating reusable components, however, as the Resource is avalable as template in every forms in the same project stage, component developed as Resource could offer certain degree of reusability.
 
-### Custom component
-
-https://help.form.io/developers/custom-components
+<h3>Custom component</h3>
+[https://help.form.io/developers/custom-components](https://help.form.io/developers/custom-components)
 
 > One of the more powerful features of the Form.io platform is the ability to create your own custom form components. The process of creating a custom component involves extending a Base class of the component that is "closest" to the implementation you desire, and then override methods or introduce new methods that will implement your custom logic. All of the existing components within the Form.io platform also use this same method, so you can see the multitude of examples by inspecting how the base components for the Form.io renderer are implemented.
 
@@ -134,7 +133,7 @@ Here is the comparison of these approaches:
   </tr>
 </table>
 
-## Example
+<h2>Example</h2>
 
 To better explain the difference, here is the workflows of each approach.
 
@@ -160,12 +159,13 @@ We will use **Grab my IP** solution as an example.
       <br />
       Or you could import{" "}
       <a
-        href="Grab my IP example (grabMyIpExample)-Form.json"
+        href="./assets/Grab my IP example (grabMyIpExample)-Form.json"
         target="_blank"
         rel="noreferrer"
       >
         this file
-      </a>{" "}
+      </a>
+        {" "}
       to try it out in Form.io
       <ul>
         <li>
@@ -185,14 +185,15 @@ We will use **Grab my IP** solution as an example.
       </a>
       <br />
       Or you could import{" "}
-      <a
-        href="Grab my IP (grabMyIp)-Resource.json"
-        target="_blank"
-        rel="noreferrer"
-      >
-        this file
-      </a>{" "}
-      to try it out in Form.io
+        <a
+            href="./assets/Grab my IP (grabMyIp)-Resource.json"
+            target="_blank"
+            rel="noreferrer"
+        >
+            this file
+        </a>
+        {" "}
+        to try it out in Form.io
       <ul>
         <li>
           user create the solution in the resource with a combination of out of
@@ -308,9 +309,9 @@ We will use **Grab my IP** solution as an example.
   </tr>
 </table>
 
-## When to develop in QG Form.io custom component library
+<h2>When to develop in QG Form.io custom component library</h2>
 
-### Do develop solution in custom component library when:
+<h3>Do develop solution in custom component library when:</h3>
 
 - You want to develop a solution that expected to be highly reusable.
 - If you want to save the solution as a resource component, you better do it as a custom component instead.
@@ -318,7 +319,7 @@ We will use **Grab my IP** solution as an example.
 - You need to manipulate an out of the box component in a way that it defeated its own purpose.
 - A solution is too complex to be reproduced in another form/project by another consumer.A solution can't be achived with out of the box components.
 
-### Don't develop solution in custom component library when:
+<h3>Don't develop solution in custom component library when:</h3>
 
 - A solution only used in a particular form.
 - A solution can be achieved by modifiying out of the box properties, doesn't invove custom JS or only involve simple custom JS.

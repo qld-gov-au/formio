@@ -1,6 +1,6 @@
 import { indent } from "../../utils";
 // eslint-disable-next-line import/no-unresolved, import/extensions
-import { DownloadPdf } from "!!./DownloadPdf";
+import { DownloadPdfRender } from "!!./DownloadPdf";
 
 export const downloadPdfCode = `
 <head>
@@ -9,7 +9,7 @@ export const downloadPdfCode = `
 <body>
   <script>
 ${indent(
-  DownloadPdf.toString().replaceAll(
+  DownloadPdfRender.toString().replaceAll(
     "_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__",
     "FormioLoader"
   ),

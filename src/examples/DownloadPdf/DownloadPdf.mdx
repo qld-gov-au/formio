@@ -1,0 +1,22 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import * as DownloadPdfStories from "./DownloadPdf.stories";
+
+<Meta of={DownloadPdfStories} />
+
+# Download PDF example
+
+This example is still in BETA.
+
+This example using the form.io form action and PdfSubmitButton component to enable PDF generation for the submission.
+
+TODO - document the process of setup the form action in form.io, with the action title needed to be `pdfUrl`
+
+<Canvas sourceState="open">
+  <Story of={DownloadPdfStories.DownloadPdfStory} />
+</Canvas>
+
+Example below shows using the PdfSubmitButton in a wizard form, just drag and drop the component to the last wizard page.
+
+<Canvas sourceState="open">
+  <Story of={DownloadPdfStories.DownloadPdfWizardStory} />
+</Canvas>

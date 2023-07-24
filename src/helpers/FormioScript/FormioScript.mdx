@@ -1,6 +1,6 @@
-import { Meta } from "@storybook/addon-docs";
+import { Meta, Markdown } from "@storybook/blocks";
 
-<Meta title="Helpers/FormioScript" />
+<Meta>Helpers/FormioScript</Meta>
 
 # FormioScript
 
@@ -17,46 +17,29 @@ Simply include it in your application and it will search through the page with F
 **Before using FormioScript:**
 
 ```html
-<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js"
-></script>
-<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.min.js"
-></script>
-<script
-  async="false"
-  src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js"
-></script>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
-  rel="stylesheet"
-/>
+<script async="false" src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.js"></script>
+<script async="false" src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.min.js" ></script>
+<script async="false" src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.js"></script>
+<link href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.css" rel="stylesheet"></link>
+<link href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/premium.css"  rel="stylesheet"></link>
+<link href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"  rel="stylesheet"></link>
 <div id="formio1" class="qg-forms-v2"></div>
 <div id="formio2" class="qg-forms-v2"></div>
 <script>
-  Formio.createForm(
+Formio.createForm(
     document.getElementById("formio1"),
-    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo",
-    {readOnly: true}
-  ).then((form) {
-    form.on("change", (e) => {
-      console.info("onChange", e);
+        "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/plsPlusFormDemo",
+        { readOnly: true }
+    ).then((form) {
+        form.on("change", (e) => {
+            console.info("onChange", e);
+        });
     });
-  });
-  Formio.createForm(
-    document.getElementById("formio2"),
-    "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing"
-  );
+
+    Formio.createForm(
+        document.getElementById("formio2"),
+            "https://api.forms.platforms.qld.gov.au/dev-svcwlpuksmwawwk/testing"
+    );
 </script>
 ```
 
@@ -103,6 +86,8 @@ You can replace `prod` in the `src` with `test` / `staging` / `dev` / `gitbridge
 
 This script will load the following scripts into the page:
 
+<Markdown>
+  {`
 | Script               | Description                                                          |
 | -------------------- | -------------------------------------------------------------------- |
 | formio.full.min.js   | Main Formio library                                                  |
@@ -112,7 +97,8 @@ This script will load the following scripts into the page:
 | formio.full.min.css  | Style for the main Formio library                                    |
 | premium.css          | Style for the premium components                                     |
 | formio-qld.min.css   | Style for Formio form in Squiz                                       |
-
+`}
+</Markdown>
 ## Usage in Squiz Matrix
 
 Please refer to Squiz Matrix asset #249261.
@@ -143,14 +129,14 @@ or using `FormioLoader.initFormio()` instead:
   FormioScript.init().then(() => {
     const div = document.createElement("div");
     div.innerHtml = `
-    <div
-      class="qg-forms-v2"
-      data-formio
-      data-formio-project-name="project1"
-      data-formio-form-name="form1"
-      data-formio-env-url="api.forms.platforms.qld.gov.au"
-    ></div>
-    `;
+        <div
+        class="qg-forms-v2"
+        data-formio
+        data-formio-project-name="project1"
+        data-formio-form-name="form1"
+        data-formio-env-url="api.forms.platforms.qld.gov.au"
+        ></div>
+        `;
     FormioLoader.initFormio();
   });
 </script>

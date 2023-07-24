@@ -1,0 +1,22 @@
+import { Canvas, Meta, Story } from "@storybook/blocks";
+import { createForm, createBuilder } from "../../utils";
+import * as RadioStories from "./Radio.stories";
+
+<Meta of={RadioStories} />
+
+# Radio
+
+Out of the box radio component, find more details here:
+https://help.form.io/userguide/forms/form-components#radio
+
+## Custom class: radio-tab
+
+To use this style, set the `Custom CSS Class` property to `radio-tab` in the component editor.
+
+<Canvas>
+  <Story of={RadioStories.RadioTabInRenderer} />
+</Canvas>
+
+<Canvas>
+  <Story of={RadioStories.RadioTabInBuilder} />
+</Canvas>

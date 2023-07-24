@@ -1,6 +1,6 @@
 import { indent } from "../../utils";
 // eslint-disable-next-line import/no-unresolved, import/extensions
-import { SimpleWizard } from "!!./SimpleWizard";
+import { SimpleWizardRender } from "!!./SimpleWizard";
 
 export const simpleWizardCode = `
 <head>
@@ -9,7 +9,7 @@ export const simpleWizardCode = `
 <body>
   <script>
 ${indent(
-  SimpleWizard.toString().replaceAll(
+  SimpleWizardRender.toString().replaceAll(
     "_helpers_FormioLoader__WEBPACK_IMPORTED_MODULE_0__",
     "FormioLoader"
   ),
