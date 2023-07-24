@@ -8,9 +8,9 @@ on:
     push:
       branches: [main, develop]
 
-concurrency:
-  group: deploy-${{ github.workflow }}-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
-  cancel-in-progress: true
+#concurrency:
+#  group: deploy-${{ github.workflow }}-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+#  cancel-in-progress: true
 
 jobs:
 
