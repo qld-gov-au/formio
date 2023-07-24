@@ -5,6 +5,8 @@
  * For example this component is extending from:
  * https://github.com/formio/formio.js/blob/master/src/components/button/Button.js
  *
+ * This has templates stored under templates/plsPlusAddressWithMap
+ *
  */
 
 import BoilerplateButtonEditForm from "./BoilerplateButton.form";

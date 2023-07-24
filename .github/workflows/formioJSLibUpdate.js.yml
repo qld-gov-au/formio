@@ -24,7 +24,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
           always-auth: 'true'
           cache-dependency-path: ./.github/workspace/formiojs/package-lock.json

@@ -1,6 +1,6 @@
 import * as FormioLoader from "../../helpers/FormioLoader";
 
-export function DownloadPdfWizard() {
+export function DownloadPdfWizardRender() {
   const div = document.createElement("div");
   div.innerHTML = `
         <div id="formio" 

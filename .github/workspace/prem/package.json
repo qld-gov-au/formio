@@ -30,7 +30,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/premium": "^1.18.4",
+    "@formio/premium": "1.19.0-rc.3",
     "moment": "^2.29.4"
   }
 }

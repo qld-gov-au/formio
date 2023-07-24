@@ -6,14 +6,14 @@
 
 
     <groupId>au.gov.qld.ssq</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <artifactId>formio-qld</artifactId>
     <packaging>pom</packaging>
 
     <properties>
-        <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
-        <node.version>v16.14.2</node.version>
-        <npm.version>8.5.0</npm.version>
+        <frontend-maven-plugin.version>1.13.4</frontend-maven-plugin.version>
+        <node.version>v18.16.1</node.version>
+        <npm.version>9.5.1</npm.version>
     </properties>
 
     <build>

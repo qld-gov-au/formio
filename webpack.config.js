@@ -24,6 +24,13 @@ module.exports = {
         type: "umd",
       },
     },
+    "formio-des.min": {
+      import: path.resolve(__dirname, "src/index.des.js"),
+      library: {
+        name: "FormioQldDes",
+        type: "umd",
+      },
+    },
     "formio-loader.min": {
       import: path.resolve(__dirname, "src/helpers/FormioLoader/index.js"),
       library: {

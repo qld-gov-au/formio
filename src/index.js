@@ -8,7 +8,7 @@ import templates from "./templates";
 import providers from "./providers";
 
 Formio.use({
-  components: getComponents(components),
+  components: getComponents(components), // load components by lower casing import name
   templates,
   providers,
   options: buildOptions,

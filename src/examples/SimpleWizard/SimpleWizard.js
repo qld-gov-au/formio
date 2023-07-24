@@ -1,6 +1,6 @@
 import * as FormioLoader from "../../helpers/FormioLoader";
 
-export function SimpleWizard() {
+export function SimpleWizardRender() {
   window.customFormController = ({ form }) => {
     // example to add custom form controller to the initiated form
     // refer to https://help.form.io/developers/form-renderer#form-events for form event

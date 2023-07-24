@@ -1,0 +1,14 @@
+// import Harness from "formio.js/test/harness";
+// import Harness from Formio.test.harness;
+
+// TODO convert to jest test
+
+// import LocationComponent from "./GoogleLocation";
+//
+// import { comp1 } from "./fixtures/index";
+//
+// describe("GoogleLocation Component", function () {
+//   it("Should build a location component", function () {
+//     return Harness.testCreate(LocationComponent, comp1);
+//   });
+// });

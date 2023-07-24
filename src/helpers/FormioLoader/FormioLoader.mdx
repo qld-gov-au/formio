@@ -1,0 +1,244 @@
+import { Canvas, Meta, Story, Markdown } from "@storybook/blocks";
+import * as FormioLoaderStories from "./FormioLoader.stories";
+
+<Meta of={FormioLoaderStories} />
+
+<h1>FormioLoader</h1>
+
+FormioLoader provide function for you to initiate Formio instance.
+To use it, simply include the script and run `FormioLoader.initFormio()` in your webpage, it will initiate Formio instance with the div that contains `data-formio` attribute.
+
+```html
+<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-loader.min.js"></script>
+<script>
+  FormioLoader.initFormio();
+</script>
+```
+
+Sample Formio div placeholder:
+
+```jsx
+<div
+  id="formio"
+  class="qg-forms-v2"
+  data-formio
+  data-formio-project-name="dev-svcwlpuksmwawwk"
+  data-formio-form-name="plsPlusFormDemo"
+  data-formio-form-confirmation=""
+  data-formio-form-revision=""
+  data-formio-env-url="api.forms.platforms.qld.gov.au"
+  data-formio-pdf-download="no"
+  data-formio-namespace=""
+></div>
+```
+
+Please note that you'll need to include `formio.full.js`/`formio.full.min.js`, and other necessary formio scripts/libraries before using this script.
+You may want to use [FormioScript](?path=/docs/helpers-formioscript--page) to lazy-load all Formio related scripts/libraries.
+
+<h2>Initiate Formio instance</h2>
+
+To initiate Formio instance, simply include and run the script in your webpage.
+
+<Canvas sourceState="open">
+  <Story of={FormioLoaderStories.InitFormioRender} />
+</Canvas>
+
+<h3>window.initFormioHook</h3>
+
+You could define `window.initFormioHook()` as a hook function for `FormioLoader.initFormio()`.
+In other word, you could use it to override the default behavior after the global Formio object loaded and before the form(s) initiated by `Formio.createForm()`.
+
+This would be useful for modifying prototype functions in the global Formio object.
+
+```jsx
+window.initFormioHook = () => {
+  // You could manipulate the global Formio object here, eg:
+  const newFunc = Formio.Form.prototype.errorForm.bind({});
+  Formio.Form.prototype.errorForm = (err) => {
+    // You could customise the err message here
+    console.log("err:", err);
+    return newFunc(err);
+  };
+};
+FormioLoader.initFormio();
+```
+
+<h2>Alternate init method</h2>
+
+If the script is already loaded, you could init the form with an alternate method `FormioLoader.initFormioInstance`.
+This is useful if you want to dynamically inject a form element. (Although the `FormioLoader.initFormio()` method will work the same)
+
+<h3>Options:</h3>
+<Markdown>
+  {`
+| Option               | Description                                                                                                                                  | Example                                                             |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| projectName          | Formio project name                                                                                                                          | dev-svcwlpuksmwawwk                                                 |
+| formName             | Formio form name                                                                                                                             | plsPlusFormDemo                                                     |
+| envUrl               | domain name of the Formio endpoint                                                                                                           | api.forms.platforms.qld.gov.au                                      |
+| formConfirmation     | redirect page for wizard after submission                                                                                                    | /                                                                   |
+| formRevision         | form revision number                                                                                                                         | 1                                                                   |
+| pdfDownload          | Does the form involve pdf download                                                                                                           | no                                                                  |
+| namespace            | Namespace of the form for creating key for token, user, etc                                                                                  | any string                                                          |
+| createFormOptions    | function that returns [options](https://help.form.io/developers/form-renderer#form-renderer-options) to be passed to the createForm function | ({ envUrl, projectName, formName, defaultOptions, elem }) => object |
+| createFormController | custom form controller function                                                                                                              | ({ envUrl, projectName, formName, form, elem }) => void)            |
+| createFormCallback   | custom callback function after a form is created by \`Formio.createForm\`                                                                      | ({ envUrl, projectName, formName, form, elem }) => void)            |
+`}
+</Markdown>
+<Canvas sourceState="open">
+  <Story of={FormioLoaderStories.InitFormioInstanceRender} />
+</Canvas>
+
+<h2>Custom createForm options with `createFormOptions`</h2>
+
+You can create a hook function `createFormOptions` to customise the [options](https://help.form.io/developers/form-renderer#form-renderer-options).
+Within the function you could pass different options base on different project or form.
+
+The example below will add the custom options, such as Formio message, to every forms in the page.
+
+```jsx
+const customFn = () => {
+  return {
+    readOnly: true,
+    // here you could customise all Formio message, reference: https://help.form.io/developers/translations#introduction
+    // Exposes the i18Next framework instance in browser console to see what can be customised: `Formio.forms.[formId].i18next.store.data`
+    // alternatively in the form builder JS editor: `console.log(Formio.forms.[formId].i18next.store.data)`
+    // ie. Formio.forms.etpa4xr.i18next.store.data
+    i18n: {
+      en: {
+        pattern: "Must use the format shown",
+        error:
+          '<h2><span class="fa fa-exclamation-triangle"></span> Please check your answers</h2>',
+        complete: "Custom complete message",
+      },
+    },
+  };
+};
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+```
+
+The example below only add the custom options to certain project or form with a single hook function.
+
+```jsx
+const customFn = ({ envUrl, projectName, formName, defaultOptions, elem }) => {
+  if ({ envUrl === "api.forms.platforms.qld.gov.au") {
+    return {
+      readOnly: true,
+    };
+  }
+  if (projectName === "project1") {
+    return {
+      readOnly: true,
+    };
+  }
+  if (projectName === "project2" && formName === "form2") {
+    return {
+      readOnly: true,
+    };
+  }
+  return {};
+};
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn
+});
+```
+
+Please refer to https://help.form.io/developers/form-renderer#form-renderer-options for available options.
+
+Below is a full example:
+
+<Canvas sourceState="open">
+  <Story of={FormioLoaderStories.CustomCreateFormOptionsRender} />
+</Canvas>
+
+<h2>Controlling the Form with JavaScript with `createFormController`</h2>
+
+You can create a hook function `createFormController` to customise the [form controller](https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript).
+Within the function you could customise the controller base on different project or form.
+
+```jsx
+const customFn = ({ form }) => {
+  form.on("change", (e) => {
+    console.info("onChange", e);
+  });
+};
+FormioLoader.initFormioInstance(elem, {
+  projectName: "dev-svcwlpuksmwawwk",
+  formName: "plsPlusFormDemo",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormController: customFn,
+});
+```
+
+The example below only control the form to certain project or form.
+
+```jsx
+const customFn = ({ envUrl, projectName, formName, form, elem }) => {
+  if (projectName === "project2" && formName === "form2") {
+    form.on("change", (e) => {
+      console.info("onChange", e);
+    });
+  }
+};
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+FormioLoader.initFormioInstance(elem2, {
+  projectName: "project2",
+  formName: "form2",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+  createFormOptions: customFn,
+});
+```
+
+Please refer to https://help.form.io/developers/form-renderer#controlling-the-form-with-javascript for more examples.
+
+Below is a full example:
+
+<Canvas sourceState="open">
+  <Story of={FormioLoaderStories.CustomCreateFormControllerRender} />
+</Canvas>
+
+<h2>Customise formio error message with `initFormioHook`</h2>
+
+By default, there is a default error message on Formio API error in FormioLoader.
+As a shorthand, you could customise the message by using `window.initFormioHook`.
+
+```jsx
+window.initFormioHook = ({ overrideErrorForm }) => {
+  overrideErrorForm(() => "Custom message to display on Formio API error").
+  // alternatively to display default err details:
+  // overrideErrorForm();
+  // or custom message based on err details:
+  // overrideErrorForm((err) => "Custom message to display on Formio API error: " + err);
+}
+FormioLoader.initFormioInstance(elem1, {
+  projectName: "project1",
+  formName: "form1",
+  envUrl: "api.forms.platforms.qld.gov.au",
+  pdfDownload: "no",
+});
+```

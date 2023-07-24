@@ -4,6 +4,153 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.14.10
+### Changed
+ - Official Release
+
+## 4.14.10-rc.3
+### Changed
+ - FIO-5430 Fixed datetime not being initialized when there are multiple…
+ - FIO-5430 Fixed datetime not being initialized when there are multiple…
+
+## 4.14.10-rc.2
+### Changed
+ - FIO-5674: fixed broken positioning of the data table on the submissio…
+ - FIO-4194: fixed submit button for PDF in FVP
+
+## 4.14.10-rc.1
+### Changed
+ - FIO-5418: Fixes checkbox values in edit grid not translated
+
+## 4.14.9
+### Changed
+ - Official Release
+
+## 4.14.9-rc.17
+### Changed
+ - FIO-5431 Fixed Quill editor losing data after switching to source vie…
+
+## 4.14.9-rc.16
+### Changed
+ - Revert change to always execute apis on pdf output.
+
+## 4.14.9-rc.15
+### Changed
+ - FIO-3814 fixed fetch data several times when RefreshOnBlur
+
+## 4.14.9-rc.14
+### Changed
+ - Upgrade vanilla text mask and text-mask addons.
+
+## 4.14.9-rc.13
+### Fixed
+ - FIO-5234: avoid lazy load flatpickr if it is already available in the window
+
+## 4.14.9-rc.12
+### Changed
+ - FIO-5455: Fixes context variables not available in datetime custom disabled dates config
+
+### Fixed
+ - FIO-5544: added sticky property to the form components when building forms
+
+## 4.14.9-rc.11
+### Changed
+ - FIO-4684: Fixes extra pdf redraw after resources fetch
+ - FIO-3268 fixed submit button for viewer
+ - FIO-3268 fixed submit button for viewer
+ - FIO-3268 fixed submit button for viewer
+ - FIO-5044: Removed Dropbox for Next Portal
+ - FIO-5069: API driven dataTable
+ - FIO-5107: fix button loader icon removal at unexpected event (#4714)
+
+## 4.14.9-rc.10
+### Changed
+ - FIO-5266: Fixes flatpickr initialization happend prior to localization script loaded and calendar translations not applied
+ - FIO-5301: Added localization to the builder components search field
+ - FIO-5399: Make formio use flatpickr script from test cdn for non-production builds
+ - FIO-5417: Fixes multiple calendar widgets could be opened at same time
+ - FIO-5436: Fix incorrect signature size setting
+ - FIO-2971: fixed an issue table tooltip text of clone row components o…
+ - FIO-4764: Fix date format that prevent saving in ISO standard
+ - FIO-5415 Fixed component settings not fitting in in some cases
+
+### Fixed
+ - FIO-3308: fixed an issue where all checkboxes (radio type) are displayed as selected in email submissions when user selects just one
+ - FIO-5418: Fixes checkbox values in edit grid not translated
+
+## 4.14.9-rc.9
+### Changed
+ - FIO-5234: avoid lazy load flatpickr if it is already available in the…
+ - FIO-5234: avoid lazy load flatpickr if it is already available in the…
+
+## 4.14.9-rc.8
+### Changed
+ - FIO-3448: Fixes an issue where Keep Overlay Aspect Ratio Signature option does not work in PDF forms
+
+## 4.14.9-rc.7
+### Changed
+ - FIO-4943: Fixed an issue where Content component displays wrongly in the build mode when no content is entered
+ - FIO-4153: fixed when calendar widget local settings not saving
+
+## 4.14.9-rc.6
+### Changed
+ - FIO-5082 Label adjustments for PDF condensed mode
+
+## 4.14.9-rc.5
+### Changed
+ - FIO-4705: fixed an issue with bad request error in console when rende…
+ - FIO-4705: fixed an issue with bad request error in console when rende…
+ - FIO-5361: Fixes can not get user info when sesion token configured and session token config not dropped on log out
+ - FIO-4392 fixed Help links
+ - FIO-5149: fixed the structure of the custom component with tree parameter
+ - FIO-5370: Fixes quick inline embed section broken because of wrong embed form url
+
+## 4.14.9-rc.4
+### Changed
+ - FIO-4218: fixed an issue where error message isn't showing in modal window
+ - FIO-4500: Fixes an issue where a wrong delimiter is shown in the Submission view and expoted data
+ - FIO-4500: Fixes an issue where a wrong delimiter is shown in the Submission view and expoted data
+ - fixed Help links
+ - FIO-4704: fixed an issue with form builder where custom group in the …
+ - FIO-4395: Fixed typos
+ - FIO-4851: fixed when 'Multiple Values' setting is enabled, all the selected val…
+ - FIO-4764: Fixed issue with loading zones, added test for showing date in timezone
+ - FIO-4629: fixed signature displaying in pdf form
+ - FIO-4949: done disable auto fill in browser
+ - FIO-4886: Fixes value calculation not working for nested forms
+
+## 4.14.9-rc.3
+### Changed
+ - FIO-4218: fixed an issue where error message isn't showing in modal window
+ - FIO-4500: Fixes an issue where a wrong delimiter is shown in the Submission view and expoted data
+ - FIO-4500: Fixes an issue where a wrong delimiter is shown in the Submission view and expoted data
+ - fixed Help links
+ - FIO-4704: fixed an issue with form builder where custom group in the …
+ - FIO-4395: Fixed typos
+ - FIO-4851: fixed when 'Multiple Values' setting is enabled, all the selected val…
+ - FIO-4764: Fixed issue with loading zones, added test for showing date in timezone
+ - FIO-4629: fixed signature displaying in pdf form
+ - FIO-4949: done disable auto fill in browser
+ - FIO-4886: Fixes value calculation not working for nested forms
+
+### Fixed
+ - FIO-4225: fixed an issue where last selected/entered value from multiple values is highlighted as error value, when Date/Time is required
+ - FIO-3939 Fixed content of the Content component not being translated
+
+## 4.14.9-rc.2
+### Changed
+ - FIO-5152: fixed an issue where value of html element displays differe…
+ - FIO-5152: fixed an issue where value of html element displays differe…
+
+## 4.14.9-rc.1
+### Changed
+ - FIO-4603: fixed an issue where after closing the error message upload…
+ - FIO-5057 added undefined check for TemplateData
+ - FIO-4814: Ability to configure formio to store x-jwt-token in sessionStorage
+ - FIO-5149: fixed processing of custom component using complex data
+ - FIO-4820: Fixes an issue where API key of the component resets after changing some value labels on the Data tab
+ - FIO-5178 fixed emitting events from HTML component with Refresh On Ch…
+
 ## 4.14.8
 ### Changed
  - Official Release
