@@ -16,6 +16,7 @@ const getScriptConfig = (src) => {
 };
 
 module.exports = {
+  context: path.resolve(__dirname, ".."),
   entry: {
     "formio-qld.min": {
       import: path.resolve(__dirname, "src/index.js"),
