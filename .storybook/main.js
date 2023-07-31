@@ -16,7 +16,11 @@ module.exports = {
     name: "@storybook/html-webpack5",
     options: {},
   },
-  staticDirs: ["../lib", { from: "../src/stories/assets", to: "./assets" }],
+  staticDirs: [
+    "static",
+    "../lib",
+    { from: "../src/stories/assets", to: "./assets" },
+  ],
   webpackFinal: async (config) => {
     // placeholder for custom webpack settings for storybook
     // config.externals = { ...config.externals, formiojs: "formiojs" };
