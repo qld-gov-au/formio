@@ -119,6 +119,20 @@ jobs:
           set -x
           cp -r ./binary-repo/* ./dist
 
+      - name: "Set environment variables if TARGET_REPO and/or TARGET_CDN_REPO exists"
+        id: set-TARGET_REPO-exists
+        run: |
+          if [ -n "${{ secrets.TARGET_REPO }}" ]; then
+            echo "TARGET_REPO=true" >> $GITHUB_ENV
+          else
+            echo "TARGET_REPO=false" >> $GITHUB_ENV
+          fi
+          if [ -n "${{ secrets.TARGET_CDN_REPO }}" ]; then
+            echo "TARGET_CDN_REPO=true" >> $GITHUB_ENV
+          else
+            echo "TARGET_CDN_REPO=false" >> $GITHUB_ENV
+          fi
+
       - name: Publish
         uses: qld-gov-au/gha-publish-to-git@master
         with:
@@ -130,7 +144,7 @@ jobs:
           github_pat: '${{ secrets.GH_PAT }}'
           source_folder: dist
           tag_branch: main
-        if: ${{ success() && ( github.actor != 'dependabot[bot]' ) && env.repository != ''  }}
+        if: ${{ success() &&  env.TARGET_REPO == 'true'  }}
 
       - name: Publish to formio-qld-cdn
         uses: qld-gov-au/gha-cdn-version-tree-by-tag-builder@main
@@ -142,7 +156,7 @@ jobs:
           github_token: '${{ secrets.GH_TOKEN }}'
           github_pat: '${{ secrets.GH_PAT }}'
           source_folder: dist
-        if: ${{ success() && ( github.actor != 'dependabot[bot]' )  && env.repository != '' }}
+        if: ${{ success()  && env.TARGET_CDN_REPO == 'True' }}
 
 
 
