@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.19.1
+ - Change log missing
+
 ## 1.19.0-rc.3
 ### Fixed
  - FIO-5036: fixed an issue where sketchpad preview drawing sometimes does not display after switching between view and edit submission pages

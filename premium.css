@@ -94,12 +94,15 @@
   height: 100%; }
 
 .formio-sketchpad-canvas,
-.formio-sketchpad-modal-preview-container .formio-sketchpad-modal-preview-drawing {
+.formio-sketchpad-modal-preview-drawing {
   position: absolute;
   z-index: 2;
   text-align: center;
   top: 0;
   left: 0; }
+
+.formio-sketchpad-modal-preview-drawing {
+  page-break-inside: avoid; }
 
 .formio-component-modal-wrapper .component-rendering-hidden .formio-sketchpad-body, .formio-component-modal-wrapper .component-rendering-hidden .formio-tagpad-container {
   opacity: 0;
@@ -228,3 +231,14 @@
 
 .formio-component-datatable .field-wrapper .field-content {
   overflow: auto; }
+
+.formio-review-page li {
+  list-style-type: none; }
+
+.formio-component-esignature {
+  border: 2px dashed #ddd;
+  text-align: center;
+  color: #aaa;
+  padding-top: 0.5em;
+  min-height: 3em;
+  margin-bottom: 15px; }
