@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '16' ]
+        node: [ '18' ]
     name: Deploy with Node ${{ matrix.node }}
 #    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
