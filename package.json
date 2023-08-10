@@ -91,6 +91,6 @@
   "dependencies": {
     "core-js": "^3.21.1",
     "native-promise-only": "^0.8.1",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.14.0"
   }
 }
