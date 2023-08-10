@@ -50,7 +50,7 @@
     "@testing-library/dom": "^8.11.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/user-event": "^13.5.0",
-    "autocompleter": "^6.1.2",
+    "autocompleter": "^9.0.1",
     "babel-jest": "^29.6.1",
     "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^11.0.0",
