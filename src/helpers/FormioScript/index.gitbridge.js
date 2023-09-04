@@ -1,6 +1,6 @@
 import { initScript } from ".";
 
-const version = window.formioQldCdnVersion || "248740";
+const version = window.formIOGitBridgeID || "248740";
 
 const scripts = [
   {
