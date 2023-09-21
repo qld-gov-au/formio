@@ -24,14 +24,13 @@
   ],
   "scripts": {
     "update": "npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` ",
-    "copy-formios-prem-changelog": "cp node_modules/@formio/premium/Changelog.md ../../../lib/premium.changelog.md",
-    "copy-formios-prem": "cp -rf node_modules/@formio/premium/dist/* ../../../lib",
+    "copy-formio-grid-changelog": "cp node_modules/@formio/grid/Changelog.md ../../../lib/grid.changlog.md",
+    "copy-formios-grid": "cp -rf node_modules/@formio/grid/dist/* ../../../lib",
     "cleanup": "rm -rf ../../../lib/*server*",
-    "copy-all": "npm run copy-formios-prem && npm run cleanup"
+    "copy-all": "npm run copy-formios-grid && npm run cleanup"
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/premium": "^1.18.4",
-    "moment": "^2.29.4"
+    "@formio/grid": "1.1.1"
   }
 }
