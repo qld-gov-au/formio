@@ -1,4 +1,4 @@
-name: Update Libs
+name: Update Premium Libs
 on:
   # schedule:
     # * is a special character in YAMLso you have to quote this string
