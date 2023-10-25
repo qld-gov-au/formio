@@ -4,23 +4,130 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 4.15.1
+## 4.17.2
 ### Changed
  - Official Release
 
-## 4.15.1-rc.4
+## 4.17.2-rc.1
+### Changed
+ - FIO-4816: fixed email submission: data display issues
+ - FIO-6578: Fixes an issue with losing focus on Year field when Day component has advanced logic
+ - FIO 7246: DOMPurify when PDF option is set
+   
+## 4.17.1
+### Changed
+ - Official Release
+
+## 4.17.1-rc.3
+### Changed
+ - Avoid passing 'undefined' to function getFocusableElements in DataGrid#focusOnNewRowElement(row) (#5345)
+
+## 4.17.1-rc.2
+### Changed
+ - Revert "FIO-7074: Fixes an issue where setting submission to the Wizard from the form controller will not set values for all the pages"
+ - FIO-7197 Increased builder dropzone in DataGrid
+   
+## 4.17.1-rc.1
+### Changed
+ - Updated @formio/bootstrap3@2.12.4-rc.1
+ - FIO-7074: Fixes an issue where setting submission to the Wizard from the form controller will not set values for all the pages
+ - FIO-7173 Fixed issue when initial focus gets triggered in Formbuilder…
+
+## 4.17.0
+### Changed
+ - Official Release
+
+## 4.17.0-rc.7
+### Changed
+ - FIO-7310: Revert formio.js/pull/5187
+
+## 4.17.0-rc.5
+### Changed
+ - FIO-3820: Ability to delete files inside the Storage Services
+
+## 4.17.0-rc.4
+### Changed
+ - FIO-5967: fixed issue with incorrect string representation for object type
+ - Revert "FI0-5429: added a condition to remove the decimal separator when the decimal digits are set to 0"
+ - FIO-7110: when 'use original revision' is enabled for nested form, submission still displays in current form revision pdfs
+
+## 4.17.0-rc.3
+### Fixed
+ - FIO-7209: Radio works without ValueProperty set
+
+## 4.17.0-rc.2
+
+## 4.17.0-rc.1
+### Changed
+ - FIO-3448: Fixed an issue where Keep overlay aspect ratio feature of the Signature component in PDF form does not work
+ - FI0-5429: added a condition to remove the decimal separator when the decimal digits are set to 0
+ - FIO-6785: Content Field formatting not showing indentation
+ - FIO-6807: fixed an issue with date time format after using enableDate or enableTime checkboxes
+ - FIO-4782: added encodeURIComponent for filter query
+ - FIO-6849: fixed issue where form components cannot be edited because of legacy format of multi select default value multiple values
+ - FIO-5967: fixed issue with empty data for html 5 select component
+ - FIO-6906: fixed value for Checkbox submission in Data Tab
+ - FIO-6919: fixed value for Signature submission in Data Tab
+ - FIO-6630: Expanded Actions Logic UI
+ - FIO-6933: Fixes for the formbuilder with keyboard actions
+ - FIO-7043: Fixes an issue where {{}} values in DataSource headers are resolved in the form builder
+ - FIO-7007: fixed display of submitted values on DataTab
+ - FIO-7128: Fixed issues with multiple select
+ - FIO-7110 fixed display of nested form with Use Original Revision on PDF download
+
+## 4.16.0-rc.9
+### Changed
+ - FIO-7040 Enabled selectData for all List Based Components
+
+## 4.16.0-rc.8
+### Changed
+ - FIO-6688: Fixes producing additional components when minLength is set up
+ - FIO-7096: fixed adding components for PDF in the Microsoft Edge browser with Mac
+ - FIO-7035, FIO-7036: fixed issue with dragging layout resource component
+ - FIO-6735: added additional check to calculateComponentValue method
+ - FIO-6234: added submit button to the webform builder after switching from the wizard builder
+
+
+## 4.16.0-rc.7
+### Changed
+ - FIO-5748 Collapsible preview for Form Builder
+ - FIO-6950 fixed test
+ - FIO-6669 Fixed tooltips cutting off in the component settings modal
+
+## 4.16.0-rc.6
+### Changed
+ - FIO-6156 Fixed help link for Time component
+
+## 4.16.0-rc.5
 ### Changed
  - Revert "FIO-4876 fixed the display of current submission for pdf download"
 
-## 4.15.1-rc.3
-### Fixed
+## 4.16.0-rc.4
+### Changed
+ - FIO-5303 fixed Edit and Delete buttons
+ - FIO-5730 fixed template for Select on PDF download
+ - FIO-6659 added warnings for Tree and Resource
+ - FIO-7030: Fixes an issue where Wizard pages are displayed in one line in the for builder
+ - FIO-5857 Update flatpickr to a version with the latest changes
+ - FIO-6840: change unique validation for email comps and certain textfield comps
  - FIO-7054: Fixes an issue where after saving Wizard Panel settings, some of them disappear
 
-## 4.15.1-rc.2
+## 4.16.0-rc.3
 ### Changed
- - FIO-7030: Fixes an issue where Wizard pages are displayed in one line in the for builder
- - FIO-7049 fixed data populating in the Data Table
- - FIO-6840: change unique validation for email comps and certain textfield comps
+ - FIO-7002: Fixing hide and show options to change visibility of components.
+
+## 4.16.0-rc.2
+### Changed
+ - 4.16.0-rc.1 previously published to NPM
+
+## 4.16.0-rc.1
+### Changed
+ - FIO-5566: Fixes an issue where deprication warning appears in the console when using Day component with dateFirst setting
+ - FIO-6164 Fixed an issue with date/time component localization
+ - FIO-3345: Added tests for the eachComponent function that were not including Tagpad key to the components paths
+ - FIO-6604 fixed padding for Numbers inside Content
+ - FIO-4809: Fixes an issue where value of Wizard suffix/prefix components will be deleted during validation on server
+ - Fix build 4.15.x
 
 ## 4.15.1-rc.1
 ### Changed
