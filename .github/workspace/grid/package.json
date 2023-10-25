@@ -25,7 +25,7 @@
   "scripts": {
     "update": "npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` ",
     "copy-formio-grid-changelog": "cp node_modules/@formio/grid/Changelog.md ../../../lib/grid.changlog.md",
-    "copy-formios-grid": "cp -rf node_modules/@formio/grid/dist/* ../../../lib",
+    "copy-formios-grid": "mkdir ../../../lib/grid && cp -rf node_modules/@formio/grid/dist/* ../../../lib/grid",
     "cleanup": "rm -rf ../../../lib/*server*",
     "copy-all": "npm run copy-formios-grid && npm run cleanup"
   },
