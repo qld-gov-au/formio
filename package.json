@@ -79,7 +79,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remove-files-webpack-plugin": "^1.5.0",
-    "sass": "^1.66.1",
+    "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "storybook": "^7.4.6",
     "storybook-addon-themes": "^6.1.0",
