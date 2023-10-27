@@ -44,7 +44,7 @@
     "@storybook/addon-docs": "^7.4.6",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
-    "@storybook/blocks": "^7.4.6",
+    "@storybook/blocks": "^7.5.1",
     "@storybook/html": "^7.4.6",
     "@storybook/html-webpack5": "^7.4.6",
     "@testing-library/dom": "^9.3.3",
