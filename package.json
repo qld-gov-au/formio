@@ -41,7 +41,7 @@
     "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "^7.22.10",
     "@storybook/addon-actions": "^7.4.6",
-    "@storybook/addon-docs": "^7.4.6",
+    "@storybook/addon-docs": "^7.5.2",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
     "@storybook/blocks": "^7.4.6",
