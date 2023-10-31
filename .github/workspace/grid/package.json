@@ -25,12 +25,12 @@
   "scripts": {
     "update": "npm update `npm outdated | awk '{print $1}' | tr '\n' ' '` ",
     "copy-formio-grid-changelog": "cp node_modules/@formio/grid/Changelog.md ../../../lib/grid.changlog.md",
-    "copy-formios-grid": "mkdir ../../../lib/grid && cp -rf node_modules/@formio/grid/dist/* ../../../lib/grid",
+    "copy-formios-grid": "mkdir -p ../../../lib/grid && cp -rf node_modules/@formio/grid/dist/* ../../../lib/grid",
     "cleanup": "rm -rf ../../../lib/*server*",
     "copy-all": "npm run copy-formios-grid && npm run cleanup"
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/grid": "1.1.1"
+    "@formio/grid": "1.3.0"
   }
 }
