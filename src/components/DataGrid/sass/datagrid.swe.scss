@@ -1,0 +1,9 @@
+.formio-component-datagrid table.datagrid-table {
+    &, td, th {
+        border: 1px solid #dee2e6 !important; /* SWE style */
+        /* This is to overwrite datagrid border style in https://github.com/formio/formio.js/blob/master/src/sass/formio.form.scss */
+    }
+    td {
+        width: 100%;
+    }
+}

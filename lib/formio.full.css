@@ -3364,10 +3364,8 @@ body.formio-dialog-open {
 .formio-component-datagrid {
   overflow-x: auto;
 }
-.formio-component-datagrid .datagrid-table td {
-  width: 100%;
-}
 .formio-component-datagrid .datagrid-table, .formio-component-datagrid .datagrid-table td, .formio-component-datagrid .datagrid-table th {
+  border: 3px solid #ddd !important;
   padding: 10px;
 }
 .formio-component-datagrid .datagrid-table > tbody > tr > td:last-child {
