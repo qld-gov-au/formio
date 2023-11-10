@@ -6,4 +6,10 @@
     td {
         width: 100%;
     }
+    .dropdown {
+        height: 44px;
+    }
+    .choices__list[aria-expanded] .choices__item--selectable {
+        padding-right: unset; /* This is to revert padding-right: 100px that comes from formio.full.css */
+    }
 }
