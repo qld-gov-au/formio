@@ -1,4 +1,4 @@
-export const defaultVersion = window.formioQldCdnVersion || "v1/v1.x.x-latest";
+export const defaultVersion = window.formioQldCdnVersion || "v2/v2.x.x-latest";
 
 export const createScripts = (scripts, i, mainResolve) => {
   if (i > scripts.length - 1) {
