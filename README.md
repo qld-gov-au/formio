@@ -106,13 +106,13 @@ You can consume this library either in Form.io Builder or Form.io Renderer.
 To use custom components in the Form.io platform builder, please go to the [Project stage settings](https://help.form.io/userguide/projects#custom-js-and-css) and update the `Custom javascript` URL with the CDN URL of this library:
 
 ```
-https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js
+https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio-qld.min.js
 ```
 
 and update the `Custom CSS` property with
 
 ```
-https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css
+https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio-qld.min.css
 ```
 
 <img src="https://qld-gov-au.github.io/formio/static/media/storybook-formioSettings.fbfb01cf.png" alt="share diagram" width="640" />
@@ -123,12 +123,12 @@ To use custom components in the Form.io JS renderer, please include the script *
 Pleaser refer to [Form.io doc](https://help.form.io/developers/form-renderer#getting-started) for how to initiate your form application in a HTML page.
 
 ```html
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio.full.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio.full.min.js"></script>
 ...
-<script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.js"></script>
+<script src="https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio-qld.min.js"></script>
 <link
   rel="stylesheet"
-  href="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-qld.min.css"
+  href="https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio-qld.min.css"
 />
 ```
 
