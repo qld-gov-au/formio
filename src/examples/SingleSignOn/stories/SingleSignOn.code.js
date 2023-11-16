@@ -4,7 +4,7 @@ import { SingleSignOn } from "!!./SingleSignOn";
 
 export const singleSignOnCode = `
 <head>
-  <script src="https://static.qgov.net.au/formio-qld/v1/v1.x.x-latest/formio-script.min.js"></script>
+  <script src="https://static.qgov.net.au/formio-qld/v2/v2.x.x-latest/formio-script.min.js"></script>
 </head>
 <body>
   <script>
