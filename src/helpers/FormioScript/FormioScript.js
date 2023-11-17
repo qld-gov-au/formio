@@ -31,42 +31,49 @@ export const createScripts = (scripts, i, mainResolve) => {
   }
 };
 
-export const getDefaultScripts = ({ subdomain, version = defaultVersion }) => {
+export const getDefaultCdn = (
+  subdomain = "static",
+  version = defaultVersion
+) => {
+  return `https://${subdomain}.qgov.net.au/formio-qld/${version}`;
+};
+
+export const getDefaultScripts = (baseUrl) => {
   return [
     {
       type: "script",
-      src: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio.full.js`,
+      src: `${baseUrl}/formio.full.js`,
       async: false,
     },
     {
       type: "script",
-      src: `https://${subdomain}.qgov.net.au/formio-qld/${version}/premium.min.js`,
+      src: `${baseUrl}/premium.min.js`,
       async: false,
     },
     {
       type: "script",
-      src: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio-qld.js`,
+      src: `${baseUrl}/formio-qld.js`,
       async: false,
     },
     // note: formio-loader should always load last
     {
       type: "script",
-      src: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio-loader.js`,
+      src: `${baseUrl}/formio-loader.js`,
       async: false,
     },
     {
       type: "link",
-      href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio.full.min.css`,
+      href: `${baseUrl}/formio.full.min.css`,
       rel: "stylesheet",
     },
     {
       type: "link",
-      href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/premium.css`,
+      href: `${baseUrl}/premium.css`,
       rel: "stylesheet",
     },
     {
       type: "link",
-      href: `https://${subdomain}.qgov.net.au/formio-qld/${version}/formio-qld.min.css`,
+      href: `${baseUrl}/formio-qld.min.css`,
       rel: "stylesheet",
     },
   ];
