@@ -1,7 +1,6 @@
-import { initScript, getDefaultScripts } from ".";
+import { initScript, getDefaultCdn, getDefaultScripts } from ".";
 
-const scripts = getDefaultScripts({
-  subdomain: "test-static",
-});
+const baseUrl = getDefaultCdn("test-static");
+const scripts = getDefaultScripts(baseUrl);
 
-export const init = () => initScript(scripts);
+export const init = () => initScript(scripts, baseUrl);
