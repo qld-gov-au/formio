@@ -41,4 +41,4 @@ const scripts = [
   },
 ];
 
-export const init = () => initScript(scripts);
+export const init = () => initScript(scripts, baseUrl);

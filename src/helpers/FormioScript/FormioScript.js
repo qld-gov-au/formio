@@ -79,12 +79,12 @@ export const getDefaultScripts = (baseUrl) => {
   ];
 };
 
-export const initScript = (scripts) =>
+export const initScript = (scripts, cdn = null) =>
   new Promise((resolve) => {
     if (window.formioScriptLoaded) {
       if (typeof FormioLoader !== "undefined")
         setTimeout(() => {
-          FormioLoader.initFormio();
+          FormioLoader.initFormio(cdn);
           resolve();
         });
     } else {

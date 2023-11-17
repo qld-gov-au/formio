@@ -165,9 +165,12 @@ const defaultInitFormioAction = () => {
   );
 };
 
-const initFormio = () => {
+const initFormio = (cdn = null) => {
   // Init form
   Formio.icons = "fontawesome";
+  if (cdn) {
+    Formio.cdn.setOverrideUrl("grid", cdn);
+  }
   if (premium) Formio.use(premium);
 
   // default callback after Formio is loaded
