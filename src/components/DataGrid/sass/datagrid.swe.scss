@@ -1,0 +1,15 @@
+.formio-component-datagrid table.datagrid-table {
+    &, td, th {
+        border: 1px solid #dee2e6 !important; /* SWE style */
+        /* This is to overwrite datagrid border style in https://github.com/formio/formio.js/blob/master/src/sass/formio.form.scss */
+    }
+    td {
+        width: 100%;
+    }
+    .dropdown {
+        height: 44px;
+    }
+    .choices__list[aria-expanded] .choices__item--selectable {
+        padding-right: unset; /* This is to revert padding-right: 100px that comes from formio.full.css */
+    }
+}
