@@ -32,8 +32,6 @@ export const Renderer = {
         });
       },
     }),
-
-  name: "Renderer",
 };
 
 export const RendererForMissingPdf = {
@@ -158,6 +156,4 @@ export const Builder = {
         ],
       },
     }),
-
-  name: "Builder",
 };
