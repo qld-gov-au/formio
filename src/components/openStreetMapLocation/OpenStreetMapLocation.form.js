@@ -12,6 +12,6 @@ export default function (...extend) {
         components: OpenStreetMapLocationEditMap,
       },
     ],
-    ...extend
+    ...extend,
   );
 }

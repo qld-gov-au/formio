@@ -29,6 +29,6 @@ export default (...extend) => {
         ignore: true,
       },
     ],
-    ...extend
+    ...extend,
   );
 };

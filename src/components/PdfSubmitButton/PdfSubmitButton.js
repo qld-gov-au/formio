@@ -103,7 +103,7 @@ export class PdfSubmitButton extends Button {
           }
           this.root.element.scrollIntoView();
         },
-        true
+        true,
       );
     }
   }
