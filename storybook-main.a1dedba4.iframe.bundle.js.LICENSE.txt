@@ -102,7 +102,7 @@
 
 /*! ./node_modules/@storybook/addon-links/dist/preview.mjs */
 
-/*! ./node_modules/@storybook/html-webpack5/node_modules/@storybook/html/preview.js */
+/*! ./node_modules/@storybook/html/preview.js */
 
 /*! ./openStreetMapLocation */
 
