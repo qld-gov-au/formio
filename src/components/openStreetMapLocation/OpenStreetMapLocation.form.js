@@ -2,7 +2,7 @@ import OpenStreetMapLocationEditMap from "./editForm/OpenStreetMapLocation.edit.
 
 const baseEditForm = Formio.Components.components.base.editForm;
 
-export default function (...extend) {
+export default function openStreetMapFormWrapper(...extend) {
   return baseEditForm(
     [
       {
