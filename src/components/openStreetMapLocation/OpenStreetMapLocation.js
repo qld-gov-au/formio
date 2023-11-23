@@ -19,7 +19,7 @@ export class OpenStreetMapLocation extends TextFieldComponent {
           autocompleteOptions: {},
         },
       },
-      ...extend
+      ...extend,
     );
   }
 

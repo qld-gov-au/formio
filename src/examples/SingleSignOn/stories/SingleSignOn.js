@@ -64,7 +64,7 @@ export function SingleSignOn() {
       const popup = window.open(
         `https://www.uat.auth.qld.gov.au/auth/realms/tell-us-once/protocol/openid-connect/logout?redirect_uri=${origin}${pathname}${param}`,
         "_logout",
-        "location=no,height=100,width=100,scrollbars=no,status=no"
+        "location=no,height=100,width=100,scrollbars=no,status=no",
       );
       window.popup = popup;
       const timer = setInterval(() => {

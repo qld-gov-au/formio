@@ -161,7 +161,7 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
       null,
       {
         noToken: true,
-      }
+      },
     );
   }
 
@@ -172,7 +172,7 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
 
     return this.makeParseRequest(requestOptions).then((response) => {
       const resultCount = parseFloat(
-        response.ParseAddressResponse.ParseAddressResult.ResultCount
+        response.ParseAddressResponse.ParseAddressResult.ResultCount,
       );
       if (resultCount === 0) return {};
       if (resultCount === 1)
@@ -180,7 +180,7 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
           .Address;
       return _.maxBy(
         response.ParseAddressResponse.ParseAddressResult.Results.Result,
-        (r) => r.Confidence
+        (r) => r.Confidence,
       ).Address;
     });
   }
@@ -191,7 +191,7 @@ export class PlsPlusAddressProvider extends CustomAddressProvider {
     params[this.queryProperty] = query.trim();
 
     return this.makeRequest(requestOptions).then((result) =>
-      this.responseProperty ? _.get(result, this.responseProperty, []) : result
+      this.responseProperty ? _.get(result, this.responseProperty, []) : result,
     );
   }
 

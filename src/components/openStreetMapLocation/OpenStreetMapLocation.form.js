@@ -12,6 +12,6 @@ export default function openStreetMapFormWrapper(...extend) {
         components: OpenStreetMapLocationEditMap,
       },
     ],
-    ...extend
+    ...extend,
   );
 }

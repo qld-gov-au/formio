@@ -40,7 +40,7 @@ export class BoilerplateButton extends Button {
       this.renderTemplate("boilerplateButton", {
         component: this.component,
         input: this.inputInfo,
-      })
+      }),
     );
   }
 

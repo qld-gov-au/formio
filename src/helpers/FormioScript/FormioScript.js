@@ -33,7 +33,7 @@ export const createScripts = (scripts, i, mainResolve) => {
 
 export const getDefaultCdn = (
   subdomain = "static",
-  version = defaultVersion
+  version = defaultVersion,
 ) => {
   return `https://${subdomain}.qgov.net.au/formio-qld/${version}`;
 };

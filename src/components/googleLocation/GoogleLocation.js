@@ -18,7 +18,7 @@ export class GoogleLocation extends TextFieldComponent {
           autocompleteOptions: {},
         },
       },
-      ...extend
+      ...extend,
     );
   }
 
@@ -117,7 +117,7 @@ export class GoogleLocation extends TextFieldComponent {
       }
       const autocomplete = new google.maps.places.Autocomplete(
         element,
-        autocompleteOptions
+        autocompleteOptions,
       );
       autocomplete.addListener("place_changed", () => {
         const place = autocomplete.getPlace();
@@ -140,7 +140,7 @@ export class GoogleLocation extends TextFieldComponent {
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(17, 34),
             scaledSize: new google.maps.Size(35, 35),
-          })
+          }),
         );
         element.marker.setPosition(place.geometry.location);
         this.setValue(place.name);

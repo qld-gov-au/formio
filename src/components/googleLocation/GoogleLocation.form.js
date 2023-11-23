@@ -12,6 +12,6 @@ export default function googleLocationFormWrapper(...extend) {
         components: LocationEditMap,
       },
     ],
-    ...extend
+    ...extend,
   );
 }
