@@ -6,7 +6,7 @@ import { delegateSelector } from "../../utils/delegateSelector";
 const requestPluginHandler = (requestArgs, opts) => {
   if (requestArgs?.formio) {
     const formioInstance = document.querySelector(
-      `[data-formio-form-url="${requestArgs.formio.formUrl}"]`
+      `[data-formio-form-url="${requestArgs.formio.formUrl}"]`,
     );
     if (formioInstance) {
       requestArgs.formio = JSON.parse(formioInstance.dataset.formio);
@@ -29,7 +29,7 @@ const requestPluginHandler = (requestArgs, opts) => {
   if (requestArgs?.url?.includes(`${opts.formio.base}/recaptcha`)) {
     requestArgs.url = requestArgs.url.replace(
       `${opts.formio.base}/recaptcha`,
-      `${opts.formio.projectUrl}/recaptcha`
+      `${opts.formio.projectUrl}/recaptcha`,
     );
   }
   return Promise.resolve(null);
@@ -59,7 +59,7 @@ const initFormioInstance = (elem, opts) => {
   if (!opts.envUrl || !opts.projectName || !opts.formName) {
     console.warn(
       "Require envUrl, projectName, formName to initiate the form.",
-      opts
+      opts,
     );
     return;
   }
@@ -161,13 +161,16 @@ const overrideErrorForm = (renderMsg) => {
 const defaultInitFormioAction = () => {
   overrideErrorForm(
     () =>
-      "This form is currently unavailable due to maintenance. Please try again later."
+      "This form is currently unavailable due to maintenance. Please try again later.",
   );
 };
 
-const initFormio = () => {
+const initFormio = (cdn = null) => {
   // Init form
   Formio.icons = "fontawesome";
+  if (cdn) {
+    Formio.cdn.setOverrideUrl("grid", cdn);
+  }
   if (premium) Formio.use(premium);
 
   // default callback after Formio is loaded

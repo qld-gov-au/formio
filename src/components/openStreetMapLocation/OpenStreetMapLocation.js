@@ -19,7 +19,7 @@ export class OpenStreetMapLocation extends TextFieldComponent {
           autocompleteOptions: {},
         },
       },
-      ...extend
+      ...extend,
     );
   }
 
@@ -160,7 +160,7 @@ export class OpenStreetMapLocation extends TextFieldComponent {
     marker.addTo(element.map);
     // element.marker = marker;
     // this.addMarker(defaultLatlng, "Default Marker", element);
-    marker.on("moveend", function (event) {
+    marker.on("moveend", function markerMoveListener(event) {
       // marker.addListener("moveend", (event) => {
       console.log(event);
       // const markerInternal = e.target;

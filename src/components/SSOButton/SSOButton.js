@@ -24,7 +24,7 @@ export class SSOButton extends Button {
   openOauth(settings) {
     if (!this.root.formio) {
       console.warn(
-        "You must attach a Form API url to your form in order to use OAuth buttons."
+        "You must attach a Form API url to your form in order to use OAuth buttons.",
       );
       return;
     }
@@ -88,7 +88,7 @@ export class SSOButton extends Button {
             window.alert(thisParams.error_description || thisParams.error);
             this.root.setAlert(
               "danger",
-              thisParams.error_description || thisParams.error
+              thisParams.error_description || thisParams.error,
             );
             return;
           }
@@ -96,7 +96,7 @@ export class SSOButton extends Button {
           if (settings.state !== thisParams.state) {
             this.root.setAlert(
               "danger",
-              "OAuth state does not match. Please try logging in again."
+              "OAuth state does not match. Please try logging in again.",
             );
             return;
           }
@@ -116,7 +116,7 @@ export class SSOButton extends Button {
               "oauth",
               `${this.root.formio.projectUrl}/oauth2`,
               "POST",
-              thisParams
+              thisParams,
             );
           } else {
             const submission = { data: {}, oauth: {} };

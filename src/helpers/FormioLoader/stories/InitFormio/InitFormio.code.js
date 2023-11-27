@@ -11,9 +11,9 @@ ${initFormioTemplate}
 ${indent(
   InitFormio.toString().replaceAll(
     "___WEBPACK_IMPORTED_MODULE_0__",
-    "FormioLoader"
+    "FormioLoader",
   ),
-  1
+  1,
 )}
   InitFormio();
 </script>

@@ -44,8 +44,6 @@ export const Renderer = {
         });
       },
     }),
-
-  name: "Renderer",
 };
 
 export const Builder = {
@@ -78,6 +76,4 @@ export const Builder = {
         ],
       },
     }),
-
-  name: "Builder",
 };

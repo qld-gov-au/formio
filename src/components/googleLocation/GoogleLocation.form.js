@@ -2,7 +2,7 @@ import LocationEditMap from "./editForm/Location.edit.map";
 
 const baseEditForm = Formio.Components.components.base.editForm;
 
-export default function (...extend) {
+export default function googleLocationFormWrapper(...extend) {
   return baseEditForm(
     [
       {
@@ -12,6 +12,6 @@ export default function (...extend) {
         components: LocationEditMap,
       },
     ],
-    ...extend
+    ...extend,
   );
 }

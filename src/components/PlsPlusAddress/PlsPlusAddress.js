@@ -156,7 +156,7 @@ export class PlsPlusAddress extends FieldsetComponent {
           },
         ],
       },
-      ...extend
+      ...extend,
     );
   }
 
@@ -206,7 +206,7 @@ export class PlsPlusAddress extends FieldsetComponent {
       if (this.address)
         this.setAddressProp(
           "selectedAddress",
-          this.address.autocompleteAddress
+          this.address.autocompleteAddress,
         );
     } else if (this.address)
       this.setAddressProp("selectedAddress", this.composedAddress);
@@ -281,7 +281,7 @@ export class PlsPlusAddress extends FieldsetComponent {
 
   get container() {
     return this.getComponents().find((comp) =>
-      comp.originalComponent.tags?.includes("container")
+      comp.originalComponent.tags?.includes("container"),
     );
   }
 
@@ -422,7 +422,7 @@ export class PlsPlusAddress extends FieldsetComponent {
         if (flags.modified && component.originalComponent.tags.length) {
           this.setAddressProp(
             component.originalComponent.tags[0],
-            component.dataValue
+            component.dataValue,
           );
         }
         return this.onChange(flags, fromRoot);
@@ -518,7 +518,7 @@ export class PlsPlusAddress extends FieldsetComponent {
               this.restoreComponentsContext();
               this.container.getComponents().forEach((component) => {
                 const childElement = document.getElementById(
-                  `${component.id}-${component.component.key}`
+                  `${component.id}-${component.component.key}`,
                 );
                 if (childElement) childElement.value = component.dataValue;
               });
@@ -613,7 +613,7 @@ export class PlsPlusAddress extends FieldsetComponent {
 
     this.container?.getComponents().forEach((component) => {
       const childElement = document.getElementById(
-        `${component.id}-${component.component.key}`
+        `${component.id}-${component.component.key}`,
       );
       if (childElement) childElement.value = component.dataValue;
     });

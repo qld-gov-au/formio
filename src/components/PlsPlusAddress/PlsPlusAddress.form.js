@@ -28,6 +28,6 @@ export default (...extend) => {
         components: EditProvider,
       },
     ],
-    ...extend
+    ...extend,
   );
 };

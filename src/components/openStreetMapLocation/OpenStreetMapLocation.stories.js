@@ -42,8 +42,6 @@ export const Renderer = {
         });
       },
     }),
-
-  name: "Renderer",
 };
 
 export const Renderer2 = {
@@ -131,6 +129,4 @@ export const Builder = {
         ],
       },
     }),
-
-  name: "Builder",
 };
