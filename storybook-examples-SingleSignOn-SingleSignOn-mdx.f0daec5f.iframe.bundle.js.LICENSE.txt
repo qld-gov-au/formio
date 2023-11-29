@@ -1,0 +1,25 @@
+/*! ../../stories/assets/SSO-HighLevel.png */
+
+/*! ../../stories/assets/SSO-UserFlow.png */
+
+/*! ./SingleSignOn.stories */
+
+/*! ./node_modules/@storybook/addon-essentials/node_modules/@storybook/addon-docs/dist/shims/mdx-react-shim */
+
+/*! @storybook/blocks */
+
+/*! react */
+
+/*! react/jsx-runtime */
+
+/*!*********************************************!*\
+  !*** ./src/stories/assets/SSO-UserFlow.png ***!
+  \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/stories/assets/SSO-HighLevel.png ***!
+  \**********************************************/
+
+/*!****************************************************!*\
+  !*** ./src/examples/SingleSignOn/SingleSignOn.mdx ***!
+  \****************************************************/
