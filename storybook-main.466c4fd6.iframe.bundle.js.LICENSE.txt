@@ -100,7 +100,7 @@
 
 /*! ./node_modules/@storybook/addon-essentials/dist/outline/preview.mjs */
 
-/*! ./node_modules/@storybook/addon-links/dist/preview.mjs */
+/*! ./node_modules/@storybook/addon-links/dist/preview.js */
 
 /*! ./node_modules/@storybook/html/preview.js */
 
