@@ -1,0 +1,49 @@
+/*! ../../stories/assets/SSO-HighLevel.png */
+
+/*! ../../stories/assets/SSO-UserFlow.png */
+
+/*! ./SingleSignOn.stories */
+
+/*! ./cjs/react-jsx-runtime.production.min.js */
+
+/*! ./node_modules/@storybook/addon-essentials/node_modules/@storybook/addon-docs/dist/shims/mdx-react-shim */
+
+/*! @storybook/blocks */
+
+/*! react */
+
+/*! react/jsx-runtime */
+
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+
+/*!*********************************************!*\
+  !*** ./src/stories/assets/SSO-UserFlow.png ***!
+  \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/stories/assets/SSO-HighLevel.png ***!
+  \**********************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/@mdx-js/react/lib/index.js ***!
+  \*************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/examples/SingleSignOn/SingleSignOn.mdx ***!
+  \****************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.production.min.js ***!
+  \********************************************************************/
+
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
