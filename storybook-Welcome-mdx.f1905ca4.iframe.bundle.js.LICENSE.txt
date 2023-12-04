@@ -1,0 +1,47 @@
+/*! ./assets/formio custom component.png */
+
+/*! ./chunk-HLWAVYOI.mjs */
+
+/*! ./node_modules/@storybook/addon-essentials/node_modules/@storybook/addon-docs/dist/shims/mdx-react-shim */
+
+/*! @storybook/addon-docs */
+
+/*! @storybook/blocks */
+
+/*! @storybook/react-dom-shim */
+
+/*! react */
+
+/*! react-dom */
+
+/*! react-dom/client */
+
+/*! react/jsx-runtime */
+
+/*!*********************************!*\
+  !*** ./src/stories/Welcome.mdx ***!
+  \*********************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/memoizerific/ sync ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+
+/*!********************************************************!*\
+  !*** ./src/stories/assets/formio custom component.png ***!
+  \********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/@storybook/addon-docs/dist/index.mjs ***!
+  \***********************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/@storybook/react-dom-shim/dist/react-18.mjs ***!
+  \******************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/@storybook/addon-docs/dist/chunk-HLWAVYOI.mjs ***!
+  \********************************************************************/
