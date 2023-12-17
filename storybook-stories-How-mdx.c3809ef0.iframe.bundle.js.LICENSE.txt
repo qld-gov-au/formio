@@ -1,0 +1,21 @@
+/*! ./assets/formioSettings.png */
+
+/*! ./node_modules/@storybook/addon-essentials/node_modules/@storybook/addon-docs/dist/shims/mdx-react-shim */
+
+/*! @storybook/addon-docs */
+
+/*! react */
+
+/*! react/jsx-runtime */
+
+/*!*****************************!*\
+  !*** ./src/stories/How.mdx ***!
+  \*****************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/memoizerific/ sync ***!
+  \*****************************************/
+
+/*!***********************************************!*\
+  !*** ./src/stories/assets/formioSettings.png ***!
+  \***********************************************/
