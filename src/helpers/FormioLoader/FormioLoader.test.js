@@ -108,6 +108,7 @@ test("FormioLoader with custom controller hook", async () => {
   const checkbox = div.querySelector("input[ref='modeSwitcher']");
   expect(checkbox).not.toBeChecked();
   await userEvent.click(checkbox);
+  expect(checkbox).toBeChecked();
   await testWait();
   expect(data).toEqual({
     addressData: {
@@ -116,9 +117,9 @@ test("FormioLoader with custom controller hook", async () => {
       address3: "",
       autocompleteAddress: "",
       city: "",
-      mode: "",
+      mode: "manual",
       postcode: "",
-      selectedAddress: "",
+      selectedAddress: "QLD",
       state: "QLD",
     },
     plsplusaddress: {
