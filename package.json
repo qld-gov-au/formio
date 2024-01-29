@@ -38,7 +38,7 @@
     "@formio/premium": "1.19.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.7",
+    "@babel/core": "^7.23.9",
     "@babel/eslint-parser": "^7.23.9",
     "@storybook/addon-actions": "^7.6.7",
     "@storybook/addon-docs": "^7.6.5",
