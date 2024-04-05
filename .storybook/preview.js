@@ -14,25 +14,29 @@ Formio.use({
   options: storybookOptions,
 });
 
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+/** @type { import('@storybook/html').Preview } */
+const preview = {
+  parameters: {
+    // actions: { argTypesRegex: "^on[A-Z].*" }, https://storybook.js.org/docs/essentials/actions#via-storybooktest-fn-spy-function
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
     },
-  },
-  docs: {
-    source: {
-      type: "code",
-      language: "js",
+    docs: {
+      source: {
+        type: "code",
+        language: "js",
+      },
     },
-  },
-  themes: {
-    default: "SWE",
-    list: [
-      { name: "SWE", class: "theme-swe", color: "#00aced" },
-      { name: "Design system", class: "theme-ds", color: "#3b5998" },
-    ],
+    themes: {
+      default: "SWE",
+      list: [
+        { name: "SWE", class: "theme-swe", color: "#00aced" },
+        { name: "Design system", class: "theme-ds", color: "#3b5998" },
+      ],
+    },
   },
 };
+export default preview;
