@@ -1,12 +1,26 @@
-{
+module.exports = {
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "builder/",
+    "!.storybook/",
+    "storybook-static/",
+    "binary-repo/",
+    "lib/"
+
+  ],
   "parser": "@babel/eslint-parser",
   "extends": [
     "airbnb",
     "plugin:json/recommended",
     "plugin:jest/recommended",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:mdx/recommended"
   ],
+  "settings": {
+    "mdx/code-blocks": true,
+  },
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": [
