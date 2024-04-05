@@ -145,7 +145,6 @@ div.data-grid table.formio-grid tr {
 }
 div.data-grid table.formio-grid tr.selected-row {
   background-color: #ececec;
-  border-bottom: 0.5px solid #c7c7c7;
 }
 div.data-grid table.formio-grid tr.selected-row th.formio-actions-col {
   background-color: #ececec !important;

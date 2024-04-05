@@ -4,46 +4,158 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 4.17.2
+## 4.19.1
 ### Changed
  - Official Release
 
-## 4.17.2-rc.1
+## 4.19.1-rc.4
+
+## 4.19.1-rc.3
 ### Changed
- - FIO-4816: fixed email submission: data display issues
- - FIO-6578: Fixes an issue with losing focus on Year field when Day component has advanced logic
- - FIO 7246: DOMPurify when PDF option is set
+ - FIO-8111 fixed saveDraft Trigger for nested forms
+ - Revert FIO-7445: fixed an issue where the interpolated data does not show up…
+
+## 4.19.1-rc.2
+### Changed
+ - FIO-7445: fixed an issue where the interpolated data does not show up…
+
+## 4.19.1-rc.1
+### Changed
+ - FIO-7632: Fixes an issue where HTML tags are added to the HTML5 Select metadata
+ - FIO-7899: fixed an issue where saveDraft option does not work and added errors handling for the save draft and restore draft functionality
+ - FIO-7956: fixed an issue where simple condition based on stringified checkbox value is not executed correctly
+
+## 4.19.0
+### Changed
+ - Official Release
+
+## 4.19.0-rc.7
+### Changed
+ - Revert - Revert "FIO-7466: Fixed tooltips issue"
+ - Revert "FIO-7544: Fixes an issue where scripts inside HTML component will be executed during interpolation"
+ 
+## 4.19.0-rc.6
+### Changed
+ - Revert "FIO-7466: Fixed tooltips issue"
    
-## 4.17.1
+## 4.19.0-rc.5
+### Changed
+ - FIO-7823: fixed an issue where the submission of dataGrid with nested form returns server error
+ - Revert "FIO-5954 Backport memory leaks from m branch"
+
+## 4.19.0-rc.4
+### Changed
+ - FIO-7809 fixed pdf submission download error
+   
+## 4.19.0-rc.3
+### Changed
+ - Revert "FIO-7466: Make tooltips show non-rendered HTML"
+ - FIO-7800: fixed an issue where server returns an error when submitting form with editgrid
+
+## 4.19.0-rc.2
+### Changed
+ - FIO-7786: Fixing Datagrid issue in Settings JSON
+ - FIO-7224: Apply bootstrap templates
+ - Fix tests
+ - FIO-7724 fixed metadata for multiple select
+
+## 4.19.0-rc.1
+### Changed
+ - Updated @formio/choices.js@10.2.1
+ - FIO-7224 Fixed issues with layout components when Condensed mode is enabled
+ - FIO-7466: Make tooltips show non-rendered HTML
+ - FIO-7548: fixed an issue where select dropdown does not overlap the datagrid and causes vertical scroll
+ - FIO-7717: Adding license to the Formio types.
+ - FIO-7642: fixed issues where calculated value with allow override is not recalculated after form/component/row values are reset
+ - FIO-7591: Error messages wrapping on letter instead of on word
+ - FIO-7631: Fixes an issue where timezone is added to the date in PDF download for TextField with CalendarWidget
+ - FIO-7544: Fixes an issue where scripts inside HTML component will be executed during interpolation
+- FIO-4871: Fixed calculated value for data grid component
+- FIO-5954: Backport memory leak fixes from 'm' release to 4.x
+
+## 4.18.1-rc.4
+### Changed
+ - FIO-7637: add catch block to subform submission loading
+
+## 4.18.1-rc.3
+### Changed
+ - Updated @formio/choices.js@10.2.1-rc.1
+
+## 4.18.1-rc.2
+### Changed
+ - FIO-7710: fixed the radio component check that causes an error
+ - FIO-7709: fixed failing tests
+   
+## 4.18.1-rc.1
+### Changed
+ - FIO-7577: add skipInEmail comp property to recaptcha
+ - FIO-4905: File upload (multi) - aborting upload always cancels the last one in the list
+ - FIO-4235 Fixed confirmation dialog popping up when the data is empty in EditGrid
+ - Fix edit grid events in read only mode
+ - FIO-7602 fixed submission data for 0s values
+ - FIO-7514: fixed an isse where new simple conditionals do not work when condition is based on the value of resource select with object value
+ 
+## 4.18.0
 ### Changed
  - Official Release
 
-## 4.17.1-rc.3
+## 4.18.0-rc.11
 ### Changed
+ - FIO-7110: when 'use original revision' is enabled for nested form, submission still displays in current form revision   pd fs
+
+## 4.18.0-rc.10
+ - FIO-7588: fixed string value for Survey and Select 
+ 
+## 4.18.0-rc.9
+### Changed
+ - FIO-7309: Fixed an issue where min/maxDate settings for Day component are getting evaluated in Form Builder
+ - FIO-7406 Fixed plain Textarea interpolating data in readonly mode
+ - FIO-7074/FIO-7379: Fixes some issues caused by Wizzard was not always…
+ - FIO-7481: handle 504 response from service worker in offline mode for file request
+
+## 4.18.0-rc.8
+### Changed
+ - FIO-7550: Fixing choices css issue
+ - FIO-7547: Container hidden with conditional logic still appears in submission
+   
+## 4.18.0-rc.7
+### Changed
+ - FIO-7429: Remove columns component settings(pull, offset, push)
+ - FIO-7530: added ability to pass onSetItems component setting as a string (needed for builder mode)
+ - FIO-7528: Revert FIO-4405: fixed an issue where validation error displays with empty value even if it is not required (#4746)
+ - FIO-7304: Fixed issue when Select with logic was causing unexpected tab switches of the Tabs component
+ - FIO-7466: Fixed tooltips issue
+
+## 4.18.0-rc.6
+### Changed
+ - Revert "Fio 7074 setting submission on wizard does not update data"
+
+## 4.18.0-rc.5
+### Changed
+- FIO-7239: added support for AWS S3 multipart uploads
+- FIO-7074: setting submission on wizard does not update data
+
+## 4.18.0-rc.4
+### Changed
+ - FIO-6859: update-s3-to-accept-headers-from-signer-presign
+
+## 4.18.0-rc.3
+### Changed
+ - FIO-7197 Increased builder dropzone in DataGrid
+ - Revert "FIO-7074: Fixes an issue where setting submission to the Wizard from the form controller will not set values for all the pages"
  - Avoid passing 'undefined' to function getFocusableElements in DataGrid#focusOnNewRowElement(row) (#5345)
 
-## 4.17.1-rc.2
-### Changed
- - Revert "FIO-7074: Fixes an issue where setting submission to the Wizard from the form controller will not set values for all the pages"
- - FIO-7197 Increased builder dropzone in DataGrid
-   
-## 4.17.1-rc.1
+## 4.18.0-rc.2
 ### Changed
  - Updated @formio/bootstrap3@2.12.4-rc.1
  - FIO-7074: Fixes an issue where setting submission to the Wizard from the form controller will not set values for all the pages
  - FIO-7173 Fixed issue when initial focus gets triggered in Formbuilder…
 
-## 4.17.0
+## 4.18.0-rc.1
 ### Changed
- - Official Release
-
-## 4.17.0-rc.7
-### Changed
- - FIO-7310: Revert formio.js/pull/5187
-
-## 4.17.0-rc.5
-### Changed
- - FIO-3820: Ability to delete files inside the Storage Services
+ - Increment minor version.
+ - FIO-6493: changes needed for reporting-ui (#5081)
+ - Revert "FIO-3820: Ability to delete files inside the Storage Services"
 
 ## 4.17.0-rc.4
 ### Changed
