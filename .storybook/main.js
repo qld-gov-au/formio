@@ -1,7 +1,8 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
-module.exports = {
+/** @type { import('@storybook/html-webpack5').StorybookConfig } */
+const config = {
   stories: [
     "../src/stories/Welcome.mdx",
     "../src/**/*.mdx",
@@ -10,7 +11,9 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-themes",
+    "@storybook/addon-themes",
+    "@storybook/addon-mdx-gfm",
+    "@storybook/addon-webpack5-compiler-babel",
   ],
   framework: {
     name: "@storybook/html-webpack5",
@@ -21,10 +24,10 @@ module.exports = {
     "../lib",
     { from: "../src/stories/assets", to: "./assets" },
   ],
-  webpackFinal: async (config) => {
+  webpackFinal: async (configuration) => {
     // placeholder for custom webpack settings for storybook
     // config.externals = { ...config.externals, formiojs: "formiojs" };
-    config.module.rules.push({
+    configuration.module.rules.push({
       test: /\.ejs$/i,
       include: [path.resolve(__dirname, "../src")],
       use: [
@@ -33,22 +36,22 @@ module.exports = {
         },
       ],
     });
-    config.module.rules.push({
+    configuration.module.rules.push({
       test: /\.(s(a|c)ss)$/,
       use: ["style-loader", "css-loader", "sass-loader"],
     });
-    config.module.rules.find(
+    configuration.module.rules.find(
       (item) => item.type === "asset/resource",
     ).generator.filename = "static/media/storybook-[name].[contenthash:8][ext]";
-    config.module.rules.find(
+    configuration.module.rules.find(
       (item) => item.type === "asset",
     ).generator.filename = "static/media/storybook-[name].[contenthash:8][ext]";
-    config.mode = "development";
-    config.output = {
-      ...config.output,
+    configuration.mode = "development";
+    configuration.output = {
+      ...configuration.output,
       filename: "storybook-[name].[contenthash:8].iframe.bundle.js",
     };
-    config.plugins.push(
+    configuration.plugins.push(
       new CopyPlugin({
         patterns: [
           {
@@ -57,9 +60,10 @@ module.exports = {
         ],
       }),
     );
-    return config;
+    return configuration;
   },
   docs: {
     autodocs: true,
   },
 };
+export default config;
