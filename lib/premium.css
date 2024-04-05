@@ -242,3 +242,13 @@
   padding-top: 0.5em;
   min-height: 3em;
   margin-bottom: 15px; }
+
+.formio-builder-datatable-component-key input {
+  min-width: 5rem; }
+
+.builder-component .formio-builder-datatable-components {
+  padding: 10px;
+  border: dotted 2px #e8e8e8;
+  min-height: 3em;
+  text-align: center;
+  color: #aaa; }

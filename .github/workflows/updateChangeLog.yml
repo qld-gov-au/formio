@@ -10,7 +10,7 @@ jobs:
   updateChangelog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Update Changelog
@@ -18,8 +18,8 @@ jobs:
         run: |
           mkdir tmp
           pushd tmp
-          curl -o git-chglog.tar.gz -L https://github.com/git-chglog/git-chglog/releases/download/v0.15.1/git-chglog_0.15.1_linux_amd64.tar.gz
-          #curl -o git-chglog.tar.gz -L https://github.com/git-chglog/git-chglog/releases/download/v0.15.1/git-chglog_0.15.1_darwin_amd64.tar.gz
+          curl -o git-chglog.tar.gz -L https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_linux_amd64.tar.gz
+          #curl -o git-chglog.tar.gz -L https://github.com/git-chglog/git-chglog/releases/download/v0.15.4/git-chglog_0.15.4_darwin_amd64.tar.gz
           tar -zxvf git-chglog.tar.gz
           cp ./git-chglog ../git-chglog
           popd

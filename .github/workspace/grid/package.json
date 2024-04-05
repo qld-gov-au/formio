@@ -31,6 +31,6 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@formio/grid": "1.3.0"
+    "@formio/grid": "1.4.0"
   }
 }
