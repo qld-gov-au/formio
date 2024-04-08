@@ -47,7 +47,7 @@
     "@storybook/addon-mdx-gfm": "^8.0.5",
     "@storybook/addon-themes": "^8.0.6",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
-    "@storybook/blocks": "^8.0.5",
+    "@storybook/blocks": "^8.0.6",
     "@storybook/html": "^8.0.6",
     "@storybook/html-webpack5": "^8.0.5",
     "@testing-library/dom": "^9.3.4",
