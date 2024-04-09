@@ -42,7 +42,7 @@
     "@babel/eslint-parser": "^7.24.1",
     "@storybook/addon-actions": "^8.0.5",
     "@storybook/addon-docs": "^8.0.5",
-    "@storybook/addon-essentials": "^8.0.5",
+    "@storybook/addon-essentials": "^8.0.6",
     "@storybook/addon-links": "^8.0.5",
     "@storybook/addon-mdx-gfm": "^8.0.5",
     "@storybook/addon-themes": "^8.0.6",
