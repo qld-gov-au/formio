@@ -63,7 +63,7 @@ jobs:
          outdated="${outdated//'%'/'%25'}"
          outdated="${outdated//$'\n'/'%0A'}"
          outdated="${outdated//$'\r'/'%0D'}"
-         echo '::set-output name=OUTDATED_LIST::$outdated'
+         echo 'OUTDATED_LIST=$outdated' >> $GITHUB_OUTPUT
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
         id: what-changed-data

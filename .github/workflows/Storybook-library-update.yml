@@ -56,8 +56,8 @@ jobs:
          export outdated=`npm outdated`
          echo $outdated  >> $GITHUB_STEP_SUMMARY
          export version=`echo $outdated|grep ^storybook|awk '{ print $4 }'`          
-         echo '::set-output name=OUTDATED_LIST::$outdated'
-         echo '::set-output name=OUTDATED_VERSION::$version'
+         echo 'OUTDATED_LIST=$outdated' >> $GITHUB_OUTPUT
+         echo 'OUTDATED_VERSION=$version' >> $GITHUB_OUTPUT
         id: what-changed-data
 
       - name: Update package.json
