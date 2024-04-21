@@ -62,7 +62,7 @@ jobs:
 
       - name: Update package.json
         run: | # Update storybook
-          npx storybook@latest upgrade  -y -c .storybook
+          npx storybook@latest upgrade  -y 
       - name: Install latest
         run: | # Install packages https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
           npm install --no-audit --ignore-scripts
