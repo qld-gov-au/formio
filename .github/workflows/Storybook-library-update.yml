@@ -70,25 +70,24 @@ jobs:
 
       - name: What changed
         run: |
-         export outdated="`npm outdated`"
+         export outdated="`npm outdated --parsable `"
           
-         echo '###outdated' >> $GITHUB_STEP_SUMMARY
+         echo '### Outdated' >> $GITHUB_STEP_SUMMARY
          echo "$outdated" >> $GITHUB_STEP_SUMMARY
          echo '' >> $GITHUB_STEP_SUMMARY
          
-         export version="`echo $outdated|grep ^storybook|awk '{ print $4 }'`"    
-         
+        
          echo 'OUTDATED_LIST<<EOF' >> $GITHUB_OUTPUT
          echo "$outdated" >> $GITHUB_OUTPUT
          echo 'EOF' >> $GITHUB_OUTPUT
         
          echo "OUTDATED_VERSION<<EOF" >> $GITHUB_OUTPUT
-         echo "$version" >> $GITHUB_OUTPUT
+         npm outdated --parsable|grep ^storybook|awk '{ print $4 }' >> $GITHUB_OUTPUT
          echo 'EOF' >> $GITHUB_OUTPUT
-         echo "OUTDATED_VERSION=$version"
+         echo $outdated|grep ^storybook|awk '{ print $4 }'
         id: what-changed-data
 
-      - name: Update package.json
+      - name: Update package.json ${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}
         run: | # Update storybook
           npx storybook@latest upgrade  -y 
       - name: Install latest
@@ -106,6 +105,6 @@ jobs:
         with:
           commit-message: "update storybook js libraries \r\n ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
           title: "update storybook ${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}"
-          body: "update storybook js premium libraries ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
-          branch: update-storybook-libraries
-          base: main
+          body: "update storybook \r\n ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
+          branch: "update-storybook-libraries-${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}"
+          base: develop
