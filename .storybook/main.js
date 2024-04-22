@@ -14,6 +14,7 @@ const config = {
     "@storybook/addon-themes",
     "@storybook/addon-mdx-gfm",
     "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook"
   ],
   framework: {
     name: "@storybook/html-webpack5",
