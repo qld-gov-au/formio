@@ -7,6 +7,13 @@ on:
     inputs:
       description:
         description: 'Manual run of update Libs'  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write #Work with the contents of the repository. For example, contents: read permits an action to list the commits, and contents: write allows the action to create a release.
+  #pages: write #Work with GitHub Pages. For example, pages: write permits an action to request a GitHub Pages build.
+  actions: read #Work with GitHub Actions. For example, actions: write permits an action to cancel a workflow run.
+  id-token: write #Fetch an OpenID Connect (OIDC) token. This requires id-token: write.
+  pull-requests: write #Work with pull requests. For example, pull-requests: write permits an action to add a label to a pull request.
 
 jobs:
   updateLibs:
@@ -47,22 +54,42 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Install
+        run: | # Install packages
+          npm install --prefer-offline --no-audit --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NEXUSREADONLY2NPMTOKEN }}
+
+      # `npm rebuild` will run all those post-install scripts for us.
+      - name: rebuild and prepare
+        run: npm rebuild && npm run prepare --if-present
+
       - name: List versions
         run: | # List versions
           npm view storybook versions
 
       - name: What changed
         run: |
-         export outdated=`npm outdated`
-         echo $outdated  >> $GITHUB_STEP_SUMMARY
-         export version=`echo $outdated|grep ^storybook|awk '{ print $4 }'`          
-         echo '::set-output name=OUTDATED_LIST::$outdated'
-         echo '::set-output name=OUTDATED_VERSION::$version'
+         export outdated="`npm outdated --parsable `"
+          
+         echo '### Outdated' >> $GITHUB_STEP_SUMMARY
+         echo "$outdated" >> $GITHUB_STEP_SUMMARY
+         echo '' >> $GITHUB_STEP_SUMMARY
+         
+        
+         echo 'OUTDATED_LIST<<EOF' >> $GITHUB_OUTPUT
+         echo "$outdated" >> $GITHUB_OUTPUT
+         echo 'EOF' >> $GITHUB_OUTPUT
+        
+         echo "OUTDATED_VERSION<<EOF" >> $GITHUB_OUTPUT
+         npm outdated --parsable|grep ^storybook|awk '{ print $4 }' >> $GITHUB_OUTPUT
+         echo 'EOF' >> $GITHUB_OUTPUT
+         echo $outdated|grep ^storybook|awk '{ print $4 }'
         id: what-changed-data
 
-      - name: Update package.json
+      - name: Update package.json ${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}
         run: | # Update storybook
-          npx storybook@latest upgrade  -y -c .storybook
+          npx storybook@latest upgrade  -y 
       - name: Install latest
         run: | # Install packages https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
           npm install --no-audit --ignore-scripts
@@ -77,7 +104,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "update storybook js libraries \r\n ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
-          title: update storybook ${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}"
-          body: "update storybook js premium libraries ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
-          branch: update-storybook-libraries
-          base: main
+          title: "update storybook ${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}"
+          body: "update storybook \r\n ${{ steps.what-changed-data.outputs.OUTDATED_LIST }}"
+          branch: "update-storybook-libraries-${{ steps.what-changed-data.outputs.OUTDATED_VERSION }}"
+          base: develop
