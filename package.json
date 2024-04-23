@@ -50,7 +50,7 @@
     "@storybook/addon-webpack5-compiler-babel": "3.0.3",
     "@storybook/blocks": "^8.0.8",
     "@storybook/html": "^8.0.8",
-    "@storybook/html-webpack5": "^8.0.8",
+    "@storybook/html-webpack5": "^8.0.9",
     "@testing-library/dom": "^10.0.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/user-event": "^13.5.0",
