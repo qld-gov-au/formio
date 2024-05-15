@@ -88,7 +88,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "core-js": "^3.37.0",
+    "core-js": "^3.37.1",
     "native-promise-only": "^0.8.1",
     "regenerator-runtime": "^0.14.1"
   }
