@@ -63,8 +63,6 @@ const config = {
     );
     return configuration;
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
 };
 export default config;
