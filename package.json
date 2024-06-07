@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
-    "@babel/eslint-parser": "^7.24.6",
+    "@babel/eslint-parser": "^7.24.7",
     "@chromatic-com/storybook": "^1.5.0",
     "@storybook/addon-actions": "^8.1.5",
     "@storybook/addon-docs": "^8.1.5",
