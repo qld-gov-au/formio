@@ -30,7 +30,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "formiojs": "4.19.1",
+    "formiojs": "4.19.4",
     "moment": "^2.29.4"
   }
 }
