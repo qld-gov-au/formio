@@ -2,6 +2,71 @@
 ## [Unreleased]
 
 
+<a name="v2.2.1"></a>
+## [v2.2.1] - 2024-06-19
+### Pull Requests
+- Merge pull request [#652](https://github.com/qld-gov-au/formio/issues/652) from qld-gov-au/patchFormio
+- Merge pull request [#650](https://github.com/qld-gov-au/formio/issues/650) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.6
+- Merge pull request [#644](https://github.com/qld-gov-au/formio/issues/644) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-722719532f
+- Merge pull request [#641](https://github.com/qld-gov-au/formio/issues/641) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-2af0fba34c
+- Merge pull request [#642](https://github.com/qld-gov-au/formio/issues/642) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.5
+- Merge pull request [#637](https://github.com/qld-gov-au/formio/issues/637) from qld-gov-au/dependabot/npm_and_yarn/develop/eslint-plugin-jest-28.6.0
+- Merge pull request [#638](https://github.com/qld-gov-au/formio/issues/638) from qld-gov-au/dependabot/npm_and_yarn/develop/prettier-3.3.2
+- Merge pull request [#639](https://github.com/qld-gov-au/formio/issues/639) from qld-gov-au/dependabot/npm_and_yarn/develop/webpack-5.92.0
+- Merge pull request [#640](https://github.com/qld-gov-au/formio/issues/640) from qld-gov-au/dependabot/npm_and_yarn/develop/testing-library/jest-dom-6.4.6
+- Merge pull request [#632](https://github.com/qld-gov-au/formio/issues/632) from qld-gov-au/dependabot/npm_and_yarn/develop/prettier-3.3.1
+- Merge pull request [#633](https://github.com/qld-gov-au/formio/issues/633) from qld-gov-au/dependabot/npm_and_yarn/develop/babel/core-7.24.7
+- Merge pull request [#635](https://github.com/qld-gov-au/formio/issues/635) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-a26cfedeec
+- Merge pull request [#631](https://github.com/qld-gov-au/formio/issues/631) from qld-gov-au/dependabot/npm_and_yarn/develop/babel/eslint-parser-7.24.7
+- Merge pull request [#624](https://github.com/qld-gov-au/formio/issues/624) from qld-gov-au/dependabot/npm_and_yarn/develop/chromatic-com/storybook-1.5.0
+- Merge pull request [#625](https://github.com/qld-gov-au/formio/issues/625) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-5369588b01
+- Merge pull request [#628](https://github.com/qld-gov-au/formio/issues/628) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.4
+- Merge pull request [#630](https://github.com/qld-gov-au/formio/issues/630) from qld-gov-au/dependabot/npm_and_yarn/develop/prettier-3.3.0
+- Merge pull request [#620](https://github.com/qld-gov-au/formio/issues/620) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-4f101edcf1
+- Merge pull request [#619](https://github.com/qld-gov-au/formio/issues/619) from qld-gov-au/dependabot/npm_and_yarn/develop/eslint-webpack-plugin-4.2.0
+- Merge pull request [#617](https://github.com/qld-gov-au/formio/issues/617) from qld-gov-au/dependabot/npm_and_yarn/develop/babel/eslint-parser-7.24.6
+- Merge pull request [#615](https://github.com/qld-gov-au/formio/issues/615) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-e58ba6e062
+- Merge pull request [#618](https://github.com/qld-gov-au/formio/issues/618) from qld-gov-au/dependabot/npm_and_yarn/develop/babel/core-7.24.6
+- Merge pull request [#611](https://github.com/qld-gov-au/formio/issues/611) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.2
+- Merge pull request [#609](https://github.com/qld-gov-au/formio/issues/609) from qld-gov-au/dependabot/npm_and_yarn/develop/chromatic-com/storybook-1.4.0
+- Merge pull request [#597](https://github.com/qld-gov-au/formio/issues/597) from qld-gov-au/dependabot/npm_and_yarn/develop/eslint-plugin-jest-28.5.0
+- Merge pull request [#598](https://github.com/qld-gov-au/formio/issues/598) from qld-gov-au/dependabot/npm_and_yarn/develop/testing-library/jest-dom-6.4.5
+- Merge pull request [#605](https://github.com/qld-gov-au/formio/issues/605) from qld-gov-au/dependabot/npm_and_yarn/develop/formiojs-4.20.0
+- Merge pull request [#606](https://github.com/qld-gov-au/formio/issues/606) from qld-gov-au/dependabot/npm_and_yarn/develop/core-js-3.37.1
+- Merge pull request [#604](https://github.com/qld-gov-au/formio/issues/604) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.1
+- Merge pull request [#607](https://github.com/qld-gov-au/formio/issues/607) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-ef8a0ed662
+- Merge pull request [#593](https://github.com/qld-gov-au/formio/issues/593) from qld-gov-au/dependabot/npm_and_yarn/develop/babel/eslint-parser-7.24.5
+- Merge pull request [#599](https://github.com/qld-gov-au/formio/issues/599) from qld-gov-au/update-storybook-libraries-8.0.10
+- Merge pull request [#602](https://github.com/qld-gov-au/formio/issues/602) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.77.0
+- Merge pull request [#587](https://github.com/qld-gov-au/formio/issues/587) from qld-gov-au/dependabot/npm_and_yarn/develop/mini-css-extract-plugin-2.9.0
+- Merge pull request [#590](https://github.com/qld-gov-au/formio/issues/590) from qld-gov-au/dependabot/npm_and_yarn/develop/autocompleter-9.2.1
+- Merge pull request [#595](https://github.com/qld-gov-au/formio/issues/595) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-1.76.0
+- Merge pull request [#591](https://github.com/qld-gov-au/formio/issues/591) from qld-gov-au/dependabot/npm_and_yarn/develop/eslint-plugin-jest-28.3.0
+- Merge pull request [#592](https://github.com/qld-gov-au/formio/issues/592) from qld-gov-au/dependabot/npm_and_yarn/develop/testing-library/dom-10.1.0
+- Merge pull request [#589](https://github.com/qld-gov-au/formio/issues/589) from qld-gov-au/dependabot/npm_and_yarn/develop/core-js-3.37.0
+- Merge pull request [#576](https://github.com/qld-gov-au/formio/issues/576) from qld-gov-au/develop
+- Merge pull request [#586](https://github.com/qld-gov-au/formio/issues/586) from qld-gov-au/update-storybook-libraries-8.0.9
+- Merge pull request [#577](https://github.com/qld-gov-au/formio/issues/577) from qld-gov-au/update-storybook-libraries-8.0.8
+- Merge pull request [#575](https://github.com/qld-gov-au/formio/issues/575) from duttonw/main
+- Merge pull request [#573](https://github.com/qld-gov-au/formio/issues/573) from qld-gov-au/dependabot/npm_and_yarn/develop/sass-loader-14.2.1
+- Merge pull request [#572](https://github.com/qld-gov-au/formio/issues/572) from qld-gov-au/develop
+- Merge pull request [#562](https://github.com/qld-gov-au/formio/issues/562) from qld-gov-au/storybookWorkflowAutoUpdater
+- Merge pull request [#563](https://github.com/qld-gov-au/formio/issues/563) from qld-gov-au/dependabot/npm_and_yarn/develop/css-loader-7.1.1
+- Merge pull request [#555](https://github.com/qld-gov-au/formio/issues/555) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/html-webpack5-8.0.6
+- Merge pull request [#557](https://github.com/qld-gov-au/formio/issues/557) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/addon-links-8.0.6
+- Merge pull request [#558](https://github.com/qld-gov-au/formio/issues/558) from qld-gov-au/dependabot/npm_and_yarn/develop/testing-library/dom-10.0.0
+- Merge pull request [#559](https://github.com/qld-gov-au/formio/issues/559) from qld-gov-au/dependabot/npm_and_yarn/develop/eslint-plugin-jest-28.2.0
+- Merge pull request [#561](https://github.com/qld-gov-au/formio/issues/561) from qld-gov-au/dependabot/npm_and_yarn/develop/css-loader-7.1.0
+- Merge pull request [#554](https://github.com/qld-gov-au/formio/issues/554) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook-8.0.6
+- Merge pull request [#556](https://github.com/qld-gov-au/formio/issues/556) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/addon-mdx-gfm-8.0.6
+- Merge pull request [#551](https://github.com/qld-gov-au/formio/issues/551) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/addon-essentials-8.0.6
+- Merge pull request [#553](https://github.com/qld-gov-au/formio/issues/553) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/addon-themes-8.0.6
+- Merge pull request [#549](https://github.com/qld-gov-au/formio/issues/549) from qld-gov-au/dependabot/npm_and_yarn/develop/storybook/html-8.0.6
+- Merge pull request [#547](https://github.com/qld-gov-au/formio/issues/547) from qld-gov-au/update-changelog
+- Merge pull request [#541](https://github.com/qld-gov-au/formio/issues/541) from qld-gov-au/develop
+- Merge pull request [#277](https://github.com/qld-gov-au/formio/issues/277) from qld-gov-au/update-changelog
+
+
 <a name="v2.2.0"></a>
 ## [v2.2.0] - 2024-04-05
 ### Pull Requests
@@ -540,7 +605,8 @@
 - Merge pull request [#1](https://github.com/qld-gov-au/formio/issues/1) from qld-gov-au/plsplus-address
 
 
-[Unreleased]: https://github.com/qld-gov-au/formio/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/qld-gov-au/formio/compare/v2.2.1...HEAD
+[v2.2.1]: https://github.com/qld-gov-au/formio/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/qld-gov-au/formio/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/qld-gov-au/formio/compare/v2.0.3...v2.1.0
 [v2.0.3]: https://github.com/qld-gov-au/formio/compare/v2.0.2...v2.0.3
