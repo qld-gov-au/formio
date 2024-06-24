@@ -27,7 +27,7 @@
     "all": "npm install && npm run lint && npm run build && npm run test && npm run build-storybook",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint --fix --ext .js,.md,.mdx,.json .",
+    "lint": "eslint --fix .",
     "build": "webpack",
     "test": "jest",
     "validate": "npm run lint && npm run test",
