@@ -52,7 +52,7 @@
     "@storybook/html": "^8.2.4",
     "@storybook/html-webpack5": "^8.2.4",
     "@testing-library/dom": "^10.3.2",
-    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^13.5.0",
     "autocompleter": "^9.3.0",
     "babel-jest": "^29.7.0",
