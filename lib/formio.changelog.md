@@ -4,63 +4,81 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 4.19.4
+## 4.21.2
 ### Changed
  - Official Release
 
-## 4.19.4-rc.3
+## 4.21.2-rc.1
 ### Changed
- - FIO-8493: Added null check for this.root in builder mode
+ - FIO-8570: fixed decimal symbol property on number component
+ - FIO-8570: fixed thousandSeparator problem and decimal symbol problem
 
-## 4.19.4-rc.2
-### Changed
- - FIO-8402: fixed an issue where Validation Triggering on initial Form load
-
-## 4.19.4-rc.1
-### Changed
- - FIO-7395: Fixed the issue with loading nested form
- - FIO-8433 fixed restore draft for nested forms
- - FIO-8281: fixed selectData property for multiple select component
-
-### Changed
- - FIO-8199: Fixes an issue where Checkbox does not have id and for attributes
-   
-## 4.19.3
+## 4.21.1
 ### Changed
  - Official Release
 
-## 4.19.3-rc.3
+## 4.21.1-rc.1
 ### Changed
- - FIO-8360 fixed submission state for nested form
+ - FIO-8027 added new Captcha provider
 
-## 4.19.3-rc.2
+## 4.21.0
 ### Changed
- - Resolved merge conflict with saveDraft
-   
-## 4.19.3-rc.1
-### Changed
+ - Official Release
+
+## 4.21.0-rc.2
+ - FIO-8074: Added Storage Type to Radio Components
+ - FIO-7595: fixed incorrect value for conditionally hidden Checkbox
+ - FIO-8240: fixed skipDraftRestore effect for the nested Forms
+ - FIO-8342 fixed triggering saveDraft after submitting the form 
  - FIO-8330 fixed saving draft if saveDraft and skipDraftRestore are true
- - FIO-8342 fixed triggering saveDraft after submitting the form
+ - FIO-8360 fixed submission state for nested form
  - FIO-8111 fixed saveDraft Trigger for nested forms
- - FIO-8074 Added Storage Type to Radio Components
- - FIO-7595 fixed incorrect value for conditionally hidden Checkbox
- - FIO-8240 fixed skipDraftRestore effect for the nested Forms
 
-## 4.19.2
+## 4.21.0-rc.1
 ### Changed
- - Official Release
-
-## 4.19.2-rc.5
+ - FIO-3957: Fixes an issue where Data Map inside conditionally shown Panel does not show its values in the view mode
+ - FIO-6408: Fixed Default value field getting the same label settings as the preview component
+ - FIO-3442: Added tests
+ - FIO-5918: fixed display of note on child form submission revision
+ - FIO-7184: Fixed showing incorrect value for DateTime and Time components with multiple value enabled inside of the Data Table
+ - Add capability for adding sanitize profiles through sanitizeConfig in options
+ - FIO-7112: fixed issues with calendar widget display for value components in new simple conditionals ui
+ - add conditional to check for new headers object
+ - FIO 7603: Edit Grid With Empty Rows Not Submitting Form
+ - FIO-7804: Added PKCE method for OIDC
+ - FIO-7933: added PDF Document Designer
+ - FIO-7334: Fixes an issue where Radio values do not appear for Action Conditions settings
+ - FIO-6970: Fixes an issue where SelectBoxes Only Available Items validation always fails
+ - FIO-7206: Fixes an issue where removed components keys stay in the DataGrid defaultValue property
+ - FIO-4833: Table, Well, Columns & Tabs: Label does not display by default. The 'Hide Label' setting does nothing
+ - FIO-7207: Changed tooltip and removed 'Hide label' option from the list of layout components
+ - interpolate redirectURI in button oauth config
+ 
+## 4.20.0-rc.4
 ### Changed
  - FIO-8280: Fixed setting incorrect option label
 
-## 4.19.2-rc.4
+## 4.20.0-rc.3
 ### Changed
  - FIO-7445: fixed an issue with interpolated data in HTML
+ - FIO-8091: Fixed missing metadata for html5 select component with default value
 
+## 4.20.0-rc.2
 ### Changed
- - FIO-8091: added selectData calculation for url/resource select components
- 
+ - FIO-7580 FIO-6475: fixed error events issues and an issue where general server errors quickly disappear from ui
+ - FIO-7774: added validateWhenHidden option
+ - FIO-7807: added sanitizeConfig to global form settings
+ - FIO-7808: fixed an issue where conditional editGrid loses the value after submission
+ - FIO-7808: fixed an issue where conditional components inside conditional components lose their value after submission when they are on the same level with editGrid
+
+## 4.20.0-rc.1
+### Changed
+ - FIO-7764: Fixes a typo in File component settings
+ - FIO-7808: fixed an issue where conditional components inside conditional components lose their value after submission when they are on the same level with editGrid
+ - FIO-4242 updated input mask for TextField
+ - Wizard: Keep current page after language is changed
+ - FIO-7421: Adds ReCaptcha error messages to the translations config
+
 ## 4.19.2-rc.3
 ### Changed
  - FIO-7445: fixed an issue where the interpolated data does not show up on PDF

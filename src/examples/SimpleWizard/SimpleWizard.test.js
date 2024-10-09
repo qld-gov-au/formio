@@ -28,22 +28,36 @@ test("SimpleWizard is functional", async () => {
       changed = true;
       changedData = e.data;
     });
+    
     form.on("submitDone", (e) => {
       submitted = true;
       submittedData = e.data;
     });
+
+    form.on("submitError", (e) => {
+      console.info("Testing form submitError", e);
+    });
   };
+  
   FormioLoader.initFormio();
   jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce(formioRes);
 
   const label1 = await findByText(div, "Text Field1");
   expect(label1).toBeVisible();
 
+  const radio1 = div.querySelector('input[role="radio"]');
+  expect(radio1).toBeVisible();
+  await userEvent.click(radio1);
+
   const next1 = await findByText(div, "Next");
   expect(next1).toBeVisible();
 
   const page2 = await findByText(div, "Page 2");
   expect(page2).toBeVisible();
+
+  /* Page 2 tests */
+  // Wait before clicking "Page 2" panel.
+  await testWait();
   await userEvent.click(page2);
 
   const next2 = await findByText(div, "Next");
@@ -56,22 +70,28 @@ test("SimpleWizard is functional", async () => {
   expect(label2).toBeVisible();
 
   // user enters input
-  await userEvent.type(div.querySelector("input"), "test", {
+  await userEvent.type(div.querySelector("input"), "Testing field 2", {
     delay: 100,
   });
   await testWait();
   expect(changed).toEqual(true);
   expect(changedData).toEqual({
-    textField: "",
-    textField1: "test",
-    textField2: "",
+    radio: "yes",
+    textField1: "",
+    textField2: "Testing field 2",
+    textField3: "",
   });
 
   const page3 = await findByText(div, "Page 3");
   expect(page3).toBeVisible();
+  /* End of: Page 2 tests */
+
+
+  /* Page 3 tests */
+  await testWait();
   await userEvent.click(page3);
 
-  await userEvent.type(div.querySelector("input"), "test", {
+  await userEvent.type(div.querySelector("input"), "Testing field 3", {
     delay: 100,
   });
   await testWait();
@@ -83,12 +103,16 @@ test("SimpleWizard is functional", async () => {
   expect(submit).toBeVisible();
 
   const submissionData = {
-    textField: "",
-    textField1: "test",
-    textField2: "test",
+    radio: "yes",
+    textField1: "",
+    textField2: "Testing field 2",
+    textField3: "Testing field 3",
   };
-
   expect(changedData).toEqual(submissionData);
+  /* End of: Page 3 tests */
+
+
+  /* Form Submit tests  */
 
   // mock submission response
   jest.spyOn(Formio, "makeRequest").mockResolvedValueOnce({
@@ -97,9 +121,13 @@ test("SimpleWizard is functional", async () => {
   });
 
   // user submit the form
+  await testWait();
   await userEvent.click(submit);
   await testWait();
 
   expect(submitted).toEqual(true);
   expect(submittedData).toEqual(submissionData);
+
+  /* End of: Form Submit tests  */
+
 });
