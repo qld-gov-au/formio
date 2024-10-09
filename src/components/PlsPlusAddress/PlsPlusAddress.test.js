@@ -253,12 +253,17 @@ test("PlsPlusAddress manual mode is functional", async () => {
   const form = createForm({
     form: formSettings,
     controller: (formio) => {
+      formio.on("change", (e) => {
+        data = e.data;
+      });
+
       formio.on("submit", (e) => {
         data = e.data;
       });
-      // formio.on("change", (e) => {
-      //   data = e.data;
-      // });
+
+      formio.on("submitError", (e) => {
+        console.error("PlsPlusAddress form submitError. EVENT=", e);
+      });
     },
   });
   document.body.append(form);
@@ -316,6 +321,7 @@ test("PlsPlusAddress manual mode is functional", async () => {
     "input[name='data[plsplusaddress][addressData][postcode]']",
   );
   await userEvent.click(postcode);
+  await testWait();
   await userEvent.type(postcode, "1234", {
     delay: 100,
   });
@@ -326,7 +332,9 @@ test("PlsPlusAddress manual mode is functional", async () => {
   const button = getByText(form, "Submit");
   expect(button).toBeVisible();
   await userEvent.click(button);
+
   await testWait();
+
   expect(data).toEqual({
     addressData: {
       address1: "address1",
