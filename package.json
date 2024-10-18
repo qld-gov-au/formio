@@ -53,7 +53,7 @@
     "@storybook/html": "^8.3.5",
     "@storybook/html-webpack5": "^8.3.5",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.1",
+    "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/user-event": "^13.5.0",
     "autocompleter": "^9.3.2",
     "babel-jest": "^29.7.0",
