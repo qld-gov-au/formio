@@ -41,7 +41,7 @@
     "@babel/core": "^7.25.9",
     "@babel/eslint-parser": "^7.25.9",
     "@babel/preset-env": "^7.25.9",
-    "@chromatic-com/storybook": "^2.0.2",
+    "@chromatic-com/storybook": "^3.0.0",
     "@storybook/addon-actions": "^8.3.6",
     "@storybook/addon-docs": "^8.3.6",
     "@storybook/addon-essentials": "^8.3.6",
