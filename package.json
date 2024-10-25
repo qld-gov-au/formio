@@ -40,7 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.9",
     "@babel/eslint-parser": "^7.25.9",
-    "@babel/preset-env": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
     "@chromatic-com/storybook": "^2.0.2",
     "@storybook/addon-actions": "^8.3.6",
     "@storybook/addon-docs": "^8.3.6",
