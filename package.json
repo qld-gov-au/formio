@@ -71,7 +71,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-storybook": "0.11.0",
     "eslint-webpack-plugin": "^4.2.0",
-    "formiojs": "4.21.5",
+    "formiojs": "4.21.6",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lodash": "^4.17.21",
