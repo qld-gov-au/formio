@@ -4,6 +4,55 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.21.5
+### Changed
+ - Official Release
+
+## 4.21.5-rc.6
+### Changed
+ - FIO-9105: trigger error in test
+ - FIO-8944 fixed navigation through the errors list
+ - FIO-8660: Fixed email component re-rendering with unique setting option
+
+## 4.21.5-rc.5
+### Changed
+ - Bugfix: allow paths for valueProperty
+
+## 4.21.5-rc.4
+
+## 4.21.5-rc.1
+### Changed
+ - FIO-8962 Fixed screen shifting when validation errors pop up in an embedded Wizard form
+ 
+## 4.21.4
+### Changed
+ - Official Release
+
+## 4.21.4-rc.2
+### Changed
+ - Revert "FIO-8797: set empty day component value to the empty string"
+ - Revert "FIO-8798: updated shape of the data of day component with hidden fields"
+ 
+## 4.21.4-rc.1
+### Changed
+ - FIO-8964 updated version of inputmask lib
+ - FIO-8797: set empty day component value to the empty string
+ - FIO-8795 fixed selected data after removing row
+ - FIO-8798: updated shape of the data of day component with hidden fields
+ - FIO-8849: fixed an issue where value of the selctboxes/radio with URL data source are not available in simple conditons UI
+ - FIO-8799 updated conditional tab for Time Component
+ - FIO-8874: fixed conditional value field for time component
+ - FIO-8866-8864: fixed simple conditions operators for recaptcha
+ - FIO-8900-8899: made only 2 operators available for address component in conditionals ui and fixed setting an empty value for address
+
+## 4.21.3
+### Changed
+ - Official Release
+
+## 4.21.3-rc.1
+### Changed
+ - FIO-7779: update pathing for nested container components and add test
+   
 ## 4.21.2
 ### Changed
  - Official Release

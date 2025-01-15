@@ -1,7 +1,7 @@
-formiojs@4.21.2/dist/formio.full.min.js
-formiojs@4.21.2/dist/formio.full.js
-@formio/premium@2.0.3/dist/premium.js
-@formio/premium@2.0.3/dist/premium.min.js
+formiojs@4.21.5/dist/formio.full.min.js
+formiojs@4.21.5/dist/formio.full.js
+@formio/premium@2.0.6/dist/premium.js
+@formio/premium@2.0.6/dist/premium.min.js
 @formio/grid@1.4.0/dist/formio.grid.min.js
 @formio/grid@1.4.0/dist/formio.grid.js
 @formio/grid@1.4.0/dist/formio.grid.min.css
