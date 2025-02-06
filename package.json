@@ -80,7 +80,7 @@
     "prettier": "^3.4.2",
     "raw-loader": "^4.0.2",
     "remove-files-webpack-plugin": "^1.5.0",
-    "sass": "^1.83.4",
+    "sass": "^1.84.0",
     "sass-loader": "^16.0.4",
     "storybook": "^8.2.3",
     "style-loader": "^4.0.0",
