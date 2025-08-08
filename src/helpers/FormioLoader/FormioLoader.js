@@ -70,7 +70,7 @@ const initFormioInstance = (elem, opts) => {
   let formName = "";
   // Check if value is true/exists and is numeric
   if (opts.formRevision) {
-    formName = `${opts.formName}/v/${opts.formRevision}`;
+    formName = `${opts.formName}?formRevision=${opts.formRevision}`;
   } else {
     formName = opts.formName;
   }
