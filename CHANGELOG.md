@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v2.2.4"></a>
+## [v2.2.4] - 2025-08-08
+### Pull Requests
+- Merge pull request [#944](https://github.com/qld-gov-au/formio/issues/944) from qld-gov-au/QOLSVC-11360_fix_943_swap_v_to_revision_arg
+
+
+<a name="v2.2.3"></a>
+## [v2.2.3] - 2025-01-16
+### Pull Requests
+- Merge pull request [#844](https://github.com/qld-gov-au/formio/issues/844) from qld-gov-au/QOLDEV-942_APIServerVersion_9.2.8-formiojs_4.21.5-premium_2.0.6-grid_1.4.0
+- Merge pull request [#770](https://github.com/qld-gov-au/formio/issues/770) from qld-gov-au/update-changelog
+
+
 <a name="v2.2.2"></a>
 ## [v2.2.2] - 2024-10-09
 ### Pull Requests
@@ -683,7 +696,9 @@
 - Merge pull request [#1](https://github.com/qld-gov-au/formio/issues/1) from qld-gov-au/plsplus-address
 
 
-[Unreleased]: https://github.com/qld-gov-au/formio/compare/v2.2.2...HEAD
+[Unreleased]: https://github.com/qld-gov-au/formio/compare/v2.2.4...HEAD
+[v2.2.4]: https://github.com/qld-gov-au/formio/compare/v2.2.3...v2.2.4
+[v2.2.3]: https://github.com/qld-gov-au/formio/compare/v2.2.2...v2.2.3
 [v2.2.2]: https://github.com/qld-gov-au/formio/compare/v2.2.1...v2.2.2
 [v2.2.1]: https://github.com/qld-gov-au/formio/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/qld-gov-au/formio/compare/v2.1.0...v2.2.0
