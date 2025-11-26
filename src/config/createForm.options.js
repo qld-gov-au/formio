@@ -11,7 +11,7 @@ module.exports = {
     en: {
       pattern: "Must use the format shown",
       error:
-        '<h2><span class="fa fa-exclamation-triangle"></span> Please check your answers</h2>',
+        '<h2 class="alert-heading">Please check your answers</h2>',
     },
   },
 };
